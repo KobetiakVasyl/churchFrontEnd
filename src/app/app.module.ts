@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {QuillModule} from "ngx-quill";
 
+import dayjs from 'dayjs';
 import 'dayjs/locale/uk';
 
 import {MaterialModule} from "./shared/modules/material.module";
