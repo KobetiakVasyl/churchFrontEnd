@@ -5,8 +5,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {QuillModule} from "ngx-quill";
 
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs'
+import * as isLeapYear from 'dayjs/plugin/isLeapYear'
 import 'dayjs/locale/uk';
+
+dayjs.extend(isLeapYear);
+dayjs.locale('uk');
 
 import {MaterialModule} from "./shared/modules/material.module";
 import {AppRoutingModule} from './app-routing.module';
