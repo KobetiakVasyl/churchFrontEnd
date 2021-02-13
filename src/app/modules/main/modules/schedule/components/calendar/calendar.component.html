@@ -1,0 +1,41 @@
+<table class="mat-elevation-z8">
+
+  <thead>
+  <tr>
+    <th>Нд</th>
+    <th>Пн</th>
+    <th>Вт</th>
+    <th>Ср</th>
+    <th>Чт</th>
+    <th>Пт</th>
+    <th>Сб</th>
+  </tr>
+  </thead>
+
+  <tbody>
+
+  <tr *ngFor="let week of calendar">
+    <td
+      *ngFor="let day of week.week"
+      class="container"
+      [class.active]="day.isActive"
+    >
+
+      <div
+        class="day"
+        [class.today]="day.isToday"
+        [class.disabled]="day.isDisabled"
+        (click)="navigateToDetails(day.value)"
+      >
+        <span>{{ day.value | dayjs: 'dddd DD' | titlecase }}</span>
+        <span
+          *ngIf="day.events.length"
+          class="event-notification"
+        >{{ day.events.length + 1 }}</span>
+      </div>
+
+    </td>
+  </tr>
+
+  </tbody>
+</table>

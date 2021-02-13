@@ -1,0 +1,74 @@
+<form
+  fxFlex="60"
+  fxFlex.lt-sm="100"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  class="container mat-elevation-z8"
+>
+  <mat-form-field>
+    <mat-label>Заголовок</mat-label>
+
+    <input
+      matInput
+      type="text"
+      placeholder="Введіть заголовок..."
+      formControlName="title"
+    >
+
+    <mat-hint>Обов'язкове поле</mat-hint>
+
+    <mat-error>Це поле є обов'язковим</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Підзаголовок</mat-label>
+
+    <input
+      matInput
+      type="text"
+      placeholder="Введіть підзаголовок..."
+      formControlName="subtitle"
+    >
+
+    <mat-hint>Обов'язкове поле</mat-hint>
+
+    <mat-error>Це поле є обов'язковим</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Опис</mat-label>
+
+    <textarea
+      matInput
+      rows="5"
+      type="text"
+      placeholder="Введіть короткий опис..."
+      formControlName="content"
+    ></textarea>
+
+    <mat-hint>Обов'язкове поле</mat-hint>
+
+    <mat-error>Це поле є обов'язковим</mat-error>
+  </mat-form-field>
+
+  <div
+    fxLayout="column"
+    fxLayoutGap="10px"
+  >
+    <strong class="image-header">
+      Додати фото
+    </strong>
+
+    <div class="images-wrapper">
+      <div></div>
+    </div>
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+  >
+    Зберегти
+  </button>
+</form>

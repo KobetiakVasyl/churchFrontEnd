@@ -1,0 +1,161 @@
+<section
+  fxLayout="column"
+  fxLayoutAlign="initial center"
+  fxLayoutGap="10px"
+  class="container"
+  [ngClass.gt-sm]="'mat-elevation-z8'"
+>
+  <div
+    fxFill="1"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <button
+      fxHide.lt-md
+      mat-raised-button
+      color="warn"
+      [disabled]="selection.isEmpty()"
+      (click)="handleDeleteMultipleItems()"
+    >
+      Видалити обрані оголошення
+    </button>
+
+    <mat-form-field
+      fxFlex="250px"
+      fxFlex.lt-md="100"
+    >
+      <mat-label>Фільтер</mat-label>
+
+      <input
+        matInput
+        type="text"
+        placeholder="Почніть вводити..."
+        [formControl]="filterControl"
+      >
+
+      <mat-hint>Фільтер буде застосовано автоматично</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div
+    fxFill="1"
+    fxLayout="column"
+  >
+    <div
+      fxHide.lt-md
+      class="table-container"
+    >
+      <table
+        mat-table
+        matSort
+        matSortStart="desc"
+        [dataSource]="dataSource"
+      >
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef class="select-column">
+            <mat-checkbox
+              color="warn"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              (change)="handleSelectAll($event)"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element" class="select-column">
+            <mat-checkbox
+              color="warn"
+              [checked]="selection.isSelected(element)"
+              (change)="handleSelectionChange($event, element)"
+              (click)="$event.stopPropagation()"
+            >
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef class="date-column">Дата створення</th>
+          <td mat-cell *matCellDef="let element" class="date-column">{{ element.date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Заголовок</th>
+          <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="subtitle">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Підзаголовок</th>
+          <td mat-cell *matCellDef="let element">{{ element.subtitle }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="content">
+          <th mat-header-cell mat-sort-header *matHeaderCellDef>Опис</th>
+          <td mat-cell *matCellDef="let element">{{ element.content }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef class="delete-column">Видалити</th>
+          <td mat-cell *matCellDef="let element" class="delete-column">
+            <button
+              mat-icon-button
+              matTooltip="Видалити оголошення"
+              color="warn"
+              [disabled]="!selection.isEmpty()"
+              (click)="handleDeleteItem(element)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+      </table>
+    </div>
+
+    <div
+      fxLayout="column"
+      fxLayoutGap="10px"
+      fxHide.gt-sm
+    >
+
+      <mat-card
+        *ngFor="let element of dataSource.filteredData"
+        fxLayout="row wrap"
+        fxLayoutGap="10px"
+      >
+        <div fxLayout="column">
+          <b>Заголовок</b>
+          <span>{{ element.title }}</span>
+        </div>
+
+        <div fxLayout="column">
+          <b>Підзаголовок</b>
+          <span>{{ element.subtitle }}</span>
+        </div>
+
+        <div fxLayout="column">
+          <b>Опис</b>
+          <span>{{ element.content }}</span>
+        </div>
+
+
+        <button
+          mat-stroked-button
+          fxFlex="100"
+          color="warn"
+          (click)="handleDeleteItem(element)"
+        >
+          Видалити
+        </button>
+      </mat-card>
+
+    </div>
+
+    <mat-paginator
+      fxHide.lt-md
+      showFirstLastButtons
+      color="primary"
+      [pageSizeOptions]="pageSizeOptions"
+    ></mat-paginator>
+  </div>
+</section>

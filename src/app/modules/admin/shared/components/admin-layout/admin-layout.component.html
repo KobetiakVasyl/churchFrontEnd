@@ -1,0 +1,117 @@
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    [(opened)]="isOpened"
+  >
+    <div
+      fxLayoutGap="10px"
+      fxLayoutAlign="initial center"
+      class="sidenav-header"
+    >
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <span class="header">Церква: АДМІН</span>
+    </div>
+
+    <nav
+      fxLayout="column"
+      fxLayoutAlign="space-between start"
+      class="container"
+    >
+
+      <a
+        mat-flat-button
+        routerLink="overview"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>home</mat-icon>
+        <span>Загальне</span>
+      </a>
+
+      <a
+        mat-flat-button
+        routerLink="advertisements"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>mail</mat-icon>
+        <span>Оголошення</span>
+      </a>
+
+      <a
+        mat-flat-button
+        routerLink="pilgrimage"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>commute</mat-icon>
+        <span>Паломництво</span>
+      </a>
+
+      <a
+        mat-flat-button
+        routerLink="schedule"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>today</mat-icon>
+        <span>Розпорядок</span>
+      </a>
+
+      <a
+        mat-flat-button
+        routerLink="settings"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>settings</mat-icon>
+        <span>Налаштування</span>
+      </a>
+
+    </nav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar
+      color="primary"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <div
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-between center"
+      >
+        <button
+          mat-icon-button
+          (click)="sidenav.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+
+        <span>Церква: АДМІН</span>
+      </div>
+
+      <button
+        mat-icon-button
+        matTooltip="Вийти із адмін панелі"
+        matTooltipPosition="left"
+        (click)="sidenav.toggle(); logout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <main class="container">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

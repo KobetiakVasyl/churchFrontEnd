@@ -1,0 +1,21 @@
+<section
+  class="container mat-elevation-z8"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  fxFlex="75"
+  fxFlex.lt-md="100"
+>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="overviewControl.invalid"
+    (click)="submit()"
+  >
+    Зберегти
+  </button>
+
+  <quill-editor
+    placeholder="Будь ласка вводьте текст тут..."
+    [formControl]="overviewControl"
+  ></quill-editor>
+</section>

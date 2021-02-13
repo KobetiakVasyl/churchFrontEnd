@@ -1,0 +1,59 @@
+@import '../../../../../../shared/styles/variables';
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid grey;
+  }
+
+  th {
+    background: mat-color($primaryDefault);
+    color: white;
+  }
+
+  td {
+    width: 4.5%;
+
+    .day {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      width: 100%;
+      min-height: 50px;
+
+      &.today {
+        color: mat-color($primaryDefault);
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      &.disabled {
+        opacity: .4;
+      }
+
+      &.active {
+        color: mat-color($primaryDefault);
+      }
+
+      &:hover:not(.disabled) {
+        color: mat-color($primaryDefault);
+      }
+
+      .event-notification {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: black;
+        width: 20px;
+        height: 20px;
+        background: lightcoral;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+

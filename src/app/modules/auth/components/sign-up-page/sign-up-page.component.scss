@@ -1,0 +1,14 @@
+@import '../../../../shared/styles/variables.scss';
+
+section {
+  margin: auto;
+
+  h2 {
+    border-bottom: 2px solid mat-color($primaryDefault);
+  }
+
+  button {
+    margin-top: 1rem;
+    width: 100% !important;
+  }
+}

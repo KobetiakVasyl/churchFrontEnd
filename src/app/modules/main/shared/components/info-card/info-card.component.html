@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ cardInfo.title }}</mat-card-title>
+    <mat-card-subtitle>{{ cardInfo.subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+
+
+  <img
+    mat-card-image
+    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    alt="Photo of a Shiba Inu
+">
+
+  <mat-card-content>
+    <p>{{ cardInfo.content }}</p>
+  </mat-card-content>
+
+  <mat-card-actions *ngIf="cardInfo.isEditable">
+    <button mat-flat-button>LIKE</button>
+    <button mat-flat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

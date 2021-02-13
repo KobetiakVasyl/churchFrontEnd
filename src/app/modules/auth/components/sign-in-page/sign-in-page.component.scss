@@ -1,0 +1,21 @@
+@import '../../../../shared/styles/variables.scss';
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 40%;
+  margin: auto;
+
+  h2 {
+    border-bottom: 2px solid mat-color($primaryDefault);
+  }
+
+  > div, form {
+    display: flex;
+    flex-direction: column;
+
+    height: 240px;
+  }
+}

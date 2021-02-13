@@ -1,0 +1,85 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './src/app/shared/styles/variables';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-sidenav-container {
+  height: 100%;
+
+  mat-sidenav {
+    min-width: 250px;
+    max-width: 300px;
+
+    .sidenav-header {
+      padding: 10px 26px;
+    }
+  }
+}
+
+nav > a {
+  display: flex;
+  align-content: center;
+
+  font-size: 1.2rem;
+  width: 100%;
+
+  mat-icon {
+    display: flex;
+
+    width: 10%;
+    margin: auto 0;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+
+    width: 90%;
+  }
+
+  &.active-nav-link {
+    color: mat-color($primaryDefault);
+  }
+}
+
+.header {
+  font-size: 1.3rem;
+}
+
+.container {
+  margin: .5rem;
+  padding: .5rem;
+}
+
+.no-spacing {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.table-container {
+  width: 100%;
+  overflow: auto;
+
+  table {
+    width: 100%;
+
+    td, th {
+      padding: 3px;
+      vertical-align: baseline;
+    }
+  }
+}

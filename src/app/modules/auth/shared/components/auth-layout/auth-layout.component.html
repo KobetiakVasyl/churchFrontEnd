@@ -1,0 +1,20 @@
+<mat-toolbar
+  fxLayoutGap="10px"
+  color="primary">
+
+  <mat-icon>vpn_key</mat-icon>
+
+  <span>Вхід / Реєстрація</span>
+</mat-toolbar>
+
+<main class="container">
+  <button
+    color="primary"
+    mat-stroked-button
+    [routerLink]="['', 'overview']"
+  >
+    Повернутися на головну
+  </button>
+
+  <router-outlet></router-outlet>
+</main>

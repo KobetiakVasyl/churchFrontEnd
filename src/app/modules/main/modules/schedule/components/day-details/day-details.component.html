@@ -1,0 +1,53 @@
+<header fxLayoutAlign="start">
+  <button
+    mat-stroked-button
+    [routerLink]="['', 'schedule']"
+  >
+    Назад
+  </button>
+
+  <h3 class="no-spacing">{{ date }}</h3>
+</header>
+
+<main>
+  <h1 class="no-spacing">Події</h1>
+  <hr>
+
+  <div
+    *ngIf="events.length; else noEventsBlock"
+    class="container"
+    fxLayout="column center"
+    fxLayoutGap="15px"
+    [@fadeInAnimation]
+  >
+    <div
+      *ngFor="let event of events; let i = index"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      class="events-container mat-elevation-z8"
+    >
+      <div
+        fxLayout
+        fxLayoutAlign="space-between center"
+      >
+        <h2 class="no-spacing">{{ event.date }}</h2>
+
+        <mat-icon
+          matTooltip="Видалити подію"
+          color="warn"
+          class="hover"
+        >
+          delete
+        </mat-icon>
+      </div>
+
+      <span>{{ event.information }}</span>
+    </div>
+  </div>
+
+  <ng-template #noEventsBlock>
+    <strong fxLayoutAlign="center center">
+      Немає запланованих подій. Щоб оновити дані будь ласка перезагрузіть сторінку
+    </strong>
+  </ng-template>
+</main>

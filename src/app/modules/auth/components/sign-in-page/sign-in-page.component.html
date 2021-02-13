@@ -1,0 +1,67 @@
+<section
+  fxFlex.gt-md="1 1 40%"
+  fxFlex.lt-sm="1 1 90%"
+  [@bounceInDownAnimation]
+>
+  <div class="mat-elevation-z24 container">
+
+    <h2>Вхід</h2>
+
+    <form
+      *ngIf="shouldShowForm"
+      [formGroup]="formGroup"
+      (ngSubmit)="submit()"
+      [@fadeInAnimation]
+    >
+
+      <mat-form-field>
+        <mat-label>Емеіл</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Введіть свій емеіл..."
+          formControlName="email"
+        >
+
+        <mat-hint>Обов'язкове поле</mat-hint>
+
+        <mat-error>Це поле є обов'язковим</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Пароль</mat-label>
+
+        <input
+          matInput
+          type="password"
+          placeholder="Введіть свій пароль..."
+          formControlName="password"
+        >
+
+        <mat-hint>Обов'язкове поле, Мін: 8, Макс: 20 символів</mat-hint>
+
+        <mat-error *ngIf="password?.errors?.required">Це поле є обов'язковим</mat-error>
+        <mat-error *ngIf="password?.errors?.minlength">Мінімум 8 символів</mat-error>
+        <mat-error *ngIf="password?.errors?.maxlength">Максимум 20 символів</mat-error>
+      </mat-form-field>
+
+      <a
+        mat-button
+        [routerLink]="['', 'auth', 'signup']"
+      >
+        Я ще не зареєстрований
+      </a>
+
+      <button
+        mat-button
+        type="submit"
+        color="primary"
+        [disabled]="formGroup.invalid"
+      >
+        Ввійти
+      </button>
+    </form>
+  </div>
+</section>

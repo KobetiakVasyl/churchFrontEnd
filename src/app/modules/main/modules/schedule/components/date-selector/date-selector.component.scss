@@ -1,0 +1,24 @@
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 50%;
+  margin: 0 auto;
+  font-size: 1.3rem;
+
+  span {
+    text-align: center;
+    margin: 0 .5rem;
+  }
+
+  mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20%;
+    height: 100%;
+    font-size: 3rem;
+  }
+}

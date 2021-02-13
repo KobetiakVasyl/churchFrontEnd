@@ -1,0 +1,12 @@
+.pop-up-wrapper {
+  min-width: 300px !important;
+  max-width: 500px !important;
+
+  div[mat-dialog-content] {
+    white-space: pre-line;
+  }
+
+  button {
+    width: 100px;
+  }
+}
