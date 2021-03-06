@@ -1,12 +1,12 @@
 <div class="selector">
 
-  <mat-icon (click)="changeMonth(-1)">
+  <mat-icon (click)="changeMonth(false)">
     arrow_left
   </mat-icon>
 
-  <span>{{ calendarDateService.date.value | dayjs | titlecase }}</span>
+  <span>{{ calendarDateService.date.value | date: 'MM/dd/yyyy' | titlecase }}</span>
 
-  <mat-icon (click)="changeMonth(1)">
+  <mat-icon (click)="changeMonth(true)">
     arrow_right
   </mat-icon>
 

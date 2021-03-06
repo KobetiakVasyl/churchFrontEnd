@@ -1,6 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import * as dayjs from "dayjs";
+
+import {
+  format,
+  isBefore,
+  isSameDay,
+  isSameMonth,
+  startOfMonth,
+  endOfMonth,
+  subDays,
+  addDays,
+} from 'date-fns'
+import { uk } from 'date-fns/locale'
 
 import {CalendarDateService} from "../../shared/services/calendar-date.service";
 
@@ -26,42 +37,49 @@ export class CalendarComponent implements OnInit {
       .subscribe(this.handleDateChange.bind(this))
   }
 
-  handleDateChange(date: dayjs.Dayjs): void {
+  handleDateChange(date: Date): void {
     const calendar = [];
 
-    const todayDate = dayjs();
-    const startDate = date.clone().startOf('month').startOf('week');
-    const endDate = date.clone().endOf('month').endOf('week');
+    const todayDate = new Date();
+    const startDate = startOfMonth(date);
+    const endDate = endOfMonth(date);
 
-    let currentDate = startDate.clone().subtract(1, 'day');
+    let currentDate = subDays(startDate, 1);
 
-    while (currentDate.isBefore(endDate, 'day')) {
+    console.log(
+      format(todayDate, 'MM/dd/yyyy'),
+      format(startDate, 'MM/dd/yyyy'),
+      format(endDate, 'MM/dd/yyyy'),
+      format(currentDate, 'MM/dd/yyyy')
+    );
+
+    while (isBefore(currentDate, endDate)) {
       calendar.push({
         week: new Array(7)
           .fill(null)
           .map(() => {
-            const value = currentDate.clone().add(1, 'day');
-            const isToday = todayDate.isSame(currentDate, 'date');
-            const isDisabled = !date.isSame(value, 'month');
+            const pure = addDays(currentDate, 1);
+            const formatted = format(currentDate, 'dd', {locale: uk});
+            const isToday = isSameDay(todayDate, currentDate);
+            const isDisabled = !isSameMonth(todayDate, currentDate);
 
-            currentDate = currentDate.add(1, 'day');
+            currentDate = addDays(currentDate, 1);
 
             return {
-              value,
               isToday,
               isDisabled,
-              isActive: isToday,
+              value: {pure, formatted},
               events: []
             }
           })
       })
     }
-
+    console.log(calendar);
     this.calendar = calendar;
   }
 
-  navigateToDetails(value: dayjs.Dayjs): void {
-    const urlFragment = value.format('DD/MM/YYYY');
+  navigateToDetails(value: Date): void {
+    const urlFragment = format(value, 'dd/MM/yyyy');
     this.router.navigate(['', 'schedule', urlFragment]);
   }
 }

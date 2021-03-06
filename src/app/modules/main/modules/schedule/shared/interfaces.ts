@@ -1,13 +1,13 @@
-import * as dayjs from "dayjs";
-
 export interface Week {
   week: Day[]
 }
 
 export interface Day {
-  value: dayjs.Dayjs;
+  value: {
+    pure: Date;
+    formatted: string;
+  };
   isToday: boolean;
-  isActive: boolean;
   isDisabled: boolean;
   events: CalendarEvent[]
 }

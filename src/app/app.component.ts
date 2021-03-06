@@ -8,5 +8,6 @@ import {LoadingSpinnerService} from "./shared/services/loading-spinner.service";
 })
 export class AppComponent {
   constructor(public loadingSpinnerService: LoadingSpinnerService) {
+
   }
 }

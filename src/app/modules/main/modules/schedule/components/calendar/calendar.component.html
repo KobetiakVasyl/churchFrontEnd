@@ -18,16 +18,16 @@
     <td
       *ngFor="let day of week.week"
       class="container"
-      [class.active]="day.isActive"
+      [class.active]="day.isToday"
     >
 
       <div
         class="day"
         [class.today]="day.isToday"
         [class.disabled]="day.isDisabled"
-        (click)="navigateToDetails(day.value)"
+        (click)="navigateToDetails(day.value.pure)"
       >
-        <span>{{ day.value | dayjs: 'dddd DD' | titlecase }}</span>
+        <span>{{ day.value.formatted }}</span>
         <span
           *ngIf="day.events.length"
           class="event-notification"

@@ -13,7 +13,7 @@ export class DateSelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeMonth(direction: number): void {
-    this.calendarDateService.changeMonth(direction);
+  changeMonth(loadNext: boolean): void {
+    this.calendarDateService.changeMonth(loadNext);
   }
 }
