@@ -10,7 +10,7 @@ import {PilgrimagePageComponent} from './components/pilgrimage-page/pilgrimage-p
 import {OverviewPageComponent} from './components/overview-page/overview-page.component';
 import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
 import {InfoCardComponent} from "./shared/components/info-card/info-card.component";
-import { ChurchSelectionPageComponent } from './components/church-selection-page/church-selection-page.component';
+import {ChurchSelectionPageComponent} from './components/church-selection-page/church-selection-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 
 
@@ -23,13 +23,13 @@ import {ReactiveFormsModule} from "@angular/forms";
     InfoCardComponent,
     ChurchSelectionPageComponent
   ],
-    imports: [
-        CommonModule,
-        MainRoutingModule,
-        MaterialModule,
-        FlexModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    MaterialModule,
+    FlexModule,
+    ReactiveFormsModule
+  ]
 })
 export class MainModule {
 }

@@ -35,40 +35,44 @@
       </a>
 
       <a
+        *ngIf="isChurchSelected()"
         mat-flat-button
         routerLink="overview"
         routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
+        (click)="navigate(sidenav, 'overview')"
       >
         <mat-icon>home</mat-icon>
         <span>Опис Церкви</span>
       </a>
 
       <a
+        *ngIf="isChurchSelected()"
         mat-flat-button
         routerLink="advertisements"
         routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
+        (click)="navigate(sidenav, 'advertisements')"
       >
         <mat-icon>mail</mat-icon>
         <span>Оголошення</span>
       </a>
 
       <a
+        *ngIf="isChurchSelected()"
         mat-flat-button
         routerLink="pilgrimage"
         routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
+        (click)="navigate(sidenav, 'pilgrimage')"
       >
         <mat-icon>commute</mat-icon>
         <span>Паломництво</span>
       </a>
 
       <a
+        *ngIf="isChurchSelected()"
         mat-flat-button
         routerLink="schedule"
         routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
+        (click)="navigate(sidenav, 'schedule')"
       >
         <mat-icon>today</mat-icon>
         <span>Розпорядок</span>
@@ -76,8 +80,7 @@
 
       <a
         mat-flat-button
-        routerLinkActive="active-nav-link"
-        (click)="sidenav.close(); navigateToAdminPanel()"
+        (click)="navigateToAdminPanel(sidenav)"
       >
         <mat-icon>admin_panel_settings</mat-icon>
         <span>Адмін</span>

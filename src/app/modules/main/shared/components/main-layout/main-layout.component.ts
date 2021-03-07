@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {MatSidenav} from "@angular/material/sidenav";
 
 import {AuthService} from "../../../../auth/shared/services/auth.service";
 
@@ -17,9 +18,23 @@ export class MainLayoutComponent {
   ) {
   }
 
-  navigateToAdminPanel(): void {
+  isChurchSelected(): boolean {
+    return !!JSON.parse(<string>localStorage.getItem('churchInfo'));
+  }
+
+  navigateToAdminPanel(sidenav: MatSidenav): void {
     this.authService.isAuthorized()
       ? this.router.navigate(['', 'admin', 'overview'])
       : this.router.navigate(['', 'auth', 'login']);
+
+    sidenav.close();
+  }
+
+  navigate(sidenav: MatSidenav, path: string): void {
+    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    this.router.navigate(['', path, id]);
+
+    sidenav.close();
   }
 }

@@ -6,6 +6,7 @@ import {AdvertisementsPageComponent} from "./components/advertisements-page/adve
 import {PilgrimagePageComponent} from "./components/pilgrimage-page/pilgrimage-page.component";
 import {OverviewPageComponent} from "./components/overview-page/overview-page.component";
 import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
+import {CanActivateChurchInfoGuard} from "../../shared/guards/can-activate-church-info.guard";
 
 const routes: Routes = [
   {
@@ -17,20 +18,24 @@ const routes: Routes = [
         component: ChurchSelectionPageComponent
       },
       {
-        path: 'overview',
-        component: OverviewPageComponent
+        path: 'overview/:churchId',
+        component: OverviewPageComponent,
+        canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'pilgrimage',
-        component: PilgrimagePageComponent
+        path: 'pilgrimage/:churchId',
+        component: PilgrimagePageComponent,
+        canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'advertisements',
-        component: AdvertisementsPageComponent
+        path: 'advertisements/:churchId',
+        component: AdvertisementsPageComponent,
+        canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'schedule',
-        loadChildren: () => import('./modules/schedule/schedule.module').then(m => m.ScheduleModule)
+        path: 'schedule/:churchId',
+        loadChildren: () => import('./modules/schedule/schedule.module').then(m => m.ScheduleModule),
+        canActivate: [CanActivateChurchInfoGuard]
       }
     ]
   }

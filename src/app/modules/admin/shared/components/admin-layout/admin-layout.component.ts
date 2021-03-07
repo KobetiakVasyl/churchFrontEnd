@@ -18,6 +18,8 @@ export class AdminLayoutComponent {
 
   logout() {
     // this.authService.logout().subsc
-    this.router.navigate(['', 'overview']);
+    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    this.router.navigate(['', 'overview', id]);
   }
 }

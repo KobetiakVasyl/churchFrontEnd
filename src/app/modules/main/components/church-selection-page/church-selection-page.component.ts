@@ -64,7 +64,7 @@ export class ChurchSelectionPageComponent implements OnInit, OnDestroy {
 
     localStorage.setItem('churchInfo', JSON.stringify(this.formGroup.value));
 
-    this.router.navigate(['', 'overview']);
+    this.router.navigate(['', 'overview', this.formGroup.value.id]);
   }
 
   handleChurchNameChange(value: string): void {

@@ -13,9 +13,10 @@ import {ERROR_INTERCEPTOR_PROVIDER, MAT_DIALOG_PROVIDER} from "./shared/provider
 import {AppComponent} from './app.component';
 import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loading-spinner.component';
 import {MessagePopUpComponent} from './shared/components/message-pop-up/message-pop-up.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, LoadingSpinnerComponent, MessagePopUpComponent],
+  declarations: [AppComponent, LoadingSpinnerComponent, MessagePopUpComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
