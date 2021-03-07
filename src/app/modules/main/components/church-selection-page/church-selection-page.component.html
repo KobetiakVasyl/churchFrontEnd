@@ -1,0 +1,58 @@
+<section
+  fxFlex="50"
+  fxFlex.lt-md="80"
+  fxFlex.lt-sm="100"
+  fxLayout="column"
+  fxLayoutGap="50px"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <h1>Оберіть церкву</h1>
+    <span>Схоже що ви не обрали церкву, за якою б хотіли стежити. Оберіть церкву зі списку нижче</span>
+  </div>
+
+  <form
+    fxLayout="column"
+    fxLayoutGap="10px"
+    [formGroup]="formGroup"
+    (ngSubmit)="submit()"
+  >
+    <mat-form-field>
+      <mat-label>Оберіть церкву зі списку</mat-label>
+
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Почніть вводити назву та оберіть зі списку"
+        [matAutocomplete]="auto"
+      >
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let church of filteredChurches | async"
+          [value]="church.name"
+        >
+          {{ church.name }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-hint>Список можна фітрувати вводячи</mat-hint>
+
+      <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+        Це поле є обов'язкове. Введіть назву церкви та оберіть її зі списку
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-stroked-button
+      type="submit"
+      color="primary"
+      [disabled]="formGroup.invalid"
+    >
+      Обрати
+    </button>
+  </form>
+</section>

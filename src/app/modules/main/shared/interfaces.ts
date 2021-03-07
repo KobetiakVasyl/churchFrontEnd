@@ -5,3 +5,8 @@ export interface CardInfo {
   content: string;
   isEditable: boolean;
 }
+
+export interface Church {
+  id: number;
+  name: string;
+}

@@ -14,6 +14,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatSortModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatAutocompleteModule,
     MatProgressSpinnerModule
   ],
   exports: [
@@ -58,6 +60,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatSortModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatAutocompleteModule,
     MatProgressSpinnerModule
   ]
 })

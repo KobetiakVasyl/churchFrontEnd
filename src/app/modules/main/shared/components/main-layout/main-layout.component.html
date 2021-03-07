@@ -4,9 +4,9 @@
     mode="over"
     [(opened)]="isOpened"
   >
-    <div
-      fxLayoutGap="10px"
-      fxLayoutAlign="initial center"
+    <mat-toolbar
+      fxLayoutGap="20px"
+      color="primary"
       class="sidenav-header"
     >
       <button
@@ -16,14 +16,23 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span class="header">Церква</span>
-    </div>
+      <span>Церква</span>
+    </mat-toolbar>
 
     <nav
       fxLayout="column"
       fxLayoutAlign="space-between start"
       class="container"
     >
+      <a
+        mat-flat-button
+        routerLink="church-selection"
+        routerLinkActive="active-nav-link"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>import_export</mat-icon>
+        <span>Обрати Церкву</span>
+      </a>
 
       <a
         mat-flat-button
@@ -32,7 +41,7 @@
         (click)="sidenav.close()"
       >
         <mat-icon>home</mat-icon>
-        <span>Загальне</span>
+        <span>Опис Церкви</span>
       </a>
 
       <a
