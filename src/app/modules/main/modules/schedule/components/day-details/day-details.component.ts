@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {fadeInAnimation} from "../../../../../../shared/animations";
 
 interface DayEvent {
@@ -31,7 +31,8 @@ export class DayDetailsComponent implements OnInit {
   ];
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -41,5 +42,11 @@ export class DayDetailsComponent implements OnInit {
 
       this.date = params['date'];
     });
+  }
+
+  navigateToSchedulePage() {
+    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    this.router.navigate(['', 'schedule', id]);
   }
 }

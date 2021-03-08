@@ -22,10 +22,10 @@
     >
 
       <div
-        class="day"
+        class="day hover"
         [class.today]="day.isToday"
         [class.disabled]="day.isDisabled"
-        (click)="navigateToDetails(day.value.pure)"
+        (click)="navigateToDetails(day.value.pure, day.isDisabled)"
       >
         <span>{{ day.value.formatted }}</span>
         <span

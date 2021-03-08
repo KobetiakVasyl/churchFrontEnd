@@ -46,13 +46,6 @@ export class CalendarComponent implements OnInit {
 
     let currentDate = subDays(startDate, 1);
 
-    console.log(
-      format(todayDate, 'MM/dd/yyyy'),
-      format(startDate, 'MM/dd/yyyy'),
-      format(endDate, 'MM/dd/yyyy'),
-      format(currentDate, 'MM/dd/yyyy')
-    );
-
     while (isBefore(currentDate, endDate)) {
       calendar.push({
         week: new Array(7)
@@ -61,7 +54,7 @@ export class CalendarComponent implements OnInit {
             const pure = addDays(currentDate, 1);
             const formatted = format(currentDate, 'dd', {locale: uk});
             const isToday = isSameDay(todayDate, currentDate);
-            const isDisabled = !isSameMonth(todayDate, currentDate);
+            const isDisabled = !isSameMonth(date, currentDate);
 
             currentDate = addDays(currentDate, 1);
 
@@ -74,12 +67,16 @@ export class CalendarComponent implements OnInit {
           })
       })
     }
-    console.log(calendar);
     this.calendar = calendar;
   }
 
-  navigateToDetails(value: Date): void {
-    const urlFragment = format(value, 'dd/MM/yyyy');
-    this.router.navigate(['', 'schedule', urlFragment]);
+  navigateToDetails(value: Date, isDisabled: boolean): void {
+    if (isDisabled) return;
+
+    const date = format(value, 'dd/MM/yyyy');
+
+    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    this.router.navigate(['', 'schedule', id, date]);
   }
 }

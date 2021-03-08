@@ -53,6 +53,12 @@ export class ChurchSelectionPageComponent implements OnInit, OnDestroy {
       churchNameControl.valueChanges
         .subscribe(this.handleChurchNameChange.bind(this))
     );
+
+    const churchInfo = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    if (churchInfo) {
+      this.formGroup.patchValue({name: churchInfo.name});
+    }
   }
 
   ngOnDestroy(): void {

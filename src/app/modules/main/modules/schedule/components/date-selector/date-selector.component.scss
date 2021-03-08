@@ -3,7 +3,8 @@
   align-items: center;
   justify-content: space-between;
 
-  width: 50%;
+  width: 40%;
+  min-width: 300px;
   margin: 0 auto;
   font-size: 1.3rem;
 
@@ -14,11 +15,9 @@
 
   mat-icon {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    width: 20%;
-    height: 100%;
     font-size: 3rem;
   }
 }
