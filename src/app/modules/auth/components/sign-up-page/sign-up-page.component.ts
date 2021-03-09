@@ -56,8 +56,14 @@ export class SignUpPageComponent implements OnInit {
     return this.userPersonalDataFormGroup.get('phoneNumber') as FormControl;
   }
 
-  submit() {
-    if (this.userPersonalDataFormGroup.invalid) return;
+  submit(): void {
+    console.log(this.userPersonalDataFormGroup.invalid || this.userCommonDataFormGroup.invalid || this.churchDataFormGroup.invalid)
+
+    if (
+      this.userPersonalDataFormGroup.invalid ||
+      this.userCommonDataFormGroup.invalid ||
+      this.churchDataFormGroup.invalid
+    ) return;
 
     // this.authService.signup(this.formGroup.value).subscribe(response => {
     //   console.log(response);

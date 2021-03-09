@@ -16,6 +16,8 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   navigateToOverview(): void {
-    this.router.navigate(['', 'overview']);
+    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+
+    this.router.navigate(['', 'overview', id]);
   }
 }
