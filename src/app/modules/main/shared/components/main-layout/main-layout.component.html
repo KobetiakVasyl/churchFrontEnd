@@ -30,7 +30,7 @@
         routerLinkActive="active-nav-link"
         (click)="sidenav.close()"
       >
-        <mat-icon>import_export</mat-icon>
+        <mat-icon>search</mat-icon>
         <span>Обрати Церкву</span>
       </a>
 
@@ -79,6 +79,7 @@
       </a>
 
       <a
+        *ngIf="isChurchSelected()"
         mat-flat-button
         (click)="navigateToAdminPanel(sidenav)"
       >

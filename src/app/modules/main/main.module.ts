@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FlexModule} from "@angular/flex-layout";
+import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
 
 import {MainRoutingModule} from './main-routing.module';
 import {MaterialModule} from "../../shared/modules/material.module";
@@ -23,13 +23,14 @@ import {ReactiveFormsModule} from "@angular/forms";
     InfoCardComponent,
     ChurchSelectionPageComponent
   ],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    MaterialModule,
-    FlexModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        MainRoutingModule,
+        MaterialModule,
+        FlexModule,
+        ReactiveFormsModule,
+        FlexLayoutModule
+    ]
 })
 export class MainModule {
 }

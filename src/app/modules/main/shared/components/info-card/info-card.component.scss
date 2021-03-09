@@ -1,4 +1,19 @@
-mat-card {
-  margin: 0 auto;
-  width: 80%;
+section {
+  h3 {
+    border-bottom: 2px solid grey;
+  }
+
+  div {
+    height: 100px;
+    min-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    img {
+      display: flex;
+
+      width: 100px;
+      height: auto;
+    }
+  }
 }

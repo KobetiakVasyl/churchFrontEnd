@@ -1,9 +1,12 @@
 export interface CardInfo {
   title: string;
-  subtitle: string;
-  images: string[];
-  content: string;
-  isEditable: boolean;
+  description: string;
+  images: CardImage[];
+}
+
+export interface CardImage {
+  src: string;
+  alt: string;
 }
 
 export interface Church {
