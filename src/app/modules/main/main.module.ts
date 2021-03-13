@@ -23,14 +23,14 @@ import {ReactiveFormsModule} from "@angular/forms";
     InfoCardComponent,
     ChurchSelectionPageComponent
   ],
-    imports: [
-        CommonModule,
-        MainRoutingModule,
-        MaterialModule,
-        FlexModule,
-        ReactiveFormsModule,
-        FlexLayoutModule
-    ]
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    MaterialModule,
+    FlexModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+  ]
 })
 export class MainModule {
 }

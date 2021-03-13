@@ -1,8 +1,11 @@
 <section
+  *ngIf="cardsInfo.length"
   fxLayout="column"
   fxLayoutGap="10px"
 >
-  <app-info-card></app-info-card>
-  <app-info-card></app-info-card>
-  <app-info-card></app-info-card>
+  <app-info-card
+    *ngFor="let cardInfo of cardsInfo"
+    [cardInfo]="cardInfo"
+    (imageSelect)="handleImageSelect($event)"
+  ></app-info-card>
 </section>

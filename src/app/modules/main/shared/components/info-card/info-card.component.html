@@ -1,26 +1,9 @@
-<div
-  *ngIf="selectedImage"
-  class="view-image-show-full"
->
-  <button
-    mat-icon-button
-    (click)="closeShowFull()"
-  >
-    <mat-icon>cancel</mat-icon>
-  </button>
-
-  <img
-    [src]="selectedImage.src"
-    [alt]="selectedImage.alt"
-  >
-</div>
-
 <section
   fxLayout="column"
   fxLayoutGap="10px"
   class="container mat-elevation-z8"
 >
-  <h3>{{ cardInfo.title }}</h3>
+  <h2>{{ cardInfo.title }}</h2>
 
   <div
     fxLayout="row nowrap"
@@ -31,6 +14,7 @@
       *ngFor="let img of cardInfo.images"
       [src]="img.src"
       [alt]="img.alt"
+      class="hover"
       (click)="showFullImage(img)"
     >
   </div>

@@ -14,9 +14,16 @@ import {AppComponent} from './app.component';
 import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loading-spinner.component';
 import {MessagePopUpComponent} from './shared/components/message-pop-up/message-pop-up.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import {ViewImageFullScreenComponent} from "./shared/components/view-image-full-screen/view-image-full-screen.component";
 
 @NgModule({
-  declarations: [AppComponent, LoadingSpinnerComponent, MessagePopUpComponent, PageNotFoundComponent],
+  declarations: [
+    AppComponent,
+    LoadingSpinnerComponent,
+    MessagePopUpComponent,
+    PageNotFoundComponent,
+    ViewImageFullScreenComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
