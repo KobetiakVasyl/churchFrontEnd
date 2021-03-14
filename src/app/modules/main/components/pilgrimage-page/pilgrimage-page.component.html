@@ -1,1 +1,17 @@
-<p>pilgrimage-page works!</p>
+<section
+  *ngIf="cardsInfo.length; else noPilgrimagesBlock"
+  fxLayout="column"
+  fxLayoutGap="10px"
+>
+  <app-pilgrimage-card
+    *ngFor="let cardInfo of cardsInfo"
+    [cardInfo]="cardInfo"
+    (imageSelect)="handleImageSelect($event)"
+  ></app-pilgrimage-card>
+</section>
+
+<ng-template #noPilgrimagesBlock>
+  <strong fxLayoutAlign="center center">
+    Немає оголошень. Щоб оновити дані будь ласка оновіть сторінку
+  </strong>
+</ng-template>

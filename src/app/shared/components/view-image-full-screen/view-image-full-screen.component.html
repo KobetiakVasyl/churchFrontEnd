@@ -1,15 +1,16 @@
 <section *ngIf="img">
   <button
     mat-icon-button
+    color="warn"
     (click)="closeShowFullView()"
   >
     <mat-icon>cancel</mat-icon>
   </button>
 
   <img
-    fxFlex.gt-lg="1 1 800px"
-    fxFlex.gt-sm="1 1 500px"
-    fxFlex.lt-sm="1 1 300px"
+    fxFlex.gt-xs="300px"
+    fxFlex.gt-sm="500px"
+    fxFlex.gt-lg="800px"
     class="hover"
     [src]="img.src"
     [alt]="img.alt"

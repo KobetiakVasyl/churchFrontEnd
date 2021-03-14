@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CardImage, CardInfo} from "../../shared/interfaces";
+import {CardImage, AdvertisementCardInfo} from "../../shared/interfaces";
 import {ViewImageShowFullService} from "../../../../shared/services/view-image-show-full.service";
 
 @Component({
@@ -8,7 +8,7 @@ import {ViewImageShowFullService} from "../../../../shared/services/view-image-s
   styleUrls: ['./advertisements-page.component.scss']
 })
 export class AdvertisementsPageComponent implements OnInit {
-  cardsInfo: CardInfo[] = [];
+  cardsInfo: AdvertisementCardInfo[] = [];
 
   constructor(private viewImageShowFullService: ViewImageShowFullService) {
   }
@@ -109,7 +109,6 @@ export class AdvertisementsPageComponent implements OnInit {
   }
 
   handleImageSelect(img: CardImage): void {
-    console.log(img);
     this.viewImageShowFullService.selectImage(img);
   }
 }

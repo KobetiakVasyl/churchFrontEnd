@@ -1,7 +1,19 @@
-export interface CardInfo {
+export interface AdvertisementCardInfo {
   title: string;
   description: string;
   images: CardImage[];
+}
+
+export interface PilgrimageCardInfo {
+  title: string;
+  description: string;
+  images: CardImage[];
+}
+
+export interface PilgrimageSelectedCard extends CardImage {
+  isFirst: boolean;
+  isLast: boolean;
+  indexInImagesArray: number;
 }
 
 export interface CardImage {

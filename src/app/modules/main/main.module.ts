@@ -9,9 +9,10 @@ import {AdvertisementsPageComponent} from './components/advertisements-page/adve
 import {PilgrimagePageComponent} from './components/pilgrimage-page/pilgrimage-page.component';
 import {OverviewPageComponent} from './components/overview-page/overview-page.component';
 import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
-import {InfoCardComponent} from "./shared/components/info-card/info-card.component";
+import {AdvertisementCardComponent} from "./shared/components/advertisement-card/advertisement-card.component";
 import {ChurchSelectionPageComponent} from './components/church-selection-page/church-selection-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { PilgrimageCardComponent } from './shared/components/pilgrimage-card/pilgrimage-card.component';
 
 
 @NgModule({
@@ -20,8 +21,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     PilgrimagePageComponent,
     AdvertisementsPageComponent,
     MainLayoutComponent,
-    InfoCardComponent,
-    ChurchSelectionPageComponent
+    AdvertisementCardComponent,
+    ChurchSelectionPageComponent,
+    PilgrimageCardComponent
   ],
   imports: [
     CommonModule,

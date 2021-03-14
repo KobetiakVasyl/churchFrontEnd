@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CardImage} from "../../../modules/main/shared/interfaces";
 import {ViewImageShowFullService} from "../../services/view-image-show-full.service";
 import {Subscription} from "rxjs";
@@ -18,10 +18,7 @@ export class ViewImageFullScreenComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.viewImageShowFullService.imageSelected
-      .subscribe(img => {
-        console.log(img);
-        this.img = img;
-      });
+      .subscribe(img => this.img = img);
   }
 
   ngOnDestroy(): void {
