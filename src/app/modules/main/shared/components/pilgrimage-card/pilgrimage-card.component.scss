@@ -1,0 +1,19 @@
+section {
+  h2 {
+    border-bottom: 2px solid grey;
+  }
+
+  button {
+    &.h600px {
+      height: 600px;
+    }
+
+    &.h300px {
+      height: 300px;
+    }
+
+    &.h200px {
+      height: 200px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<section
+  fxLayout="column"
+  fxLayoutGap="10px"
+  class="container mat-elevation-z8"
+>
+  <h2>{{ cardInfo.title }}</h2>
+
+  <div
+    fxLayout="row nowrap"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="10px"
+  >
+
+    <div
+      fxLayout="column"
+      fxLayoutGap="10px"
+    >
+      <img
+        fxFlex="1 1 100"
+        class="hover"
+        [src]="selectedImage.src"
+        [alt]="selectedImage.alt"
+        (click)="showFullImage()"
+      >
+
+      <div
+        fxFlex="100"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        fxLayoutAlign="space-between center"
+        fxLayoutAlign.lt-sm="center center"
+      >
+        <button
+          mat-mini-fab
+          color="primary"
+          [disabled]="selectedImage.isFirst"
+          (click)="changeImage(-1)"
+        >
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+
+        <strong>
+          {{ selectedImage.indexInImagesArray + 1 }} із {{ cardInfo.images.length }}
+        </strong>
+
+        <button
+          mat-mini-fab
+          color="primary"
+          [disabled]="selectedImage.isLast"
+          (click)="changeImage(1)"
+        >
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <p>{{ cardInfo.description }}</p>
+  </div>
+</section>
