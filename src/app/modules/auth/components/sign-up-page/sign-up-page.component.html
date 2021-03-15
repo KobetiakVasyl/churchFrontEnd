@@ -59,6 +59,8 @@
         <mat-form-field>
           <mat-label>Номер телефону</mat-label>
 
+          <span matPrefix>+</span>
+
           <input
             matInput
             required
@@ -71,6 +73,9 @@
 
           <mat-error *ngIf="phoneNumber?.errors?.required">Це поле є обов'язковим</mat-error>
           <mat-error *ngIf="phoneNumber?.errors?.pattern">На жаль це не корректний номер</mat-error>
+          <mat-error *ngIf="phoneNumber?.errors?.minlength || phoneNumber?.errors?.maxlength">
+            Номер повинен складатися з 12 символів
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -95,15 +100,17 @@
         fxLayoutGap="10px"
       >
         <mat-form-field>
-          <mat-label>Професія</mat-label>
+          <mat-label>Роль</mat-label>
 
           <mat-select
             required
-            placeholder="Введіть свою професію..."
-            formControlName="profession"
+            placeholder="Оберіть свою роль..."
+            formControlName="roleId"
           >
-            <mat-option value="1">Священник</mat-option>
-            <mat-option value="2">Адмін</mat-option>
+            <mat-option
+              *ngFor="let role of $roles | async"
+              [value]="role.id"
+            >{{ role.roleName }}</mat-option>
           </mat-select>
 
           <mat-hint>Обов'язкове поле</mat-hint>
@@ -307,6 +314,8 @@
         <mat-form-field>
           <mat-label>Номер телефону</mat-label>
 
+          <span matPrefix>+</span>
+
           <input
             matInput
             required
@@ -319,6 +328,9 @@
 
           <mat-error *ngIf="phoneNumber?.errors?.required">Це поле є обов'язковим</mat-error>
           <mat-error *ngIf="phoneNumber?.errors?.pattern">На жаль це не корректний номер</mat-error>
+          <mat-error *ngIf="phoneNumber?.errors?.minlength || phoneNumber?.errors?.maxlength">
+            Номер повинен складатися з 12 символів
+          </mat-error>
         </mat-form-field>
       </div>
 
@@ -343,15 +355,19 @@
         fxLayoutGap="10px"
       >
         <mat-form-field>
-          <mat-label>Професія</mat-label>
+          <mat-label>Роль</mat-label>
 
           <mat-select
             required
-            placeholder="Введіть свою професію..."
-            formControlName="profession"
+            placeholder="Оберіть свою роль..."
+            formControlName="roleId"
           >
-            <mat-option value="1">Священник</mat-option>
-            <mat-option value="2">Адмін</mat-option>
+            <mat-option
+              *ngFor="let role of $roles | async"
+              [value]="role.id"
+            >
+              {{ role.roleName }}
+            </mat-option>
           </mat-select>
 
           <mat-hint>Обов'язкове поле</mat-hint>

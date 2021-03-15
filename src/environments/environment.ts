@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://cshceduler.herokuapp.com/api'
+  url: 'https://csheduler.herokuapp.com/api'
 };
 
 /*

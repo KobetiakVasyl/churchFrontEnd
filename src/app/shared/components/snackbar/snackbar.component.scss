@@ -1,0 +1,36 @@
+section {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 101;
+
+  &.w50p {
+    width: 50%;
+  }
+
+  &.w30p {
+    width: 30%;
+  }
+
+  &.w100p {
+    width: 100%;
+  }
+
+  .snackbar {
+    width: 100%;
+    color: white;
+    border-radius: 5px;
+
+    &.success {
+      background: green;
+    }
+
+    &.error {
+      background: red;
+    }
+
+    &.info {
+      background: blue;
+    }
+  }
+}

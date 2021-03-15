@@ -28,8 +28,8 @@ export class SignInPageComponent implements OnInit {
   });
 
   constructor(
+    private authService: AuthService,
     private router: Router,
-    private authService: AuthService
   ) {
   }
 
@@ -41,14 +41,13 @@ export class SignInPageComponent implements OnInit {
     return this.formGroup.get('password') as FormControl;
   }
 
-  submit() {
-    this.router.navigate(['', 'admin', 'overview']);
+  submit(): void {
+    if (this.formGroup.invalid) return;
 
-    // if (this.formGroup.invalid) return;
-
-    // this.authService.signIn(this.formGroup.value).subscribe(response => {
-      // localStorage.setItem('user', JSON.stringify(this.formGroup.value));
-      // console.log(response);
-    // })
+    this.authService.signIn(this.formGroup.value).subscribe(response => {
+      console.log(response);
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['', 'admin', 'overview']);
+    });
   }
 }

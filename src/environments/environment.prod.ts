@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'https://cshceduler.herokuapp.com/api'
+  url: 'https://csheduler.herokuapp.com/api'
 };

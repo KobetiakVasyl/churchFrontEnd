@@ -3,12 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from '../../../../../environments/environment';
 import {Observable} from "rxjs";
 import {take} from "rxjs/operators";
-
-interface SignUpBody {
-  name: string;
-  email: string;
-  password: string;
-}
+import {POSTSignInBody, POSTSignInResponse, POSTSignUpBody, POSTSignUpResponse} from "./interfaces";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -16,21 +11,16 @@ export class AuthService {
   }
 
   isAuthorized(): boolean {
-    return true;
-    // return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token');
   }
 
-  signUp(body: SignUpBody): Observable<any> {
-    return this.http.post(`${environment.url}/auth/signup`, body)
+  signUp(body: POSTSignUpBody): Observable<POSTSignUpResponse> {
+    return this.http.post<POSTSignUpResponse>(`${environment.url}/auth/signup`, body)
       .pipe(take(1));
   }
 
-  signIn(body: SignUpBody): Observable<any> {
-    return this.http.post(`${environment.url}/auth/signin`, body)
+  signIn(body: POSTSignInBody): Observable<POSTSignInResponse> {
+    return this.http.post<POSTSignInResponse>(`${environment.url}/auth/signin`, body)
       .pipe(take(1));
-  }
-
-  logout(): void {
-
   }
 }

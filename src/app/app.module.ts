@@ -15,6 +15,7 @@ import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loadi
 import {MessagePopUpComponent} from './shared/components/message-pop-up/message-pop-up.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import {ViewImageFullScreenComponent} from "./shared/components/view-image-full-screen/view-image-full-screen.component";
+import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ViewImageFullScreenComponent} from "./shared/components/view-image-full-
     LoadingSpinnerComponent,
     MessagePopUpComponent,
     PageNotFoundComponent,
-    ViewImageFullScreenComponent
+    ViewImageFullScreenComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,

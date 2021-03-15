@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 import {AuthService} from "../../shared/services/auth.service";
 
 import {fadeInAnimation} from "../../../../shared/animations";
+import {Observable} from "rxjs";
+import {Role} from "../../shared/services/interfaces";
+import {RolesService} from "../../shared/services/roles.service";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -19,12 +23,14 @@ export class SignUpPageComponent implements OnInit {
     lastName: new FormControl(null, Validators.required),
     phoneNumber: new FormControl(null, [
       Validators.required,
-      Validators.pattern(/^((\\+91-?)|0)?[0-9]{9}$/)
+      Validators.pattern(/^[0-9]*$/),
+      Validators.minLength(12),
+      Validators.maxLength(12)
     ])
   });
 
   userCommonDataFormGroup: FormGroup = new FormGroup({
-    profession: new FormControl(null, Validators.required),
+    roleId: new FormControl(null, Validators.required),
     email: new FormControl(null, [
       Validators.required,
       Validators.email
@@ -42,10 +48,17 @@ export class SignUpPageComponent implements OnInit {
     locality: new FormControl(null, Validators.required)
   });
 
-  constructor(private authService: AuthService) {
+  $roles!: Observable<Role[]>;
+
+  constructor(
+    private rolesService: RolesService,
+    private authService: AuthService,
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
+    this.$roles = this.rolesService.getAll();
   }
 
   get password(): FormControl {
@@ -57,16 +70,25 @@ export class SignUpPageComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.userPersonalDataFormGroup.invalid || this.userCommonDataFormGroup.invalid || this.churchDataFormGroup.invalid)
-
     if (
       this.userPersonalDataFormGroup.invalid ||
       this.userCommonDataFormGroup.invalid ||
       this.churchDataFormGroup.invalid
     ) return;
 
-    // this.authService.signup(this.formGroup.value).subscribe(response => {
-    //   console.log(response);
-    // });
+    const userPersonalDataFormGroup = this.userPersonalDataFormGroup.value;
+
+
+    userPersonalDataFormGroup.phoneNumber += '+'
+
+    const body = {
+      ...userPersonalDataFormGroup,
+      ...this.userCommonDataFormGroup.value,
+      ...this.churchDataFormGroup.value
+    }
+
+    this.authService.signUp(body).subscribe(response => {
+      this.router.navigate(['', 'auth', 'login'])
+    });
   }
 }
