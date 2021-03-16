@@ -18,6 +18,7 @@ section {
 
   .snackbar {
     width: 100%;
+    min-height: 56px;
     color: white;
     border-radius: 5px;
 
@@ -30,7 +31,11 @@ section {
     }
 
     &.info {
-      background: blue;
+      background: cornflowerblue;
     }
+  }
+
+  .snackbar-message {
+    white-space: pre-line;
   }
 }

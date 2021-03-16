@@ -8,14 +8,12 @@ section {
   width: 40%;
   margin: auto;
 
-  h2 {
+  header {
     border-bottom: 2px solid mat-color($primaryDefault);
   }
 
   > div, form {
     display: flex;
     flex-direction: column;
-
-    height: 240px;
   }
 }

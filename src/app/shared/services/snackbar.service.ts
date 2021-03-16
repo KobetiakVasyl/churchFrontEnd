@@ -6,11 +6,11 @@ import {Snackbar, SnackbarRef} from "./interfaces";
   providedIn: 'root'
 })
 export class SnackbarService {
-  createSnackbarSource = new Subject<Snackbar>();
-  snackbarAdded = this.createSnackbarSource.asObservable();
+  private createSnackbarSource = new Subject<Snackbar>();
+  readonly snackbarAdded = this.createSnackbarSource.asObservable();
 
-  removeSnackbarSource = new Subject<number>();
-  snackbarRemoved = this.removeSnackbarSource.asObservable();
+  private removeSnackbarSource = new Subject<number>();
+  readonly snackbarRemoved = this.removeSnackbarSource.asObservable();
 
   info(message: string, isSynchronous: boolean = true): SnackbarRef {
     const id = Date.now();
@@ -23,7 +23,7 @@ export class SnackbarService {
     });
 
     return {
-      remove: this.remove.bind(this, id)
+      close: this.closeSnackbar.bind(this, id)
     }
   }
 
@@ -38,7 +38,7 @@ export class SnackbarService {
     });
 
     return {
-      remove: this.remove.bind(this, id)
+      close: this.closeSnackbar.bind(this, id)
     }
   }
 
@@ -53,11 +53,11 @@ export class SnackbarService {
     });
 
     return {
-      remove: this.remove.bind(this, id)
+      close: this.closeSnackbar.bind(this, id)
     }
   }
 
-  remove(id: number): void {
+  private closeSnackbar(id: number): void {
     this.removeSnackbarSource.next(id);
   }
 }

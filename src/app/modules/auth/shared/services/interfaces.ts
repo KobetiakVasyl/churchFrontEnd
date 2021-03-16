@@ -28,3 +28,13 @@ export interface Role {
   id: number;
   roleName: string;
 }
+
+export interface PUTResetPasswordBody {
+  userId: number;
+  password: string;
+  passwordForComparison: string;
+}
+
+export interface POSTSendEmailToResetPasswordBody {
+  email: string;
+}

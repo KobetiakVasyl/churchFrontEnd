@@ -8,5 +8,5 @@ export interface Snackbar {
 }
 
 export interface SnackbarRef {
-  remove: (id: number) => void;
+  close: () => void;
 }

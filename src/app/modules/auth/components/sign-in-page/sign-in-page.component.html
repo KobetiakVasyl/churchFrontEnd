@@ -3,12 +3,31 @@
   fxFlex.lt-sm="1 1 90%"
   [@bounceInDownAnimation]
 >
-  <div class="mat-elevation-z24 container">
+  <div
+    fxLayout="column"
+    fxLayoutGap="10px"
+    class="mat-elevation-z24 container"
+  >
 
-    <h2>Вхід</h2>
+    <header
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+    >
+      <h2 class="no-spacing">Вхід</h2>
+
+      <a
+        mat-button
+        color="primary"
+        [routerLink]="['', 'auth', 'signup']"
+      >
+        Я ще не зареєстрований
+      </a>
+    </header>
 
     <form
       *ngIf="shouldShowForm"
+      fxLayout="column"
+      fxLayoutGap="10px"
       [formGroup]="formGroup"
       (ngSubmit)="submit()"
       [@fadeInAnimation]
@@ -47,21 +66,22 @@
         <mat-error *ngIf="password?.errors?.maxlength">Максимум 20 символів</mat-error>
       </mat-form-field>
 
-      <a
-        mat-button
-        [routerLink]="['', 'auth', 'signup']"
-      >
-        Я ще не зареєстрований
-      </a>
-
       <button
-        mat-button
+        mat-raised-button
         type="submit"
         color="primary"
         [disabled]="formGroup.invalid"
       >
         Ввійти
       </button>
+
+      <a
+        mat-button
+        color="warn"
+        [routerLink]="['', 'auth', 'forgot-password']"
+      >
+        Забув пароль
+      </a>
     </form>
   </div>
 </section>

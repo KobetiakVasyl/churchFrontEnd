@@ -8,6 +8,8 @@ import {fadeInAnimation} from "../../../../shared/animations";
 import {Observable} from "rxjs";
 import {Role} from "../../shared/services/interfaces";
 import {RolesService} from "../../shared/services/roles.service";
+import {SnackbarService} from "../../../../shared/services/snackbar.service";
+import {finalize} from "rxjs/operators";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -38,7 +40,7 @@ export class SignUpPageComponent implements OnInit {
     password: new FormControl(null, [
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(20),
+      Validators.maxLength(20)
     ])
   });
 
@@ -51,6 +53,7 @@ export class SignUpPageComponent implements OnInit {
   $roles!: Observable<Role[]>;
 
   constructor(
+    private snackbarService: SnackbarService,
     private rolesService: RolesService,
     private authService: AuthService,
     private router: Router
@@ -69,6 +72,10 @@ export class SignUpPageComponent implements OnInit {
     return this.userPersonalDataFormGroup.get('phoneNumber') as FormControl;
   }
 
+  get email(): FormControl {
+    return this.userCommonDataFormGroup.get('email') as FormControl;
+  }
+
   submit(): void {
     if (
       this.userPersonalDataFormGroup.invalid ||
@@ -78,8 +85,7 @@ export class SignUpPageComponent implements OnInit {
 
     const userPersonalDataFormGroup = this.userPersonalDataFormGroup.value;
 
-
-    userPersonalDataFormGroup.phoneNumber += '+'
+    userPersonalDataFormGroup.phoneNumber = `+${userPersonalDataFormGroup.phoneNumber}`;
 
     const body = {
       ...userPersonalDataFormGroup,
@@ -87,8 +93,14 @@ export class SignUpPageComponent implements OnInit {
       ...this.churchDataFormGroup.value
     }
 
-    this.authService.signUp(body).subscribe(response => {
-      this.router.navigate(['', 'auth', 'login'])
-    });
+    const snackbarRef = this.snackbarService.info('Триває реєстрація...', false);
+
+    this.authService.signUp(body)
+      .pipe(finalize(() => snackbarRef.close()))
+      .subscribe(() => {
+        this.router.navigate(['', 'auth', 'login']).then(() => {
+          this.snackbarService.success("Запит на реєстрацію прийнято. Будь ласка зачекайте поки правдивість інформації буде підтверджена")
+        });
+      });
   }
 }

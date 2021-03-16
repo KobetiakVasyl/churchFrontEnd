@@ -18,7 +18,13 @@
     <mat-icon *ngIf="snackbar.type === 'error'">cancel</mat-icon>
     <mat-icon *ngIf="snackbar.type === 'info'">info</mat-icon>
 
-    <span>{{ snackbar.message }}</span>
+    <span
+      fxFlex="1 1 90"
+      fxLayoutAlign="start center"
+      class="snackbar-message"
+    >
+      {{ snackbar.message }}
+    </span>
 
     <button
       *ngIf="snackbar.isSynchronous"

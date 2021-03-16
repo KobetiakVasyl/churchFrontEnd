@@ -9,6 +9,8 @@ import {Subscription} from "rxjs";
   styleUrls: ['./snackbar.component.scss']
 })
 export class SnackbarComponent implements OnInit, OnDestroy {
+  private readonly MINIMAL_SNACKBAR_TIMEOUT = 3000;
+
   snackbars: Snackbar[] = [];
 
   subscriptions = new Subscription();
@@ -38,7 +40,11 @@ export class SnackbarComponent implements OnInit, OnDestroy {
     this.snackbars.push(snackbar);
 
     if (snackbar.isSynchronous) {
-      setTimeout(() => this.removeSnackbarById(snackbar.id), 3000);
+      let time = (snackbar.message.length * 100);
+
+      time = time > this.MINIMAL_SNACKBAR_TIMEOUT ? time : this.MINIMAL_SNACKBAR_TIMEOUT;
+
+      setTimeout(() => this.removeSnackbarById(snackbar.id), time);
     }
   }
 

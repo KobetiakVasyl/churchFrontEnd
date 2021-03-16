@@ -14,6 +14,7 @@ export class CanActivateChurchInfoGuard implements CanActivate {
 
     if (!churchInfo || !churchInfo.hasOwnProperty('name') || !churchInfo.hasOwnProperty('id')) {
       this.router.navigate(['page-not-found']);
+      return false;
     }
 
     return true;
