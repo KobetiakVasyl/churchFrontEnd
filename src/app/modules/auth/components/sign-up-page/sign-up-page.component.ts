@@ -68,11 +68,11 @@ export class SignUpPageComponent implements OnInit {
     return this.userPersonalDataFormGroup.get('password') as FormControl;
   }
 
-  get phoneNumber(): FormControl {
+  get phoneNumberFormControl(): FormControl {
     return this.userPersonalDataFormGroup.get('phoneNumber') as FormControl;
   }
 
-  get email(): FormControl {
+  get emailFormControl(): FormControl {
     return this.userCommonDataFormGroup.get('email') as FormControl;
   }
 

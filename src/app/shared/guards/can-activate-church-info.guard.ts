@@ -13,7 +13,7 @@ export class CanActivateChurchInfoGuard implements CanActivate {
     const churchInfo = JSON.parse(<string>localStorage.getItem('churchInfo'));
 
     if (!churchInfo || !churchInfo.hasOwnProperty('name') || !churchInfo.hasOwnProperty('id')) {
-      this.router.navigate(['page-not-found']);
+      this.router.navigate(['', 'page-not-found']);
       return false;
     }
 

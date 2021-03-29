@@ -1,4 +1,22 @@
-section {
+@import "../../../../shared/styles/variables";
+
+form {
   margin: 0 auto;
-  height: 100% !important;
+  max-width: 1200px;
+
+  strong {
+    border-bottom: 1px solid mat-color($primaryDefault);
+  }
+
+  .form-column {
+    display: flex;
+    flex-grow: 1;
+
+    min-width: 300px;
+  }
+
+  .add-image-button {
+    width: 100px;
+    height: 100px;
+  }
 }

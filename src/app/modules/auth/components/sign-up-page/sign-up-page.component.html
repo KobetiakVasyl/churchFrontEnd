@@ -84,9 +84,9 @@
 
           <mat-hint>Обов'язкове поле</mat-hint>
 
-          <mat-error *ngIf="phoneNumber?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="phoneNumber?.errors?.pattern">На жаль це не корректний номер</mat-error>
-          <mat-error *ngIf="phoneNumber?.errors?.minlength || phoneNumber?.errors?.maxlength">
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
             Номер повинен складатися з 12 символів
           </mat-error>
         </mat-form-field>
@@ -144,8 +144,8 @@
 
           <mat-hint>Обов'язкове поле</mat-hint>
 
-          <mat-error *ngIf="email?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="email?.errors?.email">Невірний емеіл</mat-error>
+          <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+          <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
         </mat-form-field>
 
 
@@ -340,9 +340,9 @@
 
           <mat-hint>Обов'язкове поле</mat-hint>
 
-          <mat-error *ngIf="phoneNumber?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="phoneNumber?.errors?.pattern">На жаль це не корректний номер</mat-error>
-          <mat-error *ngIf="phoneNumber?.errors?.minlength || phoneNumber?.errors?.maxlength">
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
+          <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
             Номер повинен складатися з 12 символів
           </mat-error>
         </mat-form-field>
@@ -402,8 +402,8 @@
 
           <mat-hint>Обов'язкове поле</mat-hint>
 
-          <mat-error *ngIf="email?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="email?.errors?.email">Невірний емеіл</mat-error>
+          <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+          <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
         </mat-form-field>
 
 

@@ -8,7 +8,11 @@ import {QuillModule} from "ngx-quill";
 import {MaterialModule} from "./shared/modules/material.module";
 import {AppRoutingModule} from './app-routing.module';
 
-import {ERROR_INTERCEPTOR_PROVIDER, MAT_DIALOG_PROVIDER} from "./shared/providers";
+import {
+  ERROR_INTERCEPTOR_PROVIDER,
+  HTTP_INTERCEPTOR_PROVIDER,
+  MAT_DIALOG_PROVIDER
+} from "./shared/providers";
 
 import {AppComponent} from './app.component';
 import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loading-spinner.component';
@@ -36,6 +40,7 @@ import { SnackbarComponent } from './shared/components/snackbar/snackbar.compone
     QuillModule.forRoot()
   ],
   providers: [
+    HTTP_INTERCEPTOR_PROVIDER,
     ERROR_INTERCEPTOR_PROVIDER,
     MAT_DIALOG_PROVIDER
   ],

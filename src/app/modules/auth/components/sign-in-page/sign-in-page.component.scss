@@ -5,7 +5,8 @@ section {
   flex-direction: column;
   justify-content: center;
 
-  width: 40%;
+  min-width: 300px;
+  max-width: 500px;
   margin: auto;
 
   header {
