@@ -22,13 +22,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       .pipe(
         retry(1),
         catchError((error: HttpErrorResponse) => {
-          const errorMessage = error.error instanceof ErrorEvent
-            ? `Error: ${error.error.message}`
-            : `Error Code: ${error.status}\nMessage: ${error.message}`;
+          this.snackbarService
+            .error(`Error Code: ${error.error.statusCode}\nMessage: ${error.error.message}`);
 
-          this.snackbarService.error(errorMessage);
-
-          return throwError(errorMessage);
+          return throwError(error);
         })
       )
   }

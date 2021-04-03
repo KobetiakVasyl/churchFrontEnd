@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {SnackbarService} from "../../../../shared/services/snackbar.service";
-import {AuthService} from "../../shared/services/auth.service";
+import {SnackbarService} from '../../../../shared/services/snackbar.service';
+import {AuthService} from '../../shared/services/auth.service';
 
-import {bounceInDownAnimation, fadeInAnimation} from "../../../../shared/animations";
-import {finalize} from "rxjs/operators";
+import {bounceInDownAnimation, fadeInAnimation} from '../../../../shared/animations';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -32,11 +32,19 @@ export class SignInPageComponent implements OnInit {
   constructor(
     private snackbarService: SnackbarService,
     private authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router,
   ) {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params?.isEmailVerified) {
+        this.snackbarService
+          .info("Емеіл підтверджено. Запит на реєстрацію прийнятий. Будь ласка зачекайте доки з вами зв'яжуться адміністратори сайту");
+      }
+    });
+
     setTimeout(() => this.shouldShowForm = true, 200);
   }
 
@@ -45,7 +53,9 @@ export class SignInPageComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.formGroup.invalid) return;
+    if (this.formGroup.invalid) {
+      return;
+    }
 
     const snackbarRef = this.snackbarService.info('Триває вхід...', false);
 

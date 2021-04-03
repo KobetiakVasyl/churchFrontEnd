@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
-import {AuthService} from "../../shared/services/auth.service";
+import {AuthService} from '../../shared/services/auth.service';
 
-import {fadeInAnimation} from "../../../../shared/animations";
-import {Observable} from "rxjs";
-import {Role} from "../../shared/interfaces";
-import {RolesService} from "../../shared/services/roles.service";
-import {SnackbarService} from "../../../../shared/services/snackbar.service";
-import {finalize} from "rxjs/operators";
+import {fadeInAnimation} from '../../../../shared/animations';
+import {Observable} from 'rxjs';
+import {Role} from '../../shared/interfaces';
+import {RolesService} from '../../shared/services/roles.service';
+import {SnackbarService} from '../../../../shared/services/snackbar.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -81,7 +81,9 @@ export class SignUpPageComponent implements OnInit {
       this.userPersonalDataFormGroup.invalid ||
       this.userCommonDataFormGroup.invalid ||
       this.churchDataFormGroup.invalid
-    ) return;
+    ) {
+      return;
+    }
 
     const userPersonalDataFormGroup = this.userPersonalDataFormGroup.value;
 
@@ -91,16 +93,13 @@ export class SignUpPageComponent implements OnInit {
       ...userPersonalDataFormGroup,
       ...this.userCommonDataFormGroup.value,
       ...this.churchDataFormGroup.value
-    }
+    };
 
     const snackbarRef = this.snackbarService.info('Триває реєстрація...', false);
 
     this.authService.signUp(body)
       .pipe(finalize(() => snackbarRef.close()))
-      .subscribe(() => {
-        this.router.navigate(['', 'auth', 'login']).then(() => {
-          this.snackbarService.success("Запит на реєстрацію прийнято. Будь ласка зачекайте поки правдивість інформації буде підтверджена")
-        });
-      });
+      .subscribe(() => this.snackbarService
+        .success('Емеіл надіслано успішно. Будь ласка перевірте пошту та підтвердьте емеіл'));
   }
 }
