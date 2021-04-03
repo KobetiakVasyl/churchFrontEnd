@@ -1,0 +1,52 @@
+<input
+  #fileInput
+  hidden
+  type="file"
+  accept=".jpeg, .png"
+  (change)="handleAddImage($event)"
+>
+
+<section
+  fxLayout="column"
+  fxLayoutGap="10px"
+>
+  <strong class="border-bottom-primary">Завантажити фото</strong>
+
+  <div
+    fxLayout="row"
+    fxLayoutGap="10px"
+  >
+    <div
+      *ngFor="let img of images; let i = index"
+      class="image"
+    >
+      <img
+        fxFlex="1 1 100px"
+        [src]="img.src"
+        [alt]="img.alt"
+      >
+
+      <button
+        mat-button
+        color="warn"
+        type="button"
+        (click)="remove(i)"
+      >
+        Видалити
+      </button>
+    </div>
+
+    <button
+      *ngIf="canEdit"
+      mat-stroked-button
+      type="button"
+      color="primary"
+      class="add-image-button"
+      matTooltip="Додати фото"
+      [disabled]="maxImagesLength === images.length"
+      (click)="openFileSelection()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</section>

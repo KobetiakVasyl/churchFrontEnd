@@ -6,7 +6,7 @@ import {AuthService} from "../../shared/services/auth.service";
 
 import {fadeInAnimation} from "../../../../shared/animations";
 import {Observable} from "rxjs";
-import {Role} from "../../shared/services/interfaces";
+import {Role} from "../../shared/interfaces";
 import {RolesService} from "../../shared/services/roles.service";
 import {SnackbarService} from "../../../../shared/services/snackbar.service";
 import {finalize} from "rxjs/operators";

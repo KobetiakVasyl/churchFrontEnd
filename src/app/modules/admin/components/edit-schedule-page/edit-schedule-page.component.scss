@@ -1,10 +1,10 @@
 @import "../../../../shared/styles/variables";
 
 section {
-  max-width: $max-width-sm;
+  max-width: $max-width-md;
   min-width: $min-width-sm;
 
-  mat-form-field, header, button {
-    width: 100%;
+  .events-container {
+    padding: 1rem;
   }
 }

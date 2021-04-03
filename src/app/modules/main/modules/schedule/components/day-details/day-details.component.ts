@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {fadeInAnimation} from "../../../../../../shared/animations";
-
-interface DayEvent {
-  information: string;
-  date: string;
-}
+import {CalendarEvent} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-day-details',
@@ -15,18 +11,21 @@ interface DayEvent {
 })
 export class DayDetailsComponent implements OnInit {
   date = 'N/A';
-  events: DayEvent[] = [
+  events: CalendarEvent[] = [
     {
       date: '08:00',
-      information: 'lorem ipsum',
+      text: 'lorem ipsum',
+      type: '',
     },
     {
       date: '12:00',
-      information: 'lorem ipsum dolor amet',
+      text: 'lorem ipsum dolor amet',
+      type: '',
     },
     {
       date: '18:00',
-      information: 'lorem ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem ipsum',
+      text: 'lorem ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem ipsum',
+      type: '',
     }
   ];
 

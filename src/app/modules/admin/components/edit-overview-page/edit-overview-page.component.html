@@ -15,7 +15,7 @@
       fxLayout="column"
       class="form-column"
     >
-      <strong>Інформація про церкву: </strong>
+      <strong class="border-bottom-primary">Інформація про церкву: </strong>
 
       <mat-form-field>
         <mat-label>Назва Церкви</mat-label>
@@ -72,7 +72,7 @@
           matInput
           required
           type="text"
-          formControlName="eparchy"
+          formControlName="diocese"
           placeholder="Введіть назву єпархії"
         >
 
@@ -86,7 +86,7 @@
       fxLayout="column"
       class="form-column"
     >
-      <strong>Контактна інформація: </strong>
+      <strong class="border-bottom-primary">Контактна інформація: </strong>
 
       <mat-form-field>
         <mat-label>Настоятель</mat-label>
@@ -144,37 +144,11 @@
     </div>
   </div>
 
-  <section
-    fxLayout="column"
-    fxLayoutGap="10px"
-  >
-    <strong>Завантажити фото</strong>
-
-    <div
-      fxLayout="row wrap"
-      fxLayoutGap="row grid"
-    >
-      <div class="uploaded-images">
-        <img
-          *ngFor="let img of photos"
-          fxFlex="1 1 100px"
-          [src]="img.src"
-          [alt]="img.alt"
-        >
-      </div>
-
-      <button
-        mat-stroked-button
-        type="button"
-        color="primary"
-        class="add-image-button"
-        matTooltip="Додати фото"
-        (click)="addImage()"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-  </section>
+  <app-upload-images
+    [images]="images"
+    [canEdit]="true"
+    [maxImagesLength]="3"
+  ></app-upload-images>
 
   <mat-form-field>
     <mat-label>Короткі відомості про церкву</mat-label>

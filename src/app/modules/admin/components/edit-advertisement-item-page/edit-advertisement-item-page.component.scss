@@ -1,7 +1,8 @@
 @import "../../../../shared/styles/variables";
 
 form {
-  margin: 0 auto;
+  max-width: $max-width-md;
+  min-width: $min-width-sm;
 }
 
 mat-form-field {
@@ -10,10 +11,4 @@ mat-form-field {
 
 textarea {
   resize: none !important;
-}
-
-.image-header {
-  padding: .3rem 0;
-  margin-bottom: .5rem;
-  border-bottom: 2px solid mat-color($primaryDefault);
 }

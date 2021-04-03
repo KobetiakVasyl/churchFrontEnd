@@ -9,7 +9,7 @@ table {
   }
 
   th {
-    background: mat-color($primaryDefault);
+    background: mat-color($primary-default);
     color: white;
   }
 
@@ -25,7 +25,7 @@ table {
       min-height: 50px;
 
       &.today {
-        color: mat-color($primaryDefault);
+        color: mat-color($primary-default);
         font-weight: bold;
         font-size: 1rem;
       }
@@ -35,11 +35,11 @@ table {
       }
 
       &.active {
-        color: mat-color($primaryDefault);
+        color: mat-color($primary-default);
       }
 
       &:hover:not(.disabled) {
-        color: mat-color($primaryDefault);
+        color: mat-color($primary-default);
       }
 
       .event-notification {

@@ -9,7 +9,7 @@ export interface Day {
   };
   isToday: boolean;
   isDisabled: boolean;
-  events: CalendarEvent[]
+  events: CalendarEvent[];
 }
 
 export interface CalendarEvent {

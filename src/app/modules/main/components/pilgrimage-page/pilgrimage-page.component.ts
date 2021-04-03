@@ -3,7 +3,7 @@ import {AdvertisementCardInfo, CardImage} from "../../shared/interfaces";
 import {ViewImageShowFullService} from "../../../../shared/services/view-image-show-full.service";
 
 @Component({
-  selector: 'pilgrimage-page',
+  selector: 'app-pilgrimage-page',
   templateUrl: './pilgrimage-page.component.html',
   styleUrls: ['./pilgrimage-page.component.scss']
 })

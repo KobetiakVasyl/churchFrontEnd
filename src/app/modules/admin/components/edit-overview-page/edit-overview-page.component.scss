@@ -1,22 +1,12 @@
 @import "../../../../shared/styles/variables";
 
 form {
-  margin: 0 auto;
-  max-width: 1200px;
-
-  strong {
-    border-bottom: 1px solid mat-color($primaryDefault);
-  }
+  max-width: $max-width-lg;
 
   .form-column {
     display: flex;
     flex-grow: 1;
 
-    min-width: 300px;
-  }
-
-  .add-image-button {
-    width: 100px;
-    height: 100px;
+    min-width: $min-width-sm;
   }
 }

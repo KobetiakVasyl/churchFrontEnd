@@ -1,0 +1,7 @@
+@import "~@angular/material/theming";
+
+$primary-default: mat-palette($mat-indigo);
+$accent-default: mat-palette($mat-pink, A200, A100, A400);
+$warn-default: mat-palette($mat-red);
+
+$defaultTheme: mat-light-theme($primary-default, $accent-default, $warn-default);

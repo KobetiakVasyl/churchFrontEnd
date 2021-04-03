@@ -5,7 +5,7 @@ import {MatSidenav} from "@angular/material/sidenav";
 import {AuthService} from "../../../../auth/shared/services/auth.service";
 
 @Component({
-  selector: 'main-layout',
+  selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })

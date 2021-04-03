@@ -17,6 +17,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -41,7 +43,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatDialogModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule,
@@ -64,7 +68,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatDialogModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 

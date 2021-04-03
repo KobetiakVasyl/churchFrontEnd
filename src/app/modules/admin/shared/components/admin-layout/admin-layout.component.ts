@@ -4,7 +4,7 @@ import {AuthService} from "../../../../auth/shared/services/auth.service";
 import {SnackbarService} from "../../../../../shared/services/snackbar.service";
 
 @Component({
-  selector: 'admin-layout',
+  selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.scss']
 })

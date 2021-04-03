@@ -10,7 +10,7 @@ import {
   POSTSignUpBody,
   POSTSignUpResponse,
   PUTResetPasswordBody
-} from "./interfaces";
+} from "../interfaces";
 
 @Injectable({providedIn: 'root'})
 export class AuthService {

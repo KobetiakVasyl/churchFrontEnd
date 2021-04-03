@@ -9,7 +9,7 @@ import {bounceInDownAnimation, fadeInAnimation} from "../../../../shared/animati
 import {finalize} from "rxjs/operators";
 
 @Component({
-  selector: 'sign-in-page',
+  selector: 'app-sign-in-page',
   templateUrl: './sign-in-page.component.html',
   styleUrls: ['./sign-in-page.component.scss'],
   animations: [bounceInDownAnimation, fadeInAnimation]

@@ -5,7 +5,7 @@ import {take} from "rxjs/operators";
 
 import {environment} from "../../../../../environments/environment";
 
-import {Role} from "./interfaces";
+import {Role} from "../interfaces";
 
 @Injectable({
   providedIn: 'root'

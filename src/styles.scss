@@ -1,15 +1,15 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';
-
-@import './src/app/shared/styles/variables';
+@import 'app/shared/styles/theme';
+@import 'app/shared/styles/common';
 
 html, body {
   height: 100%;
 }
 
 body {
-  margin: 0;
+  @extend .no-spacing;
   box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
@@ -18,8 +18,8 @@ mat-sidenav-container {
   height: 100%;
 
   mat-sidenav {
-    min-width: 250px;
-    max-width: 300px;
+    min-width: $min-width-sm;
+    max-width: $max-width-sm;
 
     .sidenav-header {
       padding-left: 1.5rem;
@@ -49,38 +49,6 @@ nav > a {
   }
 
   &.active-nav-link {
-    color: mat-color($primaryDefault);
-  }
-}
-
-.header {
-  font-size: 1.3rem;
-}
-
-.container {
-  margin: .5rem;
-  padding: .5rem;
-}
-
-.no-spacing {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.hover:hover {
-  cursor: pointer;
-}
-
-.table-container {
-  width: 100%;
-  overflow: auto;
-
-  table {
-    width: 100%;
-
-    td, th {
-      padding: 3px;
-      vertical-align: baseline;
-    }
+    color: mat-color($primary-default);
   }
 }

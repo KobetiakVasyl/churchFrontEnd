@@ -1,0 +1,28 @@
+button[mat-stroked-button] {
+  width: 100px;
+  height: 100px;
+}
+
+.image {
+  position: relative;
+
+  > button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+
+    height: 35%;
+    width: 90%;
+    margin: auto;
+    background: white;
+
+    transition-duration: 300ms;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

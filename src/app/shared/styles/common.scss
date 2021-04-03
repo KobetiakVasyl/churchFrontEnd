@@ -1,0 +1,40 @@
+@import 'variables';
+
+.table-container {
+  width: 100%;
+  overflow: auto;
+  max-width: $max-width-lg;
+  margin: 0 auto;
+
+  table {
+    width: 100%;
+
+    td, th {
+      padding: 3px;
+      vertical-align: baseline;
+    }
+  }
+}
+
+.container {
+  margin: .5rem auto;
+  padding: .5rem;
+  max-width: $max-width-lg;
+}
+
+.no-spacing {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.header {
+  font-size: 1.3rem;
+}
+
+.hover:hover {
+  cursor: pointer;
+}
+
+.border-bottom-primary {
+  border-bottom: 2px solid mat-color($primary-default);
+}

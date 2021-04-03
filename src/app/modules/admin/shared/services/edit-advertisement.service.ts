@@ -14,17 +14,13 @@ export class EditAdvertisementService {
   ) {
   }
 
-  handleDeleteItem(element: any): Observable<any> {
+  handleRemoveItem(element: any): Observable<any> {
     const sliceAmount = 30;
 
-    let {title, subtitle, content} = element;
+    let {title, content} = element;
 
     if (title.length > sliceAmount) {
       title = title.slice(0, sliceAmount) + '...';
-    }
-
-    if (subtitle.length > sliceAmount) {
-      subtitle = subtitle.slice(0, sliceAmount) + '...';
     }
 
     if (content.length > sliceAmount) {
@@ -33,9 +29,27 @@ export class EditAdvertisementService {
 
     const dialogRef = this.dialog.open(MessagePopUpComponent, {
       data: {
-        content: `Наступний запис буде видалено: \n\n Заголовок: ${title} \n\n Підзаголовок: ${subtitle} \n\n Опис: ${content}`
+        content: `Наступний запис буде видалено: \n\n Заголовок: ${title} \n\n Опис: ${content}`
       }
-    })
+    });
+
+    return dialogRef.afterClosed()
+      .pipe(
+        mergeMap(response => {
+          if (!response) return EMPTY;
+
+          return EMPTY;
+        })
+      );
+  }
+
+  handleDeleteMultipleItems(): Observable<void> {
+    const dialogRef = this.dialog.open(MessagePopUpComponent, {
+      data: {
+        content: 'Обрані записи будуть видалені. Продовжити?',
+        resolveButtonLabel: 'Так'
+      }
+    });
 
     return dialogRef.afterClosed()
       .pipe(

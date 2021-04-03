@@ -16,7 +16,7 @@ import {EditAdvertisementService} from "../../shared/services/edit-advertisement
 })
 export class EditAdvertisementsPageComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly pageSizeOptions = [5, 10, 15, 20];
-  readonly columnsToDisplay = ['select', 'date', 'title', 'subtitle', 'content', 'delete'];
+  readonly columnsToDisplay = ['select', 'edit', 'date', 'title', 'content', 'delete'];
 
   filterControl = new FormControl(null);
 
@@ -24,22 +24,19 @@ export class EditAdvertisementsPageComponent implements OnInit, AfterViewInit, O
     {
       id: 1,
       title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur cum dolor earum fugit hic itaque labore maxime officiis omnis perferendis, provident quis quo reiciendis reprehenderit sit velit vitae! Aperiam autem hic illo nam quas quia quis vel! Aperiam cumque impedit optio, provident quisquam reiciendis similique unde? Accusamus asperiores aspernatur, cumque dolorem, doloremque exercitationem explicabo magnam molestias mollitia nam natus porro quasi',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur cum dolor earum fugit hic itaque labore maxime officiis omnis perferendis, provident quis quo reiciendis reprehenderit sit velit vitae! Aperiam autem hic illo nam quas quia quis vel! Aperiam cumque impedit optio, provident quisquam reiciendis similique unde? Accusamus asperiores aspernatur, cumque dolorem, doloremque exercitationem explicabo magnam molestias mollitia nam natus porro quasi sequi vero voluptates? Amet assumenda, beatae commodi delectus distinctio doloribus dolorum est in iste minus nostrum obcaecati quas sed vel vitae? Accusamus, animi, atque consequuntur doloribus error eveniet facilis id nobis non pariatur quidem rerum unde veniam?',
+      content: ' sit velit vitae! e dolorem, doloremque exercitationem explicabo magnam molestias mollitia nam natus porro quasi',
       date: '12/32/1234'
     },
     {
       id: 2,
-      title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur',
-      content: '2222',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur',
       date: '12/32/1434'
     },
     {
       id: 3,
       title: '3',
-      subtitle: '33',
-      content: '3333',
+      content: '33',
       date: '12/32/2034'
     }
   ]);
@@ -76,38 +73,49 @@ export class EditAdvertisementsPageComponent implements OnInit, AfterViewInit, O
     this.subscriptions.unsubscribe();
   }
 
+  remove(element: any) {
+    if (!this.selection.isEmpty()) return;
+
+    this.editAdvertisementService.handleRemoveItem(element).subscribe(response => {
+      this.removeItemFromDataSource(element.id);
+
+      this.dataSource._updateChangeSubscription();
+    });
+  }
+
+  handleRemoveMultipleItems(): void {
+    if (this.selection.isEmpty()) return;
+
+    this.editAdvertisementService.handleDeleteMultipleItems().subscribe(() => {
+      this.selection.selected
+        .forEach(el => this.removeItemFromDataSource(el.id));
+
+      this.dataSource._updateChangeSubscription();
+    });
+  }
+
+  handleSelectionChange(event: MatCheckboxChange, element: any): null | void {
+    if (!event) return;
+
+    this.selection.toggle(element);
+  }
+
   handleSelectAll(event: MatCheckboxChange): null | void {
-    if (!event) return null;
+    if (!event) return;
 
     this.isAllSelected()
       ? this.selection.clear()
       : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  handleSelectionChange(event: MatCheckboxChange, element: any): null | void {
-    if (!event) return null;
-
-    this.selection.toggle(element);
-  }
-
-  handleDeleteItem(element: any) {
-    if (!this.selection.isEmpty()) return;
-
-    this.editAdvertisementService.handleDeleteItem(element).subscribe(response => {
-      const i = this.dataSource.data.findIndex(({id}) => id === element.id);
-
-      this.dataSource.data.splice(i, 1);
-      this.dataSource._updateChangeSubscription();
-    });
-  }
-
-  handleDeleteMultipleItems(): void {
-    if (this.selection.isEmpty()) return;
-
-
-  }
-
   isAllSelected(): boolean {
     return this.selection.selected.length === this.dataSource.data.length;
+  }
+
+  private removeItemFromDataSource(idToFilter: number): void {
+    const i = this.dataSource.data
+      .findIndex(({id}) => id === idToFilter);
+
+    this.dataSource.data.splice(i, 1);
   }
 }

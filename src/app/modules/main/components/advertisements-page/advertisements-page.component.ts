@@ -3,7 +3,7 @@ import {CardImage, AdvertisementCardInfo} from "../../shared/interfaces";
 import {ViewImageShowFullService} from "../../../../shared/services/view-image-show-full.service";
 
 @Component({
-  selector: 'advertisements-page',
+  selector: 'app-advertisements-page',
   templateUrl: './advertisements-page.component.html',
   styleUrls: ['./advertisements-page.component.scss']
 })

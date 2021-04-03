@@ -1,17 +1,8 @@
-@import '../../../../shared/styles/variables.scss';
+@import '../../../../shared/styles/variables';
 
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  min-width: 300px;
-  max-width: 500px;
-  margin: auto;
-
-  header {
-    border-bottom: 2px solid mat-color($primaryDefault);
-  }
+  max-width: $max-width-sm;
+  min-width: $min-width-sm;
 
   > div, form {
     display: flex;

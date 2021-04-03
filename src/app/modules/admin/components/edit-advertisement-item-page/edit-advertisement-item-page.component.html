@@ -1,10 +1,25 @@
 <form
-  fxFlex="60"
-  fxFlex.lt-sm="100"
   fxLayout="column"
   fxLayoutGap="10px"
   class="container mat-elevation-z8"
+  [formGroup]="formGroup"
 >
+  <header
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    class="border-bottom-primary"
+  >
+    <h2 class="no-spacing">Редагувати Оголошення</h2>
+
+    <a
+      mat-button
+      color="primary"
+      [routerLink]="['', 'admin', 'advertisements']"
+    >
+      Повернутись
+    </a>
+  </header>
+
   <mat-form-field>
     <mat-label>Заголовок</mat-label>
 
@@ -13,21 +28,6 @@
       type="text"
       placeholder="Введіть заголовок..."
       formControlName="title"
-    >
-
-    <mat-hint>Обов'язкове поле</mat-hint>
-
-    <mat-error>Це поле є обов'язковим</mat-error>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Підзаголовок</mat-label>
-
-    <input
-      matInput
-      type="text"
-      placeholder="Введіть підзаголовок..."
-      formControlName="subtitle"
     >
 
     <mat-hint>Обов'язкове поле</mat-hint>
@@ -51,18 +51,11 @@
     <mat-error>Це поле є обов'язковим</mat-error>
   </mat-form-field>
 
-  <div
-    fxLayout="column"
-    fxLayoutGap="10px"
-  >
-    <strong class="image-header">
-      Додати фото
-    </strong>
-
-    <div class="images-wrapper">
-      <div></div>
-    </div>
-  </div>
+  <app-upload-images
+    [images]="images"
+    [canEdit]="true"
+    [maxImagesLength]="5"
+  ></app-upload-images>
 
   <button
     mat-raised-button

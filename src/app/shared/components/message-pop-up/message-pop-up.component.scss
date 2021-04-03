@@ -1,6 +1,8 @@
+@import "../../../shared/styles/variables";
+
 .pop-up-wrapper {
-  min-width: 300px !important;
-  max-width: 500px !important;
+  max-width: $max-width-sm !important;
+  min-width: $min-width-sm !important;
 
   div[mat-dialog-content] {
     white-space: pre-line;
