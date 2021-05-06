@@ -21,6 +21,9 @@ import {FlexModule} from "@angular/flex-layout";
     DayDetailsComponent,
     DayjsPipe
   ],
+  exports: [
+    SchedulePageComponent
+  ],
   imports: [
     CommonModule,
     ScheduleRoutingModule,

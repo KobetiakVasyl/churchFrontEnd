@@ -14,6 +14,8 @@ import {EditAdvertisementsPageComponent} from './components/edit-advertisements-
 import {AdminSettingsPageComponent} from './components/admin-settings-page/admin-settings-page.component';
 import { EditAdvertisementItemPageComponent } from './components/edit-advertisement-item-page/edit-advertisement-item-page.component';
 import {UploadImagesComponent} from './shared/components/upload-images/upload-images.component';
+import {ScheduleModule} from '../main/modules/schedule/schedule.module';
+import { CreateScheduleEventPageComponent } from './components/create-schedule-event-page/create-schedule-event-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {UploadImagesComponent} from './shared/components/upload-images/upload-im
     EditAdvertisementsPageComponent,
     AdminSettingsPageComponent,
     EditAdvertisementItemPageComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    CreateScheduleEventPageComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import {UploadImagesComponent} from './shared/components/upload-images/upload-im
     MaterialModule,
     FormsModule,
     FlexModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ScheduleModule
   ]
 })
 export class AdminModule {

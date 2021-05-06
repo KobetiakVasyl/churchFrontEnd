@@ -8,7 +8,7 @@ export class EditSchedulePageService {
 
   constructor() { }
 
-  handleAddEvent(): Observable<any> {
+  addEvent(): Observable<any> {
     return EMPTY;
   }
 }

@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {fadeInAnimation} from "../../../../../../../shared/animations";
+import {Component, EventEmitter, Output} from '@angular/core';
+import {fadeInAnimation} from '../../../../../../../shared/animations';
 
 @Component({
   selector: 'app-schedule-page',
@@ -7,12 +7,10 @@ import {fadeInAnimation} from "../../../../../../../shared/animations";
   styleUrls: ['./schedule-page.component.scss'],
   animations: [fadeInAnimation]
 })
-export class SchedulePageComponent implements OnInit {
+export class SchedulePageComponent {
+  @Output() dateSelect = new EventEmitter<Date>();
 
-  constructor() {
+  handleDateSelect(event: Date): void {
+    this.dateSelect.emit(event);
   }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -13,26 +13,25 @@
       <input
         matInput
         readonly
-        [matDatepicker]="picker"
+        [matDatepicker]="loadEventsPicker"
         [formControl]="dateControl"
       >
 
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker touchUi #picker></mat-datepicker>
+      <mat-datepicker-toggle matSuffix [for]="loadEventsPicker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #loadEventsPicker></mat-datepicker>
     </mat-form-field>
 
-    <button
+    <a
       mat-stroked-button
       color="primary"
-      (click)="addEvent()"
+      [routerLink]="['', 'admin', 'schedule', 'create']"
     >
       Створити
-    </button>
+    </a>
   </header>
 
   <main>
     <h1 class="no-spacing">Події</h1>
-    <hr>
 
     <div
       *ngIf="events.length; else noEventsBlock"

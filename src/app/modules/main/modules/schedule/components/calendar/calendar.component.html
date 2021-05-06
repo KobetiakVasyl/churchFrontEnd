@@ -25,7 +25,7 @@
         class="day hover"
         [class.today]="day.isToday"
         [class.disabled]="day.isDisabled"
-        (click)="navigateToDetails(day.value.pure, day.isDisabled)"
+        (click)="handleSelectDate(day.value.pure, day.isDisabled)"
       >
         <span>{{ day.value.formatted }}</span>
         <span

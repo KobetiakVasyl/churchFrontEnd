@@ -1,5 +1,5 @@
 import {transition, trigger, useAnimation} from "@angular/animations";
-import {bounceIn, bounceInDown, fadeIn} from "ng-animate";
+import {bounceIn, bounceInDown, fadeIn, slideInUp, slideOutUp} from "ng-animate";
 
 const bounceInDownAnimation = trigger('bounceInDownAnimation', [
   transition('void => *', useAnimation(bounceInDown)),
@@ -13,9 +13,27 @@ const fadeInAnimation = trigger('fadeInAnimation', [
   transition('void => *', useAnimation(fadeIn)),
 ]);
 
+const slideInUpAnimation = trigger('slideInUpAnimation', [
+  transition('void => *', useAnimation(slideInUp, {
+    params: {
+      timing: .5
+    }
+  })),
+]);
+
+const slideOutUpAnimation = trigger('slideOutUpAnimation', [
+  transition('* => void', useAnimation(slideOutUp, {
+    params: {
+      timing: .5
+    }
+  })),
+]);
+
 export {
   bounceInDownAnimation,
+  slideOutUpAnimation,
+  slideInUpAnimation,
   bounceInAnimation,
-  fadeInAnimation
+  fadeInAnimation,
 };
 

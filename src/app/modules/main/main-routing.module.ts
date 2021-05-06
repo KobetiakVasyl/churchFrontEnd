@@ -35,6 +35,7 @@ const routes: Routes = [
       {
         path: 'schedule/:churchId',
         loadChildren: () => import('./modules/schedule/schedule.module').then(m => m.ScheduleModule),
+        data: {editEnabled: false},
         canActivate: [CanActivateChurchInfoGuard]
       }
     ]

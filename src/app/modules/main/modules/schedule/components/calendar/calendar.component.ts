@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {
   format,
@@ -10,12 +10,12 @@ import {
   endOfMonth,
   subDays,
   addDays,
-} from 'date-fns'
-import { uk } from 'date-fns/locale'
+} from 'date-fns';
+import {uk} from 'date-fns/locale';
 
-import {CalendarDateService} from "../../shared/services/calendar-date.service";
+import {CalendarDateService} from '../../shared/services/calendar-date.service';
 
-import {Week} from "../../shared/interfaces";
+import {Week} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-calendar',
@@ -24,17 +24,25 @@ import {Week} from "../../shared/interfaces";
 })
 
 export class CalendarComponent implements OnInit {
+  editEnabled = true;
+
   calendar: Week[] = [];
+
+  @Output() dateSelected = new EventEmitter<Date>();
 
   constructor(
     private calendarDateService: CalendarDateService,
+    private route: ActivatedRoute,
     private router: Router
   ) {
   }
 
   ngOnInit(): void {
+    this.route.data
+      .subscribe(data => this.editEnabled = data.editEnabled);
+
     this.calendarDateService.date
-      .subscribe(this.handleDateChange.bind(this))
+      .subscribe(this.handleDateChange.bind(this));
   }
 
   handleDateChange(date: Date): void {
@@ -63,19 +71,26 @@ export class CalendarComponent implements OnInit {
               isDisabled,
               value: {pure, formatted},
               events: []
-            }
+            };
           })
-      })
+      });
     }
     this.calendar = calendar;
   }
 
-  navigateToDetails(value: Date, isDisabled: boolean): void {
-    if (isDisabled) return;
+  handleSelectDate(value: Date, isDisabled: boolean): void {
+    if (isDisabled) {
+      return;
+    }
+
+    if (this.editEnabled) {
+      this.dateSelected.emit(value);
+      return;
+    }
 
     const date = format(value, 'dd/MM/yyyy');
 
-    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
 
     this.router.navigate(['', 'schedule', id, date]);
   }
