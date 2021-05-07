@@ -4,6 +4,7 @@ import {SnackbarService} from "../../../../shared/services/snackbar.service";
 import {AuthService} from "../../shared/services/auth.service";
 import {finalize} from "rxjs/operators";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UpdatePasswordValidator} from '../../../admin/shared/validators/update-password.validator';
 
 @Component({
   selector: 'app-reset-password-page',
@@ -17,7 +18,7 @@ export class ResetPasswordPageComponent implements OnInit {
   };
 
   formGroup = new FormGroup({
-    password: new FormControl(null, [
+    newPassword: new FormControl(null, [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(20)
@@ -27,7 +28,7 @@ export class ResetPasswordPageComponent implements OnInit {
       Validators.minLength(8),
       Validators.maxLength(20)
     ])
-  });
+  }, UpdatePasswordValidator.compareNewPasswords);
 
   constructor(
     private snackbarService: SnackbarService,
@@ -46,8 +47,8 @@ export class ResetPasswordPageComponent implements OnInit {
     });
   }
 
-  get password(): FormControl {
-    return this.formGroup.get('password') as FormControl;
+  get newPassword(): FormControl {
+    return this.formGroup.get('newPassword') as FormControl;
   }
 
   get passwordForComparison(): FormControl {
@@ -75,11 +76,5 @@ export class ResetPasswordPageComponent implements OnInit {
         this.snackbarService.success('Пароль було успішно оновлено');
         this.router.navigate(['', 'auth', 'login']);
       });
-  }
-
-  isPasswordsMismatched(): boolean {
-    if (this.formGroup.pristine || this.formGroup.invalid) return false;
-
-    return this.password.value !== this.passwordForComparison.value;
   }
 }

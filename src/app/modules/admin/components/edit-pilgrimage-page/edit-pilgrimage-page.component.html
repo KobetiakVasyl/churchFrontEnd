@@ -1,1 +1,14 @@
-<p>edit-pilgrimage-page works!</p>
+<section
+  class="container"
+  [ngClass.gt-sm]="'mat-elevation-z8'"
+>
+  <app-admin-simple-table
+    [pageSizeOptions]="pageSizeOptions"
+    [columnsToDisplay]="columnsToDisplay"
+    [phoneViewListOptionsToDisplay]="phoneViewListOptionsToDisplay"
+    [initDataSource]="dataSource"
+    (onRemove)="removeItemFromDatabase($event)"
+    (onCreate)="handleCreateItem()"
+    (onEdit)="handleEditItem($event)"
+  ></app-admin-simple-table>
+</section>

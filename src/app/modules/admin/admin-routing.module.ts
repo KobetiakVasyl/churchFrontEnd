@@ -7,7 +7,7 @@ import {EditSchedulePageComponent} from "./components/edit-schedule-page/edit-sc
 import {EditPilgrimagePageComponent} from "./components/edit-pilgrimage-page/edit-pilgrimage-page.component";
 import {EditAdvertisementsPageComponent} from "./components/edit-advertisements-page/edit-advertisements-page.component";
 import {EditOverviewPageComponent} from "./components/edit-overview-page/edit-overview-page.component";
-import {EditAdvertisementItemPageComponent} from "./components/edit-advertisement-item-page/edit-advertisement-item-page.component";
+import {AdminAdvertisementItemPageComponent} from "./components/edit-advertisement-item-page/admin-advertisement-item-page.component";
 import {CreateScheduleEventPageComponent} from './components/create-schedule-event-page/create-schedule-event-page.component';
 
 const routes: Routes = [
@@ -24,12 +24,28 @@ const routes: Routes = [
         component: EditAdvertisementsPageComponent
       },
       {
-        path: 'advertisements/:id',
-        component: EditAdvertisementItemPageComponent
+        path: 'advertisements/edit/:id',
+        component: AdminAdvertisementItemPageComponent,
+        data: {title: 'Редагувати'}
+      },
+      {
+        path: 'advertisements/create',
+        component: AdminAdvertisementItemPageComponent,
+        data: {title: 'Створити'}
       },
       {
         path: 'pilgrimage',
         component: EditPilgrimagePageComponent
+      },
+      {
+        path: 'pilgrimage/edit/:id',
+        component: AdminAdvertisementItemPageComponent,
+        data: {title: 'Редагувати'}
+      },
+      {
+        path: 'pilgrimage/create',
+        component: AdminAdvertisementItemPageComponent,
+        data: {title: 'Створити'}
       },
       {
         path: 'schedule',

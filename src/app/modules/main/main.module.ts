@@ -13,6 +13,7 @@ import {AdvertisementCardComponent} from "./shared/components/advertisement-card
 import {ChurchSelectionPageComponent} from './components/church-selection-page/church-selection-page.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { PilgrimageCardComponent } from './shared/components/pilgrimage-card/pilgrimage-card.component';
+import {SingleImageViewerModule} from '../../shared/modules/single-image-viewer/single-image-viewer.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { PilgrimageCardComponent } from './shared/components/pilgrimage-card/pil
     FlexModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    SingleImageViewerModule,
   ]
 })
 export class MainModule {

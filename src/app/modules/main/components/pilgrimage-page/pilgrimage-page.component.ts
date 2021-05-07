@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AdvertisementCardInfo, CardImage} from "../../shared/interfaces";
-import {ViewImageShowFullService} from "../../../../shared/services/view-image-show-full.service";
+import {AdvertisementCardInfo} from "../../shared/interfaces";
 
 @Component({
   selector: 'app-pilgrimage-page',
@@ -9,9 +8,6 @@ import {ViewImageShowFullService} from "../../../../shared/services/view-image-s
 })
 export class PilgrimagePageComponent implements OnInit {
   cardsInfo: AdvertisementCardInfo[] = [];
-
-  constructor(private viewImageShowFullService: ViewImageShowFullService) {
-  }
 
   ngOnInit(): void {
     const cardsInfo = [];
@@ -38,9 +34,5 @@ export class PilgrimagePageComponent implements OnInit {
     }
 
     this.cardsInfo = cardsInfo;
-  }
-
-  handleImageSelect(img: CardImage): void {
-    this.viewImageShowFullService.selectImage(img);
   }
 }

@@ -1,26 +1,22 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {Subscription} from "rxjs";
-import {delay, distinctUntilChanged, map, skipWhile} from "rxjs/operators";
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {SelectionModel} from "@angular/cdk/collections";
-import {MatCheckboxChange} from "@angular/material/checkbox";
-import {EditAdvertisementService} from "../../shared/services/edit-advertisement.service";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {PhoneViewListDisplayOption} from '../../shared/interfaces';
 
 @Component({
   selector: 'app-edit-advertisements-page',
   templateUrl: './edit-advertisements-page.component.html',
   styleUrls: ['./edit-advertisements-page.component.scss']
 })
-export class EditAdvertisementsPageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class EditAdvertisementsPageComponent implements OnInit {
   readonly pageSizeOptions = [5, 10, 15, 20];
   readonly columnsToDisplay = ['select', 'edit', 'date', 'title', 'content', 'delete'];
+  readonly phoneViewListOptionsToDisplay: PhoneViewListDisplayOption[] = [
+    {label: 'дата створення', key: 'date'},
+    {label: 'заголовок', key: 'title'},
+    {label: 'опис', key: 'content'}
+  ];
 
-  filterControl = new FormControl(null);
-
-  dataSource = new MatTableDataSource([
+  dataSource = [
     {
       id: 1,
       title: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consectetur',
@@ -39,83 +35,25 @@ export class EditAdvertisementsPageComponent implements OnInit, AfterViewInit, O
       content: '33',
       date: '12/32/2034'
     }
-  ]);
+  ];
 
-  selection = new SelectionModel<any>(true, []);
-
-  subscriptions = new Subscription();
-
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  constructor(private editAdvertisementService: EditAdvertisementService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.filterControl.valueChanges
-        .pipe(
-          distinctUntilChanged(),
-          delay(300),
-          map(v => v.trim()),
-          skipWhile(v => !v)
-        )
-        .subscribe(filter => this.dataSource.filter = filter)
-    );
   }
 
-  ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  removeItemFromDatabase(event: number[]): void {
+
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+  handleCreateItem(): void {
+    this.router
+      .navigate(['', 'admin', 'advertisements', 'create']);
   }
 
-  remove(element: any) {
-    if (!this.selection.isEmpty()) return;
-
-    this.editAdvertisementService.handleRemoveItem(element).subscribe(response => {
-      this.removeItemFromDataSource(element.id);
-
-      this.dataSource._updateChangeSubscription();
-    });
-  }
-
-  handleRemoveMultipleItems(): void {
-    if (this.selection.isEmpty()) return;
-
-    this.editAdvertisementService.handleDeleteMultipleItems().subscribe(() => {
-      this.selection.selected
-        .forEach(el => this.removeItemFromDataSource(el.id));
-
-      this.dataSource._updateChangeSubscription();
-    });
-  }
-
-  handleSelectionChange(event: MatCheckboxChange, element: any): null | void {
-    if (!event) return;
-
-    this.selection.toggle(element);
-  }
-
-  handleSelectAll(event: MatCheckboxChange): null | void {
-    if (!event) return;
-
-    this.isAllSelected()
-      ? this.selection.clear()
-      : this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  isAllSelected(): boolean {
-    return this.selection.selected.length === this.dataSource.data.length;
-  }
-
-  private removeItemFromDataSource(idToFilter: number): void {
-    const i = this.dataSource.data
-      .findIndex(({id}) => id === idToFilter);
-
-    this.dataSource.data.splice(i, 1);
+  handleEditItem(id: number): void {
+    this.router
+      .navigate(['', 'admin', 'advertisements', 'edit', id]);
   }
 }

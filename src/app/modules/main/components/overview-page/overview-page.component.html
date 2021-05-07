@@ -1,10 +1,46 @@
 <section
+  fxLayout="column"
+  fxLayoutGap="10px"
   class="container"
-  ngClass.gt-xs="mat-elevation-z24"
   [@bounceInAnimation]
 >
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto autem beatae consequuntur cum dicta eaque est excepturi exercitationem itaque iusto magni minus neque nesciunt odit officia officiis placeat quae, quaerat sapiente sunt suscipit vitae! Aliquam aspernatur consectetur deleniti dolorem enim eveniet incidunt, nam odio optio quis reiciendis, voluptatibus. Illum iure laborum obcaecati vero voluptate? Accusantium beatae culpa doloribus, ea error, fuga hic ipsa iste laborum minus molestiae non possimus qui quia reiciendis reprehenderit repudiandae sapiente soluta tenetur ut. Ab aliquid aspernatur consequatur corporis perspiciatis similique soluta temporibus totam! Aperiam commodi labore nam odit omnis placeat repellat vero vitae!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto autem beatae consequuntur cum dicta eaque est excepturi exercitationem itaque iusto magni minus neque nesciunt odit officia officiis placeat quae, quaerat sapiente sunt suscipit vitae! Aliquam aspernatur consectetur deleniti dolorem enim eveniet incidunt, nam odio optio quis reiciendis, voluptatibus. Illum iure laborum obcaecati vero voluptate? Accusantium beatae culpa doloribus, ea error, fuga hic ipsa iste laborum minus molestiae non possimus qui quia reiciendis reprehenderit repudiandae sapiente soluta tenetur ut. Ab aliquid aspernatur consequatur corporis perspiciatis similique soluta temporibus totam! Aperiam commodi labore nam odit omnis placeat repellat vero vitae!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto autem beatae consequuntur cum dicta eaque est excepturi exercitationem itaque iusto magni minus neque nesciunt odit officia officiis placeat quae, quaerat sapiente sunt suscipit vitae! Aliquam aspernatur consectetur deleniti dolorem enim eveniet incidunt, nam odio optio quis reiciendis, voluptatibus. Illum iure laborum obcaecati vero voluptate? Accusantium beatae culpa doloribus, ea error, fuga hic ipsa iste laborum minus molestiae non possimus qui quia reiciendis reprehenderit repudiandae sapiente soluta tenetur ut. Ab aliquid aspernatur consequatur corporis perspiciatis similique soluta temporibus totam! Aperiam commodi labore nam odit omnis placeat repellat vero vitae!
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto autem beatae consequuntur cum dicta eaque est excepturi exercitationem itaque iusto magni minus neque nesciunt odit officia officiis placeat quae, quaerat sapiente sunt suscipit vitae! Aliquam aspernatur consectetur deleniti dolorem enim eveniet incidunt, nam odio optio quis reiciendis, voluptatibus. Illum iure laborum obcaecati vero voluptate? Accusantium beatae culpa doloribus, ea error, fuga hic ipsa iste laborum minus molestiae non possimus qui quia reiciendis reprehenderit repudiandae sapiente soluta tenetur ut. Ab aliquid aspernatur consequatur corporis perspiciatis similique soluta temporibus totam! Aperiam commodi labore nam odit omnis placeat repellat vero vitae!
+  <header
+    fxLayoutAlign="center"
+    class="border-bottom-primary"
+  >
+    <h2 class="no-spacing">Інформація про церкву</h2>
+  </header>
+
+  <main
+    fxLayout="row"
+    fxLayoutGap="10px"
+  >
+    <app-single-image-viewer [images]="churchInfo.images"></app-single-image-viewer>
+
+    <ul
+      fxLayout="column"
+      fxLayoutAlign="space-between"
+      class="no-spacing"
+    >
+      <li>Назва Церкви:</li>
+      <li>N\A</li>
+      <li>Населений пункт:</li>
+      <li>N\A</li>
+      <li>Деканат:</li>
+      <li>N\A</li>
+      <li>Єпархія:</li>
+      <li>N\A</li>
+      <li>Настоятель:</li>
+      <li>N\A</li>
+      <li>Контактна інформація:</li>
+      <li>N\A</li>
+    </ul>
+  </main>
+
+  <div class="radial-border"></div>
+
+  <footer>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, blanditiis dolor et incidunt itaque laborum optio pariatur, possimus quisquam sed sint soluta tempora voluptatibus! Ab animi
+    at autem blanditiis consectetur corporis culpa dolor dolore eius esse id ipsam ipsum iste molestiae omnis, praesentium ratione rem, repudiandae velit veniam voluptas voluptatum.
+  </footer>
 </section>

@@ -16,6 +16,19 @@
     fxLayout="row"
     fxLayoutGap="10px"
   >
+    <button
+      *ngIf="canEdit"
+      mat-stroked-button
+      type="button"
+      color="primary"
+      class="add-image-button"
+      matTooltip="Додати фото"
+      [disabled]="maxImagesLength === images.length"
+      (click)="openFileSelection()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+
     <div
       *ngFor="let img of images; let i = index"
       class="image"
@@ -35,18 +48,5 @@
         Видалити
       </button>
     </div>
-
-    <button
-      *ngIf="canEdit"
-      mat-stroked-button
-      type="button"
-      color="primary"
-      class="add-image-button"
-      matTooltip="Додати фото"
-      [disabled]="maxImagesLength === images.length"
-      (click)="openFileSelection()"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
   </div>
 </section>

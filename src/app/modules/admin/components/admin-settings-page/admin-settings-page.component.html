@@ -1,1 +1,89 @@
-<p>admin-settings-page works!</p>
+<section
+  fxLayout="column"
+  fxLayoutGap="10px"
+  class="container"
+  ngClass.gt-sm="mat-elevation-z8"
+>
+  <h2 class="border-bottom-primary">Змінити пароль</h2>
+
+  <form
+    fxLayout="column"
+    fxLayoutGap="10px"
+    [formGroup]="formGroup"
+    (ngSubmit)="submitPasswordChange()"
+  >
+    <mat-form-field>
+      <mat-label>Старий пароль</mat-label>
+
+      <input
+        matInput
+        required
+        type="password"
+        placeholder="Введіть свій старий пароль..."
+        formControlName="oldPassword"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="oldPassword?.errors?.required">Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Новий пароль</mat-label>
+
+      <input
+        matInput
+        required
+        type="password"
+        placeholder="Введіть свій новий пароль..."
+        formControlName="newPassword"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="newPassword?.errors?.required">Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Підтвердження нового паролю</mat-label>
+
+      <input
+        matInput
+        required
+        type="password"
+        placeholder="Введіть повторно свій новий пароль..."
+        formControlName="newPasswordForComparison"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="newPasswordForComparison?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="newPasswordForComparison?.errors?.newPasswordsMismatched">Нові паролі не збігаються</mat-error>
+    </mat-form-field>
+
+    <div
+      fxLayout="row"
+      fxLayoutGap="10px"
+    >
+      <button
+        mat-stroked-button
+        fxFlex="50"
+        type="reset"
+        color="warn"
+      >
+        Очистити
+      </button>
+
+      <button
+        mat-raised-button
+        fxFlex="50"
+        type="submit"
+        color="primary"
+        [disabled]="formGroup.invalid"
+      >
+        Змінити
+      </button>
+    </div>
+  </form>
+
+</section>

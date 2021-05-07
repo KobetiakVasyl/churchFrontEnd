@@ -6,7 +6,7 @@ import {CardImage} from "../../modules/main/shared/interfaces";
   providedIn: 'root'
 })
 export class ViewImageShowFullService {
-  imageSelection = new Subject<CardImage>()
+  private imageSelection = new Subject<CardImage>();
   imageSelected = this.imageSelection.asObservable();
 
   selectImage(img: CardImage): void {
