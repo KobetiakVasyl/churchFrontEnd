@@ -1,7 +1,11 @@
-<section *ngIf="img">
+<section
+  *ngIf="img"
+  (click)="closeShowFullView()"
+>
   <button
     mat-icon-button
-    color="warn"
+    matTooltip="Закрити"
+    matTooltipPosition="left"
     (click)="closeShowFullView()"
   >
     <mat-icon>cancel</mat-icon>
@@ -11,9 +15,8 @@
     fxFlex.gt-xs="300px"
     fxFlex.gt-sm="500px"
     fxFlex.gt-lg="800px"
-    class="hover"
     [src]="img.src"
     [alt]="img.alt"
-    (click)="closeShowFullView()"
+    (click)="$event.stopPropagation()"
   >
 </section>
