@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CalendarDateService} from "../../shared/services/calendar-date.service";
+import {CalendarDateService} from '../../shared/services/calendar-date.service';
 
 @Component({
   selector: 'app-date-selector',

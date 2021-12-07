@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {ChurchSelectionPageComponent} from "./components/church-selection-page/church-selection-page.component";
-import {AdvertisementsPageComponent} from "./components/advertisements-page/advertisements-page.component";
-import {PilgrimagePageComponent} from "./components/pilgrimage-page/pilgrimage-page.component";
-import {OverviewPageComponent} from "./components/overview-page/overview-page.component";
-import {MainLayoutComponent} from "./shared/components/main-layout/main-layout.component";
-import {CanActivateChurchInfoGuard} from "../../shared/guards/can-activate-church-info.guard";
+import {ChurchSelectionPageComponent} from './components/church-selection-page/church-selection-page.component';
+import {AdvertisementsPageComponent} from './components/advertisements-page/advertisements-page.component';
+import {PilgrimagePageComponent} from './components/pilgrimage-page/pilgrimage-page.component';
+import {OverviewPageComponent} from './components/overview-page/overview-page.component';
+import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
+import {CanActivateChurchInfoGuard} from '../../shared/guards/can-activate-church-info.guard';
 
 const routes: Routes = [
   {

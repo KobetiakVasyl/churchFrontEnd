@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-auth-layout',
@@ -16,7 +16,7 @@ export class AuthLayoutComponent implements OnInit {
   }
 
   navigateToOverview(): void {
-    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
 
     this.router.navigate(['', 'overview', id]);
   }

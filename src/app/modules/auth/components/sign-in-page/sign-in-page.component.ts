@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {SnackbarService} from '../../../../shared/services/snackbar.service';
-import {AuthService} from '../../shared/services/auth.service';
+import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
+import {AuthService} from '../../../../shared/services/API/auth.service';
 
 import {bounceInDownAnimation, fadeInAnimation} from '../../../../shared/animations';
 import {finalize} from 'rxjs/operators';
@@ -41,7 +41,7 @@ export class SignInPageComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params?.isEmailVerified) {
         this.snackbarService
-          .info("Емеіл підтверджено. Запит на реєстрацію прийнятий. Будь ласка зачекайте доки з вами зв'яжуться адміністратори сайту");
+          .info('Емеіл підтверджено. Запит на реєстрацію прийнятий. Будь ласка зачекайте доки з вами зв\'яжуться адміністратори сайту');
       }
     });
 

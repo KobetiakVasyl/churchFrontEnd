@@ -1,7 +1,7 @@
 <section
   fxLayoutGap="10px"
   fxLayout="column nowrap"
-  class="container w50p"
+  class="centered-sized-container w50p"
   ngClass.gt-md="w30p"
   ngClass.lt-sm="w100p"
 >
@@ -11,7 +11,7 @@
     fxLayout="row nowrap"
     fxLayoutGap="10px"
     fxLayoutAlign="space-between center"
-    class="snackbar container"
+    class="snackbar centered-sized-container"
     [ngClass]="snackbar.type"
   >
     <mat-icon *ngIf="snackbar.type === 'success'">checked</mat-icon>

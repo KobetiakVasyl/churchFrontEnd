@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
-import {CardImage} from '../../../../main/shared/interfaces';
+import {CardImage} from '../../../../../shared/interfaces/shared.interfaces';
 import {FileService} from '../../services/file.service';
 
 @Component({

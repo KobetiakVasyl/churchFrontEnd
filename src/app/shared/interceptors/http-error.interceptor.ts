@@ -7,9 +7,9 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
-import {catchError, retry} from "rxjs/operators";
+import {catchError, retry} from 'rxjs/operators';
 
-import {SnackbarService} from "../services/snackbar.service";
+import {SnackbarService} from '../services/local/snackbar.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -27,6 +27,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
           return throwError(error);
         })
-      )
+      );
   }
 }

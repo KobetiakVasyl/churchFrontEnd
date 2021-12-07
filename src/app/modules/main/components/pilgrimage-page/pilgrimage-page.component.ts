@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AdvertisementCardInfo} from "../../shared/interfaces";
+import {AdvertisementCardInfo} from '../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-pilgrimage-page',

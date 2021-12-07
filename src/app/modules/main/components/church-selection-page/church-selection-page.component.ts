@@ -1,11 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
+import {Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable, Subscription} from 'rxjs';
 
-import {AutocompleteService} from "../../../../shared/services/autocomplete.service";
-
-import {Church} from "../../shared/interfaces";
+import {AutocompleteService} from '../../../../shared/services/local/autocomplete.service';
+import {Church, ChurchListItem} from '../../../../shared/interfaces/church.interfaces';
+import {ChurchService} from '../../../../shared/services/API/church.service';
+import {debounceTime, distinctUntilChanged, mergeMap, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-church-selection-page',
@@ -18,43 +19,29 @@ export class ChurchSelectionPageComponent implements OnInit, OnDestroy {
     name: new FormControl(null, Validators.required)
   });
 
-  churches: Church[] = [
-    {
-      id: 1,
-      name: 'ASDQWE'
-    },
-    {
-      id: 2,
-      name: 'QWEASD'
-    },
-    {
-      id: 3,
-      name: 'QWEASDQWEASD'
-    }
-  ];
+  churches: Church[] = [];
 
-  filteredChurches!: Observable<Church[]>;
+  churches$!: Observable<ChurchListItem[]>;
 
   subscriptions = new Subscription();
 
   constructor(
-    private autocompleteService: AutocompleteService,
-    private router: Router
+    private readonly autocompleteService: AutocompleteService,
+    private readonly churchService: ChurchService,
+    private readonly router: Router
   ) {
   }
 
   ngOnInit(): void {
-    const churchNameControl = this.formGroup.get('name') as FormControl;
+    this.churches$ = (this.formGroup.get('name') as FormControl).valueChanges
+      .pipe(
+        startWith(''),
+        distinctUntilChanged(),
+        debounceTime(500),
+        mergeMap(value => this.churchService.search(value))
+      );
 
-    this.filteredChurches = this.autocompleteService
-      .initializeAutocompleteFiltering('name', this.churches, churchNameControl)
-
-    this.subscriptions.add(
-      churchNameControl.valueChanges
-        .subscribe(this.handleChurchNameChange.bind(this))
-    );
-
-    const churchInfo = JSON.parse(<string>localStorage.getItem('churchInfo'));
+    const churchInfo = JSON.parse(localStorage.getItem('churchInfo') as string);
 
     if (churchInfo) {
       this.formGroup.patchValue({name: churchInfo.name});
@@ -66,16 +53,14 @@ export class ChurchSelectionPageComponent implements OnInit, OnDestroy {
   }
 
   submit(): void {
-    if (this.formGroup.invalid) return;
+    if (this.formGroup.invalid) {
+      return;
+    }
+
+    const id = this.autocompleteService.findIdBy('name', this.formGroup.value.name, this.churches);
 
     localStorage.setItem('churchInfo', JSON.stringify(this.formGroup.value));
 
-    this.router.navigate(['', 'overview', this.formGroup.value.id]);
-  }
-
-  handleChurchNameChange(value: string): void {
-    const id = this.autocompleteService.findIdBy('name', value, this.churches);
-
-    this.formGroup.patchValue({id});
+    this.router.navigate(['', 'overview', id]);
   }
 }

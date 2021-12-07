@@ -1,12 +1,5 @@
-@import "../../../../shared/styles/variables";
+@use "../../../../shared/styles/variables" as *;
 
-form {
-  max-width: $max-width-lg;
-
-  .form-column {
-    display: flex;
-    flex-grow: 1;
-
-    min-width: $min-width-sm;
-  }
+section {
+  max-width: $max-width-sm;
 }

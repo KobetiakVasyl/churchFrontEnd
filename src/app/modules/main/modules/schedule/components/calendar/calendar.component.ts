@@ -15,7 +15,7 @@ import {uk} from 'date-fns/locale';
 
 import {CalendarDateService} from '../../shared/services/calendar-date.service';
 
-import {Week} from '../../shared/interfaces';
+import {Week} from '../../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-calendar',

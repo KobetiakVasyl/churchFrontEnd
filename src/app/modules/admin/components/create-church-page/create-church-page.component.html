@@ -1,0 +1,158 @@
+<section
+  fxLayout="column"
+  fxLayoutAlign="center"
+  class="mat-elevation-z8 centered-sized-container"
+  [@fadeInAnimation]
+>
+  <h2 class="no-spacing border-bottom-primary">Додати Церкву</h2>
+
+  <form
+    class="flex column gap-1"
+    [formGroup]="formGroup"
+    (ngSubmit)="submit()"
+  >
+    <mat-form-field>
+      <mat-label>Назва церкви</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть назву церкви..."
+        formControlName="name"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Населений пункт</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть назву населеного пункту де розташована церква..."
+        formControlName="location"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Деканат</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть назву деканату..."
+        formControlName="deanery"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Єпархія</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть назву єпархії..."
+        formControlName="diocese"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Настоятель</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть ім'я настоятеля..."
+        formControlName="prior"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Церковний емеіл</mat-label>
+
+      <input
+        matInput
+        required
+        type="email"
+        placeholder="Введіть церковний емеіл..."
+        formControlName="email"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Номер телефону</mat-label>
+
+      <span matPrefix>+</span>
+
+      <input
+        matInput
+        required
+        type="tel"
+        placeholder="Введіть церковний номер мобільного..."
+        formControlName="phoneNumber"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
+        Номер повинен складатися з 12 символів
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Опис</mat-label>
+
+      <textarea
+        matInput
+        rows="5"
+        type="text"
+        placeholder="Введіть короткий опис..."
+        formControlName="description"
+      ></textarea>
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="formGroup.invalid"
+    >
+      Додати
+    </button>
+  </form>
+</section>

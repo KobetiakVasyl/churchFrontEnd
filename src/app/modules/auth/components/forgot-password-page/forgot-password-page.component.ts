@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
-import {FormControl, Validators} from "@angular/forms";
-import {finalize} from "rxjs/operators";
+import {Router} from '@angular/router';
+import {FormControl, Validators} from '@angular/forms';
+import {finalize} from 'rxjs/operators';
 
-import {SnackbarService} from "../../../../shared/services/snackbar.service";
-import {AuthService} from "../../shared/services/auth.service";
+import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
+import {AuthService} from '../../../../shared/services/API/auth.service';
 
 @Component({
   selector: 'app-forgot-password-page',
@@ -15,7 +15,7 @@ export class ForgotPasswordPageComponent {
   emailControl = new FormControl(null, [
     Validators.required,
     Validators.email
-  ])
+  ]);
 
   constructor(
     private snackbarService: SnackbarService,

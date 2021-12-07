@@ -22,7 +22,7 @@
     <nav
       fxLayout="column"
       fxLayoutAlign="space-between start"
-      class="container"
+      class="centered-sized-container"
     >
 
       <a
@@ -35,46 +35,47 @@
         <span>Загальне</span>
       </a>
 
-      <a
-        mat-flat-button
-        routerLink="advertisements"
-        routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
-      >
-        <mat-icon>mail</mat-icon>
-        <span>Оголошення</span>
-      </a>
+      <ng-template [ngIf]="churchExists">
+        <a
+          mat-flat-button
+          routerLink="advertisements"
+          routerLinkActive="active-nav-link"
+          (click)="sidenav.close()"
+        >
+          <mat-icon>mail</mat-icon>
+          <span>Оголошення</span>
+        </a>
 
-      <a
-        mat-flat-button
-        routerLink="pilgrimage"
-        routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
-      >
-        <mat-icon>commute</mat-icon>
-        <span>Паломництво</span>
-      </a>
+        <a
+          mat-flat-button
+          routerLink="pilgrimage"
+          routerLinkActive="active-nav-link"
+          (click)="sidenav.close()"
+        >
+          <mat-icon>commute</mat-icon>
+          <span>Паломництво</span>
+        </a>
 
-      <a
-        mat-flat-button
-        routerLink="schedule"
-        routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
-      >
-        <mat-icon>today</mat-icon>
-        <span>Розпорядок</span>
-      </a>
+        <a
+          mat-flat-button
+          routerLink="schedule"
+          routerLinkActive="active-nav-link"
+          (click)="sidenav.close()"
+        >
+          <mat-icon>today</mat-icon>
+          <span>Розпорядок</span>
+        </a>
 
-      <a
-        mat-flat-button
-        routerLink="settings"
-        routerLinkActive="active-nav-link"
-        (click)="sidenav.close()"
-      >
-        <mat-icon>settings</mat-icon>
-        <span>Налаштування</span>
-      </a>
-
+        <a
+          mat-flat-button
+          routerLink="settings"
+          routerLinkActive="active-nav-link"
+          (click)="sidenav.close()"
+        >
+          <mat-icon>settings</mat-icon>
+          <span>Налаштування</span>
+        </a>
+      </ng-template>
     </nav>
   </mat-sidenav>
 
@@ -108,7 +109,7 @@
       </button>
     </mat-toolbar>
 
-    <main class="container">
+    <main class="centered-sized-container">
       <router-outlet></router-outlet>
     </main>
 

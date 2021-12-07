@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {PhoneViewListDisplayOption} from '../../shared/interfaces';
+import {PhoneViewListDisplayOption} from '../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-edit-advertisements-page',

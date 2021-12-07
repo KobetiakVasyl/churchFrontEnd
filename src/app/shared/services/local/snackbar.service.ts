@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs";
-import {Snackbar, SnackbarRef} from "./interfaces";
+import {Subject} from 'rxjs';
+import {Snackbar, SnackbarRef} from '../../interfaces/shared.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class SnackbarService {
 
     return {
       close: this.closeSnackbar.bind(this, id)
-    }
+    };
   }
 
   success(message: string, isSynchronous: boolean = true): SnackbarRef {
@@ -39,7 +39,7 @@ export class SnackbarService {
 
     return {
       close: this.closeSnackbar.bind(this, id)
-    }
+    };
   }
 
   error(message: string, isSynchronous: boolean = true): SnackbarRef {
@@ -54,7 +54,7 @@ export class SnackbarService {
 
     return {
       close: this.closeSnackbar.bind(this, id)
-    }
+    };
   }
 
   private closeSnackbar(id: number): void {

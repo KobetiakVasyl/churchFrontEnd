@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-
-import {AuthService} from '../../shared/services/auth.service';
 
 import {fadeInAnimation} from '../../../../shared/animations';
-import {Observable} from 'rxjs';
-import {Role} from '../../shared/interfaces';
-import {RolesService} from '../../shared/services/roles.service';
-import {SnackbarService} from '../../../../shared/services/snackbar.service';
+import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
 import {finalize} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {Role} from '../../../../shared/interfaces/roles.interfaces';
+import {RolesService} from '../../../../shared/services/API/roles.service';
+import {AuthService} from '../../../../shared/services/API/auth.service';
+import {SignUpBody} from '../../../../shared/interfaces/auth.interfaces';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -19,8 +18,7 @@ import {finalize} from 'rxjs/operators';
 })
 
 export class SignUpPageComponent implements OnInit {
-
-  userPersonalDataFormGroup: FormGroup = new FormGroup({
+  formGroup = new FormGroup({
     firstName: new FormControl(null, Validators.required),
     lastName: new FormControl(null, Validators.required),
     phoneNumber: new FormControl(null, [
@@ -28,10 +26,7 @@ export class SignUpPageComponent implements OnInit {
       Validators.pattern(/^[0-9]*$/),
       Validators.minLength(12),
       Validators.maxLength(12)
-    ])
-  });
-
-  userCommonDataFormGroup: FormGroup = new FormGroup({
+    ]),
     roleId: new FormControl(null, Validators.required),
     email: new FormControl(null, [
       Validators.required,
@@ -44,56 +39,40 @@ export class SignUpPageComponent implements OnInit {
     ])
   });
 
-  churchDataFormGroup: FormGroup = new FormGroup({
-    churchName: new FormControl(null, Validators.required),
-    country: new FormControl(null, Validators.required),
-    locality: new FormControl(null, Validators.required)
-  });
-
-  $roles!: Observable<Role[]>;
+  roles$!: Observable<Role[]>;
 
   constructor(
-    private snackbarService: SnackbarService,
-    private rolesService: RolesService,
-    private authService: AuthService,
-    private router: Router
+    private readonly snackbarService: SnackbarService,
+    private readonly authService: AuthService,
+    private readonly rolesService: RolesService
   ) {
   }
 
   ngOnInit(): void {
-    this.$roles = this.rolesService.getAll();
+    const snackbarRef = this.snackbarService.info('Loading roles...', false);
+
+    this.roles$ = this.rolesService.getAll()
+      .pipe(finalize(() => snackbarRef.close()));
   }
 
-  get password(): FormControl {
-    return this.userPersonalDataFormGroup.get('password') as FormControl;
+  get passwordFormControl(): FormControl {
+    return this.formGroup.get('password') as FormControl;
   }
 
   get phoneNumberFormControl(): FormControl {
-    return this.userPersonalDataFormGroup.get('phoneNumber') as FormControl;
+    return this.formGroup.get('phoneNumber') as FormControl;
   }
 
   get emailFormControl(): FormControl {
-    return this.userCommonDataFormGroup.get('email') as FormControl;
+    return this.formGroup.get('email') as FormControl;
   }
 
   submit(): void {
-    if (
-      this.userPersonalDataFormGroup.invalid ||
-      this.userCommonDataFormGroup.invalid ||
-      this.churchDataFormGroup.invalid
-    ) {
-      return;
-    }
+    if (this.formGroup.invalid) return;
 
-    const userPersonalDataFormGroup = this.userPersonalDataFormGroup.value;
+    const body: SignUpBody = this.formGroup.value;
 
-    userPersonalDataFormGroup.phoneNumber = `+${userPersonalDataFormGroup.phoneNumber}`;
-
-    const body = {
-      ...userPersonalDataFormGroup,
-      ...this.userCommonDataFormGroup.value,
-      ...this.churchDataFormGroup.value
-    };
+    body.phoneNumber = `+${body.phoneNumber}`;
 
     const snackbarRef = this.snackbarService.info('Триває реєстрація...', false);
 

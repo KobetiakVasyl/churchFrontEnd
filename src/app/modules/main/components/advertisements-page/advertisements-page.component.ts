@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CardImage, AdvertisementCardInfo} from "../../shared/interfaces";
-import {ViewImageShowFullService} from "../../../../shared/services/view-image-show-full.service";
+import {CardImage, AdvertisementCardInfo} from '../../../../shared/interfaces/shared.interfaces';
+import {ViewImageShowFullService} from '../../../../shared/services/local/view-image-show-full.service';
 
 @Component({
   selector: 'app-advertisements-page',

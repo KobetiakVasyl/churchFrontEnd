@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CardImage} from "../../../modules/main/shared/interfaces";
-import {ViewImageShowFullService} from "../../services/view-image-show-full.service";
-import {Subscription} from "rxjs";
+import {CardImage} from '../../interfaces/shared.interfaces';
+import {ViewImageShowFullService} from '../../services/local/view-image-show-full.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-view-image-full-screen',

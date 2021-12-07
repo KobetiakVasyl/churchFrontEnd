@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
-import {CardImage} from "../../modules/main/shared/interfaces";
+import {Subject} from 'rxjs';
+import {CardImage} from '../../interfaces/shared.interfaces';
 
 @Injectable({
   providedIn: 'root'

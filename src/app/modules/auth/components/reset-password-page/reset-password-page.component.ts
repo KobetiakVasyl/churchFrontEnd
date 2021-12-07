@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SnackbarService} from "../../../../shared/services/snackbar.service";
-import {AuthService} from "../../shared/services/auth.service";
-import {finalize} from "rxjs/operators";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
+import {AuthService} from '../../../../shared/services/API/auth.service';
+import {finalize} from 'rxjs/operators';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UpdatePasswordValidator} from '../../../admin/shared/validators/update-password.validator';
 
 @Component({
@@ -18,7 +18,7 @@ export class ResetPasswordPageComponent implements OnInit {
   };
 
   formGroup = new FormGroup({
-    newPassword: new FormControl(null, [
+    password: new FormControl(null, [
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(20)
@@ -47,8 +47,8 @@ export class ResetPasswordPageComponent implements OnInit {
     });
   }
 
-  get newPassword(): FormControl {
-    return this.formGroup.get('newPassword') as FormControl;
+  get password(): FormControl {
+    return this.formGroup.get('password') as FormControl;
   }
 
   get passwordForComparison(): FormControl {
@@ -63,14 +63,14 @@ export class ResetPasswordPageComponent implements OnInit {
       ...this.formGroup.value
     };
 
-    const snackbarRef = this.snackbarService.info('Триває оновлення нового паролю...', false)
+    const snackbarRef = this.snackbarService.info('Триває оновлення нового паролю...', false);
 
     localStorage.setItem('token', this.userInfo.token);
 
     this.authService.resetPassword(body.userId, body)
       .pipe(finalize(() => {
         localStorage.removeItem('token');
-        snackbarRef.close()
+        snackbarRef.close();
       }))
       .subscribe(() => {
         this.snackbarService.success('Пароль було успішно оновлено');

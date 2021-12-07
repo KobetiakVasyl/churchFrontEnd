@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import {EMPTY, Observable, of} from 'rxjs';
-import {mergeMap} from "rxjs/operators";
-import {MatDialog} from "@angular/material/dialog";
+import {mergeMap} from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
 
-import {MessagePopUpComponent} from "../../../../shared/components/message-pop-up/message-pop-up.component";
+import {MessagePopUpComponent} from '../../../../shared/components/message-pop-up/message-pop-up.component';
 
 @Injectable({providedIn: 'root'})
 export class AdminSimpleTableService {

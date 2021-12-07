@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {fadeInAnimation} from "../../../../../../shared/animations";
-import {CalendarEvent} from '../../shared/interfaces';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {fadeInAnimation} from '../../../../../../shared/animations';
+import {CalendarEvent} from '../../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-day-details',
@@ -37,14 +37,14 @@ export class DayDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      if (!params['date']) return;
+      if (!params.date) return;
 
-      this.date = params['date'];
+      this.date = params.date;
     });
   }
 
   navigateToSchedulePage() {
-    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
 
     this.router.navigate(['', 'schedule', id]);
   }

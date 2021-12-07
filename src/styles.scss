@@ -1,3 +1,5 @@
+@use 'app/shared/styles/flex';
+
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';
@@ -12,6 +14,10 @@ body {
   @extend .no-spacing;
   box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w100p {
+  width: 100%;
 }
 
 mat-sidenav-container {

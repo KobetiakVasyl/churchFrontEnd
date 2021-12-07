@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
-import {MatSidenav} from "@angular/material/sidenav";
+import {Router} from '@angular/router';
+import {MatSidenav} from '@angular/material/sidenav';
 
-import {AuthService} from "../../../../auth/shared/services/auth.service";
+import {TokenService} from '../../../../../shared/services/local/token.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -12,18 +12,15 @@ import {AuthService} from "../../../../auth/shared/services/auth.service";
 export class MainLayoutComponent {
   isOpened = false;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService
-  ) {
+  constructor(private router: Router) {
   }
 
   isChurchSelected(): boolean {
-    return !!JSON.parse(<string>localStorage.getItem('churchInfo'));
+    return !!JSON.parse(localStorage.getItem('churchInfo') as string);
   }
 
   navigateToAdminPanel(sidenav: MatSidenav): void {
-    this.authService.isAuthorized()
+    TokenService.isAuthorized()
       ? this.router.navigate(['', 'admin', 'overview'])
       : this.router.navigate(['', 'auth', 'login']);
 
@@ -31,7 +28,7 @@ export class MainLayoutComponent {
   }
 
   navigate(sidenav: MatSidenav, path: string): void {
-    const {id} = JSON.parse(<string>localStorage.getItem('churchInfo'));
+    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
 
     this.router.navigate(['', path, id]);
 

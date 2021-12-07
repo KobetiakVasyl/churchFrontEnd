@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {addMonths, subMonths} from "date-fns";
+import {BehaviorSubject} from 'rxjs';
+import {addMonths, subMonths} from 'date-fns';
 
 @Injectable({providedIn: 'root'})
 export class CalendarDateService {

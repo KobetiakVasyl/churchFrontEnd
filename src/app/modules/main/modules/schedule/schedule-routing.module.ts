@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {SchedulePageComponent} from "./shared/components/schedule-page/schedule-page.component";
-import {DayDetailsComponent} from "./components/day-details/day-details.component";
+import {SchedulePageComponent} from './shared/components/schedule-page/schedule-page.component';
+import {DayDetailsComponent} from './components/day-details/day-details.component';
 
 const routes: Routes = [
   {

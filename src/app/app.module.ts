@@ -1,11 +1,11 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from "@angular/common/http";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {QuillModule} from "ngx-quill";
+import {HttpClientModule} from '@angular/common/http';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {QuillModule} from 'ngx-quill';
 
-import {MaterialModule} from "./shared/modules/material.module";
+import {MaterialModule} from './shared/modules/material.module';
 import {AppRoutingModule} from './app-routing.module';
 
 import {
@@ -19,7 +19,7 @@ import {AppComponent} from './app.component';
 import {LoadingSpinnerComponent} from './shared/components/loading-spinner/loading-spinner.component';
 import {MessagePopUpComponent} from './shared/components/message-pop-up/message-pop-up.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
-import {ViewImageFullScreenComponent} from "./shared/components/view-image-full-screen/view-image-full-screen.component";
+import {ViewImageFullScreenComponent} from './shared/components/view-image-full-screen/view-image-full-screen.component';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 import localeUk from '@angular/common/locales/uk';
 import {registerLocaleData} from '@angular/common';

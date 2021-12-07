@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PilgrimageCardInfo, PilgrimageSelectedCard} from '../../interfaces';
+import {PilgrimageCardInfo, PilgrimageSelectedCard} from '../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-pilgrimage-card',

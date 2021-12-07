@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {CalendarEvent} from '../../../main/modules/schedule/shared/interfaces';
+import {CalendarEvent} from '../../../../shared/interfaces/shared.interfaces';
 import {EditSchedulePageService} from '../../shared/services/edit-schedule-page.service';
 
 @Component({

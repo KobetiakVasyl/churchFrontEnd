@@ -1,7 +1,7 @@
 <section
   fxLayout="column"
   fxLayoutAlign="center"
-  class="mat-elevation-z8 container"
+  class="mat-elevation-z8 centered-sized-container"
   [@fadeInAnimation]
 >
   <header
@@ -20,511 +20,125 @@
     </a>
   </header>
 
-  <mat-horizontal-stepper
-    linear
-    fxHide.lt-md
-    color="primary"
+  <form
+    class="flex column gap-1"
+    [formGroup]="formGroup"
+    (ngSubmit)="submit()"
   >
+    <mat-form-field>
+      <mat-label>Ім'я</mat-label>
 
-    <mat-step
-      [stepControl]="userPersonalDataFormGroup"
-      [formGroup]="userPersonalDataFormGroup"
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть своє ім'я..."
+        formControlName="firstName"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Прізвище</mat-label>
+
+      <input
+        matInput
+        required
+        type="text"
+        placeholder="Введіть своє прізвище..."
+        formControlName="lastName"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Номер телефону</mat-label>
+
+      <span matPrefix>+</span>
+
+      <input
+        matInput
+        required
+        type="tel"
+        placeholder="Наприклад: 1234567891..."
+        formControlName="phoneNumber"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
+      <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
+        Номер повинен складатися з 12 символів
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Роль</mat-label>
+
+      <mat-select
+        required
+        placeholder="Оберіть свою роль..."
+        formControlName="roleId"
+      >
+        <mat-option
+          *ngFor="let role of roles$ | async"
+          [value]="role.id"
+        >{{ role.roleName }}</mat-option>
+      </mat-select>
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error>Це поле є обов'язковим</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Емеіл</mat-label>
+
+      <input
+        matInput
+        required
+        type="email"
+        placeholder="Введіть свій емеіл..."
+        formControlName="email"
+      >
+
+      <mat-hint>Обов'язкове поле</mat-hint>
+
+      <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Пароль</mat-label>
+
+      <input
+        matInput
+        required
+        type="password"
+        placeholder="Введіть свій пароль..."
+        formControlName="password"
+      >
+
+      <mat-hint>Обов'язкове поле, Мін: 8, Макс: 20 символів</mat-hint>
+
+      <mat-error *ngIf="passwordFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+      <mat-error *ngIf="passwordFormControl?.errors?.minlength">Мінімум 8 символів</mat-error>
+      <mat-error *ngIf="passwordFormControl?.errors?.maxlength">Максимум 20 символів</mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="formGroup.invalid"
     >
-      <ng-template matStepLabel>Персональні дані: Частина 1</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Ім'я</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть своє ім'я..."
-            formControlName="firstName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Прізвище</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть своє прізвище..."
-            formControlName="lastName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Номер телефону</mat-label>
-
-          <span matPrefix>+</span>
-
-          <input
-            matInput
-            required
-            type="tel"
-            placeholder="Наприклад: 1234567891..."
-            formControlName="phoneNumber"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
-            Номер повинен складатися з 12 символів
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <button
-        matStepperNext
-        mat-stroked-button
-        color="primary"
-        [disabled]="userPersonalDataFormGroup.invalid"
-      >
-        Продовжити
-      </button>
-    </mat-step>
-
-    <mat-step
-      [stepControl]="userCommonDataFormGroup"
-      [formGroup]="userCommonDataFormGroup"
-    >
-      <ng-template matStepLabel>Персональні дані: Частина 2</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Роль</mat-label>
-
-          <mat-select
-            required
-            placeholder="Оберіть свою роль..."
-            formControlName="roleId"
-          >
-            <mat-option
-              *ngFor="let role of $roles | async"
-              [value]="role.id"
-            >{{ role.roleName }}</mat-option>
-          </mat-select>
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Емеіл</mat-label>
-
-          <input
-            matInput
-            required
-            type="email"
-            placeholder="Введіть свій емеіл..."
-            formControlName="email"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
-        </mat-form-field>
-
-
-        <mat-form-field>
-          <mat-label>Пароль</mat-label>
-
-          <input
-            matInput
-            required
-            type="password"
-            placeholder="Введіть свій пароль..."
-            formControlName="password"
-          >
-
-          <mat-hint>Обов'язкове поле, Мін: 8, Макс: 20 символів</mat-hint>
-
-          <mat-error *ngIf="password?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="password?.errors?.minlength">Мінімум 8 символів</mat-error>
-          <mat-error *ngIf="password?.errors?.maxlength">Максимум 20 символів</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div
-        fxLayout="row nowrap"
-        fxLayoutGap="10px"
-      >
-        <button
-          matStepperPrevious
-          mat-stroked-button
-          color="primary"
-        >
-          Повернутись
-        </button>
-
-        <button
-          matStepperNext
-          mat-stroked-button
-          color="primary"
-          [disabled]="userCommonDataFormGroup.invalid"
-        >
-          Продовжити
-        </button>
-      </div>
-    </mat-step>
-
-    <mat-step
-      [stepControl]="churchDataFormGroup"
-      [formGroup]="churchDataFormGroup"
-    >
-      <ng-template matStepLabel>Дані церкви</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Населений пункт</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву населеного пункту де розташована церква..."
-            formControlName="locality"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Країна</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву країни..."
-            formControlName="country"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Церква</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву церкви..."
-            formControlName="churchName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div
-        fxLayout="row nowrap"
-        fxLayoutGap="10px"
-      >
-        <button
-          matStepperPrevious
-          mat-stroked-button
-          color="primary"
-        >
-          Повернутись
-        </button>
-
-
-        <button
-          mat-raised-button
-          type="submit"
-          color="primary"
-          [disabled]="userPersonalDataFormGroup.invalid || userCommonDataFormGroup.invalid || churchDataFormGroup.invalid"
-          (click)="submit()"
-        >
-          Зареєструватися
-        </button>
-      </div>
-    </mat-step>
-
-  </mat-horizontal-stepper>
-
-  <mat-vertical-stepper
-    linear
-    fxHide.gt-sm
-    color="primary"
-  >
-
-    <mat-step
-      [stepControl]="userPersonalDataFormGroup"
-      [formGroup]="userPersonalDataFormGroup"
-    >
-      <ng-template matStepLabel>Персональні дані: Частина 1</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Ім'я</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть своє ім'я..."
-            formControlName="firstName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Прізвище</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть своє прізвище..."
-            formControlName="lastName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Номер телефону</mat-label>
-
-          <span matPrefix>+</span>
-
-          <input
-            matInput
-            required
-            type="tel"
-            placeholder="Наприклад: 1234567891..."
-            formControlName="phoneNumber"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.pattern">На жаль це не корректний номер</mat-error>
-          <mat-error *ngIf="phoneNumberFormControl?.errors?.minlength || phoneNumberFormControl?.errors?.maxlength">
-            Номер повинен складатися з 12 символів
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <button
-        matStepperNext
-        mat-stroked-button
-        color="primary"
-        [disabled]="userPersonalDataFormGroup.invalid"
-      >
-        Продовжити
-      </button>
-    </mat-step>
-
-    <mat-step
-      [stepControl]="userCommonDataFormGroup"
-      [formGroup]="userCommonDataFormGroup"
-    >
-      <ng-template matStepLabel>Персональні дані: Частина 2</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Роль</mat-label>
-
-          <mat-select
-            required
-            placeholder="Оберіть свою роль..."
-            formControlName="roleId"
-          >
-            <mat-option
-              *ngFor="let role of $roles | async"
-              [value]="role.id"
-            >
-              {{ role.roleName }}
-            </mat-option>
-          </mat-select>
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Емеіл</mat-label>
-
-          <input
-            matInput
-            required
-            type="email"
-            placeholder="Введіть свій емеіл..."
-            formControlName="email"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
-        </mat-form-field>
-
-
-        <mat-form-field>
-          <mat-label>Пароль</mat-label>
-
-          <input
-            matInput
-            required
-            type="password"
-            placeholder="Введіть свій пароль..."
-            formControlName="password"
-          >
-
-          <mat-hint>Обов'язкове поле, Мін: 8, Макс: 20 символів</mat-hint>
-
-          <mat-error *ngIf="password?.errors?.required">Це поле є обов'язковим</mat-error>
-          <mat-error *ngIf="password?.errors?.minlength">Мінімум 8 символів</mat-error>
-          <mat-error *ngIf="password?.errors?.maxlength">Максимум 20 символів</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div fxLayoutGap="10px">
-        <button
-          matStepperPrevious
-          mat-stroked-button
-          color="primary"
-        >
-          Повернутись
-        </button>
-
-        <button
-          matStepperNext
-          mat-stroked-button
-          color="primary"
-          [disabled]="userCommonDataFormGroup.invalid"
-        >
-          Продовжити
-        </button>
-      </div>
-    </mat-step>
-
-    <mat-step
-      [stepControl]="churchDataFormGroup"
-      [formGroup]="churchDataFormGroup"
-    >
-      <ng-template matStepLabel>Дані церкви</ng-template>
-
-      <div
-        fxLayout="column"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>Населений пункт</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву населеного пункту де розташована церква..."
-            formControlName="locality"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Країна</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву країни..."
-            formControlName="country"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Церква</mat-label>
-
-          <input
-            matInput
-            required
-            type="text"
-            placeholder="Введіть назву церкви..."
-            formControlName="churchName"
-          >
-
-          <mat-hint>Обов'язкове поле</mat-hint>
-
-          <mat-error>Це поле є обов'язковим</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div fxLayoutGap="10px">
-        <button
-          matStepperPrevious
-          mat-stroked-button
-          color="primary"
-        >
-          Повернутись
-        </button>
-
-
-        <button
-          mat-raised-button
-          type="submit"
-          color="primary"
-          [disabled]="userPersonalDataFormGroup.invalid || userCommonDataFormGroup.invalid || churchDataFormGroup.invalid"
-          (click)="submit()"
-        >
-          Зареєструватися
-        </button>
-      </div>
-    </mat-step>
-
-  </mat-vertical-stepper>
+      Зареєструватися
+    </button>
+  </form>
 </section>

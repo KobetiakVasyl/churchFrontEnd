@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {CardImage, AdvertisementCardInfo} from "../../interfaces";
+import {CardImage, AdvertisementCardInfo} from '../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-advertisement-card',

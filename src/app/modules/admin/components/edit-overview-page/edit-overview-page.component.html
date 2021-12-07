@@ -1,34 +1,43 @@
-<form
-  class="container mat-elevation-z8"
-  fxLayout="column"
-  fxLayoutGap="10px"
-  [formGroup]="formGroup"
-  (ngSubmit)="submit()"
+<div
+  *ngIf="!churchExists; else churchExistsBlock"
+  class="flex column vh-center self-vh-center container-2"
 >
-  <div
-    fxFlex="100"
-    fxLayout="row wrap"
-    fxLayoutGap="10px grid"
-    fxLayoutAlign="space-between start"
+  <p>Схоже що Ви ще не додали свою церкву.</p>
+  <a
+    mat-stroked-button
+    color="primary"
+    [routerLink]="['', 'admin', 'church', 'create']"
   >
-    <div
-      fxLayout="column"
-      class="form-column"
-    >
-      <strong class="border-bottom-primary">Інформація про церкву: </strong>
+    Додати Церкву
+  </a>
+</div>
 
+<ng-template #churchExistsBlock>
+  <section
+    fxLayout="column"
+    fxLayoutAlign="center"
+    class="mat-elevation-z8 centered-sized-container"
+    [@fadeInAnimation]
+  >
+    <h2 class="no-spacing border-bottom-primary">Додати Церкву</h2>
+
+    <form
+      class="flex column gap-1"
+      [formGroup]="formGroup"
+      (ngSubmit)="submit()"
+    >
       <mat-form-field>
-        <mat-label>Назва Церкви</mat-label>
+        <mat-label>Назва церкви</mat-label>
 
         <input
           matInput
           required
           type="text"
-          formControlName="churchName"
-          placeholder="Введіть назву церкви"
+          placeholder="Введіть назву церкви..."
+          formControlName="name"
         >
 
-        <mat-hint>Наприклад: Св. Архистратига Михаїла</mat-hint>
+        <mat-hint>Обов'язкове поле</mat-hint>
 
         <mat-error>Це поле є обов'язковим</mat-error>
       </mat-form-field>
@@ -41,10 +50,10 @@
           required
           type="text"
           placeholder="Введіть назву населеного пункту де розташована церква..."
-          formControlName="locality"
+          formControlName="location"
         >
 
-        <mat-hint>Наприклад: с. Зоротовичі</mat-hint>
+        <mat-hint>Обов'язкове поле</mat-hint>
 
         <mat-error>Це поле є обов'язковим</mat-error>
       </mat-form-field>
@@ -56,8 +65,8 @@
           matInput
           required
           type="text"
+          placeholder="Введіть назву деканату..."
           formControlName="deanery"
-          placeholder="Введіть назву деканату"
         >
 
         <mat-hint>Обов'язкове поле</mat-hint>
@@ -72,21 +81,14 @@
           matInput
           required
           type="text"
+          placeholder="Введіть назву єпархії..."
           formControlName="diocese"
-          placeholder="Введіть назву єпархії"
         >
 
         <mat-hint>Обов'язкове поле</mat-hint>
 
         <mat-error>Це поле є обов'язковим</mat-error>
       </mat-form-field>
-    </div>
-
-    <div
-      fxLayout="column"
-      class="form-column"
-    >
-      <strong class="border-bottom-primary">Контактна інформація: </strong>
 
       <mat-form-field>
         <mat-label>Настоятель</mat-label>
@@ -96,28 +98,29 @@
           required
           type="text"
           placeholder="Введіть ім'я настоятеля..."
-          formControlName="priestName"
-        >
-
-        <mat-hint>Наприклад: отець Роман</mat-hint>
-
-        <mat-error>Це поле є обов'язковим</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Емеіл</mat-label>
-
-        <input
-          matInput
-          required
-          type="email"
-          placeholder="Введіть свій емеіл..."
-          formControlName="email"
+          formControlName="prior"
         >
 
         <mat-hint>Обов'язкове поле</mat-hint>
 
         <mat-error>Це поле є обов'язковим</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Церковний емеіл</mat-label>
+
+        <input
+          matInput
+          required
+          type="email"
+          placeholder="Введіть церковний емеіл..."
+          formControlName="email"
+        >
+
+        <mat-hint>Обов'язкове поле</mat-hint>
+
+        <mat-error *ngIf="emailFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+        <mat-error *ngIf="emailFormControl?.errors?.email">Невірний емеіл</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -129,7 +132,7 @@
           matInput
           required
           type="tel"
-          placeholder="Наприклад: 1234567891..."
+          placeholder="Введіть церковний номер мобільного..."
           formControlName="phoneNumber"
         >
 
@@ -141,45 +144,37 @@
           Номер повинен складатися з 12 символів
         </mat-error>
       </mat-form-field>
-    </div>
-  </div>
 
-  <app-upload-images
-    [images]="images"
-    [canEdit]="true"
-    [maxImagesLength]="3"
-  ></app-upload-images>
+      <mat-form-field>
+        <mat-label>Опис</mat-label>
 
-  <mat-form-field>
-    <mat-label>Короткі відомості про церкву</mat-label>
-    <textarea
-      matInput
-      required
-      rows="4"
-      type="text"
-      formControlName="churchDescription"
-    ></textarea>
+        <textarea
+          matInput
+          rows="5"
+          type="text"
+          placeholder="Введіть короткий опис..."
+          formControlName="description"
+        ></textarea>
 
-    <mat-hint>Наприклад: хронологія, історія побудови, цікаві факти і т.д.</mat-hint>
+        <mat-hint>Обов'язкове поле</mat-hint>
 
-    <mat-error *ngIf="churchDescriptionFormControl?.errors?.required">Це поле є обов'язковим</mat-error>
+        <mat-error>Це поле є обов'язковим</mat-error>
+      </mat-form-field>
 
-    <mat-error *ngIf="churchDescriptionFormControl?.errors?.minlength">
-      Мінімальна к-ть символів: 0. Зараз: {{ churchDescriptionFormControl?.errors?.minlength.actualLength }}
-    </mat-error>
 
-    <mat-error *ngIf="churchDescriptionFormControl?.errors?.maxlength">
-      Максимальна к-ть символів: {{ churchDescriptionFormControl?.errors?.maxlength.requiredLength }}.
-      Зараз: {{ churchDescriptionFormControl?.errors?.maxlength.actualLength}}
-    </mat-error>
-  </mat-form-field>
+      <div class="flex column">
+        <p>Додати фото</p>
 
-  <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="formGroup.invalid"
-  >
-    Зберегти
-  </button>
-</form>
+      </div>
+
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        [disabled]="formGroup.invalid"
+      >
+        Додати
+      </button>
+    </form>
+  </section>
+</ng-template>

@@ -10,7 +10,7 @@ import {delay, distinctUntilChanged, map, skipWhile} from 'rxjs/operators';
 
 import {AdminSimpleTableService} from '../../services/admin-simple-table.service';
 
-import {AdminSimpleTableRecord, PhoneViewListDisplayOption} from '../../interfaces';
+import {AdminSimpleTableRecord, PhoneViewListDisplayOption} from '../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-admin-simple-table',

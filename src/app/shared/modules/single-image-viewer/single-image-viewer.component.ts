@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CardImage, PilgrimageSelectedCard} from '../../../modules/main/shared/interfaces';
-import {ViewImageShowFullService} from '../../services/view-image-show-full.service';
+import {CardImage, PilgrimageSelectedCard} from '../../interfaces/shared.interfaces';
+import {ViewImageShowFullService} from '../../services/local/view-image-show-full.service';
 
 @Component({
   selector: 'app-single-image-viewer',

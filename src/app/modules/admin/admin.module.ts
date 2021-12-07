@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {AdminRoutingModule} from './admin-routing.module';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
-import {MaterialModule} from "../../shared/modules/material.module";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
+import {MaterialModule} from '../../shared/modules/material.module';
 
 import {AdminLayoutComponent} from './shared/components/admin-layout/admin-layout.component';
 import {EditOverviewPageComponent} from './components/edit-overview-page/edit-overview-page.component';
@@ -17,6 +17,7 @@ import {UploadImagesComponent} from './shared/components/upload-images/upload-im
 import {ScheduleModule} from '../main/modules/schedule/schedule.module';
 import { CreateScheduleEventPageComponent } from './components/create-schedule-event-page/create-schedule-event-page.component';
 import { AdminSimpleTableComponent } from './shared/components/admin-simple-table/admin-simple-table.component';
+import { CreateChurchPageComponent } from './components/create-church-page/create-church-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminSimpleTableComponent } from './shared/components/admin-simple-tabl
     AdminAdvertisementItemPageComponent,
     UploadImagesComponent,
     CreateScheduleEventPageComponent,
-    AdminSimpleTableComponent
+    AdminSimpleTableComponent,
+    CreateChurchPageComponent
   ],
   imports: [
     CommonModule,

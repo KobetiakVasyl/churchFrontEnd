@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Snackbar} from "../../services/interfaces";
-import {SnackbarService} from "../../services/snackbar.service";
-import {Subscription} from "rxjs";
+import {Snackbar} from '../../interfaces/shared.interfaces';
+import {SnackbarService} from '../../services/local/snackbar.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-snackbar',
@@ -29,7 +29,7 @@ export class SnackbarComponent implements OnInit, OnDestroy {
         .subscribe(this.removeSnackbarById.bind(this))
     );
 
-    this.snackbarService.info('Цим сайтом можна користуватися за допомогою телефону')
+    this.snackbarService.info('Цим сайтом можна користуватися за допомогою телефону');
   }
 
   ngOnDestroy(): void {

@@ -1,27 +1,23 @@
-import {Component} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
-import {CardImage} from "../../../main/shared/interfaces";
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CardImage} from '../../../../shared/interfaces/shared.interfaces';
+import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
 
 @Component({
   selector: 'app-edit-overview-page',
   templateUrl: './edit-overview-page.component.html',
   styleUrls: ['./edit-overview-page.component.scss']
 })
-export class EditOverviewPageComponent {
+export class EditOverviewPageComponent implements OnInit {
   formGroup = new FormGroup({
-    churchName: new FormControl(null, Validators.required),
+    name: new FormControl(null, Validators.required),
+    location: new FormControl(null, Validators.required),
     deanery: new FormControl(null, Validators.required),
     diocese: new FormControl(null, Validators.required),
-    locality: new FormControl(null, Validators.required),
-    priestName: new FormControl(null, Validators.required),
+    prior: new FormControl(null, Validators.required),
     email: new FormControl(null, [
       Validators.required,
       Validators.email
-    ]),
-    churchDescription: new FormControl(null, [
-      Validators.required,
-      Validators.minLength(0),
-      Validators.maxLength(350)
     ]),
     phoneNumber: new FormControl(null, [
       Validators.required,
@@ -29,6 +25,7 @@ export class EditOverviewPageComponent {
       Validators.minLength(12),
       Validators.maxLength(12)
     ]),
+    description: new FormControl(null, Validators.required)
   });
 
   images: CardImage[] = [
@@ -42,16 +39,23 @@ export class EditOverviewPageComponent {
     }
   ];
 
-  constructor() {
+  churchExists = false;
+
+  constructor(private readonly snackbarService: SnackbarService) {
+  }
+
+  ngOnInit(): void {
+    this.churchExists = !!JSON.parse(localStorage.getItem('churchInfo') as string)?.id;
   }
 
   get phoneNumberFormControl(): FormControl {
     return this.formGroup.get('phoneNumber') as FormControl;
   }
 
-  get churchDescriptionFormControl(): FormControl {
-    return this.formGroup.get('churchDescription') as FormControl;
+  get emailFormControl(): FormControl {
+    return this.formGroup.get('email') as FormControl;
   }
+
 
   addImage(): void {
 

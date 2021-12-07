@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
-import {CardImage} from '../../../main/shared/interfaces';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {CardImage} from '../../../../shared/interfaces/shared.interfaces';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

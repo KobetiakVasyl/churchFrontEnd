@@ -1,5 +1,5 @@
-import {transition, trigger, useAnimation} from "@angular/animations";
-import {bounceIn, bounceInDown, fadeIn, slideInUp, slideOutUp} from "ng-animate";
+import {transition, trigger, useAnimation} from '@angular/animations';
+import {bounceIn, bounceInDown, fadeIn, slideInUp, slideOutUp} from 'ng-animate';
 
 const bounceInDownAnimation = trigger('bounceInDownAnimation', [
   transition('void => *', useAnimation(bounceInDown)),
