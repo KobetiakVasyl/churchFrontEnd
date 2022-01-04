@@ -69,12 +69,12 @@
       >
         <div
           class="flex v-center gap-1 file-name-container grow-7"
-          [matTooltip]="image?.name"
+          [matTooltip]="image.name || 'N/A'"
         >
           <mat-icon color="primary">image</mat-icon>
 
           <span class="file-name">
-            {{ image?.name }}
+            {{ image.name || 'N/A' }}
           </span>
         </div>
 
