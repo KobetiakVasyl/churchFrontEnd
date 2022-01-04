@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SnackbarService} from '../../../../shared/services/local/snackbar.service';
 import {ChurchService} from '../../../../shared/services/API/church.service';
 import {finalize} from 'rxjs/operators';
-import {CreateChurchBody} from '../../../../shared/interfaces/church.interfaces';
+import {ICreateChurch} from '../../../../shared/interfaces/church.interfaces';
 import {Router} from '@angular/router';
 import {fadeInAnimation} from '../../../../shared/animations';
 
@@ -30,14 +30,16 @@ export class CreateChurchPageComponent {
       Validators.minLength(12),
       Validators.maxLength(12)
     ]),
-    description: new FormControl(null, Validators.required)
+    description: new FormControl(null, Validators.required),
+    // image: new FormControl(null)
   });
 
   constructor(
     private readonly snackbarService: SnackbarService,
     private readonly churchService: ChurchService,
     private readonly router: Router
-  ) { }
+  ) {
+  }
 
   get phoneNumberFormControl(): FormControl {
     return this.formGroup.get('phoneNumber') as FormControl;
@@ -48,11 +50,17 @@ export class CreateChurchPageComponent {
   }
 
   submit(): void {
-    if (this.formGroup.invalid) return;
+    console.log(this.formGroup.value);
 
-    const body: CreateChurchBody = this.formGroup.value;
+    if (this.formGroup.invalid) {
+      return;
+    }
 
-    body.phoneNumber = `+${body.phoneNumber}`;
+    const body: ICreateChurch = this.formGroup.value;
+
+    if (!body.phoneNumber.includes('+')) {
+      body.phoneNumber = `+${body.phoneNumber}`
+    }
 
     const snackbarRef = this.snackbarService.info('Триває додавання церкви...', false);
 

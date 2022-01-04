@@ -1,4 +1,7 @@
-<section *ngIf="img">
+<section
+  *ngIf="img"
+  (click)="closeShowFullView()"
+>
   <button
     mat-icon-button
     color="warn"
@@ -8,12 +11,7 @@
   </button>
 
   <img
-    fxFlex.gt-xs="300px"
-    fxFlex.gt-sm="500px"
-    fxFlex.gt-lg="800px"
-    class="hover"
     [src]="img.src"
     [alt]="img.alt"
-    (click)="closeShowFullView()"
   >
 </section>

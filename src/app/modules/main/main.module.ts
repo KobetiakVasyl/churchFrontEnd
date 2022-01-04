@@ -12,8 +12,9 @@ import {MainLayoutComponent} from './shared/components/main-layout/main-layout.c
 import {AdvertisementCardComponent} from './shared/components/advertisement-card/advertisement-card.component';
 import {ChurchSelectionPageComponent} from './components/church-selection-page/church-selection-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { PilgrimageCardComponent } from './shared/components/pilgrimage-card/pilgrimage-card.component';
+import {PilgrimageCardComponent} from './shared/components/pilgrimage-card/pilgrimage-card.component';
 import {SingleImageViewerModule} from '../../shared/modules/single-image-viewer/single-image-viewer.module';
+import {ChurchPropertyComponent} from './components/church-property/church-property.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {SingleImageViewerModule} from '../../shared/modules/single-image-viewer/
     MainLayoutComponent,
     AdvertisementCardComponent,
     ChurchSelectionPageComponent,
-    PilgrimageCardComponent
+    PilgrimageCardComponent,
+    ChurchPropertyComponent
   ],
   imports: [
     CommonModule,

@@ -62,11 +62,18 @@ export class SignInPageComponent implements OnInit {
     this.authService.signIn(this.formGroup.value)
       .pipe(finalize(() => snackbarRef.close()))
       .subscribe(response => {
-        this.snackbarService.success('Вхід успішно виконано!');
-
         localStorage.setItem('token', response.token);
 
-        this.router.navigate(['', 'admin', 'overview']);
+        this.snackbarService.success('Вхід успішно виконано!');
+
+        const churchInfo = JSON.parse(localStorage.getItem('churchInfo') as string);
+
+        const path = !!churchInfo
+          ? ['', 'admin', 'overview', churchInfo.id]
+          : ['', 'admin', 'church', 'create'];
+
+
+        this.router.navigate(path);
       });
   }
 }

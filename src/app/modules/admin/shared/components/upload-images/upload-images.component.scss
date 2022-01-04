@@ -1,28 +1,28 @@
-button[mat-stroked-button] {
-  width: 100px;
-  height: 100px;
+.file-name-container, .file-name {
+  overflow: hidden;
 }
 
-.image {
+.file-name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+h4 {
+  font-weight: bolder;
+}
+
+.uploaded-file-container {
   position: relative;
 
-  > button {
+  & > button {
     position: absolute;
     top: 0;
     right: 0;
-    left: 0;
-    bottom: 0;
-    opacity: 0;
-
-    height: 35%;
-    width: 90%;
-    margin: auto;
-    background: white;
-
-    transition-duration: 300ms;
-
-    &:hover {
-      opacity: 1;
-    }
+    z-index: 1;
   }
+}
+
+img {
+  max-width: 300px;
+  height: auto;
 }

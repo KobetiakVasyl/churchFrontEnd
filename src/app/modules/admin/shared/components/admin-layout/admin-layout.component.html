@@ -27,15 +27,25 @@
 
       <a
         mat-flat-button
-        routerLink="overview"
         routerLinkActive="active-nav-link"
+        [routerLink]="['', 'admin', 'church', 'create']"
         (click)="sidenav.close()"
       >
-        <mat-icon>home</mat-icon>
-        <span>Загальне</span>
+        <mat-icon>add</mat-icon>
+        <span>Додати Церкву</span>
       </a>
 
-      <ng-template [ngIf]="churchExists">
+      <ng-template [ngIf]="churchInfo">
+        <a
+          mat-flat-button
+          [routerLink]="['', 'admin', 'overview', churchInfo.id]"
+          routerLinkActive="active-nav-link"
+          (click)="sidenav.close()"
+        >
+          <mat-icon>home</mat-icon>
+          <span>Загальне</span>
+        </a>
+
         <a
           mat-flat-button
           routerLink="advertisements"
@@ -103,7 +113,7 @@
         mat-icon-button
         matTooltip="Вийти із адмін панелі"
         matTooltipPosition="left"
-        (click)="sidenav.toggle(); exitFromAdminPanel()"
+        (click)="exitFromAdminPanel(); sidenav.close()"
       >
         <mat-icon>logout</mat-icon>
       </button>

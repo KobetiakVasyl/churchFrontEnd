@@ -1,46 +1,73 @@
 <section
-  fxLayout="column"
-  fxLayoutGap="10px"
-  class="centered-sized-container"
+  class="flex column wrap gap-1 container-2 self-vh-center mat-elevation-z4 border-radius-2"
   [@bounceInAnimation]
 >
-  <header
-    fxLayoutAlign="center"
-    class="border-bottom-primary"
-  >
-    <h2 class="no-spacing">Інформація про церкву</h2>
-  </header>
+  <h2 class="flex h-center no-spacing border-bottom-primary">Інформація про церкву</h2>
 
   <main
-    fxLayout="row"
-    fxLayoutGap="10px"
+    *ngIf="churchInfo"
+    class="flex wrap gap-1"
   >
-    <app-single-image-viewer [images]="churchInfo.images"></app-single-image-viewer>
+    <app-single-image-viewer
+      *ngIf="!!churchInfo.images.length"
+      class="flex grow-1"
+      [images]="churchInfo.images"
+    ></app-single-image-viewer>
 
-    <ul
-      fxLayout="column"
-      fxLayoutAlign="space-between"
-      class="no-spacing"
-    >
-      <li>Назва Церкви:</li>
-      <li>N\A</li>
-      <li>Населений пункт:</li>
-      <li>N\A</li>
-      <li>Деканат:</li>
-      <li>N\A</li>
-      <li>Єпархія:</li>
-      <li>N\A</li>
-      <li>Настоятель:</li>
-      <li>N\A</li>
-      <li>Контактна інформація:</li>
-      <li>N\A</li>
-    </ul>
+    <div class="flex column wrap gap-1 grow-5">
+      <div class="flex gap-1 wrap v-center h-space-between">
+        <app-church-property
+          class="grow-1"
+          key="Назва церкви"
+          [value]="churchInfo.name"
+        ></app-church-property>
+
+        <app-church-property
+          class="grow-1"
+          key="Населений пункт"
+          [value]="churchInfo.location"
+        ></app-church-property>
+      </div>
+
+      <div class="flex gap-1 wrap v-center h-space-between">
+        <app-church-property
+          class="grow-1"
+          key="Деканат"
+          [value]="churchInfo.deanery"
+        ></app-church-property>
+
+        <app-church-property
+          class="grow-1"
+          key="Єпархія"
+          [value]="churchInfo.diocese"
+        ></app-church-property>
+
+        <app-church-property
+          class="grow-1"
+          key="Настоятель"
+          [value]="churchInfo.prior"
+        ></app-church-property>
+      </div>
+
+      <h4 class="no-spacing border-bottom-primary">Контактна інформація</h4>
+
+      <div class="flex gap-1 wrap v-center h-space-between">
+        <app-church-property
+          class="grow-1"
+          key="Номер телефону"
+          [value]="churchInfo.phoneNumber"
+        ></app-church-property>
+
+        <app-church-property
+          class="grow-1"
+          key="Email"
+          [value]="churchInfo.email"
+        ></app-church-property>
+      </div>
+    </div>
   </main>
 
   <div class="radial-border"></div>
 
-  <footer>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, blanditiis dolor et incidunt itaque laborum optio pariatur, possimus quisquam sed sint soluta tempora voluptatibus! Ab animi
-    at autem blanditiis consectetur corporis culpa dolor dolore eius esse id ipsam ipsum iste molestiae omnis, praesentium ratione rem, repudiandae velit veniam voluptas voluptatum.
-  </footer>
+  <p>{{ churchInfo?.description }}</p>
 </section>

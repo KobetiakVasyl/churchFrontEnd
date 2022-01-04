@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Church, ChurchListItem, CreateChurchBody} from '../../interfaces/church.interfaces';
+import {IChurch, IChurchItem, ICreateChurch, IUpdateChurch} from '../../interfaces/church.interfaces';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import {take} from 'rxjs/operators';
@@ -12,17 +12,41 @@ export class ChurchService {
   constructor(private http: HttpClient) {
   }
 
-  create(body: CreateChurchBody): Observable<Church> {
-    return this.http.post<Church>(`${environment.url}/${this.route}/create`, body)
+  getById(id: string): Observable<IChurch> {
+    let params = new HttpParams();
+
+    params = params.append('id', id);
+
+    return this.http.get<IChurch>(`${environment.url}/${this.route}`, {params})
       .pipe(take(1));
   }
 
-  search(searchValue: string): Observable<ChurchListItem[]> {
+  create(body: ICreateChurch): Observable<IChurch> {
+    return this.http.post<IChurch>(`${environment.url}/${this.route}/create`, body)
+      .pipe(take(1));
+  }
+
+  updateById(body: IUpdateChurch): Observable<IChurch> {
+    return this.http.put<IChurch>(`${environment.url}/${this.route}/update`, body)
+      .pipe(take(1));
+  }
+
+  uploadImage(churchId: string, images: File[]): Observable<void> {
+    const body = new FormData();
+
+    body.append('churchId', churchId);
+
+    images.forEach(image => body.append('image', image));
+
+    return this.http.post<void>(`${environment.url}/${this.route}/upload/images`, body)
+  }
+
+  search(searchValue: string): Observable<IChurchItem[]> {
     let params = new HttpParams();
 
-    params = params.append('search', searchValue);
+    params = params.append('searchTerm', searchValue);
 
-    return this.http.get<ChurchListItem[]>(`${environment.url}/${this.route}/search`, {params})
+    return this.http.get<IChurchItem[]>(`${environment.url}/${this.route}/search`, {params})
       .pipe(take(1));
   }
 }

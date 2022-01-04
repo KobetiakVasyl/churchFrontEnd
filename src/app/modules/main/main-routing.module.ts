@@ -18,22 +18,22 @@ const routes: Routes = [
         component: ChurchSelectionPageComponent
       },
       {
-        path: 'overview/:churchId',
+        path: 'overview/:id',
         component: OverviewPageComponent,
         canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'pilgrimage/:churchId',
+        path: 'pilgrimage/:id',
         component: PilgrimagePageComponent,
         canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'advertisements/:churchId',
+        path: 'advertisements/:id',
         component: AdvertisementsPageComponent,
         canActivate: [CanActivateChurchInfoGuard]
       },
       {
-        path: 'schedule/:churchId',
+        path: 'schedule/:id',
         loadChildren: () => import('./modules/schedule/schedule.module').then(m => m.ScheduleModule),
         data: {editEnabled: false},
         canActivate: [CanActivateChurchInfoGuard]

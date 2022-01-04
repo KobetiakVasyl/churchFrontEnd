@@ -12,12 +12,12 @@ import {EditPilgrimagePageComponent} from './components/edit-pilgrimage-page/edi
 import {EditSchedulePageComponent} from './components/edit-schedule-page/edit-schedule-page.component';
 import {EditAdvertisementsPageComponent} from './components/edit-advertisements-page/edit-advertisements-page.component';
 import {AdminSettingsPageComponent} from './components/admin-settings-page/admin-settings-page.component';
-import { AdminAdvertisementItemPageComponent } from './components/edit-advertisement-item-page/admin-advertisement-item-page.component';
+import {AdminAdvertisementItemPageComponent} from './components/edit-advertisement-item-page/admin-advertisement-item-page.component';
 import {UploadImagesComponent} from './shared/components/upload-images/upload-images.component';
 import {ScheduleModule} from '../main/modules/schedule/schedule.module';
-import { CreateScheduleEventPageComponent } from './components/create-schedule-event-page/create-schedule-event-page.component';
-import { AdminSimpleTableComponent } from './shared/components/admin-simple-table/admin-simple-table.component';
-import { CreateChurchPageComponent } from './components/create-church-page/create-church-page.component';
+import {CreateScheduleEventPageComponent} from './components/create-schedule-event-page/create-schedule-event-page.component';
+import {AdminSimpleTableComponent} from './shared/components/admin-simple-table/admin-simple-table.component';
+import {CreateChurchPageComponent} from './components/create-church-page/create-church-page.component';
 
 @NgModule({
   declarations: [

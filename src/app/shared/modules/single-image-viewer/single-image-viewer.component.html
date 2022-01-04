@@ -1,22 +1,12 @@
-<div
-  fxLayout="column"
-  fxLayoutGap="10px"
->
+<div class="flex grow-1 column gap-1">
   <img
-    fxFlex="1 1 100"
-    class="hover"
+    class="hover grow-1"
     [src]="selectedImage.src"
     [alt]="selectedImage.alt"
     (click)="showFullImage()"
   >
 
-  <div
-    fxFlex="100"
-    fxLayout="row nowrap"
-    fxLayoutGap="20px"
-    fxLayoutAlign="space-between center"
-    fxLayoutAlign.lt-sm="center center"
-  >
+  <div class="flex h-space-between v-center gap-1">
     <button
       mat-mini-fab
       color="primary"

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../../../shared/services/API/auth.service';
 import {SnackbarService} from '../../../../../shared/services/local/snackbar.service';
+import {IChurch} from '../../../../../shared/interfaces/church.interfaces';
 
 @Component({
   selector: 'app-admin-layout',
@@ -10,7 +11,8 @@ import {SnackbarService} from '../../../../../shared/services/local/snackbar.ser
 })
 export class AdminLayoutComponent implements OnInit {
   isOpened = false;
-  churchExists = false;
+
+  churchInfo!:Partial<IChurch>;
 
   constructor(
     private snackbarService: SnackbarService,
@@ -20,16 +22,17 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.churchExists = !!JSON.parse(localStorage.getItem('churchInfo') as string)?.id;
+    this.churchInfo = JSON.parse(localStorage.getItem('churchInfo') as string);
   }
 
   exitFromAdminPanel(): void {
     this.authService.logout();
 
-    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
+    const path = this.churchInfo
+      ? ['', 'overview', this.churchInfo.id]
+      : ['', 'church-selection'];
 
-    this.router.navigate(['', 'overview', id]);
-
-    this.snackbarService.success('Вихід успішно виконано');
+    this.router.navigate(path)
+      .then(() => this.snackbarService.success('Вихід успішно виконано'))
   }
 }

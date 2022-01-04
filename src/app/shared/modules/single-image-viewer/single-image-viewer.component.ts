@@ -8,7 +8,7 @@ import {ViewImageShowFullService} from '../../services/local/view-image-show-ful
   styleUrls: ['./single-image-viewer.component.scss']
 })
 export class SingleImageViewerComponent implements OnInit {
-  @Input() images: CardImage[] = [];
+  @Input() images: any[] = [];
 
   selectedImage: PilgrimageSelectedCard = {
     alt: '#',

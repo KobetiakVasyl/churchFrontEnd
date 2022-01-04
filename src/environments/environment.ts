@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   url: 'https://csheduler.herokuapp.com/api'
+  // url: 'https://29d3072efc664f.lhr.life/api'
 };
 
 /*

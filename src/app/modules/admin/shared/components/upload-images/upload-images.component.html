@@ -3,50 +3,95 @@
   hidden
   type="file"
   accept=".jpeg, .png"
-  (change)="handleAddImage($event)"
+  (change)="handleAddImage($any($event.target).files)"
 >
 
-<section
-  fxLayout="column"
-  fxLayoutGap="10px"
->
-  <strong class="border-bottom-primary">Завантажити фото</strong>
+<div class="flex column gap-1">
+  <div class="flex gap-1 v-center h-space-between border-bottom-primary">
+    <h4 class="no-spacing">Завантажити фото</h4>
 
-  <div
-    fxLayout="row"
-    fxLayoutGap="10px"
-  >
     <button
-      *ngIf="canEdit"
-      mat-stroked-button
+      mat-icon-button
       type="button"
       color="primary"
-      class="add-image-button"
       matTooltip="Додати фото"
-      [disabled]="maxImagesLength === images.length"
+      matTooltipPosition="before"
+      [disabled]="isDisabled"
       (click)="openFileSelection()"
     >
       <mat-icon>add</mat-icon>
     </button>
+  </div>
 
-    <div
-      *ngFor="let img of images; let i = index"
-      class="image"
-    >
-      <img
-        fxFlex="1 1 100px"
-        [src]="img.src"
-        [alt]="img.alt"
-      >
+  <div
+    *ngIf="images"
+    class="flex wrap gap-1 v-flex-start"
+  >
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>Раніше завантажені</mat-expansion-panel-header>
 
-      <button
-        mat-button
-        color="warn"
-        type="button"
-        (click)="remove(i)"
+      <div class="flex column gap-1">
+        <div
+          *ngFor="let image of uploadedImages; let i = index"
+          class="uploaded-file-container"
+        >
+          <img
+            class="border-radius-2"
+            [src]="image.url"
+            [alt]="image.name"
+            (click)="handleImageSelect(image)"
+          >
+
+          <button
+            mat-icon-button
+            type="button"
+            color="warn"
+            matTooltip="Скасувати"
+            matTooltipPosition="before"
+            [disabled]="isDisabled"
+            (click)="handleRemoveFile(i)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+
+    <div class="flex column gap-1 grow-1 container-1 mat-elevation-z1">
+      <div class="flex v-center gap-1">
+        <mat-icon>add_photo_alternate</mat-icon>
+        <span>Нові фото</span>
+      </div>
+
+      <div
+        *ngFor="let image of notUploadedImages; let i = index"
+        class="flex v-center gap-1"
       >
-        Видалити
-      </button>
+        <div
+          class="flex v-center gap-1 file-name-container grow-7"
+          [matTooltip]="image.name"
+        >
+          <mat-icon color="primary">image</mat-icon>
+
+          <span class="file-name">
+          {{ image.name }}
+        </span>
+        </div>
+
+        <button
+          mat-icon-button
+          type="button"
+          color="warn"
+          matTooltip="Скасувати"
+          matTooltipPosition="before"
+          [disabled]="isDisabled"
+          (click)="handleRemoveFile(i)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <span *ngIf="!notUploadedImages?.length">Поки що немає завантажених фото</span>
     </div>
   </div>
-</section>
+</div>

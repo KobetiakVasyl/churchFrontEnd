@@ -34,59 +34,56 @@
         <span>Обрати Церкву</span>
       </a>
 
-      <a
-        *ngIf="isChurchSelected()"
-        mat-flat-button
-        routerLink="overview"
-        routerLinkActive="active-nav-link"
-        (click)="navigate(sidenav, 'overview')"
-      >
-        <mat-icon>home</mat-icon>
-        <span>Опис Церкви</span>
-      </a>
+      <ng-template [ngIf]="!!churchInfo">
+        <a
+          mat-flat-button
+          routerLink="overview"
+          routerLinkActive="active-nav-link"
+          (click)="navigate(sidenav, 'overview')"
+        >
+          <mat-icon>home</mat-icon>
+          <span>Опис Церкви</span>
+        </a>
+
+        <a
+          mat-flat-button
+          routerLink="advertisements"
+          routerLinkActive="active-nav-link"
+          (click)="navigate(sidenav, 'advertisements')"
+        >
+          <mat-icon>mail</mat-icon>
+          <span>Оголошення</span>
+        </a>
+
+        <a
+          mat-flat-button
+          routerLink="pilgrimage"
+          routerLinkActive="active-nav-link"
+          (click)="navigate(sidenav, 'pilgrimage')"
+        >
+          <mat-icon>commute</mat-icon>
+          <span>Паломництво</span>
+        </a>
+
+        <a
+          mat-flat-button
+          routerLink="schedule"
+          routerLinkActive="active-nav-link"
+          (click)="navigate(sidenav, 'schedule')"
+        >
+          <mat-icon>today</mat-icon>
+          <span>Розпорядок</span>
+        </a>
+      </ng-template>
 
       <a
-        *ngIf="isChurchSelected()"
+        *ngIf="!isAuthorized()"
         mat-flat-button
-        routerLink="advertisements"
-        routerLinkActive="active-nav-link"
-        (click)="navigate(sidenav, 'advertisements')"
+        [routerLink]="['', 'auth', 'login']"
       >
-        <mat-icon>mail</mat-icon>
-        <span>Оголошення</span>
+        <mat-icon>login</mat-icon>
+        <span>Увійти</span>
       </a>
-
-      <a
-        *ngIf="isChurchSelected()"
-        mat-flat-button
-        routerLink="pilgrimage"
-        routerLinkActive="active-nav-link"
-        (click)="navigate(sidenav, 'pilgrimage')"
-      >
-        <mat-icon>commute</mat-icon>
-        <span>Паломництво</span>
-      </a>
-
-      <a
-        *ngIf="isChurchSelected()"
-        mat-flat-button
-        routerLink="schedule"
-        routerLinkActive="active-nav-link"
-        (click)="navigate(sidenav, 'schedule')"
-      >
-        <mat-icon>today</mat-icon>
-        <span>Розпорядок</span>
-      </a>
-
-      <a
-        *ngIf="isChurchSelected()"
-        mat-flat-button
-        (click)="navigateToAdminPanel(sidenav)"
-      >
-        <mat-icon>admin_panel_settings</mat-icon>
-        <span>Адмін</span>
-      </a>
-
     </nav>
   </mat-sidenav>
 

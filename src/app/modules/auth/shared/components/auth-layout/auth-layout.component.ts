@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {TokenService} from '../../../../../shared/services/local/token.service';
 
 @Component({
   selector: 'app-auth-layout',
@@ -8,16 +9,19 @@ import {Router} from '@angular/router';
 })
 export class AuthLayoutComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   navigateToOverview(): void {
-    const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
+    const churchInfo = JSON.parse(localStorage.getItem('churchInfo') as string);
 
-    this.router.navigate(['', 'overview', id]);
+    const path: string[] = churchInfo
+      ? ['', 'overview', churchInfo.id]
+      : ['', 'church-selection'];
+
+    this.router.navigate(path);
   }
 }

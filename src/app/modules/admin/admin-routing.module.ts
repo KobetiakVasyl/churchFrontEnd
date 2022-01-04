@@ -17,7 +17,7 @@ const routes: Routes = [
     component: AdminLayoutComponent,
     children: [
       {
-        path: 'overview',
+        path: 'overview/:id',
         component: EditOverviewPageComponent
       },
       {
