@@ -44,6 +44,10 @@ $align-content: start, center, space-between, space-around;
   display: flex;
 }
 
+.flex-important {
+  display: flex !important;
+}
+
 .column {
   flex-direction: column;
 }

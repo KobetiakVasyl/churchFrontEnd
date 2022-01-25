@@ -1,24 +1,24 @@
+export interface IRemoveResponse {
+  message: string;
+  success: boolean;
+}
+
+export interface IImage {
+  id: number;
+  name?: string;
+  url: string;
+}
+
 export interface AdvertisementCardInfo {
   title: string;
   description: string;
-  images: CardImage[];
+  images: IImage[];
 }
 
-export interface PilgrimageCardInfo {
-  title: string;
-  description: string;
-  images: CardImage[];
-}
-
-export interface PilgrimageSelectedCard extends CardImage {
+export interface ISelectedImage extends IImage {
   isFirst: boolean;
   isLast: boolean;
   indexInImagesArray: number;
-}
-
-export interface CardImage {
-  src: string;
-  alt: string;
 }
 
 export interface Week {

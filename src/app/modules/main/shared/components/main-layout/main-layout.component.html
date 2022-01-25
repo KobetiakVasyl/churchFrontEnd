@@ -34,7 +34,7 @@
         <span>Обрати Церкву</span>
       </a>
 
-      <ng-template [ngIf]="!!churchInfo">
+      <ng-template [ngIf]="isChurchSelected()">
         <a
           mat-flat-button
           routerLink="overview"
@@ -55,15 +55,15 @@
           <span>Оголошення</span>
         </a>
 
-        <a
-          mat-flat-button
-          routerLink="pilgrimage"
-          routerLinkActive="active-nav-link"
-          (click)="navigate(sidenav, 'pilgrimage')"
-        >
-          <mat-icon>commute</mat-icon>
-          <span>Паломництво</span>
-        </a>
+<!--        <a-->
+<!--          mat-flat-button-->
+<!--          routerLink="pilgrimage"-->
+<!--          routerLinkActive="active-nav-link"-->
+<!--          (click)="navigate(sidenav, 'pilgrimage')"-->
+<!--        >-->
+<!--          <mat-icon>commute</mat-icon>-->
+<!--          <span>Паломництво</span>-->
+<!--        </a>-->
 
         <a
           mat-flat-button

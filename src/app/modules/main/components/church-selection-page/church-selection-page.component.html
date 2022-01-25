@@ -1,32 +1,21 @@
 <section
-  fxFlex="50"
-  fxFlex.lt-md="80"
-  fxFlex.lt-sm="100"
-  fxLayout="column"
-  fxLayoutGap="50px"
+  class="flex column self-vh-center"
+  [class.gap-1]="!!selectedChurch"
+  [class.gap-3]="!selectedChurch"
 >
-  <div
-    fxLayout="column"
-    fxLayoutAlign="center center"
-  >
+  <div class="flex column v-center h-center">
     <h1>Оберіть церкву</h1>
-    <span>Схоже що ви не обрали церкву, за якою б хотіли стежити. Оберіть церкву зі списку нижче</span>
+    <span *ngIf="!selectedChurch">Схоже що ви не обрали церкву, за якою б хотіли стежити. Оберіть церкву зі списку нижче</span>
   </div>
 
-  <form
-    fxLayout="column"
-    fxLayoutGap="10px"
-    [formGroup]="formGroup"
-    (ngSubmit)="submit()"
-  >
-    <mat-form-field>
+    <mat-form-field class="grow-1">
       <mat-label>Оберіть церкву зі списку</mat-label>
 
       <input
         matInput
         type="text"
-        formControlName="name"
         placeholder="Почніть вводити назву та оберіть зі списку"
+        [formControl]="nameFormControl"
         [matAutocomplete]="auto"
       >
 
@@ -41,18 +30,8 @@
 
       <mat-hint>Список можна фітрувати вводячи</mat-hint>
 
-      <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
+      <mat-error *ngIf="nameFormControl.hasError('required')">
         Це поле є обов'язкове. Введіть назву церкви та оберіть її зі списку
       </mat-error>
     </mat-form-field>
-
-    <button
-      mat-stroked-button
-      type="submit"
-      color="primary"
-      [disabled]="formGroup.invalid"
-    >
-      Обрати
-    </button>
-  </form>
 </section>

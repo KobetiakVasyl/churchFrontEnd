@@ -22,8 +22,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       .pipe(
         retry(1),
         catchError((error: HttpErrorResponse) => {
+          console.log(error);
           this.snackbarService
-            .error(`Error Code: ${error.error.statusCode}\nMessage: ${error.error.message}`);
+            .error(`Error Code: ${error.error?.statusCode}\nMessage: ${error.error.message}`);
 
           return throwError(error);
         })

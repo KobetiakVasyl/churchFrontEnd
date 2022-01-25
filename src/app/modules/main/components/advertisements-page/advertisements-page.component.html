@@ -1,17 +1,17 @@
 <section
-  *ngIf="cardsInfo.length; else noAdvertisementsBlock"
-  fxLayout="column"
-  fxLayoutGap="10px"
+  *ngIf="announcements.length; else noAnnouncementBlock"
+  class="flex column gap-1"
 >
-  <app-advertisement-card
-    *ngFor="let cardInfo of cardsInfo"
-    [cardInfo]="cardInfo"
-    (imageSelect)="handleImageSelect($event)"
-  ></app-advertisement-card>
+  <h2>Оголошення</h2>
+
+  <app-info-card
+    *ngFor="let announcement of announcements"
+    [cardData]="announcement"
+  ></app-info-card>
 </section>
 
-<ng-template #noAdvertisementsBlock>
-  <strong fxLayoutAlign="center center">
+<ng-template #noAnnouncementBlock>
+  <strong class="flex vh-center container-2">
     Немає оголошень. Щоб оновити дані будь ласка оновіть сторінку
   </strong>
 </ng-template>

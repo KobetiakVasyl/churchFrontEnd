@@ -2,7 +2,7 @@ import {Component, ElementRef, forwardRef, Input, ViewChild} from '@angular/core
 import {FileService} from '../../services/file.service';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {ViewImageShowFullService} from '../../../../../shared/services/local/view-image-show-full.service';
-import {IChurchImage} from '../../../../../shared/interfaces/church.interfaces';
+import {IImage} from '../../../../../shared/interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-upload-images',
@@ -25,8 +25,8 @@ export class UploadImagesComponent implements ControlValueAccessor {
   };
 
   images: File[] | null | any = null;
-  uploadedImages: IChurchImage[] = [];
-  notUploadedImages: IChurchImage[] = [];
+  uploadedImages: IImage[] = [];
+  notUploadedImages: IImage[] = [];
 
   isDisabled = false;
 
@@ -40,8 +40,8 @@ export class UploadImagesComponent implements ControlValueAccessor {
     this.images = images;
 
     if (Array.isArray(images)) {
-      this.uploadedImages = images.filter((image: IChurchImage) => image.hasOwnProperty('id'));
-      this.notUploadedImages = images.filter((image: IChurchImage) => !image.hasOwnProperty('id'));
+      this.uploadedImages = images.filter((image: IImage) => image.hasOwnProperty('id'));
+      this.notUploadedImages = images.filter((image: IImage) => !image.hasOwnProperty('id'));
     }
   }
 
@@ -103,6 +103,6 @@ export class UploadImagesComponent implements ControlValueAccessor {
   }
 
   handleImageSelect(image: any) {
-    this.viewImageShowFullService.selectImage({src: image.url, alt: 'Image'});
+    this.viewImageShowFullService.selectImage({url: image.url, id: image.id});
   }
 }

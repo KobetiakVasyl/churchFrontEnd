@@ -6,15 +6,9 @@
 
   <main
     *ngIf="churchInfo"
-    class="flex wrap gap-1"
+    class="flex column gap-1"
   >
-    <app-single-image-viewer
-      *ngIf="!!churchInfo.images.length"
-      class="flex grow-1"
-      [images]="churchInfo.images"
-    ></app-single-image-viewer>
-
-    <div class="flex column wrap gap-1 grow-5">
+    <div class="flex column wrap gap-1">
       <div class="flex gap-1 wrap v-center h-space-between">
         <app-church-property
           class="grow-1"
@@ -65,6 +59,13 @@
         ></app-church-property>
       </div>
     </div>
+
+    <app-single-image-viewer
+      *ngIf="!!churchInfo.images.length"
+      alt="Church image"
+      class="flex grow-1"
+      [images]="churchInfo.images"
+    ></app-single-image-viewer>
   </main>
 
   <div class="radial-border"></div>

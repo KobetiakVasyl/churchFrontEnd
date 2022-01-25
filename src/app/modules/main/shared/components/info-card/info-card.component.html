@@ -1,0 +1,11 @@
+<section class="flex column gap-1 centered-sized-container mat-elevation-z4">
+  <h2 class="border-bottom-primary">{{ cardData.name }}</h2>
+
+  <app-single-image-viewer
+    *ngIf="cardData.images.length"
+    alt="Card image"
+    [images]="cardData.images"
+  ></app-single-image-viewer>
+
+  <p>{{ cardData.description }}</p>
+</section>

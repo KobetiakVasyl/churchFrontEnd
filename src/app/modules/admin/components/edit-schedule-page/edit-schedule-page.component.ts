@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {CalendarEvent} from '../../../../shared/interfaces/shared.interfaces';
 import {EditSchedulePageService} from '../../shared/services/edit-schedule-page.service';
@@ -8,7 +8,7 @@ import {EditSchedulePageService} from '../../shared/services/edit-schedule-page.
   templateUrl: './edit-schedule-page.component.html',
   styleUrls: ['./edit-schedule-page.component.scss'],
 })
-export class EditSchedulePageComponent {
+export class EditSchedulePageComponent implements OnInit, OnDestroy {
   events: CalendarEvent[] = [
     {
       date: '08:00',
@@ -27,11 +27,17 @@ export class EditSchedulePageComponent {
     }
   ];
 
-  dateControl = new FormControl(new Date());
+  dateFormControl = new FormControl(new Date());
 
   constructor(
     public editSchedulePageService: EditSchedulePageService
   ) {
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
   }
 
   removeEvent(event: CalendarEvent): void {

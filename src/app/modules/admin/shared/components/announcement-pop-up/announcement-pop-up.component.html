@@ -1,0 +1,67 @@
+<div class="flex-important h-space-between v-center">
+  <h2 class="no-spacing">{{ data.title }}</h2>
+
+  <button
+    mat-icon-button
+    color="primary"
+    (click)="dialogRef.close(null)"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<div
+  class="flex column gap-1"
+  [formGroup]="formGroup"
+>
+  <mat-form-field>
+    <mat-label>Заголовок</mat-label>
+
+    <input
+      matInput
+      required
+      type="text"
+      formControlName="name"
+      placeholder="Введіть заголовок..."
+    >
+
+    <mat-hint>Обов'язкове поле</mat-hint>
+
+    <mat-error *ngIf="nameFormControl.hasError('required')">
+      Це поле є обов'язковим
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Опис</mat-label>
+
+    <textarea
+      matInput
+      required
+      rows="5"
+      type="text"
+      placeholder="Введіть короткий опис..."
+      formControlName="description"
+    ></textarea>
+
+    <mat-hint>Обов'язкове поле</mat-hint>
+
+    <mat-error *ngIf="descriptionFormControl.hasError('required')">
+      Це поле є обов'язковим
+    </mat-error>
+  </mat-form-field>
+</div>
+
+<div
+  mat-dialog-actions
+  class="h-flex-end"
+>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="formGroup.invalid"
+    (click)="submit()"
+  >
+    {{ data.buttonText }}
+  </button>
+</div>

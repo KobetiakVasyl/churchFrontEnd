@@ -22,11 +22,11 @@ const routes: Routes = [
         component: OverviewPageComponent,
         canActivate: [CanActivateChurchInfoGuard]
       },
-      {
-        path: 'pilgrimage/:id',
-        component: PilgrimagePageComponent,
-        canActivate: [CanActivateChurchInfoGuard]
-      },
+      // {
+      //   path: 'pilgrimage/:id',
+      //   component: PilgrimagePageComponent,
+      //   canActivate: [CanActivateChurchInfoGuard]
+      // },
       {
         path: 'advertisements/:id',
         component: AdvertisementsPageComponent,

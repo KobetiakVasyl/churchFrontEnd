@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CardImage, PilgrimageSelectedCard} from '../../interfaces/shared.interfaces';
+import {ISelectedImage} from '../../interfaces/shared.interfaces';
 import {ViewImageShowFullService} from '../../services/local/view-image-show-full.service';
+import {IImage} from '../../interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-single-image-viewer',
@@ -8,11 +9,12 @@ import {ViewImageShowFullService} from '../../services/local/view-image-show-ful
   styleUrls: ['./single-image-viewer.component.scss']
 })
 export class SingleImageViewerComponent implements OnInit {
-  @Input() images: any[] = [];
+  @Input() alt: string = 'N/A';
+  @Input() images: IImage[] = [];
 
-  selectedImage: PilgrimageSelectedCard = {
-    alt: '#',
-    src: '#',
+  selectedImage: ISelectedImage = {
+    id: 0,
+    url: '#',
     indexInImagesArray: 0,
     isFirst: true,
     isLast: true
@@ -23,8 +25,8 @@ export class SingleImageViewerComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.images.length) {
-      this.selectedImage.alt = this.images[0].alt;
-      this.selectedImage.src = this.images[0].src;
+      this.selectedImage.id = this.images[0].id;
+      this.selectedImage.url = this.images[0].url;
       this.selectedImage.isLast = this.images.length === 1;
     }
   }
@@ -37,14 +39,14 @@ export class SingleImageViewerComponent implements OnInit {
     this.selectedImage.isFirst = nextI <= 0;
     this.selectedImage.indexInImagesArray = nextI;
 
-    this.selectedImage.src = this.images[nextI].src;
-    this.selectedImage.alt = this.images[nextI].alt;
+    this.selectedImage.id = this.images[nextI].id;
+    this.selectedImage.url = this.images[nextI].url;
   }
 
   showFullImage(): void {
     this.viewImageShowFullService.selectImage({
-      alt: this.selectedImage.alt,
-      src: this.selectedImage.src
+      id: this.selectedImage.id,
+      url: this.selectedImage.url
     });
   }
 }

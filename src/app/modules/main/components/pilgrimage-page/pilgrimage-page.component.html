@@ -1,16 +1,17 @@
 <section
-  *ngIf="cardsInfo.length; else noPilgrimagesBlock"
-  fxLayout="column"
-  fxLayoutGap="10px"
+  *ngIf="pilgrimages.length; else noAnnouncementBlock"
+  class="flex column gap-1"
 >
-  <app-pilgrimage-card
-    *ngFor="let cardInfo of cardsInfo"
-    [cardInfo]="cardInfo"
-  ></app-pilgrimage-card>
+  <h2>Оголошення</h2>
+
+  <app-info-card
+    *ngFor="let pilgrimage of pilgrimages"
+    [cardData]="pilgrimage"
+  ></app-info-card>
 </section>
 
-<ng-template #noPilgrimagesBlock>
-  <strong fxLayoutAlign="center center">
+<ng-template #noAnnouncementBlock>
+  <strong class="flex vh-center container-2">
     Немає оголошень. Щоб оновити дані будь ласка оновіть сторінку
   </strong>
 </ng-template>

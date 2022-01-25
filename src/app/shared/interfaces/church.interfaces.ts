@@ -1,17 +1,13 @@
+import {IImage} from './shared.interfaces';
+
 export interface IChurch extends IChurchItem {
   location: string;
   email: string;
   phoneNumber: string;
   description: string;
-  images: IChurchImage[];
+  images: IImage[];
   createdAt: string;
   updatedAt: string;
-}
-
-export interface IChurchImage  {
-  readonly id: number;
-  readonly name?: string;
-  readonly url: string;
 }
 
 export interface IChurchItem {

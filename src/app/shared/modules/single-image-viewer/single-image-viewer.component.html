@@ -1,32 +1,32 @@
-<div class="flex grow-1 column gap-1">
+<div class="flex image-container column h-space-between gap-1 relative">
+  <button
+    mat-mini-fab
+    color="primary"
+    class="image-button image-button__previous"
+    [disabled]="selectedImage.isFirst"
+    (click)="changeImage(-1)"
+  >
+    <mat-icon>arrow_left</mat-icon>
+  </button>
+
   <img
-    class="hover grow-1"
-    [src]="selectedImage.src"
-    [alt]="selectedImage.alt"
+    class="hover w100p"
+    [alt]="alt"
+    [src]="selectedImage.url"
     (click)="showFullImage()"
   >
 
-  <div class="flex h-space-between v-center gap-1">
-    <button
-      mat-mini-fab
-      color="primary"
-      [disabled]="selectedImage.isFirst"
-      (click)="changeImage(-1)"
-    >
-      <mat-icon>arrow_left</mat-icon>
-    </button>
+  <strong class="page-info mat-elevation-z2 border-radius-2">
+    {{ selectedImage.indexInImagesArray + 1 }} із {{ images.length }}
+  </strong>
 
-    <strong>
-      {{ selectedImage.indexInImagesArray + 1 }} із {{ images.length }}
-    </strong>
-
-    <button
-      mat-mini-fab
-      color="primary"
-      [disabled]="selectedImage.isLast"
-      (click)="changeImage(1)"
-    >
-      <mat-icon>arrow_right</mat-icon>
-    </button>
-  </div>
+  <button
+    mat-mini-fab
+    color="primary"
+    class="image-button image-button__next"
+    [disabled]="selectedImage.isLast"
+    (click)="changeImage(1)"
+  >
+    <mat-icon>arrow_right</mat-icon>
+  </button>
 </div>

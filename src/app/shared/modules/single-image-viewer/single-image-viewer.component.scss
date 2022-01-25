@@ -1,4 +1,36 @@
+.image-container, img {
+  max-width: 100%;
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
 img {
-  //min-width: 250px;
-  //min-height: 150px;
+  height: auto;
+  max-width: 100%;
+}
+
+.page-info, .image-button {
+  position: absolute;
+}
+
+.page-info {
+  top: 1rem;
+  right: 1rem;
+  background: white;
+  padding: .5rem .8rem;
+}
+
+.image-button {
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 101;
+
+  &__next {
+    right: 1rem;
+  }
+
+  &__previous {
+    left: 1rem;
+  }
 }

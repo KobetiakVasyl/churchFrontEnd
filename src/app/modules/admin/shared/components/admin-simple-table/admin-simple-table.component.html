@@ -40,6 +40,7 @@
     fxLayout="column"
   >
     <div
+      *ngIf="dataSource.data.length; else noDataBlock"
       fxHide.lt-md
       class="table-container"
     >
@@ -118,6 +119,10 @@
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
       </table>
     </div>
+
+    <ng-template #noDataBlock>
+      <strong>No data</strong>
+    </ng-template>
 
     <div
       fxLayout="column"

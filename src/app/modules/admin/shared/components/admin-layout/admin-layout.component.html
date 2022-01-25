@@ -35,11 +35,21 @@
         <span>Додати Церкву</span>
       </a>
 
+      <a
+        mat-flat-button
+        routerLinkActive="active-nav-link"
+        [routerLink]="['', 'admin', 'church-selection']"
+        (click)="sidenav.close()"
+      >
+        <mat-icon>search</mat-icon>
+        <span>Обрати Церкву</span>
+      </a>
+
       <ng-template [ngIf]="churchInfo">
         <a
           mat-flat-button
-          [routerLink]="['', 'admin', 'overview', churchInfo.id]"
           routerLinkActive="active-nav-link"
+          [routerLink]="['', 'admin', 'overview', churchInfo.id]"
           (click)="sidenav.close()"
         >
           <mat-icon>home</mat-icon>
@@ -48,28 +58,28 @@
 
         <a
           mat-flat-button
-          routerLink="advertisements"
           routerLinkActive="active-nav-link"
+          [routerLink]="['', 'admin', 'advertisements', churchInfo.id]"
           (click)="sidenav.close()"
         >
           <mat-icon>mail</mat-icon>
           <span>Оголошення</span>
         </a>
 
-        <a
-          mat-flat-button
-          routerLink="pilgrimage"
-          routerLinkActive="active-nav-link"
-          (click)="sidenav.close()"
-        >
-          <mat-icon>commute</mat-icon>
-          <span>Паломництво</span>
-        </a>
+<!--        <a-->
+<!--          mat-flat-button-->
+<!--          routerLink="pilgrimage"-->
+<!--          routerLinkActive="active-nav-link"-->
+<!--          (click)="sidenav.close()"-->
+<!--        >-->
+<!--          <mat-icon>commute</mat-icon>-->
+<!--          <span>Паломництво</span>-->
+<!--        </a>-->
 
         <a
           mat-flat-button
-          routerLink="schedule"
           routerLinkActive="active-nav-link"
+          [routerLink]="['', 'admin', 'schedule', churchInfo.id]"
           (click)="sidenav.close()"
         >
           <mat-icon>today</mat-icon>

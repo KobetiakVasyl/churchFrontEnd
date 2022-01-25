@@ -1,29 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
 
 import {TokenService} from '../../../../../shared/services/local/token.service';
-import {IChurch} from '../../../../../shared/interfaces/church.interfaces';
 
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
-export class MainLayoutComponent implements OnInit {
+export class MainLayoutComponent {
   isOpened = false;
-
-  churchInfo!: Partial<IChurch>;
 
   constructor(private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.churchInfo = JSON.parse(localStorage.getItem('churchInfo') as string);
+  isChurchSelected(): boolean {
+    return !!JSON.parse(localStorage.getItem('churchInfo') as string);
   }
 
-  isChurchSelected(): boolean {
-    return !!this.churchInfo;
+  isAuthorized(): boolean {
+    return TokenService.isAuthorized();
   }
 
   navigate(sidenav: MatSidenav, path: string): void {
@@ -34,18 +31,17 @@ export class MainLayoutComponent implements OnInit {
     sidenav.close();
   }
 
-  isAuthorized(): boolean {
-    return TokenService.isAuthorized();
-  }
-
   navigateToAdminPanel(): void {
-    if (!this.isAuthorized()){
-      return;
-    }
+    if (!this.isAuthorized()) return;
 
-    const path = !!this.churchInfo
-      ? ['', 'admin', 'overview', this.churchInfo.id]
-      : ['', 'admin', 'church', 'create'];
+    const path = ['', 'admin'];
+
+    if (this.isChurchSelected()) {
+      const {id} = JSON.parse(localStorage.getItem('churchInfo') as string);
+      path.push('overview', id);
+    } else {
+      path.push('church', 'create');
+    }
 
     this.router.navigate(path);
   }

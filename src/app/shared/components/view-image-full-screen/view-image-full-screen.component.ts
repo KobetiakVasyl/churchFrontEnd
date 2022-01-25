@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {CardImage} from '../../interfaces/shared.interfaces';
 import {ViewImageShowFullService} from '../../services/local/view-image-show-full.service';
 import {Subscription} from 'rxjs';
+import {IImage} from '../../interfaces/shared.interfaces';
 
 @Component({
   selector: 'app-view-image-full-screen',
@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./view-image-full-screen.component.scss']
 })
 export class ViewImageFullScreenComponent implements OnInit, OnDestroy {
-  img: CardImage | null = null;
+  img: IImage | null = null;
 
   subscriptions = new Subscription();
 
@@ -17,7 +17,7 @@ export class ViewImageFullScreenComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.viewImageShowFullService.imageSelected
+    this.viewImageShowFullService.imageSelected$
       .subscribe(img => this.img = img);
   }
 

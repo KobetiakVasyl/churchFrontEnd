@@ -1,3 +1,5 @@
+@use 'src/app/shared/styles/variables' as *;
+
 section {
-  margin: auto;
+  max-width: $max-width-sm;
 }
