@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin style($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent-palette: map.get($color-config, 'accent');
+  $padding: 16px;
+
+  mat-card {
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  mat-card-title-group {
+    padding: $padding;
+    background-color: mat.get-color-from-palette($accent-palette, 100);
+    color: mat.get-contrast-color-from-palette($accent-palette, 200)
+  }
+
+  mat-card-content, mat-card-actions {
+    padding: $padding;
+  }
+}

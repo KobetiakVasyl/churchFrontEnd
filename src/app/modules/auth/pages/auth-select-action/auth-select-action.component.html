@@ -1,0 +1,31 @@
+<div class="flex wrap gap-3 h-center v-center auth-links-wrapper">
+  <a
+    mat-flat-button
+    color="accent"
+    class="auth-link auth-link--without-sign-in border-radius-3"
+    [routerLink]="['', 'select-church']"
+  >
+    <i class="material-icons-outlined self-center">how_to_reg</i>
+    Continue without authentication
+  </a>
+
+  <a
+    mat-flat-button
+    color="accent"
+    class="auth-link auth-link--sign-in border-radius-3"
+    [routerLink]="['', 'auth', 'sign-in']"
+  >
+    <i class="material-icons-outlined self-center">login</i>
+    Sign in
+  </a>
+
+  <a
+    mat-stroked-button
+    color="accent"
+    class="auth-link border-radius-3"
+    [routerLink]="['', 'auth', 'sign-up']"
+  >
+    <i class="material-icons-outlined self-center">app_registration</i>
+    Sign up
+  </a>
+</div>

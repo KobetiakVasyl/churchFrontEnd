@@ -1,0 +1,25 @@
+<mat-card
+  *ngIf="churchInfo"
+  class="border-radius-3 grow-1"
+>
+  <mat-card-title-group>
+    <mat-card-title>{{ churchInfo.name }}</mat-card-title>
+    <mat-card-subtitle>{{ churchInfo.prior }}</mat-card-subtitle>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <ul>
+      <li>Єпархія: {{ churchInfo.diocese }}</li>
+      <li>Деканат: {{ churchInfo.deanery }}</li>
+    </ul>
+  </mat-card-content>
+
+  <a
+    mat-raised-button
+    color="accent"
+    class="select-church-button"
+    [routerLink]="['', 'overview', churchInfo.id]"
+  >
+    Select
+  </a>
+</mat-card>

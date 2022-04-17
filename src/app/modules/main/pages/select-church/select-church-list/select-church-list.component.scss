@@ -1,0 +1,46 @@
+@use '~src/app/shared/styles/breakpoints';
+
+app-select-church-item {
+  width: 100%;
+}
+
+.scroll-to-top-button {
+  position: fixed;
+  right: -100%;
+  bottom: 1rem;
+  transition: right 300ms ease-in-out;
+
+  &--opened {
+    right: 1rem;
+  }
+}
+
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  app-select-church-item {
+    max-width: 30%;
+    min-width: 300px;
+  }
+}
+
+@for $i from 0 through 499 {
+  .select-church-item--#{$i} {
+    opacity: 0;
+    margin-left: -20%;
+    animation: pop-up 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55) #{$i * 200}ms forwards;
+  }
+}
+
+@keyframes pop-up {
+  0% {
+    opacity: 0;
+    margin-left: -20%;
+  }
+  80% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <i class="material-icons-outlined">home</i>
+  {{ authTransferDataService.toolbarTitle$ | async | titlecase }}
+</mat-toolbar>
+
+<div class="container-2">
+  <router-outlet></router-outlet>
+</div>

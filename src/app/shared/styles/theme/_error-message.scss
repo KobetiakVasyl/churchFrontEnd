@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin style($theme) {
+  $color-config: mat.get-color-config($theme);
+  $warn-palette: map.get($color-config, 'warn');
+
+  .error-message {
+    padding: .3rem .5rem;
+    text-align: center;
+    color: mat.get-color-from-palette($warn-palette);
+  }
+}

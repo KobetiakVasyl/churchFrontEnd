@@ -1,0 +1,33 @@
+@use '../../../../../node_modules/@angular/material/index' as mat;
+@use 'error-message';
+@use 'mat-card';
+
+@include mat.core();
+
+$app-primary: mat.define-palette(mat.$grey-palette, 200, 100, 400);
+$app-accent: mat.define-palette(mat.$cyan-palette, 100, 50, 200, 200);
+$app-warn: mat.define-palette(mat.$red-palette, 400, A200, 800);
+
+$mat-form-field-primary: mat.define-palette(mat.$cyan-palette, 600, 400, 900);
+$mat-form-field-accent: mat.define-palette(mat.$grey-palette, 800, 600, 900);
+
+$app-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn
+  )
+));
+
+$mat-form-field-theme: mat.define-light-theme((
+  color: (
+    primary: $mat-form-field-primary,
+    accent: $mat-form-field-accent,
+    warn: $app-warn
+  )
+));
+
+@include mat.all-component-themes($app-theme);
+@include mat.form-field-theme($mat-form-field-theme);
+@include error-message.style($app-theme);
+@include mat-card.style($app-theme);

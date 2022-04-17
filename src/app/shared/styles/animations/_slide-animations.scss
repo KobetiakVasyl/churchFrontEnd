@@ -1,0 +1,36 @@
+$slide-from-right: slide-from-right;
+$slide-from-left: slide-from-left;
+$opacity-slide-from-top: opacity-slide-from-top;
+
+@keyframes opacity-slide-from-top {
+  from {
+    margin-top: -10%;
+    opacity: 0;
+  }
+
+  to {
+    margin-top: initial;
+    opacity: 1;
+  }
+}
+
+
+@keyframes slide-from-right {
+  from {
+    margin-right: -100%;
+  }
+
+  to {
+    margin-right: initial;
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    margin-left: -100%;
+  }
+
+  to {
+    margin-left: initial;
+  }
+}

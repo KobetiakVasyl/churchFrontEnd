@@ -1,0 +1,17 @@
+@mixin label-with-icon() {
+  mat-form-field mat-label {
+    i {
+      margin-right: .3rem;
+    }
+
+    @extend .v-center;
+  }
+
+  mat-form-field label > .mat-placeholder-required {
+    vertical-align: top !important;
+  }
+
+  mat-form-field mat-label {
+    display: inline-flex !important;
+  }
+}

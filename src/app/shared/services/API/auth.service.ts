@@ -1,0 +1,44 @@
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable, take} from "rxjs";
+import {
+  IRequestResetPasswordBody,
+  IResetPasswordBody,
+  ISignInBody,
+  ISignInResponse, ISignUpBody
+} from "../../interfaces/auth.interfaces";
+import {environment} from "../../../../environments/environment";
+import {ELocalStorage} from "../../enums/local-storage.enums";
+
+@Injectable({providedIn: 'root'})
+export class AuthService {
+  private readonly route = 'auth';
+
+  constructor(private readonly http: HttpClient) {
+  }
+
+  signIn(body: ISignInBody): Observable<ISignInResponse> {
+    return this.http.post<ISignInResponse>(`${environment.URL}/${this.route}/signin`, body)
+      .pipe(take(1));
+  }
+
+  signUp(body: ISignUpBody): Observable<void> {
+    return this.http.post<void>(`${environment.URL}/${this.route}/signup`, body)
+      .pipe(take(1));
+  }
+
+  sendEmailToResetPassword(body: IRequestResetPasswordBody): Observable<void> {
+    return this.http.post<void>(`${environment.URL}/${this.route}/restore`, body)
+      .pipe(take(1));
+  }
+
+  resetPassword(body: IResetPasswordBody): Observable<void> {
+    return this.http.put<void>(`${environment.URL}/${this.route}/update/password`, body)
+      .pipe(take(1));
+  }
+
+  static signOut(): void {
+    localStorage.removeItem(ELocalStorage.TOKEN);
+    localStorage.removeItem(ELocalStorage.USER);
+  }
+}

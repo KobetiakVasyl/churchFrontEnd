@@ -1,0 +1,19 @@
+$toXSmall: 599.98px;
+$fromXSmall: 600px;
+
+$toSmall: 959.98px;
+$fromSmall: 960px;
+
+$toMedium: 1279.98px;
+$fromMedium: 1280px;
+
+$toLarge: 1919.98px;
+$fromLarge: 1920px;
+
+//@mixin MediaXSmall($styles-to-apply) {
+//  @media screen and (min-width: $XSmall + .2px) and (max-width: $Small) {
+//    @each $key, $value in $styles-to-apply {
+//      #{$key}: $value;
+//    }
+//  }
+//}

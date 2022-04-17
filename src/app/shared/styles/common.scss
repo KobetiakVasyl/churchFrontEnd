@@ -1,0 +1,35 @@
+$container-sizes: (
+  1: .5rem,
+  2: 1rem,
+  3: 1.5rem
+);
+
+$border-radius-sizes: (
+  1: 4px,
+  2: 8px,
+  3: 12px
+);
+
+@each $key, $value in $container-sizes {
+  .container-#{$key} {
+    padding: $value;
+
+    &-with-margin {
+      margin: $value / 1.5;
+    }
+  }
+}
+
+@each $key, $value in $border-radius-sizes {
+  .border-radius-#{$key} {
+    border-radius: $value !important;
+  }
+}
+
+.self-center {
+  margin: auto;
+}
+
+.text-align-center {
+  text-align: center;
+}

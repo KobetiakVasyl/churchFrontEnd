@@ -1,0 +1,46 @@
+$gap-values: (
+  1: .5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+);
+
+$justify-content-values: flex-start, flex-end, center, space-between;
+$align-items-values: flex-start, flex-end, center;
+$grow-values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+
+@each $key, $value in $gap-values {
+  .gap-#{$key} {
+    gap: $value;
+  }
+}
+
+@each $value in $justify-content-values {
+  .h-#{$value} {
+    justify-content: $value;
+  }
+}
+
+@each $value in $align-items-values {
+  .v-#{$value} {
+    align-items: $value;
+  }
+}
+
+@each $value in $grow-values {
+  .grow-#{$value} {
+    flex-grow: $value;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}

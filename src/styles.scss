@@ -1,0 +1,17 @@
+@use '~src/app/shared/styles/index';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-spinner {
+  display: inline-block;
+}
+
+@include index.label-with-icon();

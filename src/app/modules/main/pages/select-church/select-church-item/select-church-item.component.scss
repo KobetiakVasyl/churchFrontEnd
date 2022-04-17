@@ -1,0 +1,41 @@
+@use '~src/app/shared/styles/breakpoints';
+
+mat-card {
+  max-width: breakpoints.$toXSmall;
+  position: relative;
+  padding-right: max(100px, 25%);
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  a.select-church-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -1px;
+    width: max(100px, 25%);
+    transition: right 300ms ease-in-out;
+  }
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  mat-card {
+    padding-right: 0;
+
+    a.select-church-button {
+      right: -100%;
+    }
+
+    &:hover {
+      a.select-church-button {
+        right: 0;
+      }
+    }
+  }
+}
+
