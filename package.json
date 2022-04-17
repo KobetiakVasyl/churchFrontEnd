@@ -2,14 +2,17 @@
   "name": "church-front-end",
   "version": "0.0.0",
   "scripts": {
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~13.3.3",
+    "@angular/compiler-cli": "~13.3.0",
     "@angular/animations": "~13.3.0",
     "@angular/cdk": "^13.3.3",
     "@angular/common": "~13.3.0",
@@ -23,6 +26,10 @@
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
+  },
+  "engines": {
+    "node": "16.13.0",
+    "npm": "8.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.3",
