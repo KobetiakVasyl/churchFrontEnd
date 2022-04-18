@@ -1,36 +1,45 @@
-$slide-from-right: slide-from-right;
-$slide-from-left: slide-from-left;
-$opacity-slide-from-top: opacity-slide-from-top;
+@mixin slide-from-right($duration: 300ms, $distance: 100%, $delay: 0) {
+  animation: slide-from-right $duration ease-in-out $delay backwards;
 
-@keyframes opacity-slide-from-top {
-  from {
-    margin-top: -10%;
-    opacity: 0;
+  @keyframes slide-from-right {
+    from {
+      margin-right: -$distance;
+    }
+
+    to {
+      margin-right: initial;
+    }
   }
+}
 
-  to {
-    margin-top: initial;
-    opacity: 1;
+@mixin slide-from-left($duration: 300ms, $distance: 100%, $delay: 0) {
+  animation: slide-from-left $duration ease-in-out $delay backwards;
+
+  @keyframes slide-from-left {
+    from {
+      margin-left: -$distance;
+    }
+
+    to {
+      margin-left: initial;
+    }
+  }
+}
+
+@mixin opacity-slide-from-top($duration: 400ms, $distance: 10%, $delay: 0ms) {
+  animation: opacity-slide-from-top $duration ease-in-out $delay backwards;
+
+  @keyframes opacity-slide-from-top {
+    from {
+      margin-top: -$distance;
+      opacity: 0;
+    }
+
+    to {
+      margin-top: initial;
+      opacity: 1;
+    }
   }
 }
 
 
-@keyframes slide-from-right {
-  from {
-    margin-right: -100%;
-  }
-
-  to {
-    margin-right: initial;
-  }
-}
-
-@keyframes slide-from-left {
-  from {
-    margin-left: -100%;
-  }
-
-  to {
-    margin-left: initial;
-  }
-}

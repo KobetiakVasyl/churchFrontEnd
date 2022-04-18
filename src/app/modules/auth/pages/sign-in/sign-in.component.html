@@ -89,7 +89,7 @@
         color="accent"
         type="submit"
         class="submit-button"
-        [disabled]="formGroup.invalid"
+        [disabled]="formGroup.invalid || formGroup.pending"
       >
         Submit
       </button>

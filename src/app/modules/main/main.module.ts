@@ -9,6 +9,7 @@ import {SelectChurchItemComponent} from './pages/select-church/select-church-ite
 import {MaterialModule} from "../../shared/modules/material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import { SelectChurchListComponent } from './pages/select-church/select-church-list/select-church-list.component';
+import { ChurchOverviewComponent } from './pages/church-overview/church-overview.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SelectChurchListComponent } from './pages/select-church/select-church-l
     SelectChurchHeaderComponent,
     SelectChurchLayoutComponent,
     SelectChurchItemComponent,
-    SelectChurchListComponent
+    SelectChurchListComponent,
+    ChurchOverviewComponent
   ],
     imports: [
         CommonModule,

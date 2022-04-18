@@ -1,0 +1,47 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin style($theme) {
+  $color-config: mat.get-color-config($theme);
+
+  $accent-palette: map.get($color-config, 'accent');
+  $accent-color: mat.get-color-from-palette($accent-palette, 100);
+  $accent-contrast-color: mat.get-contrast-color-from-palette($accent-palette, 200);
+
+  $primary-palette: map.get($color-config, 'primary');
+  $primary-color: mat.get-color-from-palette($primary-palette, 200);
+  $primary-contrast-color: mat.get-contrast-color-from-palette($primary-palette, 100);
+
+  .church-overview {
+    overflow: hidden;
+
+    &__header, &__footer {
+      background-color: $accent-color;
+      color: $accent-contrast-color;
+    }
+
+    &__header {
+      padding-block-start: max(3rem, 15%);
+    }
+
+    &__header, &__main {
+      padding-block-end: 15%;
+    }
+
+    &__main, &__footer {
+      margin-top: -10%;
+      border-top-right-radius: 14px;
+      border-top-left-radius: 14px;
+    }
+
+    &__main {
+      background-color: $primary-color;
+      color: $primary-contrast-color;
+      min-height: 30vh;
+    }
+
+    &__footer {
+      padding-block-start: max(2.5rem, 7%);
+    }
+  }
+}

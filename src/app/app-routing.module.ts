@@ -9,13 +9,13 @@ const routes: Routes = [
     canActivateChild: [AuthenticationGuard]
   },
   {
-    path: '',
+    path: 'main',
     loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule),
   },
   {
     path: '**',
     pathMatch: 'full',
-    redirectTo: ''
+    redirectTo: 'auth'
   }
 ];
 
