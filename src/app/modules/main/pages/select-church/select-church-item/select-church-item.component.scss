@@ -1,7 +1,6 @@
 @use '~src/app/shared/styles/breakpoints';
 
 mat-card {
-  max-width: breakpoints.$toXSmall;
   position: relative;
   padding-right: max(100px, 25%);
 
@@ -19,7 +18,7 @@ mat-card {
     right: 0;
     bottom: -1px;
     width: max(100px, 25%);
-    transition: right 300ms ease-in-out;
+    transition: right 200ms ease-out;
   }
 }
 

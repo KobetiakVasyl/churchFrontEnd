@@ -1,0 +1,55 @@
+@use '~src/app/shared/styles/breakpoints';
+
+.church-overview, mat-progress-bar {
+  max-width: 65ch;
+}
+
+
+.church-overview__main {
+  animation: move-main 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.church-overview__footer {
+  animation: move-main 750ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.church-overview__title {
+  font-size: max(1.2rem, 2rem);
+}
+
+.church-overview__location {
+  display: inline-flex;
+
+  &, & > i {
+    line-height: 1rem;
+  }
+
+  & > i {
+    font-size: 1rem;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+a[mat-mini-fab] {
+  margin-right: auto;
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  a[mat-mini-fab] {
+    margin-right: initial;
+  }
+}
+
+@keyframes move-main {
+  from {
+    margin-top: -2%;
+    border-radius: 0;
+  }
+}
+

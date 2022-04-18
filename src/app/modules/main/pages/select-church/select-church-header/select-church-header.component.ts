@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {debounceTime, distinctUntilChanged, Subscription} from "rxjs";
+import {debounceTime, distinctUntilChanged, Observable, Subscription} from "rxjs";
 import {SelectChurchService} from "../../../shared/services/select-church.service";
+import {HttpLoadingService} from "../../../../../shared/services/local/http-loading.service";
 
 @Component({
   selector: 'app-select-church-header',
@@ -28,5 +29,9 @@ export class SelectChurchHeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  get showLoading(): Observable<boolean> {
+    return HttpLoadingService.showLoading$;
   }
 }

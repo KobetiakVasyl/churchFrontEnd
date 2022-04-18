@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SelectChurchService} from "../../../shared/services/select-church.service";
 import {ChurchService} from "../../../../../shared/services/API/church.service";
 import {debounceTime, fromEvent, map, Observable, Subscription} from "rxjs";
-import {HttpLoadingService} from "../../../../../shared/services/local/http-loading.service";
 import {ErrorMessageService} from "../../../../../shared/services/local/error-message.service";
 import {IChurchListItem} from "../../../../../shared/interfaces/church.interfaces";
 
@@ -41,10 +40,6 @@ export class SelectChurchListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  get showLoading(): Observable<boolean> {
-    return HttpLoadingService.showLoading$;
   }
 
   scrollToTop(): void {

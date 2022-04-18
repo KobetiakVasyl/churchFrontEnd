@@ -1,6 +1,7 @@
 <mat-card
   *ngIf="churchInfo"
-  class="border-radius-3 grow-1"
+  [class]="churchClassName"
+  class="border-radius-3"
 >
   <mat-card-title-group>
     <mat-card-title>{{ churchInfo.name }}</mat-card-title>
@@ -18,7 +19,7 @@
     mat-raised-button
     color="accent"
     class="select-church-button"
-    [routerLink]="['', 'overview', churchInfo.id]"
+    [routerLink]="['', 'main', 'overview', churchInfo.id]"
   >
     Select
   </a>

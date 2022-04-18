@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MainTransferDataService} from "../../../shared/services/main-transfer-data.service";
+import {Observable} from "rxjs";
+import {HttpLoadingService} from "../../../../../shared/services/local/http-loading.service";
 
 @Component({
   selector: 'app-select-church-layout',
@@ -13,5 +15,4 @@ export class SelectChurchLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.mainTransferDataService.changeToolbarTitle('select church');
   }
-
 }

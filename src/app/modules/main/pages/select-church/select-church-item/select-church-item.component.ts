@@ -6,12 +6,7 @@ import {IChurchListItem} from "../../../../../shared/interfaces/church.interface
   templateUrl: './select-church-item.component.html',
   styleUrls: ['./select-church-item.component.scss']
 })
-export class SelectChurchItemComponent implements OnInit {
+export class SelectChurchItemComponent {
   @Input() churchInfo!: IChurchListItem;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() churchClassName: string | null = null;
 }
