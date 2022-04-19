@@ -1,0 +1,54 @@
+<div class="flex gap-2 flex-direction-column v-center">
+  <nav class="flex gap-3">
+    <a
+      mat-mini-fab
+      color="accent"
+      [routerLink]="['', 'main', 'select-church']"
+    >
+      <i class="material-icons-outlined">west</i>
+    </a>
+
+    <div
+      *ngIf="route.params | async as routeParams"
+      class="church-details-links-wrapper flex gap-1"
+    >
+      <a
+        mat-mini-fab
+        color="accent"
+        matTooltip="Church details description"
+        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'overview']"
+      >
+        <i class="material-icons-outlined">description</i>
+      </a>
+
+      <a
+        mat-mini-fab
+        color="accent"
+        matTooltip="Church scheduled events"
+        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'schedule']"
+      >
+        <i class="material-icons-outlined">calendar_today</i>
+      </a>
+
+      <!--      <a-->
+      <!--        mat-mini-fab-->
+      <!--        color="accent"-->
+      <!--        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'pilgrimage']"-->
+      <!--      >-->
+      <!--        <i class="material-icons-outlined">west</i>-->
+      <!--      </a>-->
+
+      <!--      <a-->
+      <!--        mat-mini-fab-->
+      <!--        color="accent"-->
+      <!--        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'announcements']"-->
+      <!--      >-->
+      <!--        <i class="material-icons-outlined">west</i>-->
+      <!--      </a>-->
+    </div>
+  </nav>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

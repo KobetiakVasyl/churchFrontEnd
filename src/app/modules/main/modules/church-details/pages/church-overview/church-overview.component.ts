@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ErrorMessageService} from "../../../../shared/services/local/error-message.service";
+import {ErrorMessageService} from "../../../../../../shared/services/local/error-message.service";
 import {ActivatedRoute} from "@angular/router";
-import {ChurchService} from "../../../../shared/services/API/church.service";
+import {ChurchService} from "../../../../../../shared/services/API/church.service";
 import {catchError, Observable, switchMap, tap, throwError} from "rxjs";
-import {HttpLoadingService} from "../../../../shared/services/local/http-loading.service";
-import {IChurch} from "../../../../shared/interfaces/church.interfaces";
-import {MainTransferDataService} from "../../shared/services/main-transfer-data.service";
+import {HttpLoadingService} from "../../../../../../shared/services/local/http-loading.service";
+import {IChurch} from "../../../../../../shared/interfaces/church.interfaces";
+import {MainTransferDataService} from "../../../../shared/services/main-transfer-data.service";
 
 @Component({
   selector: 'app-church-overview',
@@ -25,9 +25,9 @@ export class ChurchOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mainTransferDataService.changeToolbarTitle('Church details');
+    this.mainTransferDataService.changeToolbarTitle('Church details: Overview');
 
-    this.churchInfo$ = this.route.params
+    this.churchInfo$ = (this.route.parent as ActivatedRoute).params
       .pipe(
         tap(() => this.errorMessageService.hideErrorMessage()),
         switchMap(params => this.churchService.getById(params['id'])),

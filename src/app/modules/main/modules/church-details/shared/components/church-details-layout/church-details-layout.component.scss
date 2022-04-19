@@ -1,0 +1,17 @@
+@use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
+
+.church-details-links-wrapper > a {
+  @include animations.slide-from-left-with-opacity(400ms, 40%, 200ms);
+}
+
+// TODO: check if it is fine with another pages
+nav {
+  min-width: min(65ch, 100%);
+}
+
+//@media screen and (min-width: breakpoints.$fromXSmall) {
+//  nav {
+//
+//  }
+//}

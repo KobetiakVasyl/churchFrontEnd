@@ -8,8 +8,7 @@ import {SelectChurchLayoutComponent} from './pages/select-church/select-church-l
 import {SelectChurchItemComponent} from './pages/select-church/select-church-item/select-church-item.component';
 import {MaterialModule} from "../../shared/modules/material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
-import { SelectChurchListComponent } from './pages/select-church/select-church-list/select-church-list.component';
-import { ChurchOverviewComponent } from './pages/church-overview/church-overview.component';
+import {SelectChurchListComponent} from './pages/select-church/select-church-list/select-church-list.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +16,14 @@ import { ChurchOverviewComponent } from './pages/church-overview/church-overview
     SelectChurchHeaderComponent,
     SelectChurchLayoutComponent,
     SelectChurchItemComponent,
-    SelectChurchListComponent,
-    ChurchOverviewComponent
+    SelectChurchListComponent
   ],
-    imports: [
-        CommonModule,
-        MainRoutingModule,
-        MaterialModule,
-        ReactiveFormsModule
-    ]
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
+  ]
 })
 export class MainModule {
 }

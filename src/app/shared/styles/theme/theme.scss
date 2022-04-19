@@ -6,7 +6,7 @@
 @include mat.core();
 
 $app-primary: mat.define-palette(mat.$grey-palette, 200, 100, 400);
-$app-accent: mat.define-palette(mat.$cyan-palette, 100, 50, 200, 200);
+$app-accent: mat.define-palette(mat.$cyan-palette, 100, 50, 200, 300);
 $app-warn: mat.define-palette(mat.$red-palette, 400, A200, 800);
 
 $mat-form-field-primary: mat.define-palette(mat.$cyan-palette, 600, 400, 900);

@@ -9,7 +9,8 @@ import {
   MAT_FORM_FIELD_PROVIDER,
   MAT_DIALOG_PROVIDER,
   HTTP_TOKEN_INTERCEPTOR_PROVIDER,
-  HTTP_ERROR_INTERCEPTOR_PROVIDER
+  HTTP_ERROR_INTERCEPTOR_PROVIDER,
+  LOCALE_ID_PROVIDER
 } from './shared/providers/index.provider';
 import {HttpClientModule} from "@angular/common/http";
 
@@ -28,7 +29,8 @@ import {HttpClientModule} from "@angular/common/http";
     MAT_FORM_FIELD_PROVIDER,
     MAT_DIALOG_PROVIDER,
     HTTP_TOKEN_INTERCEPTOR_PROVIDER,
-    HTTP_ERROR_INTERCEPTOR_PROVIDER
+    HTTP_ERROR_INTERCEPTOR_PROVIDER,
+    LOCALE_ID_PROVIDER
   ],
   bootstrap: [AppComponent]
 })

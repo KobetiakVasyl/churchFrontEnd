@@ -6,3 +6,17 @@ mat-form-field {
   width: 100%;
   @include animations.slide-from-left(400ms, 30%);
 }
+
+.larger-screen-spinner {
+  display: none;
+}
+
+@media screen and (min-width: 550px) {
+  mat-spinner[matSuffix] {
+    display: none;
+  }
+
+  .larger-screen-spinner {
+    display: inline-block;
+  }
+}

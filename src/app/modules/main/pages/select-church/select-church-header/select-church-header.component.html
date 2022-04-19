@@ -18,10 +18,20 @@
     >
 
     <mat-hint>Search will start automatically</mat-hint>
+
+    <mat-spinner
+      *ngIf="showLoading | async"
+      matSuffix
+      color="primary"
+      mode="indeterminate"
+      diameter="25"
+      strokeWidth="5"
+    ></mat-spinner>
   </mat-form-field>
 
   <mat-spinner
     *ngIf="showLoading | async"
+    class="larger-screen-spinner"
     color="primary"
     mode="indeterminate"
     diameter="25"

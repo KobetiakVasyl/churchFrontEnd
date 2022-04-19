@@ -26,6 +26,22 @@
   }
 }
 
+@mixin slide-from-left-with-opacity($duration: 300ms, $distance: 100%, $delay: 0) {
+  animation: slide-from-left-with-opacity $duration ease-in-out $delay backwards;
+
+  @keyframes slide-from-left-with-opacity {
+    from {
+      margin-left: -$distance;
+      opacity: 0;
+    }
+
+    to {
+      margin-left: initial;
+      opacity: 1;
+    }
+  }
+}
+
 @mixin opacity-slide-from-top($duration: 400ms, $distance: 10%, $delay: 0ms) {
   animation: opacity-slide-from-top $duration ease-in-out $delay backwards;
 

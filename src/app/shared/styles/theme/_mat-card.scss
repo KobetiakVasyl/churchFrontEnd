@@ -14,7 +14,7 @@
   mat-card-title-group {
     padding: $padding;
     background-color: mat.get-color-from-palette($accent-palette, 100);
-    color: mat.get-contrast-color-from-palette($accent-palette, 200)
+    color: mat.get-contrast-color-from-palette($accent-palette, 300)
   }
 
   mat-card-content, mat-card-actions {

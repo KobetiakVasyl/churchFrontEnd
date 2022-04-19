@@ -2,13 +2,16 @@
 
 .auth-links-wrapper {
   animation: show-links 500ms ease-in-out;
+  flex-direction: column;
 }
 
 .auth-link {
-  max-height: 200px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
   max-width: 230px;
   width: 100%;
-  padding-block: max(2.5rem);
   font-size: 1.2rem;
   white-space: pre-wrap;
 
@@ -18,14 +21,22 @@
     margin-bottom: 1rem;
   }
 
-  &--without-sign-in {
-    animation: move-link-block 500ms ease-in-out backwards;
-    max-height: 250px;
-    max-width: 250px;
+  &--without-sign-in, &--sign-in {
+    animation: move-link-inline 500ms ease-in-out;
+  }
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  .auth-links-wrapper {
+    flex-direction: row;
   }
 
-  &--sign-in {
-    animation: move-link-block 500ms ease-in-out;
+  .auth-link--without-sign-in {
+    animation: move-link-block 500ms ease-in-out backwards !important;
+  }
+
+  .auth-link--sign-in {
+    animation: move-link-block 500ms ease-in-out !important;
   }
 }
 
@@ -57,11 +68,5 @@
 
   100% {
     opacity: 1;
-  }
-}
-
-@media screen and (max-width: breakpoints.$toXSmall) {
-  .auth-link--without-sign-in, .auth-link--sign-in {
-    animation: move-link-inline 500ms ease-in-out;
   }
 }
