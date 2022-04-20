@@ -1,0 +1,31 @@
+<div class="flex flex-direction-column schedule-events-list-container">
+  <div class="mat-progress-bar-wrapper">
+    <mat-spinner
+      *ngIf="showLoading | async"
+      color="accent"
+      strokeWidth="7"
+      diameter="35"
+      mode="indeterminate"
+    ></mat-spinner>
+  </div>
+
+  <p *ngIf="!(showLoading | async) && !(events$ | async)?.length">
+    Немає подій на обрану дату
+  </p>
+
+  <div class="flex flex-direction-column gap-2">
+    <div
+      *ngFor="let event of events$ | async"
+      class="schedule-event-list-item mat-elevation-z2 border-radius-2 container-2"
+    >
+      <app-schedule-event-list-item [scheduleEvent]="event"></app-schedule-event-list-item>
+    </div>
+  </div>
+
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+</div>

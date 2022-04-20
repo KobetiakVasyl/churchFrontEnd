@@ -1,0 +1,27 @@
+//@use
+
+.mat-progress-bar-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.schedule-event-list-item {
+  &:not(&:first-child) {
+    margin-top: -4rem;
+  }
+
+  padding-bottom: 4rem;
+  background-color: white;
+
+}
+
+.schedule-events-list-container {
+  overflow: auto;
+  padding: 0 1rem 1rem 1rem;
+}
+
+//.schedule-events-list-container {
+//  overflow: auto;
+//  height: 200px;
+//}

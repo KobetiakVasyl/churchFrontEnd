@@ -1,0 +1,26 @@
+@use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
+
+.schedule-calendar {
+  @include animations.opacity-slide-from-top(300ms, 30%, 100ms);
+}
+
+.schedule-event-list {
+  width: auto;
+  @include animations.opacity-slide-from-top(300ms, 10%, 200ms);
+}
+
+@media screen and (min-width: breakpoints.$fromSmall) {
+  .schedule-layout-wrapper {
+    flex-direction: row;
+  }
+
+  .schedule-calendar {
+    @include animations.slide-from-left-with-opacity(300ms, 30%, 100ms);
+  }
+
+  .schedule-event-list {
+    width: 65ch;
+    @include animations.slide-from-left-with-opacity(300ms, 10%, 200ms);
+  }
+}

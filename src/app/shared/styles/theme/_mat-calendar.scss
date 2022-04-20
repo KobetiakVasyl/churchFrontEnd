@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin style($theme) {
+  $color-config: mat.get-color-config($theme);
+  $accent-palette: map.get($color-config, 'accent');
+  $accent-color: mat.get-color-from-palette($accent-palette, 100);
+  $accent-contrast-color: mat.get-contrast-color-from-palette($accent-palette, 300);
+
+  .mat-calendar-body-selected {
+    background-color: $accent-color;
+    color: $accent-contrast-color;
+  }
+}

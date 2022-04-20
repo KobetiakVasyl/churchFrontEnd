@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {fromEvent, map, Observable, startWith} from "rxjs";
+import {fromEvent, map, Observable, startWith, timer} from "rxjs";
+import {ScheduleService} from "../../../shared/services/schedule.service";
 
 @Component({
   selector: 'app-schedule-calendar',
@@ -11,7 +11,7 @@ export class ScheduleCalendarComponent implements OnInit {
   selectedDate = new Date();
   calendarWidth$!: Observable<string>;
 
-  constructor() {
+  constructor(private readonly scheduleService: ScheduleService) {
   }
 
   ngOnInit(): void {
@@ -20,7 +20,22 @@ export class ScheduleCalendarComponent implements OnInit {
     // Angular material (v.13.3.3)
     this.calendarWidth$ = fromEvent(window, 'resize').pipe(
       startWith(() => document.body.clientWidth),
-      map(() => `${document.body.clientWidth - 65}px`)
-    )
+      map(() => {
+        const value = document.body.clientWidth > 400 ? 400 : document.body.clientWidth;
+        return `${value - 65}px`
+      })
+    );
+
+    timer(200).subscribe(this.handleDateChange.bind(this));
+  }
+
+  handleDateChange(): void {
+    const day = this.selectedDate.getDate() + 1;
+    const month = this.selectedDate.getMonth();
+    const year = this.selectedDate.getFullYear();
+
+    const date = new Date(year, month, day, 0, 0, 0);
+
+    this.scheduleService.changeEventDate(date);
   }
 }

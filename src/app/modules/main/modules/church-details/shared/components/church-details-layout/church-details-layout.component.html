@@ -1,5 +1,5 @@
-<div class="flex gap-2 flex-direction-column v-center">
-  <nav class="flex gap-3">
+<div class="flex flex-direction-column gap-2 v-center">
+  <nav class="flex v-center gap-3">
     <a
       mat-mini-fab
       color="accent"
@@ -10,10 +10,10 @@
 
     <div
       *ngIf="route.params | async as routeParams"
-      class="church-details-links-wrapper flex gap-1"
+      class="church-details-links-wrapper flex gap-2"
     >
       <a
-        mat-mini-fab
+        mat-fab
         color="accent"
         matTooltip="Church details description"
         [routerLink]="['', 'main', 'church-details', routeParams['id'], 'overview']"
@@ -22,7 +22,7 @@
       </a>
 
       <a
-        mat-mini-fab
+        mat-fab
         color="accent"
         matTooltip="Church scheduled events"
         [routerLink]="['', 'main', 'church-details', routeParams['id'], 'schedule']"
@@ -48,7 +48,5 @@
     </div>
   </nav>
 
-  <div>
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 </div>

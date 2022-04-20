@@ -11,19 +11,22 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {SelectChurchListComponent} from './pages/select-church/select-church-list/select-church-list.component';
 
 @NgModule({
-  declarations: [
-    MainLayoutComponent,
-    SelectChurchHeaderComponent,
-    SelectChurchLayoutComponent,
-    SelectChurchItemComponent,
-    SelectChurchListComponent
-  ],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        MainLayoutComponent,
+        SelectChurchHeaderComponent,
+        SelectChurchLayoutComponent,
+        SelectChurchItemComponent,
+        SelectChurchListComponent
+    ],
+    exports: [
+        SelectChurchItemComponent
+    ],
+    imports: [
+        CommonModule,
+        MainRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule
+    ]
 })
 export class MainModule {
 }

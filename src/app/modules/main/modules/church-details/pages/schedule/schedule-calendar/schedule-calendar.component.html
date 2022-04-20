@@ -1,6 +1,7 @@
 <div class="border-radius-3 container-2 mat-elevation-z4">
   <mat-calendar
-    [(selected)]="selectedDate"
     [style.width]="calendarWidth$ | async"
+    [(selected)]="selectedDate"
+    (selectedChange)="handleDateChange()"
   ></mat-calendar>
 </div>

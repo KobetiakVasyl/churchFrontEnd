@@ -13,6 +13,10 @@ import {
   LOCALE_ID_PROVIDER
 } from './shared/providers/index.provider';
 import {HttpClientModule} from "@angular/common/http";
+import localeUk from '@angular/common/locales/uk';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localeUk, 'uk');
 
 @NgModule({
   declarations: [

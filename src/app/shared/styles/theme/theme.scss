@@ -2,10 +2,11 @@
 @use 'error-message';
 @use 'mat-card';
 @use 'church-overview';
+@use 'mat-calendar';
 
 @include mat.core();
 
-$app-primary: mat.define-palette(mat.$grey-palette, 200, 100, 400);
+$app-primary: mat.define-palette(mat.$grey-palette, 200, 100, 400, 500);
 $app-accent: mat.define-palette(mat.$cyan-palette, 100, 50, 200, 300);
 $app-warn: mat.define-palette(mat.$red-palette, 400, A200, 800);
 
@@ -33,3 +34,4 @@ $mat-form-field-theme: mat.define-light-theme((
 @include error-message.style($app-theme);
 @include mat-card.style($app-theme);
 @include church-overview.style($app-theme);
+@include mat-calendar.style($app-theme);
