@@ -8,6 +8,12 @@
 .schedule-event-list {
   width: auto;
   @include animations.opacity-slide-from-top(300ms, 10%, 200ms);
+
+  &__title {
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 1rem;
+  }
 }
 
 @media screen and (min-width: breakpoints.$fromSmall) {
@@ -20,6 +26,10 @@
   }
 
   .schedule-event-list {
+    &__title {
+      margin-top: calc((30px + 1rem) * -1);
+    }
+
     width: 65ch;
     @include animations.slide-from-left-with-opacity(300ms, 10%, 200ms);
   }

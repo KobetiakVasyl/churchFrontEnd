@@ -9,6 +9,7 @@ import {SelectChurchItemComponent} from './pages/select-church/select-church-ite
 import {MaterialModule} from "../../shared/modules/material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SelectChurchListComponent} from './pages/select-church/select-church-list/select-church-list.component';
+import {ScrollToTopModule} from "../../shared/modules/scroll-to-top/scroll-to-top.module";
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import {SelectChurchListComponent} from './pages/select-church/select-church-lis
         CommonModule,
         MainRoutingModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ScrollToTopModule
     ]
 })
 export class MainModule {

@@ -1,0 +1,5 @@
+@mixin title-font-size() {
+  mat-toolbar > .toolbar__title {
+    font-size: min(1.3rem, 6vw);
+  }
+}

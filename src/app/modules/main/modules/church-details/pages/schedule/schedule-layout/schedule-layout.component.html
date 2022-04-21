@@ -1,9 +1,12 @@
-<div class="flex gap-3 flex-direction-column schedule-layout-wrapper">
+<div class="flex gap-3 container-2 flex-direction-column schedule-layout-wrapper">
   <div class="schedule-calendar">
     <app-schedule-calendar></app-schedule-calendar>
   </div>
 
   <div class="schedule-event-list">
+    <h2 class="schedule-event-list__title">Події</h2>
     <app-schedule-event-list></app-schedule-event-list>
   </div>
+
+  <app-scroll-to-top [topOffset]="100"></app-scroll-to-top>
 </div>

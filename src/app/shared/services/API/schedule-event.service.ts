@@ -12,13 +12,11 @@ export class ScheduleEventService {
   }
 
   create(body: ICreateScheduleEvent): Observable<IScheduleEvent> {
-    return this.http.post<IScheduleEvent>(`${environment.URL}/${this.route}/create`, body)
-      .pipe(take(1));
+    return this.http.post<IScheduleEvent>(`${environment.URL}/${this.route}/create`, body);
   }
 
   update(body: IUpdateScheduleEvent): Observable<IScheduleEvent> {
-    return this.http.patch<IScheduleEvent>(`${environment.URL}/${this.route}/update`, body)
-      .pipe(take(1));
+    return this.http.patch<IScheduleEvent>(`${environment.URL}/${this.route}/update`, body);
   }
 
   getById(id: number): Observable<IScheduleEvent> {
@@ -26,8 +24,7 @@ export class ScheduleEventService {
 
     params = params.append('id', id);
 
-    return this.http.get<IScheduleEvent>(`${environment.URL}/${this.route}`, {params})
-      .pipe(take(1));
+    return this.http.get<IScheduleEvent>(`${environment.URL}/${this.route}`, {params});
   }
 
   getByParams(churchId: number | string, date: string | Date, offset: number, limit: number): Observable<IScheduleEvent[]> {
@@ -38,8 +35,7 @@ export class ScheduleEventService {
     params = params.append('offset', offset);
     params = params.append('limit', limit);
 
-    return this.http.get<IScheduleEvent[]>(`${environment.URL}/${this.route}/list`, {params})
-      .pipe(take(1));
+    return this.http.get<IScheduleEvent[]>(`${environment.URL}/${this.route}/list`, {params});
   }
 
   removeById(id: number): Observable<void> {
@@ -47,7 +43,6 @@ export class ScheduleEventService {
 
     params = params.append('id', id);
 
-    return this.http.delete<void>(`${environment.URL}/${this.route}/delete`, {params})
-      .pipe(take(1));
+    return this.http.delete<void>(`${environment.URL}/${this.route}/delete`, {params});
   }
 }

@@ -1,0 +1,10 @@
+.scroll-to-top-button {
+  position: fixed;
+  right: -100%;
+  bottom: 1rem;
+  transition: right 300ms ease-in-out;
+
+  &--opened {
+    right: 1rem;
+  }
+}

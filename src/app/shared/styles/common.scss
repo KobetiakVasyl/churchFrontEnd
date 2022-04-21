@@ -1,3 +1,9 @@
+@use './partials/mat-form-field-label';
+@use './partials/mat-toolbar-title';
+
+@include mat-form-field-label.label-with-icon();
+@include mat-toolbar-title.title-font-size();
+
 $container-sizes: (
   1: .5rem,
   2: 1rem,

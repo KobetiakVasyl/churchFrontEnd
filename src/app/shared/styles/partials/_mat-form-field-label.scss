@@ -4,7 +4,7 @@
       margin-right: .3rem;
     }
 
-    @extend .v-center;
+    align-items: center;
   }
 
   mat-form-field label > .mat-placeholder-required {

@@ -18,23 +18,19 @@ export class AuthService {
   }
 
   signIn(body: ISignInBody): Observable<ISignInResponse> {
-    return this.http.post<ISignInResponse>(`${environment.URL}/${this.route}/signin`, body)
-      .pipe(take(1));
+    return this.http.post<ISignInResponse>(`${environment.URL}/${this.route}/signin`, body);
   }
 
   signUp(body: ISignUpBody): Observable<void> {
-    return this.http.post<void>(`${environment.URL}/${this.route}/signup`, body)
-      .pipe(take(1));
+    return this.http.post<void>(`${environment.URL}/${this.route}/signup`, body);
   }
 
   sendEmailToResetPassword(body: IRequestResetPasswordBody): Observable<void> {
-    return this.http.post<void>(`${environment.URL}/${this.route}/restore`, body)
-      .pipe(take(1));
+    return this.http.post<void>(`${environment.URL}/${this.route}/restore`, body);
   }
 
   resetPassword(body: IResetPasswordBody): Observable<void> {
-    return this.http.put<void>(`${environment.URL}/${this.route}/update/password`, body)
-      .pipe(take(1));
+    return this.http.put<void>(`${environment.URL}/${this.route}/update/password`, body);
   }
 
   static signOut(): void {

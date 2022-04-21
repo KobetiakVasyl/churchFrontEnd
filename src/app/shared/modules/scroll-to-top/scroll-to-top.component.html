@@ -1,0 +1,10 @@
+<button
+  mat-fab
+  color="primary"
+  class="scroll-to-top-button scroll-to-top-button--opened"
+  matTooltip="Scroll to top"
+  [class.scroll-to-top-button--opened]="scrollToTopButton$ | async"
+  (click)="scrollToTop()"
+>
+  <i class="material-icons-outlined">arrow_upward</i>
+</button>

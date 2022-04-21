@@ -12,7 +12,6 @@ export class RoleService {
   }
 
   getAll(): Observable<IRole[]> {
-    return this.http.get<IRole[]>(`${environment.URL}/${this.route}`)
-      .pipe(take(1));
+    return this.http.get<IRole[]>(`${environment.URL}/${this.route}`);
   }
 }

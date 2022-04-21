@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SelectChurchService} from "../../../shared/services/select-church.service";
 import {ChurchService} from "../../../../../shared/services/API/church.service";
-import {debounceTime, fromEvent, map, Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {ErrorMessageService} from "../../../../../shared/services/local/error-message.service";
 import {IChurchListItem} from "../../../../../shared/interfaces/church.interfaces";
 
@@ -14,8 +14,6 @@ import {IChurchListItem} from "../../../../../shared/interfaces/church.interface
 export class SelectChurchListComponent implements OnInit, OnDestroy {
   churchList: IChurchListItem[] = [];
 
-  scrollToTopButton$!: Observable<boolean>;
-
   private readonly subscriptions = new Subscription();
 
   constructor(
@@ -26,12 +24,6 @@ export class SelectChurchListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.scrollToTopButton$ = fromEvent(document, 'scroll')
-      .pipe(
-        debounceTime(500),
-        map(() => document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)
-      );
-
     this.subscriptions.add(
       this.selectChurchService.filter$
         .subscribe(this.loadList.bind(this))
@@ -40,10 +32,6 @@ export class SelectChurchListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  scrollToTop(): void {
-    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   loadList(): void {

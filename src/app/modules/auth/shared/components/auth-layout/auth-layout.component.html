@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <i class="material-icons-outlined">home</i>
-  {{ authTransferDataService.toolbarTitle$ | async | titlecase }}
+  <span class="toolbar__title">{{ authTransferDataService.toolbarTitle$ | async | titlecase }}</span>
 </mat-toolbar>
 
 <div class="container-2">

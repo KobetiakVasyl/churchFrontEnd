@@ -17,7 +17,6 @@ export class ChurchService {
     params = params.append('searchTerm', searchValue ?? '');
 
     return this.http.get<IChurchListItem[]>(`${environment.URL}/${this.route}/search`, {params})
-      .pipe(take(1));
   }
 
   getById(id: string): Observable<IChurch> {
@@ -26,17 +25,14 @@ export class ChurchService {
     params = params.append('id', id);
 
     return this.http.get<IChurch>(`${environment.URL}/${this.route}`, {params})
-      .pipe(take(1));
   }
 
   create(body: ICreateChurch): Observable<IChurch> {
     return this.http.post<IChurch>(`${environment.URL}/${this.route}/create`, body)
-      .pipe(take(1));
   }
 
   updateById(body: IUpdateChurch): Observable<IChurch> {
     return this.http.put<IChurch>(`${environment.URL}/${this.route}/update`, body)
-      .pipe(take(1));
   }
 
   uploadImage(churchId: string, images: File[]): Observable<void> {
@@ -46,6 +42,6 @@ export class ChurchService {
 
     images.forEach(image => body.append('image', image));
 
-    return this.http.post<void>(`${environment.URL}/${this.route}/upload/images`, body)
+    return this.http.post<void>(`${environment.URL}/${this.route}/upload/images`, body);
   }
 }

@@ -1,27 +1,17 @@
-//@use
+@use '~src/app/shared/styles/animations/animations';
 
 .mat-progress-bar-wrapper {
   position: sticky;
-  top: 0;
-  left: 0;
+  top: .5rem;
+  left: .5rem;
 }
 
 .schedule-event-list-item {
-  &:not(&:first-child) {
-    margin-top: -4rem;
+  transition: margin-top 300ms ease-in-out, padding-bottom 300ms ease-in-out;
+}
+
+@for $i from 0 through 50 {
+  .schedule-event-list-item--#{$i} {
+    @include animations.opacity-slide-from-top(300ms, 10%, #{$i * 200}ms);
   }
-
-  padding-bottom: 4rem;
-  background-color: white;
-
 }
-
-.schedule-events-list-container {
-  overflow: auto;
-  padding: 0 1rem 1rem 1rem;
-}
-
-//.schedule-events-list-container {
-//  overflow: auto;
-//  height: 200px;
-//}

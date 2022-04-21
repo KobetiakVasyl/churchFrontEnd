@@ -1,12 +1,11 @@
 @use 'common';
 @use 'flex';
-@use 'theme/theme';
 @use 'breakpoints';
-@use 'theme/mat-form-field-label';
+@use 'theme/theme';
 @use 'animations/animations';
 
 @forward 'common';
 @forward 'flex';
+@forward 'breakpoints';
 @forward 'theme/theme';
-@forward 'theme/mat-form-field-label';
 @forward "animations/animations";

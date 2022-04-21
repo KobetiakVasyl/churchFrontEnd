@@ -12,6 +12,7 @@ import {ScheduleEventListComponent} from './pages/schedule/schedule-event-list/s
 import {
   ScheduleEventListItemComponent
 } from './pages/schedule/schedule-event-list-item/schedule-event-list-item.component';
+import {ScrollToTopModule} from "../../../../shared/modules/scroll-to-top/scroll-to-top.module";
 
 
 @NgModule({
@@ -23,12 +24,13 @@ import {
     ScheduleEventListComponent,
     ScheduleEventListItemComponent,
   ],
-  imports: [
-    CommonModule,
-    ChurchDetailsRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        ChurchDetailsRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        ScrollToTopModule
+    ]
 })
 export class ChurchDetailsModule {
 }

@@ -1,7 +1,9 @@
 <div class="flex flex-direction-column schedule-events-list-container">
-  <div class="mat-progress-bar-wrapper">
+  <div
+    *ngIf="showLoading | async"
+    class="mat-progress-bar-wrapper"
+  >
     <mat-spinner
-      *ngIf="showLoading | async"
       color="accent"
       strokeWidth="7"
       diameter="35"
@@ -9,14 +11,15 @@
     ></mat-spinner>
   </div>
 
-  <p *ngIf="!(showLoading | async) && !(events$ | async)?.length">
+  <p *ngIf="noEventsPlanned$ | async">
     Немає подій на обрану дату
   </p>
 
-  <div class="flex flex-direction-column gap-2">
+  <div class="flex flex-direction-column gap-1">
     <div
-      *ngFor="let event of events$ | async"
+      *ngFor="let event of events$ | async; let i = index"
       class="schedule-event-list-item mat-elevation-z2 border-radius-2 container-2"
+      [class]="'schedule-event-list-item--' + i"
     >
       <app-schedule-event-list-item [scheduleEvent]="event"></app-schedule-event-list-item>
     </div>

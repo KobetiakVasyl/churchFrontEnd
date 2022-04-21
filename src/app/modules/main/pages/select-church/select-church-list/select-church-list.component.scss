@@ -4,18 +4,6 @@ app-select-church-item {
   width: 100%;
 }
 
-.scroll-to-top-button {
-  position: fixed;
-  right: -100%;
-  bottom: 1rem;
-  transition: right 300ms ease-in-out;
-
-  &--opened {
-    right: 1rem;
-  }
-}
-
-
 @media screen and (min-width: breakpoints.$fromXSmall) {
   .church-card-wrapper {
     padding-left: 3rem;
