@@ -1,7 +1,25 @@
+@use '~src/app/shared/styles/breakpoints';
 @use '~src/app/shared/styles/animations/animations';
 
-.church-details-links-wrapper > a {
-  @include animations.slide-from-left-with-opacity(400ms, 40%, 200ms);
+.church-details-links-wrapper {
+
+  //overflow-x: auto;
+  //overflow-y: hidden;
+  //white-space: nowrap;
+  //
+  //&--small {
+  //  max-width: max(200px, 100%);
+  //  padding-block: .5rem;
+
+    //a {
+    //  min-width: 100px;
+    //}
+
+  //}
+
+  & > a {
+    @include animations.slide-from-left-with-opacity(400ms, 40%, 200ms);
+  }
 }
 
 nav {

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ChurchDetailsLayoutComponent} from "./shared/components/church-details-layout/church-details-layout.component";
 import {ChurchOverviewComponent} from "./pages/church-overview/church-overview.component";
 import {ScheduleLayoutComponent} from "./pages/schedule/schedule-layout/schedule-layout.component";
+import {AnnouncementsLayoutComponent} from "./pages/announcements/announcements-layout/announcements-layout.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'schedule',
         component: ScheduleLayoutComponent
+      },
+      {
+        path: 'announcements',
+        component: AnnouncementsLayoutComponent
       }
     ]
   }

@@ -8,44 +8,49 @@
       <i class="material-icons-outlined">west</i>
     </a>
 
-    <div
-      *ngIf="route.params | async as routeParams"
-      class="church-details-links-wrapper flex gap-2"
-    >
-      <a
-        mat-fab
-        color="accent"
-        matTooltip="Church details description"
-        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'overview']"
+    <ng-template [ngIf]="layoutBreakpointsService.extraSmallMatch$ | async" [ngIfElse]="showFabButtonsNavigation">
+      <div
+        *ngIf="route.params | async as routeParams"
+        class="church-details-links-wrapper flex gap-2"
       >
-        <i class="material-icons-outlined">description</i>
-      </a>
+        <a
+          *ngFor="let route of routes"
+          mat-mini-fab
+          color="accent"
+          matTooltip="Church details description"
+          [routerLink]="['', 'main', 'church-details', routeParams['id'], route.pathSegment]"
+        >
+          <i class="material-icons-outlined">{{ route.iconName }}</i>
+        </a>
+      </div>
+    </ng-template>
 
-      <a
-        mat-fab
-        color="accent"
-        matTooltip="Church scheduled events"
-        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'schedule']"
+    <ng-template #showFabButtonsNavigation>
+      <div
+        *ngIf="route.params | async as routeParams"
+        class="church-details-links-wrapper flex gap-2"
       >
-        <i class="material-icons-outlined">calendar_today</i>
-      </a>
+        <a
+          *ngFor="let route of routes"
+          mat-fab
+          color="accent"
+          matTooltip="Church details description"
+          [routerLink]="['', 'main', 'church-details', routeParams['id'], route.pathSegment]"
+        >
+          <i class="material-icons-outlined">{{ route.iconName }}</i>
+        </a>
 
-      <!--      <a-->
-      <!--        mat-mini-fab-->
-      <!--        color="accent"-->
-      <!--        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'pilgrimage']"-->
-      <!--      >-->
-      <!--        <i class="material-icons-outlined">west</i>-->
-      <!--      </a>-->
+        <!--      <a-->
+        <!--        mat-mini-fab-->
+        <!--        color="accent"-->
+        <!--        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'pilgrimage']"-->
+        <!--      >-->
+        <!--        <i class="material-icons-outlined">west</i>-->
+        <!--      </a>-->
 
-      <!--      <a-->
-      <!--        mat-mini-fab-->
-      <!--        color="accent"-->
-      <!--        [routerLink]="['', 'main', 'church-details', routeParams['id'], 'announcements']"-->
-      <!--      >-->
-      <!--        <i class="material-icons-outlined">west</i>-->
-      <!--      </a>-->
-    </div>
+
+      </div>
+    </ng-template>
   </nav>
 
   <router-outlet></router-outlet>

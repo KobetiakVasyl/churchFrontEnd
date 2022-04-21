@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {LayoutBreakpointsService} from "../../../../../../../shared/services/local/layout-breakpoints.service";
 
 @Component({
   selector: 'app-church-details-layout',
@@ -7,6 +8,24 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./church-details-layout.component.scss']
 })
 export class ChurchDetailsLayoutComponent {
-  constructor(readonly route: ActivatedRoute) {
+  readonly routes = [
+    {
+      iconName: 'description',
+      pathSegment: 'overview'
+    },
+    {
+      iconName: 'calendar_today',
+      pathSegment: 'schedule'
+    },
+    {
+      iconName: 'announcement',
+      pathSegment: 'announcements'
+    }
+  ];
+
+  constructor(
+    public readonly layoutBreakpointsService: LayoutBreakpointsService,
+    public readonly route: ActivatedRoute
+  ) {
   }
 }

@@ -13,6 +13,10 @@ import {
   ScheduleEventListItemComponent
 } from './pages/schedule/schedule-event-list-item/schedule-event-list-item.component';
 import {ScrollToTopModule} from "../../../../shared/modules/scroll-to-top/scroll-to-top.module";
+import { AnnouncementsLayoutComponent } from './pages/announcements/announcements-layout/announcements-layout.component';
+import { AnnouncementListComponent } from './pages/announcements/announcement-list/announcement-list.component';
+import { AnnouncementListItemComponent } from './pages/announcements/announcement-list-item/announcement-list-item.component';
+import { AnnouncementHeaderComponent } from './pages/announcements/announcement-header/announcement-header.component';
 
 
 @NgModule({
@@ -23,6 +27,10 @@ import {ScrollToTopModule} from "../../../../shared/modules/scroll-to-top/scroll
     ScheduleCalendarComponent,
     ScheduleEventListComponent,
     ScheduleEventListItemComponent,
+    AnnouncementsLayoutComponent,
+    AnnouncementListComponent,
+    AnnouncementListItemComponent,
+    AnnouncementHeaderComponent,
   ],
     imports: [
         CommonModule,
