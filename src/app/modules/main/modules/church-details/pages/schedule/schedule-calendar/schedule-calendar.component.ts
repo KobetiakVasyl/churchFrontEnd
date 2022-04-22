@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {fromEvent, map, Observable, startWith, timer} from "rxjs";
+import {fromEvent, map, Observable, startWith, timer, zip} from "rxjs";
 import {ScheduleService} from "../../../shared/services/schedule.service";
 import {LayoutBreakpointsService} from "../../../../../../../shared/services/local/layout-breakpoints.service";
 import {ScrollService} from "../../../../../../../shared/services/local/scroll.service";
@@ -13,14 +13,20 @@ export class ScheduleCalendarComponent implements OnInit {
   selectedDate!: Date;
   calendarWidth$!: Observable<string>;
 
+  smallOrExtraSmall$!: Observable<boolean>;
+
   constructor(
-    public readonly layoutBreakpointsService: LayoutBreakpointsService,
+    private readonly layoutBreakpointsService: LayoutBreakpointsService,
     private readonly scrollService: ScrollService,
     private readonly scheduleService: ScheduleService
   ) {
   }
 
   ngOnInit(): void {
+    this.smallOrExtraSmall$ = zip(this.layoutBreakpointsService.extraSmallMatch$, this.layoutBreakpointsService.smallMatch$)
+      .pipe(map(([extraSmall, small]) => extraSmall || small));
+
+
     // set width for calendar as currently dynamic
     // width even in percentage is not working
     // Angular material (v.13.3.3)

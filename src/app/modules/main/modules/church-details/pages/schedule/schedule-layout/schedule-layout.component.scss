@@ -6,7 +6,6 @@
 }
 
 .schedule-event-list {
-  width: auto;
   @include animations.opacity-slide-from-top(300ms, 10%, 200ms);
 
   &__title {

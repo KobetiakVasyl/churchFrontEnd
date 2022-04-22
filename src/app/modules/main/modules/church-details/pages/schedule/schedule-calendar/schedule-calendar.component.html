@@ -1,4 +1,4 @@
-<ng-template [ngIf]="layoutBreakpointsService.extraSmallMatch$ | async" [ngIfElse]="showCalendar">
+<ng-template [ngIf]="smallOrExtraSmall$ | async" [ngIfElse]="showCalendar">
   <button
     mat-fab
     color="accent"

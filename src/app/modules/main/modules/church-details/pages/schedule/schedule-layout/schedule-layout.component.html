@@ -9,7 +9,7 @@
   </div>
 
   <app-scroll-to-top
-    buttonRightPosition="6rem"
+    [buttonRightPosition]="$any(scrollToTopButtonRightPosition$ | async)"
     [startScrollOffset]="100"
   ></app-scroll-to-top>
 </div>
