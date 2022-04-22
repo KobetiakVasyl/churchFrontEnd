@@ -1,1 +1,90 @@
-<p>announcement-header works!</p>
+<div class="flex wrap v-center gap-2">
+  <mat-form-field appearance="standard" class="grow-1">
+    <mat-label>Filter</mat-label>
+
+    <input
+      matInput
+      type="text"
+      placeholder="Announcement title"
+      [formControl]="filterFormControl"
+    >
+
+    <mat-hint>Search will start automatically</mat-hint>
+  </mat-form-field>
+
+  <div class="flex flex-direction-column grow-1">
+    <span>Показати оголошення всі</span>
+
+    <div class="flex gap-1 v-center">
+      <mat-chip-list>
+        <mat-chip
+          selected
+          color="accent"
+        >
+          <ng-template [ngIf]="dateRangeFormGroup.value.from">
+            з {{ dateRangeFormGroup.value.from | date: 'dd/MM/yyyy' }}
+          </ng-template>
+
+          <ng-template [ngIf]="isTodayDate(dateRangeFormGroup.value.to)" [ngIfElse]="showFormattedDate">
+            до сьогодні
+          </ng-template>
+
+          <ng-template #showFormattedDate>
+            до {{ dateRangeFormGroup.value.to | date: 'dd/MM/yyyy' }}
+          </ng-template>
+        </mat-chip>
+      </mat-chip-list>
+
+      <button
+        #tooltip="matTooltip"
+        mat-icon-button
+        color="accent"
+        matTooltip="Щоб очистити вибірку натисніть на будь яку з обраних дат під час вибору"
+        matTooltipPosition="above"
+        (click)="picker.open()"
+      >
+        <i class="material-icons-outlined">today</i>
+      </button>
+    </div>
+  </div>
+
+  <mat-date-range-input
+    [rangePicker]="picker"
+    [formGroup]="dateRangeFormGroup"
+  >
+    <input
+      matStartDate
+      placeholder="Start date"
+      formControlName="from"
+    >
+    <input
+      matEndDate
+      placeholder="End date"
+      formControlName="to"
+    >
+  </mat-date-range-input>
+
+  <mat-date-range-picker
+    #picker
+    touchUi
+    color="accent"
+  >
+    <mat-date-range-picker-actions>
+      <button
+        mat-flat-button
+        color="primary"
+        matDateRangePickerCancel
+      >
+        Закрити
+      </button>
+
+      <button
+        mat-flat-button
+        matDateRangePickerApply
+        color="accent"
+      >
+        Підтвердити
+      </button>
+    </mat-date-range-picker-actions>
+  </mat-date-range-picker>
+</div>

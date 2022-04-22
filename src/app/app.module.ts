@@ -10,7 +10,8 @@ import {
   MAT_DIALOG_PROVIDER,
   HTTP_TOKEN_INTERCEPTOR_PROVIDER,
   HTTP_ERROR_INTERCEPTOR_PROVIDER,
-  LOCALE_ID_PROVIDER
+  LOCALE_ID_PROVIDER,
+  DATE_RANGE_SELECTION_STRATEGY_PROVIDER
 } from './shared/providers/index.provider';
 import {HttpClientModule} from "@angular/common/http";
 import localeUk from '@angular/common/locales/uk';
@@ -34,7 +35,8 @@ registerLocaleData(localeUk, 'uk');
     MAT_DIALOG_PROVIDER,
     HTTP_TOKEN_INTERCEPTOR_PROVIDER,
     HTTP_ERROR_INTERCEPTOR_PROVIDER,
-    LOCALE_ID_PROVIDER
+    LOCALE_ID_PROVIDER,
+    DATE_RANGE_SELECTION_STRATEGY_PROVIDER
   ],
   bootstrap: [AppComponent]
 })
