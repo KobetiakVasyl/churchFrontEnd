@@ -1,4 +1,4 @@
-<div class="flex gap-3 container-2 flex-direction-column schedule-layout-wrapper">
+<div class="flex gap-3 flex-direction-column schedule-layout-wrapper">
   <div class="schedule-calendar">
     <app-schedule-calendar></app-schedule-calendar>
   </div>
@@ -8,5 +8,8 @@
     <app-schedule-event-list></app-schedule-event-list>
   </div>
 
-  <app-scroll-to-top [topOffset]="100"></app-scroll-to-top>
+  <app-scroll-to-top
+    buttonRightPosition="6rem"
+    [startScrollOffset]="100"
+  ></app-scroll-to-top>
 </div>

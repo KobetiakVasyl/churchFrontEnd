@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {debounce, debounceTime, map, Observable, switchMap, timer, withLatestFrom} from "rxjs";
+import {map, Observable, switchMap, withLatestFrom} from "rxjs";
 import {IScheduleEvent} from "../../../../../../../shared/interfaces/schedule-event.interfaces";
 import {ScheduleEventService} from "../../../../../../../shared/services/API/schedule-event.service";
 import {ScheduleService} from "../../../shared/services/schedule.service";
@@ -28,7 +28,8 @@ export class ScheduleEventListComponent implements OnInit {
   ngOnInit(): void {
     this.events$ = this.scheduleService.eventDate$.pipe(
       withLatestFrom((this.route.parent as ActivatedRoute).params),
-      switchMap(([date, params]) => this.scheduleEventService.getByParams(params['id'], date, 0, 10))
+      switchMap(([date, params]) => this.scheduleEventService.getByParams(params['id'], date, 0, 10)),
+      map(value=> [...value,...value,...value,...value,...value,...value,...value,...value,...value,])
     );
 
     this.noEventsPlanned$ = HttpLoadingService.showLoading$

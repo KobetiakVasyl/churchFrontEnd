@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {fromEvent, map, Observable, startWith, timer} from "rxjs";
 import {ScheduleService} from "../../../shared/services/schedule.service";
+import {LayoutBreakpointsService} from "../../../../../../../shared/services/local/layout-breakpoints.service";
+import {ScrollService} from "../../../../../../../shared/services/local/scroll.service";
 
 @Component({
   selector: 'app-schedule-calendar',
@@ -8,10 +10,14 @@ import {ScheduleService} from "../../../shared/services/schedule.service";
   styleUrls: ['./schedule-calendar.component.scss']
 })
 export class ScheduleCalendarComponent implements OnInit {
-  selectedDate = new Date();
+  selectedDate!: Date;
   calendarWidth$!: Observable<string>;
 
-  constructor(private readonly scheduleService: ScheduleService) {
+  constructor(
+    public readonly layoutBreakpointsService: LayoutBreakpointsService,
+    private readonly scrollService: ScrollService,
+    private readonly scheduleService: ScheduleService
+  ) {
   }
 
   ngOnInit(): void {
@@ -26,16 +32,15 @@ export class ScheduleCalendarComponent implements OnInit {
       })
     );
 
-    timer(200).subscribe(this.handleDateChange.bind(this));
+    timer(200).subscribe(this.handleDateChange.bind(this, new Date()));
   }
 
-  handleDateChange(): void {
-    const day = this.selectedDate.getDate() + 1;
-    const month = this.selectedDate.getMonth();
-    const year = this.selectedDate.getFullYear();
+  handleDateChange(value: Date): void {
+    this.selectedDate = value;
+    this.scheduleService.changeEventDate(this.selectedDate);
+  }
 
-    const date = new Date(year, month, day, 0, 0, 0);
-
-    this.scheduleService.changeEventDate(date);
+  scrollToTop(): void {
+    this.scrollService.scrollToTop()
   }
 }

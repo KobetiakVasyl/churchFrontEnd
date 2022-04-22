@@ -1,7 +1,38 @@
-<div class="border-radius-3 container-2 mat-elevation-z4">
-  <mat-calendar
-    [style.width]="calendarWidth$ | async"
-    [(selected)]="selectedDate"
-    (selectedChange)="handleDateChange()"
-  ></mat-calendar>
-</div>
+<ng-template [ngIf]="layoutBreakpointsService.extraSmallMatch$ | async" [ngIfElse]="showCalendar">
+  <button
+    mat-fab
+    color="accent"
+    matTooltip="Open date select dialog"
+    class="datepicker-button"
+    (click)="picker.open()"
+  >
+    <i class="material-icons-outlined">today</i>
+  </button>
+
+  <mat-form-field>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      [value]="$any(selectedDate)"
+      (dateChange)="handleDateChange($event.value)"
+    >
+
+    <mat-datepicker
+      #picker
+      color="accent"
+      touchUi="true"
+      (closed)="scrollToTop()"
+    ></mat-datepicker>
+  </mat-form-field>
+</ng-template>
+
+<ng-template #showCalendar>
+  <div class="border-radius-3 container-2 mat-elevation-z4">
+    <mat-calendar
+      [style.width]="calendarWidth$ | async"
+      [(selected)]="selectedDate"
+      (selectedChange)="handleDateChange($event)"
+    ></mat-calendar>
+  </div>
+</ng-template>
+

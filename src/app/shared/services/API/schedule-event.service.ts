@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {ICreateScheduleEvent, IScheduleEvent, IUpdateScheduleEvent} from "../../interfaces/schedule-event.interfaces";
-import {Observable, take} from "rxjs";
+import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
+import {formatISO} from "date-fns";
 
 @Injectable({providedIn: 'root'})
 export class ScheduleEventService {
@@ -27,11 +28,13 @@ export class ScheduleEventService {
     return this.http.get<IScheduleEvent>(`${environment.URL}/${this.route}`, {params});
   }
 
-  getByParams(churchId: number | string, date: string | Date, offset: number, limit: number): Observable<IScheduleEvent[]> {
+  getByParams(churchId: number | string, date: Date, offset: number, limit: number): Observable<IScheduleEvent[]> {
+    const dateToSend = formatISO(date, {representation: 'date'});
+
     let params = new HttpParams();
 
     params = params.append('churchId', churchId);
-    params = params.append('date', date instanceof Date ? date.toISOString() : date);
+    params = params.append('date', dateToSend);
     params = params.append('offset', offset);
     params = params.append('limit', limit);
 
