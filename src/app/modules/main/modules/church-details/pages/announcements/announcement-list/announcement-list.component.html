@@ -1,1 +1,32 @@
-<p>announcement-list works!</p>
+<div class="flex flex-direction-column grow-1">
+  <div
+    *ngIf="showLoading | async"
+    class="mat-progress-bar-wrapper"
+  >
+    <mat-spinner
+      color="accent"
+      strokeWidth="7"
+      diameter="35"
+      mode="indeterminate"
+    ></mat-spinner>
+  </div>
+
+  <p *ngIf="noEventsPlanned$ | async">
+    Немає оголошень за обраними параметрами пошуку
+  </p>
+
+  <div class="flex flex-direction-column gap-1">
+    <div *ngFor="let announcement of announcements$ | async; let i = index">
+      <app-announcement-list-item [announcement]="announcement"></app-announcement-list-item>
+<!--      [class]="'schedule-event-list-item--' + i"
+-->
+    </div>
+  </div>
+
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+</div>

@@ -51,8 +51,8 @@ export class AnnouncementService {
     return this.http.delete<void>(`${environment.URL}/${this.route}/delete/image`, {params});
   }
 
-  getByParams(dateFrom: Date, dateTo: Date, churchId: number, offset: number, limit: number): Observable<IAnnouncement[]> {
-    const dateFromToSend = formatISO(dateFrom, {representation: 'date'});
+  getByParams(dateFrom: Date | null, dateTo: Date, churchId: number, offset: number, limit: number): Observable<IAnnouncement[]> {
+    const dateFromToSend = dateFrom ? formatISO(dateFrom, {representation: 'date'}) : '';
     const dateToToSend = formatISO(dateTo, {representation: 'date'});
 
     let params = new HttpParams();

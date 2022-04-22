@@ -1,1 +1,42 @@
-<p>announcement-list-item works!</p>
+<mat-card class="border-radius-3">
+  <mat-card-title-group>
+    <mat-card-title>{{ announcement.name }}</mat-card-title>
+    <mat-card-subtitle>
+      Created at: {{ announcement.createdAt | date: 'dd/MM/yyyy' }}
+      Last updated at: {{ announcement.updatedAt | date: 'dd/MM/yyyy' }}
+    </mat-card-subtitle>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <div>
+      <div class="flex flex-direction-column gap-1 grow-1 image-wrapper">
+        <img
+          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        >
+
+        <div class="flex gap-1">
+          <img
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            class="small-image"
+          >
+          <img
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            class="small-image"
+          >
+        </div>
+      </div>
+
+      <p class="grow-3">
+        {{ announcement.description }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam aliquid
+        dignissimos dolor eaque error esse illum iusto laborum, modi nihil odit possimus provident quae quibusdam quis
+        quisquam temporibus, velit!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem blanditiis, commodi cumque debitis
+        eaque esse inventore ipsa ipsum iste, laudantium nemo nisi nobis nostrum placeat porro provident quisquam quo
+        ratione rem sed totam voluptatibus! A corporis cum doloremque eaque earum, eveniet, fuga illo ipsum itaque nemo
+        nesciunt nulla qui sed velit veritatis! Animi beatae blanditiis cumque deleniti ex harum ipsa minus quae rem,
+        rerum sapiente tenetur unde, vitae voluptas?
+      </p>
+
+    </div>
+  </mat-card-content>
+</mat-card>
