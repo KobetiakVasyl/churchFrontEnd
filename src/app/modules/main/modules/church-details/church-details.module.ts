@@ -19,6 +19,7 @@ import {
   AnnouncementListItemComponent
 } from './pages/announcements/announcement-list-item/announcement-list-item.component';
 import {AnnouncementHeaderComponent} from './pages/announcements/announcement-header/announcement-header.component';
+import {ImageCarouselModule} from "../../../../shared/modules/image-carousel/image-carousel.module";
 
 
 @NgModule({
@@ -34,13 +35,14 @@ import {AnnouncementHeaderComponent} from './pages/announcements/announcement-he
     AnnouncementListItemComponent,
     AnnouncementHeaderComponent,
   ],
-  imports: [
-    CommonModule,
-    ChurchDetailsRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    ScrollToTopModule
-  ]
+    imports: [
+        CommonModule,
+        ChurchDetailsRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        ScrollToTopModule,
+        ImageCarouselModule
+    ]
 })
 export class ChurchDetailsModule {
 }

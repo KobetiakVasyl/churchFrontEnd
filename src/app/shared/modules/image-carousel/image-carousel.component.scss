@@ -1,0 +1,29 @@
+.image-carousel-container {
+  position: relative;
+}
+
+.image-slider-wrapper {
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  cursor: grab;
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+}
+
+.images-floating-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  &--left {
+    left: 0;
+  }
+
+  &--right {
+    right: 0;
+  }
+}

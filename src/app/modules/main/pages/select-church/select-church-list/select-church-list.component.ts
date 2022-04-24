@@ -38,7 +38,7 @@ export class SelectChurchListComponent implements OnInit, OnDestroy {
     this.errorMessageService.hideErrorMessage();
 
     this.churchService.search(this.selectChurchService.filter$.value).subscribe({
-      next: value => this.churchList = [...value, ...value, ...value, ...value, ...value, ...value],
+      next: value => this.churchList = value,
       error: error => {
         this.errorMessageService.errorMessage = error.message;
         this.errorMessageService.showErrorMessage()

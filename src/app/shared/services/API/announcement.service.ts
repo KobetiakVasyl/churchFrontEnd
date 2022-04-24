@@ -1,11 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {
-  IAnnouncement,
-  ICreateAnnouncement,
-  IUpdateAnnouncement,
-  IUploadAnnouncementImages
-} from "../../interfaces/announcement.interfaces";
+import {IAnnouncement, ICreateAnnouncement, IUpdateAnnouncement} from "../../interfaces/announcement.interfaces";
 import {map, Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {formatISO} from "date-fns";
@@ -32,12 +27,15 @@ export class AnnouncementService {
     return this.http.put<IAnnouncement>(`${environment.URL}/${this.route}/update`, body);
   }
 
-  uploadImages(body: IUploadAnnouncementImages, images: File[]): Observable<IImage[]> {
+  uploadImages(churchId: number, announcementId: number, images: FileList): Observable<IImage[]> {
     const formData = new FormData();
 
-    formData.append('body', JSON.stringify(body));
+    formData.append('churchId', churchId.toString());
+    formData.append('announcementId', announcementId.toString());
 
-    images.forEach(image => formData.append('image', image));
+    for (let i = 0; i < images.length; i++) {
+      formData.append('image', images.item(i) as File);
+    }
 
     return this.http.patch<IAnnouncement>(`${environment.URL}/${this.route}/upload/images`, formData)
       .pipe(map(value => value.images));

@@ -6,11 +6,6 @@ export interface ICreateAnnouncement {
   description: string;
 }
 
-export interface IUploadAnnouncementImages {
-  churchId: number;
-  announcementId: number;
-}
-
 export interface IUpdateAnnouncement extends Omit<ICreateAnnouncement, 'churchId'> {
   id: number;
 }

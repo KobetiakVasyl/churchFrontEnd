@@ -1,6 +1,11 @@
 @use '~src/app/shared/styles/breakpoints';
 
 .announcements-layout-wrapper {
-  width: 65ch;
-  //width: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  .announcements-layout-wrapper {
+    width: 65ch;
+  }
 }

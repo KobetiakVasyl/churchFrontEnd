@@ -1,16 +1,16 @@
 <div class="flex grow-1 wrap v-center gap-2">
-  <mat-form-field appearance="standard" class="grow-1">
-    <mat-label>Filter</mat-label>
+<!--  <mat-form-field appearance="standard" class="grow-1">-->
+<!--    <mat-label>Filter</mat-label>-->
 
-    <input
-      matInput
-      type="text"
-      placeholder="Announcement title"
-      [formControl]="filterFormControl"
-    >
+<!--    <input-->
+<!--      matInput-->
+<!--      type="text"-->
+<!--      placeholder="Announcement title"-->
+<!--      [formControl]="filterFormControl"-->
+<!--    >-->
 
-    <mat-hint>Search will start automatically</mat-hint>
-  </mat-form-field>
+<!--    <mat-hint>Search will start automatically</mat-hint>-->
+<!--  </mat-form-field>-->
 
   <div class="flex flex-direction-column grow-1">
     <span>Показати оголошення всі</span>
@@ -51,6 +51,7 @@
   <mat-date-range-input
     [rangePicker]="picker"
     [formGroup]="dateRangeFormGroup"
+    [max]="todayDate"
   >
     <input
       matStartDate

@@ -1,0 +1,31 @@
+<div class="image-carousel-container">
+  <button
+    mat-mini-fab
+    color="accent"
+    class="images-floating-button images-floating-button--left"
+    (click)="changeScroll(imageSlider, false)"
+  >
+    <i class="material-icons-outlined">arrow_left</i>
+  </button>
+
+  <div
+    #imageSlider
+    class="flex gap-1 image-slider-wrapper"
+  >
+    <img
+      *ngFor="let image of images"
+      src="./assets/default-image.png"
+      alt="Some alt"
+      draggable="false"
+    >
+  </div>
+
+  <button
+    mat-mini-fab
+    color="accent"
+    class="images-floating-button images-floating-button--right"
+    (click)="changeScroll(imageSlider,true)"
+  >
+    <i class="material-icons-outlined">arrow_right</i>
+  </button>
+</div>

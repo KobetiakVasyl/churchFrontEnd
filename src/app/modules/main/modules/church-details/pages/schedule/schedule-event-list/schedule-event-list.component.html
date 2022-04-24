@@ -11,7 +11,7 @@
     ></mat-spinner>
   </div>
 
-  <p *ngIf="noEventsPlanned$ | async">
+  <p *ngIf="!(showLoading | async) && (events$ | async)">
     Немає подій на обрану дату
   </p>
 

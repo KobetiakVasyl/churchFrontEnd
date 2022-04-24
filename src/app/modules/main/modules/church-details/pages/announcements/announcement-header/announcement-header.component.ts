@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {debounceTime, distinctUntilChanged, EMPTY, merge, mergeMap, Observable, Subscription, tap, timer} from "rxjs";
+import {debounceTime, distinctUntilChanged, merge, Observable, startWith, Subscription, timer} from "rxjs";
 import {HttpLoadingService} from "../../../../../../../shared/services/local/http-loading.service";
 import {AnnouncementTransferDataService} from "../../../shared/services/announcement-transfer-data.service";
 import {isToday} from "date-fns";
@@ -12,7 +12,9 @@ import {MatTooltip} from "@angular/material/tooltip";
   styleUrls: ['./announcement-header.component.scss']
 })
 export class AnnouncementHeaderComponent implements OnInit, OnDestroy {
-  readonly filterFormControl = new FormControl(null);
+  readonly todayDate = new Date();
+
+  // readonly filterFormControl = new FormControl(null);
   readonly dateRangeFormGroup = new FormGroup({
     from: new FormControl(''),
     to: new FormControl(new Date()),
@@ -26,18 +28,19 @@ export class AnnouncementHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(
-      this.filterFormControl.valueChanges
-        .pipe(
-          debounceTime(500),
-          distinctUntilChanged()
-        )
-        .subscribe(value => this.announcementTransferDataService.changeFilter(value))
-    );
+    // this.subscriptions.add(
+    //   this.filterFormControl.valueChanges
+    //     .pipe(
+    //       debounceTime(500),
+    //       distinctUntilChanged()
+    //     )
+    //     .subscribe(value => this.announcementTransferDataService.changeFilter(value))
+    // );
 
     this.subscriptions.add(
       this.dateRangeFormGroup.valueChanges
         .pipe(
+          startWith(this.dateRangeFormGroup.value),
           debounceTime(500),
           distinctUntilChanged()
         )

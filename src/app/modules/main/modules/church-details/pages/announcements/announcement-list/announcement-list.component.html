@@ -11,7 +11,7 @@
     ></mat-spinner>
   </div>
 
-  <p *ngIf="noEventsPlanned$ | async">
+  <p *ngIf="!(showLoading | async) && (announcements$ | async)">
     Немає оголошень за обраними параметрами пошуку
   </p>
 

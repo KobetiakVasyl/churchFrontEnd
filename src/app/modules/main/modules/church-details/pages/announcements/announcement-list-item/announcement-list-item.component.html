@@ -8,35 +8,10 @@
   </mat-card-title-group>
 
   <mat-card-content>
-    <div>
-      <div class="flex flex-direction-column gap-1 grow-1 image-wrapper">
-        <img
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-        >
+    <div class="flex h-space-between gap-1 wrap-reverse">
+      <p>{{ announcement.description }}</p>
 
-        <div class="flex gap-1">
-          <img
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            class="small-image"
-          >
-          <img
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            class="small-image"
-          >
-        </div>
-      </div>
-
-      <p class="grow-3">
-        {{ announcement.description }} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquam aliquid
-        dignissimos dolor eaque error esse illum iusto laborum, modi nihil odit possimus provident quae quibusdam quis
-        quisquam temporibus, velit!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores autem blanditiis, commodi cumque debitis
-        eaque esse inventore ipsa ipsum iste, laudantium nemo nisi nobis nostrum placeat porro provident quisquam quo
-        ratione rem sed totam voluptatibus! A corporis cum doloremque eaque earum, eveniet, fuga illo ipsum itaque nemo
-        nesciunt nulla qui sed velit veritatis! Animi beatae blanditiis cumque deleniti ex harum ipsa minus quae rem,
-        rerum sapiente tenetur unde, vitae voluptas?
-      </p>
-
+      <app-image-carousel [images]="announcement.images"></app-image-carousel>
     </div>
   </mat-card-content>
 </mat-card>
