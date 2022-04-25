@@ -11,15 +11,23 @@
     ></mat-spinner>
   </div>
 
-  <p *ngIf="!(showLoading | async) && (announcements$ | async)">
+  <p *ngIf="!(showLoading | async) && !(announcements$ | async)?.length">
     Немає оголошень за обраними параметрами пошуку
   </p>
 
-  <div class="flex flex-direction-column gap-1">
-    <div *ngFor="let announcement of announcements$ | async; let i = index">
+  <div
+    infinite-scroll
+    class="flex flex-direction-column gap-1"
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="750"
+    [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger | async)"
+    (scrolled)="scrollPaginationService.loadNextPage()"
+  >
+    <div
+      *ngFor="let announcement of announcements$ | async; let i = index"
+      class="announcement-list-item"
+    >
       <app-announcement-list-item [announcement]="announcement"></app-announcement-list-item>
-<!--      [class]="'schedule-event-list-item--' + i"
--->
     </div>
   </div>
 

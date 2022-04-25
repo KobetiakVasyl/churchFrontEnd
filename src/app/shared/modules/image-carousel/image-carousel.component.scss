@@ -5,11 +5,15 @@
 .image-slider-wrapper {
   overflow-y: hidden;
   scroll-behavior: smooth;
-  cursor: grab;
-  position: relative;
+  pointer-events: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   img {
     width: 100%;
+    pointer-events: auto;
   }
 }
 

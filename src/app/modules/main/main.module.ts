@@ -10,6 +10,8 @@ import {MaterialModule} from "../../shared/modules/material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {SelectChurchListComponent} from './pages/select-church/select-church-list/select-church-list.component';
 import {ScrollToTopModule} from "../../shared/modules/scroll-to-top/scroll-to-top.module";
+import {ShowFullImageModule} from "../../shared/modules/show-full-image/show-full-image.module";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
     declarations: [
@@ -27,7 +29,9 @@ import {ScrollToTopModule} from "../../shared/modules/scroll-to-top/scroll-to-to
         MainRoutingModule,
         MaterialModule,
         ReactiveFormsModule,
-        ScrollToTopModule
+        ScrollToTopModule,
+        ShowFullImageModule,
+        InfiniteScrollModule
     ]
 })
 export class MainModule {

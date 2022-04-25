@@ -20,6 +20,7 @@ import {
 } from './pages/announcements/announcement-list-item/announcement-list-item.component';
 import {AnnouncementHeaderComponent} from './pages/announcements/announcement-header/announcement-header.component';
 import {ImageCarouselModule} from "../../../../shared/modules/image-carousel/image-carousel.module";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {ImageCarouselModule} from "../../../../shared/modules/image-carousel/ima
         MaterialModule,
         ReactiveFormsModule,
         ScrollToTopModule,
-        ImageCarouselModule
+        ImageCarouselModule,
+        InfiniteScrollModule
     ]
 })
 export class ChurchDetailsModule {

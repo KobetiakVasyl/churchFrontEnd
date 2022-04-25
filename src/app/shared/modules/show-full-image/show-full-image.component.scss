@@ -1,0 +1,24 @@
+.show-full-image-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 101;
+
+  & > img {
+    max-height: 90%;
+    animation: scale-image 200ms ease-in-out both;
+    pointer-events: none;
+  }
+}
+
+@keyframes scale-image {
+  from {
+    max-width: 0;
+  }
+  to {
+    max-width: 90%;
+  }
+}

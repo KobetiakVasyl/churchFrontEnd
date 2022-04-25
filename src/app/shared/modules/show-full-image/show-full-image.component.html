@@ -1,0 +1,11 @@
+<div
+  *ngIf="showFullImageService.image$ | async as image"
+  class="flex v-center h-center show-full-image-container"
+  (click)="close()"
+>
+  <img
+    [src]="image.url"
+    [alt]="image.name"
+    draggable="false"
+  >
+</div>

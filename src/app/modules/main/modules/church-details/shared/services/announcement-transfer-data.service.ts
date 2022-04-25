@@ -4,7 +4,11 @@ import {IAnnouncementDateRange} from "../../../../../../shared/interfaces/announ
 
 @Injectable({providedIn: 'root'})
 export class AnnouncementTransferDataService {
-  readonly dateRange$ =  new Subject<IAnnouncementDateRange>();
+  readonly dateRange$ =  new BehaviorSubject<IAnnouncementDateRange>({
+    from: null,
+    to: new Date(),
+  });
+
   readonly filter$ = new Subject<string>();
 
   changeFilter(value: string): void {

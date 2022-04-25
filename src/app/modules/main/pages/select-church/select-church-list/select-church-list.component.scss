@@ -1,4 +1,5 @@
 @use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
 
 app-select-church-item {
   width: 100%;
@@ -15,8 +16,8 @@ app-select-church-item {
 }
 
 @for $i from 0 through 499 {
-  .select-church-item--#{$i} {
-    animation: pop-up 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55) #{$i * 200}ms backwards;
+  .select-church-item:nth-of-type(#{$i}) {
+    animation: pop-up 500ms animations.$bounce-animation-timing-function #{$i * 200}ms backwards;
   }
 }
 

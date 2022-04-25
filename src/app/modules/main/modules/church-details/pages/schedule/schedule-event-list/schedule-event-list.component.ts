@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable, switchMap, withLatestFrom} from "rxjs";
+import {catchError, Observable, switchMap, tap, throwError, withLatestFrom} from "rxjs";
 import {IScheduleEvent} from "../../../../../../../shared/interfaces/schedule-event.interfaces";
 import {ScheduleEventService} from "../../../../../../../shared/services/API/schedule-event.service";
 import {ScheduleService} from "../../../shared/services/schedule.service";
@@ -27,7 +27,14 @@ export class ScheduleEventListComponent implements OnInit {
   ngOnInit(): void {
     this.events$ = this.scheduleService.eventDate$.pipe(
       withLatestFrom((this.route.parent as ActivatedRoute).params),
-      switchMap(([date, params]) => this.scheduleEventService.getByParams(params['id'], date, 0, 10))
+      tap(() => this.errorMessageService.hideErrorMessage()),
+      switchMap(([date, params]) => this.scheduleEventService.getByParams(params['id'], date, 0, 10)),
+      catchError(error => {
+        this.errorMessageService.errorMessage = error.message;
+        this.errorMessageService.showErrorMessage();
+
+        return throwError(error);
+      })
     );
   }
 

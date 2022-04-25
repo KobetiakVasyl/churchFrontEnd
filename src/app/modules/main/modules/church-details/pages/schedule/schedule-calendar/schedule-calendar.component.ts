@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {fromEvent, map, Observable, startWith, timer, zip} from "rxjs";
 import {ScheduleService} from "../../../shared/services/schedule.service";
 import {LayoutBreakpointsService} from "../../../../../../../shared/services/local/layout-breakpoints.service";
-import {ScrollService} from "../../../../../../../shared/services/local/scroll.service";
 
 @Component({
   selector: 'app-schedule-calendar',
@@ -17,7 +16,6 @@ export class ScheduleCalendarComponent implements OnInit {
 
   constructor(
     private readonly layoutBreakpointsService: LayoutBreakpointsService,
-    private readonly scrollService: ScrollService,
     private readonly scheduleService: ScheduleService
   ) {
   }
@@ -47,6 +45,6 @@ export class ScheduleCalendarComponent implements OnInit {
   }
 
   scrollToTop(): void {
-    this.scrollService.scrollToTop()
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 }

@@ -1,3 +1,9 @@
+@use '~src/app/shared/styles/animations/animations';
+
+.announcements-header-wrapper {
+  @include animations.slide-from-left-with-opacity(300ms, 30%);
+}
+
 mat-date-range-input {
   display: none;
 }

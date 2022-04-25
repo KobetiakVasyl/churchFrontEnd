@@ -1,48 +1,69 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SelectChurchService} from "../../../shared/services/select-church.service";
 import {ChurchService} from "../../../../../shared/services/API/church.service";
-import {Subscription} from "rxjs";
+import {
+  catchError,
+  combineLatest,
+  debounceTime,
+  iif, map, Observable,
+  scan,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 import {ErrorMessageService} from "../../../../../shared/services/local/error-message.service";
 import {IChurchListItem} from "../../../../../shared/interfaces/church.interfaces";
+import {ScrollPaginationService} from "../../../../../shared/services/local/scroll-pagination.service";
 
 @Component({
   selector: 'app-select-church-list',
   templateUrl: './select-church-list.component.html',
   styleUrls: ['./select-church-list.component.scss'],
-  providers: [ErrorMessageService]
+  providers: [ErrorMessageService, ScrollPaginationService]
 })
-export class SelectChurchListComponent implements OnInit, OnDestroy {
-  churchList: IChurchListItem[] = [];
-
-  private readonly subscriptions = new Subscription();
+export class SelectChurchListComponent implements OnInit {
+  churches$!: Observable<IChurchListItem[]>;
 
   constructor(
     private readonly selectChurchService: SelectChurchService,
-    readonly errorMessageService: ErrorMessageService,
+    public readonly errorMessageService: ErrorMessageService,
+    public readonly scrollPaginationService: ScrollPaginationService,
     private readonly churchService: ChurchService
   ) {
   }
 
   ngOnInit(): void {
-    this.subscriptions.add(
+    this.churches$ = combineLatest([
+      this.scrollPaginationService.pagingInfo$,
       this.selectChurchService.filter$
-        .subscribe(this.loadList.bind(this))
-    );
-  }
+    ])
+      .pipe(
+        tap(() => {
+          this.errorMessageService.hideErrorMessage();
+          this.scrollPaginationService.changeScrollTriggerState(true);
+        }),
+        debounceTime(500),
+        switchMap(([pagingInfo, filterValue]) => {
+          return iif<IChurchListItem[], IChurchListItem[]>(
+            () => !!filterValue,
+            this.churchService.search(filterValue),
+            this.churchService.getByParams(pagingInfo.offset, pagingInfo.limit)
+              .pipe(
+                scan((acc, value) => {
+                  acc.records.concat(value.records);
+                  return acc;
+                }),
+                tap(value => this.scrollPaginationService.changeScrollTriggerState(value.totalCount === value.records.length)),
+                map(({records}) => records)
+              )
+          );
+        }),
+        catchError(error => {
+          this.errorMessageService.errorMessage = error.message;
+          this.errorMessageService.showErrorMessage();
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-  }
-
-  loadList(): void {
-    this.errorMessageService.hideErrorMessage();
-
-    this.churchService.search(this.selectChurchService.filter$.value).subscribe({
-      next: value => this.churchList = value,
-      error: error => {
-        this.errorMessageService.errorMessage = error.message;
-        this.errorMessageService.showErrorMessage()
-      }
-    })
+          return throwError(error);
+        })
+      )
   }
 }

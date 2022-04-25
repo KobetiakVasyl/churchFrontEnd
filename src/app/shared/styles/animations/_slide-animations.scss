@@ -1,5 +1,9 @@
 @mixin slide-from-right($duration: 300ms, $distance: 100%, $delay: 0) {
-  animation: slide-from-right $duration ease-in-out $delay backwards;
+  animation: slide-from-right $duration ease-in-out backwards;
+
+  @if ($delay != 0) {
+    animation-delay: $delay;
+  }
 
   @keyframes slide-from-right {
     from {
@@ -13,7 +17,11 @@
 }
 
 @mixin slide-from-left($duration: 300ms, $distance: 100%, $delay: 0) {
-  animation: slide-from-left $duration ease-in-out $delay backwards;
+  animation: slide-from-left $duration ease-in-out backwards;
+
+  @if ($delay != 0) {
+    animation-delay: $delay;
+  }
 
   @keyframes slide-from-left {
     from {
@@ -27,7 +35,12 @@
 }
 
 @mixin slide-from-left-with-opacity($duration: 300ms, $distance: 100%, $delay: 0) {
-  animation: slide-from-left-with-opacity $duration ease-in-out $delay backwards;
+  animation: slide-from-left-with-opacity $duration ease-in-out backwards;
+
+  @if ($delay != 0) {
+    animation-delay: $delay;
+  }
+
 
   @keyframes slide-from-left-with-opacity {
     from {
@@ -42,10 +55,14 @@
   }
 }
 
-@mixin opacity-slide-from-top($duration: 400ms, $distance: 10%, $delay: 0ms) {
-  animation: opacity-slide-from-top $duration ease-in-out $delay backwards;
+@mixin slide-from-top-with-opacity($duration: 400ms, $distance: 10%, $delay: 0ms) {
+  animation: slide-from-top-with-opacity $duration ease-in-out backwards;
 
-  @keyframes opacity-slide-from-top {
+  @if ($delay != 0) {
+    animation-delay: $delay;
+  }
+
+  @keyframes slide-from-top-with-opacity {
     from {
       margin-top: -$distance;
       opacity: 0;

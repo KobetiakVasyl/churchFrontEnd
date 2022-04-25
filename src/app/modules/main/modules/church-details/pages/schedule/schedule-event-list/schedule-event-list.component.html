@@ -11,7 +11,7 @@
     ></mat-spinner>
   </div>
 
-  <p *ngIf="!(showLoading | async) && (events$ | async)">
+  <p *ngIf="!(showLoading | async) && !(events$ | async)?.length">
     Немає подій на обрану дату
   </p>
 
@@ -19,7 +19,6 @@
     <div
       *ngFor="let event of events$ | async; let i = index"
       class="schedule-event-list-item mat-elevation-z2 border-radius-2 container-2"
-      [class]="'schedule-event-list-item--' + i"
     >
       <app-schedule-event-list-item [scheduleEvent]="event"></app-schedule-event-list-item>
     </div>

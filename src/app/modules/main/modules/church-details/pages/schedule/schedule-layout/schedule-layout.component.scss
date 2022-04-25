@@ -2,11 +2,11 @@
 @use '~src/app/shared/styles/animations/animations';
 
 .schedule-calendar {
-  @include animations.opacity-slide-from-top(300ms, 30%, 100ms);
+  @include animations.slide-from-top-with-opacity(300ms, 30%, 100ms);
 }
 
 .schedule-event-list {
-  @include animations.opacity-slide-from-top(300ms, 10%, 200ms);
+  @include animations.slide-from-top-with-opacity(300ms, 10%, 200ms);
 
   &__title {
     height: 30px;

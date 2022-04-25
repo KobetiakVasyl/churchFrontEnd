@@ -1,3 +1,4 @@
+@use '../../../../../../shared/styles/animations/animations';
 @use '../../../../../../shared/styles/breakpoints';
 
 .mat-progress-bar {
@@ -5,11 +6,11 @@
 }
 
 .church-overview__main {
-  animation: move-main 500ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  animation: move-main 500ms animations.$bounce-animation-timing-function;
 }
 
 .church-overview__footer {
-  animation: move-main 750ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  animation: move-main 750ms animations.$bounce-animation-timing-function;
 
   ul {
     list-style-type: none;

@@ -11,7 +11,7 @@
 }
 
 @for $i from 0 through 50 {
-  .schedule-event-list-item--#{$i} {
-    @include animations.opacity-slide-from-top(300ms, 10%, #{$i * 200}ms);
+  .schedule-event-list-item:nth-of-type(#{$i}) {
+    @include animations.slide-from-top-with-opacity(300ms, 10%, #{$i * 200}ms);
   }
 }

@@ -1,22 +1,27 @@
-<div class="image-carousel-container">
+<div
+  *ngIf="!!images.length"
+  class="image-carousel-container">
   <button
     mat-mini-fab
     color="accent"
     class="images-floating-button images-floating-button--left"
-    (click)="changeScroll(imageSlider, false)"
+    [disabled]="selectedImageIndex === 0"
+    (click)="changeImage(-1)"
   >
     <i class="material-icons-outlined">arrow_left</i>
   </button>
 
   <div
     #imageSlider
-    class="flex gap-1 image-slider-wrapper"
+    class="flex image-slider-wrapper"
   >
     <img
       *ngFor="let image of images"
-      src="./assets/default-image.png"
-      alt="Some alt"
+      #imagesList
+      [src]="image.url"
+      [alt]="image.name"
       draggable="false"
+      (click)="selectImage(image)"
     >
   </div>
 
@@ -24,7 +29,8 @@
     mat-mini-fab
     color="accent"
     class="images-floating-button images-floating-button--right"
-    (click)="changeScroll(imageSlider,true)"
+    [disabled]="selectedImageIndex === images.length - 1"
+    (click)="changeImage(1)"
   >
     <i class="material-icons-outlined">arrow_right</i>
   </button>

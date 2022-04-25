@@ -1,6 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {IChurch, IChurchListItem, ICreateChurch, IUpdateChurch} from "../../interfaces/church.interfaces";
+import {
+  IChurch,
+  IChurchListItem,
+  IChurchPartialList,
+  ICreateChurch,
+  IUpdateChurch
+} from "../../interfaces/church.interfaces";
 import {Observable, take} from "rxjs";
 import {environment} from "../../../../environments/environment";
 
@@ -9,6 +15,15 @@ export class ChurchService {
   private readonly route = 'church';
 
   constructor(private readonly http: HttpClient) {
+  }
+
+  getByParams(offset: number, limit: number): Observable<IChurchPartialList> {
+    let params = new HttpParams();
+
+    params = params.append('offset', offset);
+    params = params.append('limit', limit);
+
+    return this.http.get<IChurchPartialList>(`${environment.URL}/${this.route}/my/list`, {params});
   }
 
   search(searchValue: string | null): Observable<IChurchListItem[]> {

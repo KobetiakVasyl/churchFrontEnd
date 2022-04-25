@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {debounceTime, fromEvent, map, merge, Observable, startWith, take} from "rxjs";
-import {ScrollService} from "../../services/local/scroll.service";
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -14,9 +13,6 @@ export class ScrollToTopComponent implements OnInit {
   private readonly hiddenButtonRightPosition = '-100%';
 
   buttonRightPosition$!: Observable<string>;
-
-  constructor(private readonly scrollService: ScrollService) {
-  }
 
   ngOnInit(): void {
     const scroll$ = fromEvent(document, 'scroll');
@@ -36,6 +32,6 @@ export class ScrollToTopComponent implements OnInit {
   }
 
   scrollToTop(): void {
-    this.scrollService.scrollToTop();
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 }

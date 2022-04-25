@@ -1,4 +1,5 @@
 import {IImagesList} from "./image.interfaces";
+import {PartialList} from "./pagination.interfaces";
 
 export interface IChurchListItem {
   readonly id: number;
@@ -17,3 +18,4 @@ export interface IChurch extends IChurchListItem, IImagesList {
 
 export type ICreateChurch = Omit<IChurch, 'id' | 'images' | 'createdAt' | 'updatedAt'>;
 export type IUpdateChurch = Omit<IChurch, 'images' | 'createdAt' | 'updatedAt'>;
+export type IChurchPartialList = PartialList<IChurch>;
