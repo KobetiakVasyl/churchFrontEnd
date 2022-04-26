@@ -12,6 +12,7 @@
   <button
     mat-icon-button
     matTooltip="Log out from admin panel"
+    [routerLink]="['', 'auth']"
     (click)="signOut()"
   >
     <i class="material-icons-outlined">logout</i>
