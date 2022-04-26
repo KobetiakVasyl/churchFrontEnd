@@ -1,4 +1,4 @@
-<div class="flex flex-direction-column schedule-events-list-container">
+<div class="flex flex-direction-column grow-1">
   <div
     *ngIf="showLoading | async"
     class="mat-progress-bar-wrapper"
@@ -15,7 +15,7 @@
     Немає подій на обрану дату
   </p>
 
-  <div class="flex flex-direction-column gap-1">
+  <div class="flex wrap gap-1">
     <div
       *ngFor="let event of events$ | async; let i = index"
       class="schedule-event-list-item mat-elevation-z2 border-radius-2 container-2"

@@ -40,6 +40,7 @@ export class AnnouncementHeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.dateRangeFormGroup.valueChanges
         .pipe(
+          startWith(this.dateRangeFormGroup.value),
           debounceTime(500),
           distinctUntilChanged()
         )

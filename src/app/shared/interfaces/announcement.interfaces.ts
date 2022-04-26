@@ -1,4 +1,5 @@
 import {IImagesList} from "./image.interfaces";
+import {PartialList} from "./pagination.interfaces";
 
 export interface ICreateAnnouncement {
   churchId: number;
@@ -20,3 +21,5 @@ export interface IAnnouncementDateRange {
   from: null | Date;
   to: Date;
 }
+
+export type IAnnouncementPartialList = PartialList<IAnnouncement>;

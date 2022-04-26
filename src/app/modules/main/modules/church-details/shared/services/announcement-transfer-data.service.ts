@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, Subject} from "rxjs";
+import {Subject} from "rxjs";
 import {IAnnouncementDateRange} from "../../../../../../shared/interfaces/announcement.interfaces";
 
 @Injectable({providedIn: 'root'})
 export class AnnouncementTransferDataService {
-  readonly dateRange$ =  new BehaviorSubject<IAnnouncementDateRange>({
-    from: null,
-    to: new Date(),
-  });
+  readonly dateRange$ =  new Subject<IAnnouncementDateRange>();
 
   readonly filter$ = new Subject<string>();
 

@@ -8,6 +8,7 @@
 
 .schedule-event-list-item {
   transition: margin-top 300ms ease-in-out, padding-bottom 300ms ease-in-out;
+  flex: 1 1 45%;
 }
 
 @for $i from 0 through 50 {

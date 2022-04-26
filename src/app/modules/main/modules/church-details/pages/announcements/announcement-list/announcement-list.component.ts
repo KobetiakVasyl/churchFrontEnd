@@ -2,7 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {ErrorMessageService} from "../../../../../../../shared/services/local/error-message.service";
 import {AnnouncementService} from "../../../../../../../shared/services/API/announcement.service";
 import {AnnouncementTransferDataService} from "../../../shared/services/announcement-transfer-data.service";
-import {catchError, combineLatest, debounceTime, finalize, Observable, scan, switchMap, tap, throwError} from "rxjs";
+import {
+  catchError,
+  combineLatest,
+  debounceTime,
+  finalize,
+  map,
+  Observable,
+  scan,
+  switchMap,
+  tap,
+  throwError
+} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {HttpLoadingService} from "../../../../../../../shared/services/local/http-loading.service";
 import {IAnnouncement} from "../../../../../../../shared/interfaces/announcement.interfaces";
@@ -45,9 +56,15 @@ export class AnnouncementListComponent implements OnInit {
           pagingInfo.offset,
           pagingInfo.limit
         )
-        .pipe(finalize(() => this.scrollPaginationService.changeScrollTriggerState(false)))
+        .pipe(
+          scan((acc, value) => {
+            acc.records.concat(value.records)
+            return acc;
+          }),
+          tap(value => this.scrollPaginationService.changeScrollTriggerState(value.totalCount === value.records.length)),
+          map(({records}) => records)
+        )
       ),
-      scan((acc, value) => acc.concat(value)),
       catchError(error => {
         this.errorMessageService.errorMessage = error.message;
         this.errorMessageService.showErrorMessage();

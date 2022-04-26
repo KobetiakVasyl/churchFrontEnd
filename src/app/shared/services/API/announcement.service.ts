@@ -1,6 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {IAnnouncement, ICreateAnnouncement, IUpdateAnnouncement} from "../../interfaces/announcement.interfaces";
+import {
+  IAnnouncement,
+  IAnnouncementPartialList,
+  ICreateAnnouncement,
+  IUpdateAnnouncement
+} from "../../interfaces/announcement.interfaces";
 import {map, Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {formatISO} from "date-fns";
@@ -49,7 +54,7 @@ export class AnnouncementService {
     return this.http.delete<void>(`${environment.URL}/${this.route}/delete/image`, {params});
   }
 
-  getByParams(dateFrom: Date | null, dateTo: Date, churchId: number, offset: number, limit: number): Observable<IAnnouncement[]> {
+  getByParams(dateFrom: Date | null, dateTo: Date, churchId: number, offset: number, limit: number): Observable<IAnnouncementPartialList> {
     const dateFromToSend = dateFrom ? formatISO(dateFrom, {representation: 'date'}) : '';
     const dateToToSend = formatISO(dateTo, {representation: 'date'});
 
@@ -61,6 +66,6 @@ export class AnnouncementService {
     params = params.append('offset', offset);
     params = params.append('limit', limit);
 
-    return this.http.get<IAnnouncement[]>(`${environment.URL}/${this.route}/list`, {params});
+    return this.http.get<IAnnouncementPartialList>(`${environment.URL}/${this.route}/list`, {params});
   }
 }

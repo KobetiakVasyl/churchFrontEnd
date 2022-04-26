@@ -1,6 +1,6 @@
 $bounce-animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
-@mixin bounce-from-right-with-opacity($duration: 300ms, $distance: 100%, $delay: 0) {
+@mixin bounce-from-right-with-opacity($duration: 500ms, $distance: 20%, $delay: 0) {
   animation: bounce-from-right $duration $bounce-animation-timing-function backwards;
 
   @if ($delay != 0) {
@@ -20,7 +20,7 @@ $bounce-animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
 }
 
-@mixin bounce-from-left-with-opacity($duration: 300ms, $distance: 100%, $delay: 0) {
+@mixin bounce-from-left-with-opacity($duration: 500ms, $distance: 20%, $delay: 0) {
   animation: bounce-from-left-with-opacity $duration $bounce-animation-timing-function backwards;
 
   @if ($delay != 0) {

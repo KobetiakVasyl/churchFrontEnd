@@ -5,7 +5,7 @@ import {IPagingInfo} from "../../interfaces/pagination.interfaces";
 @Injectable()
 export class ScrollPaginationService {
   readonly disableScrollTrigger = new BehaviorSubject(false);
-  readonly pagingInfo$ = new BehaviorSubject<IPagingInfo>({limit: 3, offset: 0});
+  readonly pagingInfo$ = new BehaviorSubject<IPagingInfo>({limit: 10, offset: 0});
 
   changeScrollTriggerState(value: boolean): void {
     this.disableScrollTrigger.next(value);

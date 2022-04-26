@@ -1,9 +1,9 @@
-<div class="flex flex-direction-column gap-2 church-overview-container">
-  <mat-progress-bar
+<div class="self-center flex flex-direction-column v-center">
+  <mat-spinner
     *ngIf="showLoading | async"
     mode="indeterminate"
     color="accent"
-  ></mat-progress-bar>
+  ></mat-spinner>
 
   <div
     *ngIf="churchInfo$ | async as churchInfo"
@@ -47,11 +47,11 @@
       </ul>
     </div>
   </div>
-</div>
 
-<span
-  *ngIf="errorMessageService.errorMessage"
-  class="error-message error-message--fill-available"
->
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message error-message--fill-available"
+  >
   {{ errorMessageService.errorMessage }}
 </span>
+</div>

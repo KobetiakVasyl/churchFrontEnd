@@ -1,52 +1,39 @@
 @use '../../../../../../shared/styles/animations/animations';
 @use '../../../../../../shared/styles/breakpoints';
 
-.mat-progress-bar {
-  width: 100% !important;
-}
+.church-overview {
+  width: 100%;
+  max-width: breakpoints.$toXSmall;
 
-.church-overview__main {
-  animation: move-main 500ms animations.$bounce-animation-timing-function;
-}
-
-.church-overview__footer {
-  animation: move-main 750ms animations.$bounce-animation-timing-function;
-
-  ul {
-    list-style-type: none;
-    padding-left: 0;
+  &__main {
+    animation: move-main 500ms animations.$bounce-animation-timing-function;
   }
-}
 
-.church-overview__title {
-  font-size: max(1.2rem, 2rem);
-}
+  &__footer {
+    animation: move-main 750ms animations.$bounce-animation-timing-function;
 
-.church-overview__location {
-  display: inline-flex;
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  }
 
-  &, & > i {
+  &__title {
+    font-size: max(1.2rem, 2rem);
+  }
+
+  &__location {
+    display: inline-flex;
+  }
+
+  &__location, &__location > i {
     line-height: 1rem;
   }
 
-  & > i {
+  &__location > i {
     font-size: 1rem;
     width: 1rem;
     height: 1rem;
-  }
-}
-
-a[mat-mini-fab] {
-  margin-right: auto;
-}
-
-@media screen and (min-width: breakpoints.$fromXSmall) {
-  .church-overview-container {
-    width: 85ch;
-  }
-
-  a[mat-mini-fab] {
-    margin-right: initial;
   }
 }
 

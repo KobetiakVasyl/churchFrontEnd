@@ -13,5 +13,4 @@ export class AnnouncementsLayoutComponent implements OnInit {
   ngOnInit(): void {
     this.mainTransferDataService.changeToolbarTitle('Church details: Announcements')
   }
-
 }

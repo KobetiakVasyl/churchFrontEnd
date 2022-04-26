@@ -1,4 +1,5 @@
 @use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
 
 .auth-links-wrapper {
   animation: show-links 500ms ease-in-out;
@@ -22,7 +23,7 @@
   }
 
   &--without-sign-in, &--sign-in {
-    animation: move-link-inline 500ms ease-in-out;
+    @include animations.slide-from-top-with-opacity();
   }
 }
 
@@ -32,41 +33,41 @@
   }
 
   .auth-link--without-sign-in {
-    animation: move-link-block 500ms ease-in-out backwards !important;
+    @include animations.bounce-from-right-with-opacity();
   }
 
   .auth-link--sign-in {
-    animation: move-link-block 500ms ease-in-out !important;
+    @include animations.bounce-from-left-with-opacity();
   }
 }
-
-@keyframes move-link-block {
-  from {
-    margin-right: -20%;
-  }
-
-  to {
-    margin-right: initial;
-  }
-}
-
-
-@keyframes move-link-inline {
-  from {
-    margin-bottom: -50%;
-  }
-
-  to {
-    margin-bottom: initial;
-  }
-}
-
-@keyframes show-links {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
+//
+//@keyframes move-link-block {
+//  from {
+//    margin-right: -20%;
+//  }
+//
+//  to {
+//    margin-right: initial;
+//  }
+//}
+//
+//
+//@keyframes move-link-inline {
+//  from {
+//    margin-bottom: -50%;
+//  }
+//
+//  to {
+//    margin-bottom: initial;
+//  }
+//}
+//
+//@keyframes show-links {
+//  0% {
+//    opacity: 0;
+//  }
+//
+//  100% {
+//    opacity: 1;
+//  }
+//}

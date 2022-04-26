@@ -1,6 +1,11 @@
 @use '~src/app/shared/styles/breakpoints';
 @use '~src/app/shared/styles/animations/animations';
 
+.schedule-layout-wrapper {
+  width: 100%;
+  max-width: breakpoints.$toSmall;
+}
+
 .schedule-calendar {
   @include animations.slide-from-top-with-opacity(300ms, 30%, 100ms);
 }
@@ -25,11 +30,10 @@
   }
 
   .schedule-event-list {
+    @include animations.slide-from-left-with-opacity(300ms, 10%, 200ms);
+
     &__title {
       margin-top: calc((30px + 1rem) * -1);
     }
-
-    width: 65ch;
-    @include animations.slide-from-left-with-opacity(300ms, 10%, 200ms);
   }
 }

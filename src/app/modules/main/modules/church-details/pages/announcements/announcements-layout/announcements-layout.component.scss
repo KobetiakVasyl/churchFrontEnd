@@ -2,10 +2,5 @@
 
 .announcements-layout-wrapper {
   width: 100%;
-}
-
-@media screen and (min-width: breakpoints.$fromXSmall) {
-  .announcements-layout-wrapper {
-    width: 65ch;
-  }
+  max-width: breakpoints.$toXSmall;
 }
