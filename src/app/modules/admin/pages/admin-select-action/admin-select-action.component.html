@@ -1,0 +1,21 @@
+<div class="flex wrap h-center gap-3 v-center admin-select-action-wrapper">
+  <a
+    mat-flat-button
+    color="accent"
+    class="big-button big-button--create-church border-radius-3"
+    [routerLink]="['', 'admin', 'church', 'create']"
+  >
+    <i class="material-icons-outlined self-center">add</i>
+    Create church
+  </a>
+
+  <a
+    mat-flat-button
+    color="accent"
+    class="big-button big-button--church-list border-radius-3"
+    [routerLink]="['', 'admin', 'church', 'list']"
+  >
+    <i class="material-icons-outlined self-center">edit</i>
+    Edit church info
+  </a>
+</div>

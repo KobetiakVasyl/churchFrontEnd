@@ -6,22 +6,7 @@
   flex-direction: column;
 }
 
-.auth-link {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 200px;
-  max-width: 230px;
-  width: 100%;
-  font-size: 1.2rem;
-  white-space: pre-wrap;
-
-  i {
-    display: block;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-
+.big-button {
   &--without-sign-in, &--sign-in {
     @include animations.slide-from-top-with-opacity();
   }
@@ -32,11 +17,11 @@
     flex-direction: row;
   }
 
-  .auth-link--without-sign-in {
+  .big-button--without-sign-in {
     @include animations.bounce-from-right-with-opacity();
   }
 
-  .auth-link--sign-in {
+  .big-button--sign-in {
     @include animations.bounce-from-left-with-opacity();
   }
 }

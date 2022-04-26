@@ -14,25 +14,22 @@ import {ShowFullImageModule} from "../../shared/modules/show-full-image/show-ful
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
-    declarations: [
-        MainLayoutComponent,
-        SelectChurchHeaderComponent,
-        SelectChurchLayoutComponent,
-        SelectChurchItemComponent,
-        SelectChurchListComponent
-    ],
-    exports: [
-        SelectChurchItemComponent
-    ],
-    imports: [
-        CommonModule,
-        MainRoutingModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        ScrollToTopModule,
-        ShowFullImageModule,
-        InfiniteScrollModule
-    ]
+  declarations: [
+    MainLayoutComponent,
+    SelectChurchHeaderComponent,
+    SelectChurchLayoutComponent,
+    SelectChurchItemComponent,
+    SelectChurchListComponent
+  ],
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    ScrollToTopModule,
+    ShowFullImageModule,
+    InfiniteScrollModule
+  ]
 })
 export class MainModule {
 }

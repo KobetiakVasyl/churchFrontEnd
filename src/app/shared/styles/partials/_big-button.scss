@@ -1,0 +1,25 @@
+@mixin mat-button-big() {
+  button[mat-button].big-button,
+  button[mat-stroked-button].big-button,
+  button[mat-raised-button].big-button,
+  button[mat-flat-button].big-button,
+  a[mat-button].big-button,
+  a[mat-stroked-button].big-button,
+  a[mat-raised-button].big-button,
+  a[mat-flat-button].big-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    white-space: pre-wrap;
+    height: 200px;
+    max-width: 230px;
+    width: 100%;
+
+    i {
+      display: block;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

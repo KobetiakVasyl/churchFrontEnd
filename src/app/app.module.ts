@@ -20,9 +20,7 @@ import {registerLocaleData} from "@angular/common";
 registerLocaleData(localeUk, 'uk');
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

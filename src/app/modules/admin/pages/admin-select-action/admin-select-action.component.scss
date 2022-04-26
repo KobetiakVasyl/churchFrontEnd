@@ -1,0 +1,13 @@
+@use '~src/app/shared/styles/animations/animations';
+
+.admin-select-action-wrapper {
+  @include animations.slide-from-top-with-opacity(600ms)
+}
+
+.big-button {
+  @include animations.slide-from-top-with-opacity(400ms, 5%, 300ms);
+}
+
+.admin-links-wrapper {
+  width: 100%;
+}

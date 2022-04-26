@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthenticationGuard} from "./shared/guards/authentication.guard";
+import {AdminGuard} from "./shared/guards/admin.guard";
 
 const routes: Routes = [
   {
@@ -11,6 +12,11 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    // canActivateChild: [AdminGuard]
   },
   {
     path: '**',

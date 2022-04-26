@@ -1,0 +1,23 @@
+<app-show-full-image></app-show-full-image>
+
+<mat-toolbar
+  color="primary"
+  class="h-space-between"
+>
+  <div class="flex gap-1 v-center">
+    <i class="material-icons-outlined">security</i>
+    <span class="toolbar__title">{{ adminTransferDataService.toolbarTitle$ | async | titlecase }}</span>
+  </div>
+
+  <button
+    mat-icon-button
+    matTooltip="Log out from admin panel"
+    (click)="signOut()"
+  >
+    <i class="material-icons-outlined">logout</i>
+  </button>
+</mat-toolbar>
+
+<main class="container-2">
+  <router-outlet></router-outlet>
+</main>
