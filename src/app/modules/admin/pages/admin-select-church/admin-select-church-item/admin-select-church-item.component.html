@@ -1,0 +1,24 @@
+<div
+  *ngIf="churchInfo"
+  class="flex flex-direction-column mat-elevation-z4 border-radius-2 admin-select-church-item-wrapper"
+  [style.background-image]="'url('+churchInfo.images[0]?.url+')'"
+>
+  <div class="container-2 church-info flex flex-direction-column gap-2">
+    <div>
+      <p class="church-info__name">{{ churchInfo.name }}</p>
+      <small>{{ churchInfo.location }} </small>
+    </div>
+
+    <p class="church-info__description">{{ churchInfo.description }}</p>
+  </div>
+
+  <div class="flex container-1 h-flex-end">
+    <button
+      mat-mini-fab
+      color="accent"
+      [routerLink]="['', 'admin', 'church', 'details', churchInfo.id]"
+    >
+      <i class="material-icons-outlined">edit</i>
+    </button>
+  </div>
+</div>

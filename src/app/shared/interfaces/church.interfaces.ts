@@ -14,6 +14,9 @@ export interface IChurch extends IChurchListItem, IImagesList {
   email: string;
   phoneNumber: string;
   description: string;
+  userId: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type ICreateChurch = Omit<IChurch, 'id' | 'images' | 'createdAt' | 'updatedAt'>;

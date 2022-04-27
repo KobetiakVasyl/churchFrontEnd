@@ -3,10 +3,15 @@
 
 .church-overview {
   width: 100%;
-  max-width: breakpoints.$toXSmall;
+  max-width: breakpoints.$toSmall;
 
   &__main {
+    flex-direction: column-reverse;
     animation: move-main 500ms animations.$bounce-animation-timing-function;
+  }
+
+  &__main__description {
+    text-align: justify;
   }
 
   &__footer {
@@ -34,6 +39,24 @@
     font-size: 1rem;
     width: 1rem;
     height: 1rem;
+  }
+}
+
+.image-carousel-wrapper {
+  margin-bottom: .5rem;
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  .church-overview__main {
+    flex-direction: row;
+  }
+
+  .image-carousel-wrapper {
+    width: 50%;
+    max-width: 400px;
+    float: right;
+    margin-left: 1rem;
+    margin-bottom: auto;
   }
 }
 

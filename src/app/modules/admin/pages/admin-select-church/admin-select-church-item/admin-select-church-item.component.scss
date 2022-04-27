@@ -1,0 +1,22 @@
+.admin-select-church-item-wrapper {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.church-info {
+  padding-bottom: 0;
+
+  &__name, &__description {
+    margin: 0;
+  }
+
+  &__name {
+    font-size: 1.2rem;
+  }
+
+  &__description {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

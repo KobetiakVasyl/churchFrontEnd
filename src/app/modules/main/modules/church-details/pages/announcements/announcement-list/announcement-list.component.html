@@ -16,15 +16,16 @@
   </p>
 
   <div
+    *ngIf="announcements$ | async as announcements"
     infinite-scroll
     class="flex flex-direction-column gap-1"
     [infiniteScrollDistance]="1"
     [infiniteScrollThrottle]="750"
-    [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger | async)"
+    [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"
     (scrolled)="scrollPaginationService.loadNextPage()"
   >
     <div
-      *ngFor="let announcement of announcements$ | async; let i = index"
+      *ngFor="let announcement of announcements; let i = index"
       class="announcement-list-item"
     >
       <app-announcement-list-item [announcement]="announcement"></app-announcement-list-item>

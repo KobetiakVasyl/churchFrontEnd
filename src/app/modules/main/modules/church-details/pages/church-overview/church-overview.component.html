@@ -15,26 +15,23 @@
       </small>
     </div>
 
-    <div class="container-2 church-overview__main">
-      <div class="flex wrap gap-1">
-        <small>Єпархія: {{ churchInfo.diocese }}</small>
-        <small>Деканат: {{ churchInfo.deanery }}</small>
+    <div class="container-2 flex gap-1 church-overview__main">
+      <div class="grow-1">
+        <div class="flex wrap gap-1">
+          <small>Єпархія: {{ churchInfo.diocese }}</small>
+          <small>Деканат: {{ churchInfo.deanery }}</small>
+        </div>
+
+        <br>
+
+        <p class="church-overview__main__description">
+          <span class="flex grow-1 image-carousel-wrapper">
+            <app-image-carousel [images]="churchInfo.images"></app-image-carousel>
+          </span>
+
+          {{ churchInfo.description }}
+        </p>
       </div>
-
-      <hr>
-
-      <div>
-        <img
-          *ngFor="let img of churchInfo.images"
-          [src]="img.url"
-          [alt]="img.name"
-        >
-      </div>
-
-      <hr>
-      <br>
-
-      <p>{{ churchInfo.description }}</p>
     </div>
 
     <div class="container-2 church-overview__footer">

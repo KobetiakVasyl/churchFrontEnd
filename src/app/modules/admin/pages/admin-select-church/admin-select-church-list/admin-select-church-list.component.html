@@ -1,0 +1,38 @@
+<div>
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+
+  <div
+    *ngIf="churches$ | async as churches"
+    infinite-scroll
+    class="flex flex-direction-column gap-2"
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="750"
+    [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"
+    (scrolled)="scrollPaginationService.loadNextPage()"
+  >
+    <app-admin-select-church-item
+      *ngFor="let churchInfo of churches"
+      [churchInfo]="churchInfo"
+    ></app-admin-select-church-item>
+  </div>
+
+  <app-scroll-to-top></app-scroll-to-top>
+
+  <mat-spinner
+    *ngIf="showLoading$ | async"
+    mode="indeterminate"
+    color="accent"
+  ></mat-spinner>
+
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+</div>

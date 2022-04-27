@@ -1,13 +1,14 @@
 <div
+  *ngIf="churches$ | async as churches"
   infinite-scroll
   class="flex wrap grow-1 gap-1 church-card-wrapper"
   [infiniteScrollDistance]="1"
   [infiniteScrollThrottle]="750"
-  [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger | async)"
+  [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"
   (scrolled)="scrollPaginationService.loadNextPage()"
 >
   <app-select-church-item
-    *ngFor="let churchInfo of churches$ | async"
+    *ngFor="let churchInfo of churches"
     class="select-church-item"
     [churchInfo]="churchInfo"
   ></app-select-church-item>

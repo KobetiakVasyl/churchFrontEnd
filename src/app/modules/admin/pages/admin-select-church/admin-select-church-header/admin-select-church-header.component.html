@@ -1,0 +1,23 @@
+<div class="flex wrap v-center gap-2">
+  <mat-form-field appearance="standard" class="grow-1">
+    <mat-label>Filter</mat-label>
+
+    <input
+      matInput
+      type="text"
+      placeholder="Church name"
+      [formControl]="filterFormControl"
+    >
+
+    <mat-hint>Search will start automatically</mat-hint>
+  </mat-form-field>
+
+  <mat-spinner
+    *ngIf="showLoading$ | async"
+    class="larger-screen-spinner"
+    color="primary"
+    mode="indeterminate"
+    diameter="25"
+    strokeWidth="5"
+  ></mat-spinner>
+</div>
