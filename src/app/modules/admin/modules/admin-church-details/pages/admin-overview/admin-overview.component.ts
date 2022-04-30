@@ -91,7 +91,7 @@ export class AdminOverviewComponent implements OnInit {
     if (this.formGroup.invalid) return;
 
     const body: IUpdateChurch = {
-      id: this.churchId,
+      id: +this.churchId,
       userId: localStorage.getItem(ELocalStorage.USER_ID),
       ...this.formGroup.value
     }
@@ -125,7 +125,7 @@ export class AdminOverviewComponent implements OnInit {
 
     this.churchService.removeImageById(id)
       .subscribe({
-        next: value => this.images = this.images.filter(el => el.id !== id),
+        next: () => this.images = this.images.filter(el => el.id !== id),
         error: error => {
           this.errorMessageService.errorMessage = error.message;
           this.errorMessageService.showErrorMessage()
