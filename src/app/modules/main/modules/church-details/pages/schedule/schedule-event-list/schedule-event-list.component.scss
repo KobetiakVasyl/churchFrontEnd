@@ -7,12 +7,6 @@
 }
 
 .schedule-event-list-item {
-  transition: margin-top 300ms ease-in-out, padding-bottom 300ms ease-in-out;
   flex: 1 1 45%;
-}
-
-@for $i from 0 through 50 {
-  .schedule-event-list-item:nth-of-type(#{$i}) {
-    @include animations.slide-from-top-with-opacity(300ms, 10%, #{$i * 200}ms);
-  }
+  @include animations.slide-from-top-with-opacity(300ms, 10%, calc(var(--animation-delay) * 200ms));
 }

@@ -1,0 +1,5 @@
+@use '~src/app/shared/styles/breakpoints';
+
+.admin-select-church-layout-wrapper {
+  max-width: breakpoints.$toXSmall;
+}

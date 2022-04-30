@@ -26,7 +26,7 @@
   >
     <div
       *ngFor="let announcement of announcements; let i = index"
-      class="announcement-list-item"
+      [style]="'--animation-delay:' + i"
     >
       <app-announcement-list-item [announcement]="announcement"></app-announcement-list-item>
     </div>

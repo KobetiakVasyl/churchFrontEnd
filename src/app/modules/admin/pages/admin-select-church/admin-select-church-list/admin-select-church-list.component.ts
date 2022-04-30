@@ -3,8 +3,6 @@ import {
   catchError,
   combineLatest,
   debounceTime,
-  delay,
-  iif,
   map,
   Observable,
   scan,
@@ -14,7 +12,7 @@ import {
 } from "rxjs";
 import {HttpLoadingService} from "../../../../../shared/services/local/http-loading.service";
 import {ChurchService} from "../../../../../shared/services/API/church.service";
-import {IChurch, IChurchListItem} from "../../../../../shared/interfaces/church.interfaces";
+import {IChurch} from "../../../../../shared/interfaces/church.interfaces";
 import {ErrorMessageService} from "../../../../../shared/services/local/error-message.service";
 import {ScrollPaginationService} from "../../../../../shared/services/local/scroll-pagination.service";
 import {AdminSelectChurchService} from "../../../shared/services/admin-select-church.service";

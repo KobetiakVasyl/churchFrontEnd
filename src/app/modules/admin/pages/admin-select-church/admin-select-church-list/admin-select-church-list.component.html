@@ -16,8 +16,9 @@
     (scrolled)="scrollPaginationService.loadNextPage()"
   >
     <app-admin-select-church-item
-      *ngFor="let churchInfo of churches"
+      *ngFor="let churchInfo of churches; let i = index"
       [churchInfo]="churchInfo"
+      [style]="'--animation-delay:' + i"
     ></app-admin-select-church-item>
   </div>
 
@@ -27,6 +28,7 @@
     *ngIf="showLoading$ | async"
     mode="indeterminate"
     color="accent"
+    class="self-center"
   ></mat-spinner>
 
   <span

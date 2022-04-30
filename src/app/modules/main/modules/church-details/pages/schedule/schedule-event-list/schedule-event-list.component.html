@@ -18,6 +18,7 @@
   <div class="flex wrap gap-1">
     <div
       *ngFor="let event of events$ | async; let i = index"
+      [style]="'--animation-delay:' + i"
       class="schedule-event-list-item mat-elevation-z2 border-radius-2 container-2"
     >
       <app-schedule-event-list-item [scheduleEvent]="event"></app-schedule-event-list-item>

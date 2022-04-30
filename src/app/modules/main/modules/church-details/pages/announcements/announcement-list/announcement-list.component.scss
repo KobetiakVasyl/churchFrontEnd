@@ -1,7 +1,5 @@
 @use '~src/app/shared/styles/animations/animations';
 
-@for $i from 0 through 499 {
-  .announcement-list-item:nth-of-type(#{$i}) {
-    @include animations.slide-from-top-with-opacity(300ms, 10%,  #{$i * 200}ms)
-  }
+app-announcement-list-item {
+  @include animations.slide-from-top-with-opacity(300ms, 10%, calc(var(--animation-delay) * 200ms))
 }

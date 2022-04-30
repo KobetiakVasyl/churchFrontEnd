@@ -1,7 +1,7 @@
 <div
   *ngIf="churchInfo"
   class="flex flex-direction-column mat-elevation-z4 border-radius-2 admin-select-church-item-wrapper"
-  [style.background-image]="'url('+churchInfo.images[0]?.url+')'"
+  [style.background-image]="'linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.1)), url('+churchInfo.images[0]?.url+')'"
 >
   <div class="container-2 church-info flex flex-direction-column gap-2">
     <div>
