@@ -4,6 +4,7 @@
   <button
     mat-mini-fab
     color="accent"
+    type="button"
     class="images-floating-button images-floating-button--left"
     [disabled]="selectedImageIndex === 0"
     (click)="changeImage(-1)"
@@ -28,6 +29,7 @@
   <button
     mat-mini-fab
     color="accent"
+    type="button"
     class="images-floating-button images-floating-button--right"
     [disabled]="selectedImageIndex === images.length - 1"
     (click)="changeImage(1)"

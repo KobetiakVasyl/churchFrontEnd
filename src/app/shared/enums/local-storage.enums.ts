@@ -1,4 +1,4 @@
 export enum ELocalStorage {
   TOKEN = 'token',
-  USER = 'user_data'
+  USER_ID = 'user_id'
 }

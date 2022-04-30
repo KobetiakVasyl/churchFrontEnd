@@ -13,25 +13,30 @@ import { AdminSelectChurchItemComponent } from './pages/admin-select-church/admi
 import { AdminSelectChurchLayoutComponent } from './pages/admin-select-church/admin-select-church-layout/admin-select-church-layout.component';
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
 import {ScrollToTopModule} from "../../shared/modules/scroll-to-top/scroll-to-top.module";
+import { ImageControllerComponent } from './shared/components/image-controller/image-controller.component';
 
 @NgModule({
-  declarations: [
-    AdminLayoutComponent,
-    AdminSelectActionComponent,
-    AdminSelectChurchHeaderComponent,
-    AdminSelectChurchListComponent,
-    AdminSelectChurchItemComponent,
-    AdminSelectChurchLayoutComponent,
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    ShowFullImageModule,
-    InfiniteScrollModule,
-    ScrollToTopModule
-  ]
+    declarations: [
+        AdminLayoutComponent,
+        AdminSelectActionComponent,
+        AdminSelectChurchHeaderComponent,
+        AdminSelectChurchListComponent,
+        AdminSelectChurchItemComponent,
+        AdminSelectChurchLayoutComponent,
+        ImageControllerComponent,
+    ],
+    exports: [
+        ImageControllerComponent
+    ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        ReactiveFormsModule,
+        MaterialModule,
+        ShowFullImageModule,
+        InfiniteScrollModule,
+        ScrollToTopModule
+    ]
 })
 export class AdminModule {
 }

@@ -2,11 +2,13 @@
 @use './partials/mat-toolbar-title';
 @use './partials/big-button';
 @use './partials/mat-bottom-sheet';
+@use './partials/form-fieldset';
 
 @include mat-form-field-label.label-with-icon();
 @include mat-toolbar-title.title-font-size();
 @include big-button.mat-button-big();
 @include mat-bottom-sheet.padding-with-border-radius();
+@include form-fieldset.style();
 
 $container-sizes: (
   1: .5rem,

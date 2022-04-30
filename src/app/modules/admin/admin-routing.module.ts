@@ -21,7 +21,7 @@ const routes: Routes = [
         component: AdminSelectChurchLayoutComponent
       },
       {
-        path: 'church/details/:id',
+        path: 'church/details',
         loadChildren: () => import('./modules/admin-church-details/admin-church-details.module').then(m => m.AdminChurchDetailsModule)
       }
     ]

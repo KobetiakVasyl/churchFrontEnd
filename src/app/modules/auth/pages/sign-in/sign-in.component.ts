@@ -61,7 +61,9 @@ export class SignInComponent implements OnInit {
     this.authService.signIn(this.formGroup.getRawValue())
       .subscribe({
         next: value => {
-          localStorage.setItem(ELocalStorage.TOKEN, value.token)
+          localStorage.setItem(ELocalStorage.TOKEN, value.token);
+          localStorage.setItem(ELocalStorage.USER_ID, value.userId.toString());
+
           this.router.navigate(['', 'admin']);
         },
         error: error => {

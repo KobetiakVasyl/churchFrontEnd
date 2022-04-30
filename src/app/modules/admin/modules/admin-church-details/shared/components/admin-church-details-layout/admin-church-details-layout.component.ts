@@ -2,6 +2,7 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MatBottomSheet} from "@angular/material/bottom-sheet";
 import {LayoutBreakpointsService} from "../../../../../../../shared/services/local/layout-breakpoints.service";
+import {AdminTransferDataService} from "../../../../../shared/services/admin-transfer-data.service";
 
 @Component({
   selector: 'app-admin-church-details-layout',
@@ -32,11 +33,13 @@ export class AdminChurchDetailsLayoutComponent implements OnInit {
   constructor(
     public readonly route: ActivatedRoute,
     private readonly matBottomSheet: MatBottomSheet,
-    public readonly layoutBreakpointsService: LayoutBreakpointsService
+    public readonly layoutBreakpointsService: LayoutBreakpointsService,
+    public readonly adminTransferDataService: AdminTransferDataService,
   ) {
   }
 
   ngOnInit(): void {
+    this.adminTransferDataService.changeToolbarTitle('admin: church details')
   }
 
   openNavigation(): void {

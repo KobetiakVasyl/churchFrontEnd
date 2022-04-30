@@ -1,3 +1,4 @@
+@use '~src/app/shared/styles/breakpoints';
 @use '~src/app/shared/styles/animations/animations';
 
 .open-nav-container {
@@ -7,7 +8,16 @@
   transform: translateX(-50%);
   width: 100%;
   border-radius: 50% 50% 0 0;
+  background-color: white;
+  z-index: 101;
   @include animations.slide-from-bottom-with-opacity();
+}
+
+.close-navigation {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 nav {
@@ -23,9 +33,12 @@ nav {
   }
 }
 
-.close-navigation {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
+main {
+  margin-bottom: 3rem;
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  main {
+    margin-bottom: initial;
+  }
 }

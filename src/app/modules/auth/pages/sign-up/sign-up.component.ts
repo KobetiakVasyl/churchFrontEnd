@@ -77,10 +77,7 @@ export class SignUpComponent implements OnInit {
       .pipe(
         map(value => value.find(({roleName}) => roleName === ERole.USER) as IRole),
         switchMap(value => {
-          console.log(value);
           const formValue = this.formGroup.getRawValue();
-
-          formValue.phoneNumber = '+38' + formValue.phoneNumber;
 
           const body: ISignUpBody = {
             roleId: value.id,

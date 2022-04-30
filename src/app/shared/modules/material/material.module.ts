@@ -12,6 +12,7 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     MatNativeDateModule,
     MatChipsModule,
     MatSidenavModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatMenuModule
   ],
   exports: [
     MatToolbarModule,
@@ -42,7 +44,8 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     MatNativeDateModule,
     MatChipsModule,
     MatSidenavModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule {

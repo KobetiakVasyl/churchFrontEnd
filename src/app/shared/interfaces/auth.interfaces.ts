@@ -15,6 +15,7 @@ export interface ISignUpBody {
 
 export interface ISignInResponse {
   token: string;
+  userId: number;
 }
 
 export interface IResetPasswordBody {

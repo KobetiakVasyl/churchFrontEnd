@@ -1,0 +1,58 @@
+<mat-menu #matMenu class="border-radius-3">
+  <div class="flex flex-direction-column menu-wrapper">
+    <h3>Image will be deleted</h3>
+
+    <div class="flex gap-1">
+      <button
+        mat-button
+        color="primary"
+        type="button"
+      >
+        Cancel
+      </button>
+
+      <button
+        mat-button
+        color="warn"
+        type="button"
+        (click)="deleteEventEmitter.emit(image.id)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</mat-menu>
+
+<div
+  *ngIf="image"
+  class="image-wrapper"
+>
+  <img
+    [src]="image.url"
+    [alt]="image.name"
+    draggable="false"
+    (click)="selectImage(image)"
+  >
+
+  <div class="image-wrapper__actions flex gap-2 container-1">
+    <button
+      mat-mini-fab
+      color="primary"
+      type="button"
+      matTooltip="Download image"
+      (click)="downloadEventEmitter.emit(image.url)"
+    >
+      <i class="material-icons-outlined">download</i>
+    </button>
+
+    <button
+      mat-mini-fab
+      color="warn"
+      type="button"
+      matTooltip="Delete image"
+      [matMenuTriggerFor]="matMenu"
+    >
+      <i class="material-icons-outlined">delete</i>
+    </button>
+  </div>
+</div>

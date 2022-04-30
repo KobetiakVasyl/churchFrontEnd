@@ -45,7 +45,7 @@ export class AdminSelectChurchListComponent implements OnInit {
           this.scrollPaginationService.changeScrollTriggerState(true);
         }),
         debounceTime(500),
-        switchMap(([pagingInfo, filterValue]) => this.churchService.getByParams(pagingInfo.offset, pagingInfo.limit)
+        switchMap(([pagingInfo, filterValue]) => this.churchService.getForAuthorizedByParams(pagingInfo.offset, pagingInfo.limit)
           .pipe(
             scan((acc, value) => {
               acc.records.concat(value.records);

@@ -22,6 +22,7 @@ export class AuthService {
   }
 
   signUp(body: ISignUpBody): Observable<void> {
+    body.phoneNumber = '+38' + body.phoneNumber;
     return this.http.post<void>(`${environment.URL}/${this.route}/signup`, body);
   }
 
@@ -35,6 +36,6 @@ export class AuthService {
 
   static signOut(): void {
     localStorage.removeItem(ELocalStorage.TOKEN);
-    localStorage.removeItem(ELocalStorage.USER);
+    localStorage.removeItem(ELocalStorage.USER_ID);
   }
 }

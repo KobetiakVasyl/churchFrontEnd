@@ -1,0 +1,6 @@
+@mixin style() {
+  form fieldset {
+    border-style: dashed;
+    padding-top: 1rem;
+  }
+}

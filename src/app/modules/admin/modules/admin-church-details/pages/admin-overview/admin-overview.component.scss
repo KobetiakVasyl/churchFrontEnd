@@ -1,0 +1,34 @@
+@use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
+
+h2 {
+  @include animations.bounce-from-left-with-opacity(600ms, 10%);
+}
+
+fieldset {
+  @include animations.slide-from-top-with-opacity(500ms, 10%, 300ms);
+}
+
+mat-form-field.textarea {
+  width: 100%;
+}
+
+.form-actions > button {
+  @include animations.bounce-from-right-with-opacity(600ms, 10%, 600ms);
+
+  max-width: 200px;
+
+  &[type=submit] {
+    max-width: 180px;
+  }
+}
+
+.admin-overview-wrapper {
+  max-width: breakpoints.$fromXSmall;
+}
+
+@media screen and (min-width: breakpoints.$fromXSmall) {
+  app-image-controller {
+    max-width: 48%;
+  }
+}
