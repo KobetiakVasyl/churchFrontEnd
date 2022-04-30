@@ -1,0 +1,31 @@
+@use '~src/app/shared/styles/animations/animations';
+
+.open-nav-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  border-radius: 50% 50% 0 0;
+  @include animations.slide-from-bottom-with-opacity();
+}
+
+nav {
+  margin-right: auto;
+
+  &.small {
+    padding-block: 1rem;
+    margin-right: initial;
+  }
+
+  .admin-church-details-links-wrapper > a {
+    @include animations.slide-from-left-with-opacity(400ms, 40%, 200ms);
+  }
+}
+
+.close-navigation {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

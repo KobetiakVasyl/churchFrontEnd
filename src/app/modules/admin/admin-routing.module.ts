@@ -22,6 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'church/details/:id',
+        loadChildren: () => import('./modules/admin-church-details/admin-church-details.module').then(m => m.AdminChurchDetailsModule)
       }
     ]
   }

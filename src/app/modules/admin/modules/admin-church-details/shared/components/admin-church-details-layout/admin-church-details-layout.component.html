@@ -1,0 +1,75 @@
+<div class="flex flex-direction-column gap-2 v-center">
+  <ng-template [ngIf]="layoutBreakpointsService.extraSmallMatch$ | async" [ngIfElse]="showBigScreenNavigation">
+    <div class="open-nav-container flex h-center container-1 mat-elevation-z8">
+      <button
+        mat-mini-fab
+        color="accent"
+        (click)="openNavigation()"
+      >
+        <i class="material-icons-outlined">expand_less</i>
+      </button>
+    </div>
+
+    <ng-template #templateBottomSheet>
+      <button
+        mat-mini-fab
+        color="accent"
+        class="close-navigation"
+        (click)="closeNavigation()"
+      >
+        <i class="material-icons-outlined">expand_more</i>
+      </button>
+
+      <nav
+        *ngIf="route.params | async as routeParams"
+        class="flex flex-direction-column grow-1 gap-1 small"
+      >
+        <a
+          *ngFor="let route of routes"
+          mat-stroked-button
+          color="accent"
+          routerLinkActive="active-link"
+          [matTooltip]="route.label"
+          [routerLink]="['', 'admin', 'church-details', routeParams['id'], route.pathSegment]"
+          (click)="closeNavigation()"
+        >
+          <div class="flex gap-2 v-center">
+            <i class="material-icons-outlined">{{ route.iconName }}</i>
+            <span>{{ route.label }}</span>
+          </div>
+        </a>
+      </nav>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #showBigScreenNavigation>
+    <nav class="flex v-center gap-3">
+      <a
+        mat-mini-fab
+        color="accent"
+        [routerLink]="['', 'admin', 'select-church']"
+      >
+        <i class="material-icons-outlined">west</i>
+      </a>
+
+      <div
+        *ngIf="route.params | async as routeParams"
+        class="flex admin-church-details-links-wrapper gap-2"
+      >
+        <a
+          *ngFor="let route of routes"
+          mat-fab
+          color="accent"
+          [matTooltip]="route.label"
+          [routerLink]="['', 'admin', 'church-details', routeParams['id'], route.pathSegment]"
+        >
+          <i class="material-icons-outlined">{{ route.iconName }}</i>
+        </a>
+      </div>
+    </nav>
+  </ng-template>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

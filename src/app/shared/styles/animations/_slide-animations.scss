@@ -75,4 +75,24 @@
   }
 }
 
+@mixin slide-from-bottom-with-opacity($duration: 400ms, $distance: 10%, $delay: 0ms) {
+  animation: slide-from-bottom-with-opacity $duration ease-in-out backwards;
+
+  @if ($delay != 0) {
+    animation-delay: $delay;
+  }
+
+  @keyframes slide-from-bottom-with-opacity {
+    from {
+      margin-bottom: -$distance;
+      opacity: 0;
+    }
+
+    to {
+      margin-bottom: initial;
+      opacity: 1;
+    }
+  }
+}
+
 

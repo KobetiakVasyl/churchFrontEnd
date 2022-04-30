@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin active-link-style($theme) {
+  $color-config: mat.get-color-config($theme);
+
+  $accent-palette: map.get($color-config, 'accent');
+  $accent-color: mat.get-color-from-palette($accent-palette, 100);
+  $accent-contrast-color: mat.get-contrast-color-from-palette($accent-palette, 300);
+
+  $primary-palette: map.get($color-config, 'primary');
+  $primary-color: mat.get-color-from-palette($primary-palette, 200);
+  $primary-contrast-color: mat.get-contrast-color-from-palette($primary-palette, 100);
+
+  a[color="primary"].active-link {
+    color: $primary-contrast-color !important;
+    background-color: $primary-color !important;
+  }
+
+  a[color="accent"].active-link {
+    color: $accent-contrast-color !important;
+    background-color: $accent-color !important;
+  }
+}

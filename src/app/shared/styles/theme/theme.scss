@@ -3,6 +3,7 @@
 @use 'mat-card';
 @use 'church-overview';
 @use 'mat-calendar';
+@use 'active-link';
 
 @include mat.core();
 
@@ -35,3 +36,4 @@ $mat-form-field-theme: mat.define-light-theme((
 @include mat-card.style($app-theme);
 @include church-overview.style($app-theme);
 @include mat-calendar.style($app-theme);
+@include active-link.active-link-style($app-theme);
