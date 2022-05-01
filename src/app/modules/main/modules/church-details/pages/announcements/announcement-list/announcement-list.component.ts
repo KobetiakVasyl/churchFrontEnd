@@ -6,17 +6,17 @@ import {
   catchError,
   combineLatest,
   debounceTime,
-  finalize,
+  finalize, iif,
   map,
-  Observable,
-  scan,
-  switchMap,
+  Observable, of, pairwise, reduce,
+  scan, startWith,
+  switchMap, take,
   tap,
-  throwError
+  throwError, withLatestFrom
 } from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {HttpLoadingService} from "../../../../../../../shared/services/local/http-loading.service";
-import {IAnnouncement} from "../../../../../../../shared/interfaces/announcement.interfaces";
+import {IAnnouncement, IAnnouncementPartialList} from "../../../../../../../shared/interfaces/announcement.interfaces";
 import {ScrollPaginationService} from "../../../../../../../shared/services/local/scroll-pagination.service";
 
 @Component({
@@ -56,15 +56,18 @@ export class AnnouncementListComponent implements OnInit {
           pagingInfo.offset,
           pagingInfo.limit
         )
-        .pipe(
-          scan((acc, value) => {
-            acc.records.concat(value.records)
-            return acc;
-          }),
-          tap(value => this.scrollPaginationService.changeScrollTriggerState(value.totalCount === value.records.length)),
-          map(({records}) => records)
-        )
       ),
+      startWith({
+        totalCount: 0,
+        records: []
+      } as IAnnouncementPartialList),
+      pairwise(),
+      map(([prev, curr]) => {
+        curr.records = prev.records.concat(curr.records);
+        return curr;
+      }),
+      tap(value => this.scrollPaginationService.changeScrollTriggerState(value.totalCount === value.records.length)),
+      map(({records}) => records),
       catchError(error => {
         this.errorMessageService.errorMessage = error.message;
         this.errorMessageService.showErrorMessage();

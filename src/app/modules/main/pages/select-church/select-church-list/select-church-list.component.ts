@@ -5,15 +5,16 @@ import {
   catchError,
   combineLatest,
   debounceTime,
-  iif, map, Observable,
-  scan,
+  iif, map, Observable, pairwise,
+  scan, startWith,
   switchMap,
   tap,
   throwError
 } from "rxjs";
 import {ErrorMessageService} from "../../../../../shared/services/local/error-message.service";
-import {IChurchListItem} from "../../../../../shared/interfaces/church.interfaces";
+import {IChurchListItem, IChurchPartialList} from "../../../../../shared/interfaces/church.interfaces";
 import {ScrollPaginationService} from "../../../../../shared/services/local/scroll-pagination.service";
+import {IAnnouncementPartialList} from "../../../../../shared/interfaces/announcement.interfaces";
 
 @Component({
   selector: 'app-select-church-list',
@@ -49,9 +50,14 @@ export class SelectChurchListComponent implements OnInit {
             this.churchService.search(filterValue),
             this.churchService.getByParams(pagingInfo.offset, pagingInfo.limit)
               .pipe(
-                scan((acc, value) => {
-                  acc.records.concat(value.records);
-                  return acc;
+                startWith({
+                  totalCount: 0,
+                  records: []
+                } as IChurchPartialList),
+                pairwise(),
+                map(([prev, curr]) => {
+                  curr.records = prev.records.concat(curr.records);
+                  return curr;
                 }),
                 tap(value => this.scrollPaginationService.changeScrollTriggerState(value.totalCount === value.records.length)),
                 map(({records}) => records)
