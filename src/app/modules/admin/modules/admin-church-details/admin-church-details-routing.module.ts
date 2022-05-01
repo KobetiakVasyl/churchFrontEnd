@@ -5,7 +5,6 @@ import {
 } from "./shared/components/admin-church-details-layout/admin-church-details-layout.component";
 import {AdminOverviewComponent} from "./pages/admin-overview/admin-overview.component";
 import {AdminScheduleComponent} from "./pages/admin-schedule/admin-schedule.component";
-import {AdminAnnouncementsComponent} from "./pages/admin-announcements/admin-announcements.component";
 
 const routes: Routes = [
   {
@@ -27,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'announcements',
-        component: AdminAnnouncementsComponent
+        loadChildren: () => import('./modules/admin-announcements/admin-announcements.module').then(m => m.AdminAnnouncementsModule)
       }
     ]
   }

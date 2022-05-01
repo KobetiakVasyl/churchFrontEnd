@@ -3,7 +3,7 @@
 
 .church-overview {
   width: 100%;
-  max-width: breakpoints.$toSmall;
+  max-width: breakpoints.$toXSmall * 1.3;
 
   &__main {
     flex-direction: column-reverse;

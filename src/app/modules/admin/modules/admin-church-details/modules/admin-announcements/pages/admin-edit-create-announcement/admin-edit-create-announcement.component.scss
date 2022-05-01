@@ -1,0 +1,13 @@
+@use '~src/app/shared/styles/breakpoints';
+
+.create-announcement-wrapper {
+  max-width: breakpoints.$toXSmall;
+}
+
+h3 {
+  margin: 0;
+}
+
+button[mat-flat-button] {
+  min-width: 180px;
+}

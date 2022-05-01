@@ -1,3 +1,10 @@
+<a
+  hidden
+  #downloadImage
+  target="_blank"
+  href="#"
+></a>
+
 <mat-menu #matMenu class="border-radius-3">
   <div class="flex flex-direction-column menu-wrapper">
     <h3>Image will be deleted</h3>
@@ -15,7 +22,7 @@
         mat-button
         color="warn"
         type="button"
-        (click)="deleteEventEmitter.emit(image.id)"
+        (click)="deleteEventEmitter.emit(image)"
       >
         Delete
       </button>
@@ -23,24 +30,23 @@
   </div>
 </mat-menu>
 
-<div
-  *ngIf="image"
-  class="image-wrapper"
->
+<div class="image-wrapper">
   <img
     [src]="image.url"
     [alt]="image.name"
     draggable="false"
+    class="border-radius-3"
     (click)="selectImage(image)"
   >
 
   <div class="image-wrapper__actions flex gap-2 container-1">
     <button
+      *ngIf="!!image.id"
       mat-mini-fab
       color="primary"
       type="button"
       matTooltip="Download image"
-      (click)="downloadEventEmitter.emit(image.url)"
+      (click)="downloadImage.href = image.url; downloadImage.click()"
     >
       <i class="material-icons-outlined">download</i>
     </button>

@@ -1,12 +1,5 @@
-<a
-  hidden
-  #downloadImage
-  target="_blank"
-  href="#"
-></a>
-
 <div
-  class="flex flex-direction-column admin-overview-wrapper"
+  class="flex flex-direction-column self-center admin-overview-wrapper"
   [class.mat-elevation-z4]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
   [class.container-2]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
   [class.border-radius-3]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
@@ -210,44 +203,7 @@
       <fieldset class="flex grow-1 gap-2 wrap border-radius-2">
         <legend>Church images</legend>
 
-        <div class="flex gap-2">
-          <button
-            mat-flat-button
-            color="primary"
-            type="button"
-            [disabled]="showLoading$ | async"
-            (click)="inputElement.value = ''; inputElement.click()"
-          >
-            Завантажити файл
-          </button>
-
-          <mat-spinner
-            *ngIf="showLoading$ | async"
-            class="self-center"
-            color="primary"
-            mode="indeterminate"
-            diameter="25"
-            strokeWidth="5"
-          ></mat-spinner>
-        </div>
-
-        <input
-          #inputElement
-          hidden
-          required
-          type="file"
-          accept="image/png, image/jpeg"
-          (change)="handleFileUpload($any($event.target).files)"
-        >
-
-        <div class="flex gap-2 wrap">
-          <app-image-controller
-            *ngFor="let image of images"
-            [image]="image"
-            (download)="downloadImage.href = $event; downloadImage.click()"
-            (delete)="deleteImage($event)"
-          ></app-image-controller>
-        </div>
+        <app-images-uploader formControlName="images"></app-images-uploader>
       </fieldset>
     </div>
 

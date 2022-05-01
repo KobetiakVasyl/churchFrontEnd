@@ -1,0 +1,12 @@
+<div class="flex gap-2 h-space-between v-center">
+  <h3>Announcements</h3>
+
+  <a
+    *ngIf="route.parent?.parent?.parent?.params | async as params"
+    mat-flat-button
+    color="primary"
+    [routerLink]="['', 'admin', 'church', 'details', params['id'], 'announcements', 'create']"
+  >
+    Create
+  </a>
+</div>

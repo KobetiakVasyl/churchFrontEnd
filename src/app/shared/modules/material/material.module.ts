@@ -13,6 +13,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatChipsModule,
     MatSidenavModule,
     MatBottomSheetModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   exports: [
     MatToolbarModule,
@@ -45,7 +47,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MatChipsModule,
     MatSidenavModule,
     MatBottomSheetModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule {

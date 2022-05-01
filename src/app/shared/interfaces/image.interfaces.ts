@@ -7,3 +7,8 @@ export interface IImage {
 export interface IImagesList {
   images: IImage[];
 }
+
+export interface IImageChangeEvent {
+  removed: number[];
+  uploaded: File[];
+}

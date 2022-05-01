@@ -1,0 +1,38 @@
+<app-show-full-image></app-show-full-image>
+
+<input
+  #inputElement
+  hidden
+  required
+  type="file"
+  accept="image/png, image/jpeg"
+  (change)="handleFileUpload($any($event.target).files.item(0))"
+>
+
+<div class="flex gap-2">
+  <button
+    mat-flat-button
+    color="primary"
+    type="button"
+    [disabled]="isDisabled || (showLoading$ | async)"
+    (click)="inputElement.value = ''; inputElement.click()"
+  >
+    Завантажити файл
+  </button>
+
+  <mat-spinner
+    *ngIf="showLoading$ | async"
+    color="primary"
+    mode="indeterminate"
+    diameter="25"
+    strokeWidth="5"
+  ></mat-spinner>
+</div>
+
+<div class="flex gap-2 wrap image-wrapper">
+  <app-image-controller-item
+    *ngFor="let image of images"
+    [image]="image"
+    (delete)="deleteImage($event)"
+  ></app-image-controller-item>
+</div>

@@ -26,9 +26,3 @@ mat-form-field.textarea {
 .admin-overview-wrapper {
   max-width: breakpoints.$fromXSmall;
 }
-
-@media screen and (min-width: breakpoints.$fromXSmall) {
-  app-image-controller {
-    max-width: 48%;
-  }
-}

@@ -66,14 +66,11 @@ export class ChurchService {
     return this.http.put<IChurch>(`${environment.URL}/${this.route}/update`, body)
   }
 
-  uploadImage(churchId: string, images: FileList): Observable<IImage[]> {
+  uploadImages(churchId: string, images: File[]): Observable<IImage[]> {
     const formData = new FormData();
 
     formData.append('churchId', churchId);
-
-    for (let i = 0; i < images.length; i++) {
-      formData.append('image', images.item(i) as File);
-    }
+    images.forEach(image => formData.append('image', image));
 
     return this.http.post<IChurch>(`${environment.URL}/${this.route}/upload/images`, formData)
       .pipe(map(value => value.images));

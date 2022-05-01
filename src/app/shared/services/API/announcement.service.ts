@@ -18,29 +18,21 @@ export class AnnouncementService {
   constructor(private readonly http: HttpClient) {
   }
 
-  create(body: ICreateAnnouncement, images?: File[]): Observable<IAnnouncement> {
-    const formData = new FormData();
-
-    formData.append('body', JSON.stringify(body));
-
-    if (images) images.forEach(image => formData.append('image', image));
-
-    return this.http.post<IAnnouncement>(`${environment.URL}/${this.route}/create`, formData);
+  create(body: ICreateAnnouncement): Observable<IAnnouncement> {
+    return this.http.post<IAnnouncement>(`${environment.URL}/${this.route}/create`, body);
   }
 
   update(body: IUpdateAnnouncement): Observable<IAnnouncement> {
     return this.http.put<IAnnouncement>(`${environment.URL}/${this.route}/update`, body);
   }
 
-  uploadImages(churchId: number, announcementId: number, images: FileList): Observable<IImage[]> {
+  uploadImages(churchId: number, announcementId: number, images: File[]): Observable<IImage[]> {
     const formData = new FormData();
 
     formData.append('churchId', churchId.toString());
     formData.append('announcementId', announcementId.toString());
 
-    for (let i = 0; i < images.length; i++) {
-      formData.append('image', images.item(i) as File);
-    }
+    images.forEach(image => formData.append('image', image));
 
     return this.http.patch<IAnnouncement>(`${environment.URL}/${this.route}/upload/images`, formData)
       .pipe(map(value => value.images));
@@ -67,5 +59,13 @@ export class AnnouncementService {
     params = params.append('limit', limit);
 
     return this.http.get<IAnnouncementPartialList>(`${environment.URL}/${this.route}/list`, {params});
+  }
+
+  getById(id: string): Observable<IAnnouncement> {
+    let params = new HttpParams();
+
+    params = params.append('id', id);
+
+    return this.http.get<IAnnouncement>(`${environment.URL}/${this.route}`, {params});
   }
 }
