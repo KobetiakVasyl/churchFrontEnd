@@ -1,0 +1,11 @@
+@use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
+
+div[infinite-scroll] {
+  max-width: breakpoints.$toXSmall;
+  margin: auto;
+}
+
+app-admin-announcements-list-item {
+  @include animations.slide-from-top-with-opacity(300ms, 10%, calc(var(--animation-delay) * 200ms))
+}

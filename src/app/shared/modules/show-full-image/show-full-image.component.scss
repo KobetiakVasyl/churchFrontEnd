@@ -11,6 +11,8 @@
     max-height: 90%;
     animation: scale-image 200ms ease-in-out both;
     pointer-events: none;
+    max-width: 100%;
+    width: auto;
   }
 }
 

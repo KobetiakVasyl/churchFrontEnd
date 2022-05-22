@@ -1,6 +1,6 @@
 <div
   *ngIf="!!images.length"
-  class="image-carousel-container">
+  class="image-carousel-container border-radius-2 container-2">
   <button
     mat-mini-fab
     color="accent"
@@ -22,6 +22,7 @@
       [src]="image.url"
       [alt]="image.name"
       draggable="false"
+      [srcset]="image.url + ' 500w'"
       (click)="selectImage(image)"
     >
   </div>

@@ -17,7 +17,12 @@
     color: mat.get-contrast-color-from-palette($accent-palette, 300)
   }
 
-  mat-card-content, mat-card-actions {
-    padding: $padding;
+  mat-card-content {
+    padding: $padding !important;
+  }
+
+  mat-card-actions {
+    padding: $padding !important;
+    margin: 0 !important;
   }
 }

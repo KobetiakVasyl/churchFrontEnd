@@ -1,3 +1,5 @@
+@use '~src/app/shared/styles/breakpoints';
+
 .image-carousel-container {
   position: relative;
 }
@@ -6,13 +8,13 @@
   overflow-y: hidden;
   scroll-behavior: smooth;
   pointer-events: none;
+  max-height: 300px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   img {
-    width: 100%;
     pointer-events: auto;
   }
 }

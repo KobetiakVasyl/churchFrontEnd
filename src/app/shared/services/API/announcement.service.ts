@@ -66,6 +66,6 @@ export class AnnouncementService {
 
     params = params.append('id', id);
 
-    return this.http.get<IAnnouncement>(`${environment.URL}/${this.route}`, {params});
+    return this.http.get<IAnnouncement>(`${environment.URL}/${this.route}/one`, {params});
   }
 }

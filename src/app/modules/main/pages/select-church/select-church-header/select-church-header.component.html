@@ -1,5 +1,6 @@
 <div class="flex wrap v-center gap-2">
   <a
+    *ngIf="!isAuthorized"
     mat-mini-fab
     color="accent"
     [routerLink]="['', 'auth']"
@@ -20,7 +21,7 @@
     <mat-hint>Search will start automatically</mat-hint>
 
     <mat-spinner
-      *ngIf="showLoading | async"
+      *ngIf="showLoading$ | async"
       matSuffix
       color="primary"
       mode="indeterminate"
@@ -30,7 +31,7 @@
   </mat-form-field>
 
   <mat-spinner
-    *ngIf="showLoading | async"
+    *ngIf="showLoading$ | async"
     class="larger-screen-spinner"
     color="primary"
     mode="indeterminate"

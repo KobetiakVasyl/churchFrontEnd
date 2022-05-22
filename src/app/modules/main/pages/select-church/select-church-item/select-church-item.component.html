@@ -1,7 +1,9 @@
 <mat-card
   *ngIf="churchInfo"
   [class]="churchClassName"
+  matRipple
   class="border-radius-3"
+  [routerLink]="['', 'main', 'church-details', churchInfo.id, 'overview']"
 >
   <mat-card-title-group>
     <mat-card-title>{{ churchInfo.name }}</mat-card-title>
@@ -14,13 +16,4 @@
       <li>Деканат: {{ churchInfo.deanery }}</li>
     </ul>
   </mat-card-content>
-
-  <a
-    mat-raised-button
-    color="accent"
-    class="select-church-button"
-    [routerLink]="['', 'main', 'church-details', churchInfo.id, 'overview']"
-  >
-    Select
-  </a>
 </mat-card>

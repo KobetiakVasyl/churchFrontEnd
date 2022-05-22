@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {
   AdminAnnouncementsLayoutComponent
 } from "./shared/components/admin-announcements-layout/admin-announcements-layout.component";
 import {
   AdminAnnouncementsListLayoutComponent
 } from "./pages/admin-announcements/admin-announcements-list-layout/admin-announcements-list-layout.component";
-import {AdminEditCreateAnnouncementComponent} from "./pages/admin-edit-create-announcement/admin-edit-create-announcement.component";
+import {
+  AdminEditCreateAnnouncementComponent
+} from "./pages/admin-edit-create-announcement/admin-edit-create-announcement.component";
 
 const routes: Routes = [
   {
@@ -24,11 +26,17 @@ const routes: Routes = [
       },
       {
         path: 'edit/:announcementId',
-        component: AdminEditCreateAnnouncementComponent
+        component: AdminEditCreateAnnouncementComponent,
+        data: {
+          formTitle: 'Edit announcement'
+        }
       },
       {
         path: 'create',
-        component: AdminEditCreateAnnouncementComponent
+        component: AdminEditCreateAnnouncementComponent,
+        data: {
+          formTitle: 'Create announcement'
+        }
       }
     ]
   }
@@ -38,4 +46,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminAnnouncementsRoutingModule { }
+export class AdminAnnouncementsRoutingModule {
+}

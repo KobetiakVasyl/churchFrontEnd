@@ -1,1 +1,40 @@
-<p>admin-announcements-list works!</p>
+<div>
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+
+  <div
+    *ngIf="announcements$ | async as announcements"
+    infinite-scroll
+    class="flex flex-direction-column gap-2"
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="750"
+    [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"
+    (scrolled)="scrollPaginationService.loadNextPage()"
+  >
+    <app-admin-announcements-list-item
+      *ngFor="let announcement of announcements; let i = index"
+      [announcement]="announcement"
+      [style]="announcements.length > $any((scrollPaginationService.pagingInfo$ | async)).limit ? '' : '--animation-delay:' + i"
+    ></app-admin-announcements-list-item>
+  </div>
+
+  <app-scroll-to-top></app-scroll-to-top>
+
+  <mat-spinner
+    *ngIf="showLoading$ | async"
+    mode="indeterminate"
+    color="accent"
+    class="self-center"
+  ></mat-spinner>
+
+  <span
+    *ngIf="errorMessageService.errorMessage"
+    class="error-message"
+  >
+    {{ errorMessageService.errorMessage }}
+  </span>
+</div>

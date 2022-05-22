@@ -8,7 +8,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule, MatRippleModule} from "@angular/material/core";
 import {MatChipsModule} from "@angular/material/chips";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
@@ -31,7 +31,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSidenavModule,
     MatBottomSheetModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRippleModule
   ],
   exports: [
     MatToolbarModule,
@@ -48,7 +49,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSidenavModule,
     MatBottomSheetModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRippleModule
   ]
 })
 export class MaterialModule {

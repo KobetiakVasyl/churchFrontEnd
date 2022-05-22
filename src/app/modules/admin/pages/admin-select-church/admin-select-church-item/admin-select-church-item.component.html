@@ -1,8 +1,14 @@
 <div
   *ngIf="churchInfo"
-  class="flex flex-direction-column mat-elevation-z4 border-radius-2 admin-select-church-item-wrapper"
-  [style.background-image]="'linear-gradient(to right, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0.1)), url('+churchInfo.images[0]?.url+')'"
+  class="flex flex-direction-column h-space-between mat-elevation-z4 border-radius-2 admin-select-church-item-wrapper"
 >
+  <img
+    *ngIf="churchInfo.images[0] as img"
+    [src]="img.url"
+    [alt]="img.name"
+    draggable="false"
+  >
+
   <div class="container-2 church-info flex flex-direction-column gap-2">
     <div>
       <p class="church-info__name">{{ churchInfo.name }}</p>

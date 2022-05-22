@@ -1,6 +1,15 @@
 .admin-select-church-item-wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .church-info {
@@ -8,6 +17,12 @@
 
   &__name, &__description {
     margin: 0;
+  }
+
+  &__name, &__description, &__name, small {
+    color: white;
+    text-shadow: .1rem .1rem .4rem rgba(0, 0, 0, .9),
+    -.1rem -.1rem .4rem rgba(0, 0, 0, .9);
   }
 
   &__name {

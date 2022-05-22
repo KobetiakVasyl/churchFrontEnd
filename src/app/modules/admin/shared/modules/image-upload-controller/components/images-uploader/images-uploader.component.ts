@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {IImage, IImageChangeEvent} from "../../../../../../../shared/interfaces/image.interfaces";
-import {Observable} from "rxjs";
+import {Observable, of, skipWhile, take, timer} from "rxjs";
 import {HttpLoadingService} from "../../../../../../../shared/services/local/http-loading.service";
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
@@ -35,6 +35,13 @@ export class ImagesUploaderComponent implements ControlValueAccessor {
   writeValue(value: IImage[]): void {
     this.images = value;
     this.initiallyUploadedImages = [...value];
+
+    of(null)
+      .pipe(
+        skipWhile(() => !this.onChange),
+        take(1)
+      )
+      .subscribe(() => this.onChange(this.getImageInfo()));
   }
 
   registerOnChange(fn: any): void {

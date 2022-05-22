@@ -3,6 +3,7 @@ import {FormControl} from "@angular/forms";
 import {debounceTime, distinctUntilChanged, Observable, Subscription} from "rxjs";
 import {SelectChurchService} from "../../../shared/services/select-church.service";
 import {HttpLoadingService} from "../../../../../shared/services/local/http-loading.service";
+import {TokenService} from "../../../../../shared/services/local/token.service";
 
 @Component({
   selector: 'app-select-church-header',
@@ -13,7 +14,6 @@ export class SelectChurchHeaderComponent implements OnInit, OnDestroy {
   filterFormControl = new FormControl(null);
 
   private readonly subscriptions = new Subscription();
-
   constructor(private readonly selectChurchService: SelectChurchService) { }
 
   ngOnInit(): void {
@@ -31,7 +31,11 @@ export class SelectChurchHeaderComponent implements OnInit, OnDestroy {
     this.subscriptions.unsubscribe();
   }
 
-  get showLoading(): Observable<boolean> {
+  get isAuthorized(): boolean {
+    return TokenService.isAuthorized();
+  };
+
+  get showLoading$(): Observable<boolean> {
     return HttpLoadingService.showLoading$;
   }
 }

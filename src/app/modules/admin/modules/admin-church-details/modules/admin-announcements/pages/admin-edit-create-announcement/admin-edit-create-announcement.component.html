@@ -13,7 +13,7 @@
       <i class="material-icons-outlined">west</i>
     </a>
 
-    <h3>Create announcement</h3>
+    <h3 *ngIf="activatedRoute.data | async as data">{{ data['formTitle'] }}</h3>
   </div>
 
   <form

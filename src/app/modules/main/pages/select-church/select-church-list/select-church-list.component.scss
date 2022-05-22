@@ -6,12 +6,8 @@ app-select-church-item {
 }
 
 @media screen and (min-width: breakpoints.$fromXSmall) {
-  .church-card-wrapper {
-    padding-left: 3rem;
-  }
-
   app-select-church-item {
-    max-width: calc(25% - 1.5rem);
+    max-width: max(#{breakpoints.$fromXSmall / 1.5}, calc(25% - 1.5rem));
   }
 }
 

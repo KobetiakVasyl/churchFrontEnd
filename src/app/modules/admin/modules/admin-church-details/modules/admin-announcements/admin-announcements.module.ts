@@ -21,6 +21,9 @@ import {
 } from "./pages/admin-announcements/admin-announcements-header/admin-announcements-header.component";
 import { AdminEditCreateAnnouncementComponent } from './pages/admin-edit-create-announcement/admin-edit-create-announcement.component';
 import {ImageUploadControllerModule} from "../../../../shared/modules/image-upload-controller/image-upload-controller.module";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {ScrollToTopModule} from "../../../../../../shared/modules/scroll-to-top/scroll-to-top.module";
+import {ImageCarouselModule} from "../../../../../../shared/modules/image-carousel/image-carousel.module";
 
 
 @NgModule({
@@ -38,6 +41,9 @@ import {ImageUploadControllerModule} from "../../../../shared/modules/image-uplo
     MaterialModule,
     ReactiveFormsModule,
     ImageUploadControllerModule,
+    InfiniteScrollModule,
+    ScrollToTopModule,
+    ImageCarouselModule,
   ]
 })
 export class AdminAnnouncementsModule {

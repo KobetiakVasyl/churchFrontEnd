@@ -1,1 +1,31 @@
-<p>admin-announcements-list-item works!</p>
+<mat-card class="border-radius-3">
+  <mat-card-title-group>
+    <mat-card-title>{{ announcement.name }}</mat-card-title>
+
+    <mat-card-subtitle>
+      Created at: {{ announcement.createdAt | date: 'dd/MM/yyyy' }}
+      Last updated at: {{ announcement.updatedAt | date: 'dd/MM/yyyy' }}
+    </mat-card-subtitle>
+  </mat-card-title-group>
+
+  <mat-card-content>
+    <div class="flex h-space-between gap-1 wrap-reverse">
+      <p>{{ announcement.description }}</p>
+
+      <app-image-carousel class="grow-1" [images]="announcement.images"></app-image-carousel>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div class="flex h-flex-end">
+      <a
+        *ngIf="activatedRoute.parent?.parent?.parent?.params | async as params"
+        mat-mini-fab
+        color="accent"
+        [routerLink]="['', 'admin', 'church', 'details', params['id'], 'announcements', 'edit', announcement.id]"
+      >
+        <i class="material-icons-outlined">edit</i>
+      </a>
+    </div>
+  </mat-card-actions>
+</mat-card>

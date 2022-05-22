@@ -38,16 +38,16 @@ export class AdminEditCreateAnnouncementComponent implements OnInit {
     public readonly layoutBreakpointsService: LayoutBreakpointsService,
     public readonly errorMessageService: ErrorMessageService,
     private readonly announcementService: AnnouncementService,
-    public readonly route: ActivatedRoute,
+    public readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
   ) {
   }
 
   ngOnInit(): void {
-    (((this.route.parent as ActivatedRoute).parent as ActivatedRoute).parent as ActivatedRoute).params
+    (((this.activatedRoute.parent as ActivatedRoute).parent as ActivatedRoute).parent as ActivatedRoute).params
       .subscribe(params => this.churchId = +params['id']);
 
-    this.route.params
+    this.activatedRoute.params
       .pipe(
         filter(params => !!params?.['announcementId']),
         switchMap(params => {
@@ -79,7 +79,8 @@ export class AdminEditCreateAnnouncementComponent implements OnInit {
     this.errorMessageService.hideErrorMessage();
 
     const {name, description, images} = this.formGroup.value;
-    console.log(this.churchId);
+    console.log(this.churchId, this.announcementId);
+    console.log({name, description, images})
     !!this.announcementId
       ? this.update({id: this.announcementId, name, description}, images)
       : this.create({churchId: this.churchId, name, description}, images);

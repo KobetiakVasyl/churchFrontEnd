@@ -4,7 +4,7 @@
 mat-form-field {
   max-width: 400px;
   width: 100%;
-  @include animations.slide-from-left(400ms, 30%);
+  @include animations.bounce-from-right-with-opacity();
 }
 
 .larger-screen-spinner {
