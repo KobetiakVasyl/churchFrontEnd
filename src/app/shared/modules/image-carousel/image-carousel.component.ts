@@ -1,38 +1,46 @@
-import {Component, ElementRef, Input, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
 import {IImage} from "../../interfaces/image.interfaces";
 import {ShowFullImageService} from "../show-full-image/show-full-image.service";
+import {BehaviorSubject, ReplaySubject, Subject} from "rxjs";
 
 @Component({
   selector: 'app-image-carousel',
   templateUrl: './image-carousel.component.html',
   styleUrls: ['./image-carousel.component.scss']
 })
-export class ImageCarouselComponent {
-  @Input() images: IImage[] = [];
-
-  @ViewChild('imageSlider') imageSlider!: ElementRef;
-  @ViewChildren('imagesList') htmlImageElements!: QueryList<ElementRef>;
+export class ImageCarouselComponent implements OnInit {
+  @Input()
+  images: IImage[] = [];
 
   selectedImageIndex = 0;
+
+  private readonly selectedImageSource = new ReplaySubject<IImage>(1);
+  readonly selectedImage$ = this.selectedImageSource.asObservable();
 
   constructor(private readonly showFullImageService: ShowFullImageService) {
   }
 
-  changeImage(direction: number): void {
-    if (
-      (direction < 0 && this.selectedImageIndex == 0) ||
-      (direction > 0 && this.selectedImageIndex === (this.images.length - 1))
-    ) return;
+  ngOnInit(): void {
+    this.selectedImageSource.next(this.images[this.selectedImageIndex]);
+  }
 
-    this.selectedImageIndex += direction;
+  changeImage(dir: number): void {
+    const i = this.selectedImageIndex + dir;
 
-    // @ts-ignore
-    const image = this.htmlImageElements.get(this.selectedImageIndex).nativeElement as HTMLImageElement;
+    if (i < 0 || i == this.images.length) return;
 
-    this.imageSlider.nativeElement.scrollTo({
-      left: image.scrollWidth * this.selectedImageIndex,
-      behavior: 'smooth'
-    });
+    this.selectedImageIndex = i;
+    this.selectedImageSource.next(this.images[i]);
   }
 
   selectImage(image: IImage) {

@@ -1,6 +1,4 @@
-<div
-  *ngIf="!!images.length"
-  class="image-carousel-container border-radius-2 container-2">
+<div class="image-carousel-container">
   <button
     mat-mini-fab
     color="accent"
@@ -12,18 +10,13 @@
     <i class="material-icons-outlined">arrow_left</i>
   </button>
 
-  <div
-    #imageSlider
-    class="flex image-slider-wrapper"
-  >
+  <div class="image-wrapper border-radius-2">
     <img
-      *ngFor="let image of images"
-      #imagesList
-      [src]="image.url"
-      [alt]="image.name"
+      *ngIf="selectedImage$ | async as selectedImage"
+      [src]="selectedImage.url"
+      [alt]="selectedImage.name"
       draggable="false"
-      [srcset]="image.url + ' 500w'"
-      (click)="selectImage(image)"
+      (click)="selectImage(selectedImage)"
     >
   </div>
 

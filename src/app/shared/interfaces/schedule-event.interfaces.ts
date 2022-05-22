@@ -1,3 +1,5 @@
+import {PartialList} from "./pagination.interfaces";
+
 export interface ICreateScheduleEvent {
   description: string;
   name: string;
@@ -15,3 +17,5 @@ export interface IScheduleEvent extends IUpdateScheduleEvent {
   createdAt: string;
   updatedAt: string;
 }
+
+export type TScheduleEventPartialList = PartialList<IScheduleEvent>;

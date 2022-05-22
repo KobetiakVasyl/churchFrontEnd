@@ -11,7 +11,10 @@
     <div class="flex h-space-between gap-1 wrap-reverse">
       <p>{{ announcement.description }}</p>
 
-      <app-image-carousel [images]="announcement.images"></app-image-carousel>
+      <app-image-carousel
+        *ngIf="announcement.images.length"
+        [images]="announcement.images"
+      ></app-image-carousel>
     </div>
   </mat-card-content>
 </mat-card>

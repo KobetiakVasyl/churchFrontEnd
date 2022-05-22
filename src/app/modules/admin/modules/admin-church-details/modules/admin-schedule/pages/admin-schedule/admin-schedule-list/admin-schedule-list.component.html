@@ -1,6 +1,6 @@
-<div>
+<div class="flex h-center gap-2">
   <div
-    *ngIf="announcements$ | async as announcements"
+    *ngIf="events$ | async as events"
     infinite-scroll
     class="flex flex-direction-column gap-2"
     [infiniteScrollDistance]="1"
@@ -8,11 +8,11 @@
     [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"
     (scrolled)="scrollPaginationService.loadNextPage()"
   >
-    <app-admin-announcements-list-item
-      *ngFor="let announcement of announcements; let i = index"
-      [announcement]="announcement"
-      [style]="announcements.length > $any((scrollPaginationService.pagingInfo$ | async)).limit ? '' : '--animation-delay:' + i"
-    ></app-admin-announcements-list-item>
+    <app-admin-schedule-list-item
+      *ngFor="let event of events; let i = index"
+      [scheduleEvent]="event"
+      [style]="'--animation-delay:' + i"
+    ></app-admin-schedule-list-item>
   </div>
 
   <app-scroll-to-top></app-scroll-to-top>

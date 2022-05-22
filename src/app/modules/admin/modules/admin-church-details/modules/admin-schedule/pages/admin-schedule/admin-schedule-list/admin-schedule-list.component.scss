@@ -1,0 +1,5 @@
+@use '~src/app/shared/styles/animations/animations';
+
+app-admin-schedule-list-item {
+  @include animations.slide-from-top-with-opacity(300ms, 10%, calc(var(--animation-delay) * 200ms))
+}

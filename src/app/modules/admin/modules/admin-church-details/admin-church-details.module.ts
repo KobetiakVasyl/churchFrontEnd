@@ -7,7 +7,6 @@ import {
 } from './shared/components/admin-church-details-layout/admin-church-details-layout.component';
 import {MaterialModule} from "../../../../shared/modules/material/material.module";
 import {AdminOverviewComponent} from './pages/admin-overview/admin-overview.component';
-import {AdminScheduleComponent} from './pages/admin-schedule/admin-schedule.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AdminModule} from "../../admin.module";
 import {ImageUploadControllerModule} from "../../shared/modules/image-upload-controller/image-upload-controller.module";
@@ -16,7 +15,6 @@ import {ImageUploadControllerModule} from "../../shared/modules/image-upload-con
   declarations: [
     AdminChurchDetailsLayoutComponent,
     AdminOverviewComponent,
-    AdminScheduleComponent
   ],
   imports: [
     CommonModule,

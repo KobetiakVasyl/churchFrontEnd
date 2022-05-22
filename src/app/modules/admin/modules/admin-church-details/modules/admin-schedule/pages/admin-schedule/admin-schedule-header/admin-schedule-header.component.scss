@@ -1,0 +1,29 @@
+@use '~src/app/shared/styles/breakpoints';
+@use '~src/app/shared/styles/animations/animations';
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+      'item-1 item-3'
+      'item-2 item-2';
+}
+
+.grid-item-1 {
+  grid-area: item-1;
+}
+
+.grid-item-2 {
+  grid-area: item-2;
+}
+
+.grid-item-3 {
+  grid-area: item-3;
+}
+
+@media (min-width: breakpoints.$fromXSmall) {
+  .grid {
+    justify-content: space-between;
+    grid-template-areas: 'item-1 item-2 item-3';
+  }
+}

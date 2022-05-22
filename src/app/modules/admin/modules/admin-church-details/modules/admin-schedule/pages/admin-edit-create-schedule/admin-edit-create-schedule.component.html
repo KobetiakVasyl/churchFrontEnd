@@ -1,0 +1,172 @@
+<div
+  class="flex flex-direction-column gap-2 self-center create-announcement-wrapper"
+  [class.mat-elevation-z4]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
+  [class.container-2]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
+  [class.border-radius-3]="!(layoutBreakpointsService.extraSmallMatch$ | async)"
+>
+  <div class="flex gap-1 v-center">
+    <a
+      mat-icon-button
+      color="accent"
+      [routerLink]="['', 'admin', 'church', 'details', churchId, 'schedule', 'list']"
+    >
+      <i class="material-icons-outlined">west</i>
+    </a>
+
+    <h3 *ngIf="activatedRoute.data | async as data">{{ data['formTitle'] }}</h3>
+  </div>
+
+  <form
+    class="flex flex-direction-column gap-2"
+    [formGroup]="formGroup"
+    (ngSubmit)="submit()"
+  >
+    <fieldset class="flex flex-direction-column gap-2 border-radius-2">
+      <legend>Event Description</legend>
+
+      <mat-form-field class="grow-1">
+        <mat-label>
+          <i class="material-icons-outlined">title</i>
+          Заголовок
+        </mat-label>
+
+        <input
+          matInput
+          required
+          type="text"
+          placeholder="Введіть заголовок оголошення..."
+          formControlName="name"
+        >
+
+        <mat-hint>Обов'язкове поле</mat-hint>
+
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          Це поле є обов'язковим
+        </mat-error>
+
+        <mat-error *ngIf="nameFormControl.hasError('minlength')">
+          Should be at least 4 symbols
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="textarea grow-1">
+        <mat-label>
+          <i class="material-icons-outlined">description</i>
+          Опис
+        </mat-label>
+
+        <textarea
+          matInput
+          required
+          rows="5"
+          placeholder="Введіть опис оголошення..."
+          formControlName="description"
+        ></textarea>
+
+        <mat-hint>Обов'язкове поле</mat-hint>
+
+        <mat-error *ngIf="descriptionFormControl.hasError('required')">
+          Це поле є обов'язковим
+        </mat-error>
+
+        <mat-error *ngIf="descriptionFormControl.hasError('minlength')">
+          Should be at least 5 symbols
+        </mat-error>
+      </mat-form-field>
+    </fieldset>
+
+    <fieldset class="flex flex-direction-column gap-2 border-radius-2">
+      <legend>Event Time</legend>
+
+      <mat-form-field class="grow-1">
+        <mat-label>Select date</mat-label>
+
+        <input
+          matInput
+          required
+          placeholder="DD/MM/YYYY"
+          formControlName="date"
+          [matDatepicker]="picker"
+        >
+
+        <mat-hint>Обов'язкове поле</mat-hint>
+
+        <mat-error>
+          Це поле є обов'язковим
+        </mat-error>
+
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker color="accent"></mat-datepicker>
+      </mat-form-field>
+
+      <div class="flex gap-2">
+        <mat-form-field class="grow-1">
+          <mat-label>Starts At</mat-label>
+
+          <input
+            matInput
+            required
+            type="time"
+            placeholder="HH:MM"
+            formControlName="startTime"
+          >
+
+          <mat-hint>Обов'язкове поле</mat-hint>
+
+          <mat-error>
+            Це поле є обов'язковим
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="grow-1">
+          <mat-label>Ends At</mat-label>
+
+          <input
+            matInput
+            required
+            type="time"
+            placeholder="HH:MM"
+            formControlName="endTime"
+          >
+
+          <mat-hint>Обов'язкове поле</mat-hint>
+
+          <mat-error>
+            Це поле є обов'язковим
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </fieldset>
+
+    <span
+      *ngIf="errorMessageService.errorMessage"
+      class="error-message error-message--fill-available"
+    >
+      {{ errorMessageService.errorMessage }}
+    </span>
+
+    <div class="flex h-flex-end">
+      <button
+        mat-flat-button
+        color="accent"
+        type="submit"
+        [disabled]="formGroup.invalid || formGroup.pristine || formGroup.pending"
+      >
+        <ng-template [ngIf]="showLoading$ | async" [ngIfElse]="showSaveTextBlock">
+          <mat-spinner
+            class="self-center"
+            color="primary"
+            mode="indeterminate"
+            diameter="25"
+            strokeWidth="5"
+          ></mat-spinner>
+        </ng-template>
+
+        <ng-template #showSaveTextBlock>
+          Зберегти
+        </ng-template>
+      </button>
+    </div>
+  </form>
+</div>

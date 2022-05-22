@@ -1,11 +1,4 @@
 <div>
-  <span
-    *ngIf="errorMessageService.errorMessage"
-    class="error-message"
-  >
-    {{ errorMessageService.errorMessage }}
-  </span>
-
   <div
     *ngIf="churches$ | async as churches"
     infinite-scroll

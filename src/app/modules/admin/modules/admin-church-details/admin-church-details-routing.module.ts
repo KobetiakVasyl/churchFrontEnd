@@ -4,7 +4,6 @@ import {
   AdminChurchDetailsLayoutComponent
 } from "./shared/components/admin-church-details-layout/admin-church-details-layout.component";
 import {AdminOverviewComponent} from "./pages/admin-overview/admin-overview.component";
-import {AdminScheduleComponent} from "./pages/admin-schedule/admin-schedule.component";
 
 const routes: Routes = [
   {
@@ -22,7 +21,7 @@ const routes: Routes = [
       },
       {
         path: 'schedule',
-        component: AdminScheduleComponent
+        loadChildren: () => import('./modules/admin-schedule/admin-schedule.module').then(m => m.AdminScheduleModule)
       },
       {
         path: 'announcements',

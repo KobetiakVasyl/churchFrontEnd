@@ -26,7 +26,10 @@
 
         <p class="church-overview__main__description">
           <span class="flex grow-1 image-carousel-wrapper">
-            <app-image-carousel [images]="churchInfo.images"></app-image-carousel>
+            <app-image-carousel
+              *ngIf="churchInfo.images.length"
+              [images]="churchInfo.images"
+            ></app-image-carousel>
           </span>
 
           {{ churchInfo.description }}

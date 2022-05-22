@@ -25,5 +25,13 @@ summary {
 img {
   width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  font-size: 1rem;
+}
+
+app-image-carousel {
+  width: 100%;
 }

@@ -2,20 +2,16 @@
 
 .image-carousel-container {
   position: relative;
+  width: 100%;
 }
 
-.image-slider-wrapper {
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  pointer-events: none;
-  max-height: 300px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+.image-wrapper {
+  background-color: rgba(0, 0, 0, .5);
 
   img {
-    pointer-events: auto;
+    pointer-events: none;
+    height: 300px;
+    object-fit: contain;
   }
 }
 
@@ -26,10 +22,10 @@
   z-index: 1;
 
   &--left {
-    left: 0;
+    left: .5rem;
   }
 
   &--right {
-    right: 0;
+    right: .5rem;
   }
 }
