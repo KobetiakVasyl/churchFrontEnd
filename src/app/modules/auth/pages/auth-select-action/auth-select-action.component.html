@@ -11,22 +11,24 @@
 
   <ng-template [ngIf]="!isAuthorized">
     <a
+      i18n
       mat-stroked-button
       color="accent"
       class="big-button big-button--sign-in border-radius-3"
       [routerLink]="['', 'auth', 'sign-in']"
     >
-      <i class="material-icons-outlined self-center">login</i>
+      <mat-icon class="material-icons-outlined self-center">login</mat-icon>
       Sign in
     </a>
 
     <a
+      i18n
       mat-stroked-button
       color="accent"
       class="big-button border-radius-3"
       [routerLink]="['', 'auth', 'sign-up']"
     >
-      <i class="material-icons-outlined self-center">app_registration</i>
+      <mat-icon class="material-icons-outlined self-center">app_registration</mat-icon>
       Sign up
     </a>
   </ng-template>

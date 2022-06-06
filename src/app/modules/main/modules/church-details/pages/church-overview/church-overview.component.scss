@@ -31,11 +31,11 @@
     display: inline-flex;
   }
 
-  &__location, &__location > i {
+  &__location, &__location > i, mat-icon {
     line-height: 1rem;
   }
 
-  &__location > i {
+  &__location > i, mat-icon {
     font-size: 1rem;
     width: 1rem;
     height: 1rem;

@@ -1,19 +1,20 @@
-import {NgModule} from '@angular/core';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatCardModule} from "@angular/material/card";
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule, MatRippleModule} from "@angular/material/core";
-import {MatChipsModule} from "@angular/material/chips";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
-import {MatMenuModule} from "@angular/material/menu";
-import {MatDialogModule} from "@angular/material/dialog";
+import { NgModule } from '@angular/core';
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatCardModule } from "@angular/material/card";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule, MatRippleModule } from "@angular/material/core";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatBottomSheetModule,
     MatMenuModule,
     MatDialogModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ],
   exports: [
     MatToolbarModule,
@@ -50,7 +52,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatBottomSheetModule,
     MatMenuModule,
     MatDialogModule,
-    MatRippleModule
+    MatRippleModule,
+    MatIconModule
   ]
 })
 export class MaterialModule {
