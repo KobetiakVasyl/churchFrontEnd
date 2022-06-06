@@ -1,0 +1,15 @@
+.admin-schedule-event {
+  &__name {
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid grey;
+  }
+
+  &__date-info-hours {
+    white-space: nowrap;
+  }
+
+  &__created-at {
+    margin-left: auto;
+  }
+}

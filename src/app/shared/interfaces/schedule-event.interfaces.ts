@@ -5,7 +5,7 @@ export interface ICreateScheduleEvent {
   name: string;
   startTime: string;
   endTime: string;
-  date: string;
+  date: Date | string;
   churchId: number;
 }
 

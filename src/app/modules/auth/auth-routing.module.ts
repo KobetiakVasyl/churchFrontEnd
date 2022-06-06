@@ -6,6 +6,7 @@ import {AuthSelectActionComponent} from "./pages/auth-select-action/auth-select-
 import {ForgotPasswordComponent} from "./pages/forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./pages/reset-password/reset-password.component";
 import {SignUpComponent} from "./pages/sign-up/sign-up.component";
+import { AuthenticationGuard } from 'src/app/shared/guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -18,19 +19,23 @@ const routes: Routes = [
       },
       {
         path: 'sign-in',
-        component: SignInComponent
+        component: SignInComponent,
+        canActivate: [AuthenticationGuard]
       },
       {
         path: 'sign-up',
-        component: SignUpComponent
+        component: SignUpComponent,
+        canActivate: [AuthenticationGuard]
       },
       {
         path: 'forgot-password',
-        component: ForgotPasswordComponent
+        component: ForgotPasswordComponent,
+        canActivate: [AuthenticationGuard]
       },
       {
         path: 'reset-password',
-        component: ResetPasswordComponent
+        component: ResetPasswordComponent,
+        canActivate: [AuthenticationGuard]
       }
     ]
   }

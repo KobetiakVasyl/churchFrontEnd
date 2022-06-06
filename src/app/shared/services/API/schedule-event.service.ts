@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {ICreateScheduleEvent, IScheduleEvent, IUpdateScheduleEvent} from "../../interfaces/schedule-event.interfaces";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
-import {formatISO} from "date-fns";
+import { format, formatISO } from "date-fns";
 
 @Injectable({providedIn: 'root'})
 export class ScheduleEventService {
@@ -13,6 +13,7 @@ export class ScheduleEventService {
   }
 
   create(body: ICreateScheduleEvent): Observable<IScheduleEvent> {
+    body.date = formatISO(body.date as Date, { representation: 'date' });
     return this.http.post<IScheduleEvent>(`${environment.URL}/${this.route}/create`, body);
   }
 

@@ -28,26 +28,26 @@
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">badge</i>
-            Ім'я та прізвище
+            Name and surname
           </mat-label>
 
           <input
             matInput
             required
             type="text"
-            placeholder="Введіть своє ім'я та прізвище..."
+            placeholder="Enter your name and surname..."
             formControlName="prior"
           >
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">phone</i>
-            Номер телефону
+            Phone number
           </mat-label>
 
           <input
@@ -59,14 +59,14 @@
             formControlName="phoneNumber"
           >
 
-          <mat-hint>Код країни не потрібний</mat-hint>
+          <mat-hint>Country code is 38 by default</mat-hint>
 
           <mat-error *ngIf="phoneNumberFormControl.hasError('required')">
-            Це поле є обов'язковим
+            This field is required
           </mat-error>
 
           <mat-error *ngIf="phoneNumberFormControl.hasError('pattern')">
-            Перевірте правильність набраного номеру
+            Check entered number validity
           </mat-error>
         </mat-form-field>
 
@@ -106,97 +106,97 @@
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">church</i>
-            Назва
+            Name
           </mat-label>
 
           <input
             matInput
             required
             type="text"
-            placeholder="Введіть назву церкви..."
+            placeholder="Enter name of church..."
             formControlName="name"
           >
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">place</i>
-            Місцезнаходження
+            Address
           </mat-label>
 
           <input
             matInput
             required
             type="text"
-            placeholder="Введіть місцезнаходження церкви..."
+            placeholder="Enter address of church..."
             formControlName="location"
           >
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">business</i>
-            Деканат
+            Deanery
           </mat-label>
 
           <input
             matInput
             required
             type="text"
-            placeholder="Введіть деканат церкви..."
+            placeholder="Enter deanery..."
             formControlName="deanery"
           >
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
 
         <mat-form-field class="grow-1">
           <mat-label>
             <i class="material-icons-outlined">home_work</i>
-            Єпархія
+            Diocese
           </mat-label>
 
           <input
             matInput
             required
             type="text"
-            placeholder="Введіть єпархію церкви..."
+            placeholder="Enter diocese..."
             formControlName="diocese"
           >
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
 
 
         <mat-form-field class="textarea">
           <mat-label>
             <i class="material-icons-outlined">description</i>
-            Опис
+            Description
           </mat-label>
 
           <textarea
             matInput
             required
-            rows="5"
-            placeholder="Введіть опис церкви..."
+            rows="8"
+            placeholder="Enter description of church..."
             formControlName="description"
           ></textarea>
 
-          <mat-hint>Обов'язкове поле</mat-hint>
+          <mat-hint>Required field</mat-hint>
 
-          <mat-error>Це поле є обов'язковим</mat-error>
+          <mat-error>This field is required</mat-error>
         </mat-form-field>
       </fieldset>
 
@@ -223,7 +223,7 @@
           [disabled]="formGroup.pristine"
           (click)="reloadInformation()"
         >
-          Скасувати зміни
+          Cancel changes
         </button>
 
         <button
@@ -244,7 +244,7 @@
           </ng-template>
 
           <ng-template #showSaveTextBlock>
-            Зберегти
+            Save
           </ng-template>
         </button>
       </div>

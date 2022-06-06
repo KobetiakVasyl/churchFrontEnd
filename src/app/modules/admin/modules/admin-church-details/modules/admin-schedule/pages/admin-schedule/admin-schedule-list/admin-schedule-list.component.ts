@@ -15,10 +15,7 @@ import {ErrorMessageService} from "../../../../../../../../../shared/services/lo
 import {ScrollPaginationService} from "../../../../../../../../../shared/services/local/scroll-pagination.service";
 import {ActivatedRoute} from "@angular/router";
 import {HttpLoadingService} from "../../../../../../../../../shared/services/local/http-loading.service";
-import {
-  IScheduleEvent,
-  TScheduleEventPartialList
-} from "../../../../../../../../../shared/interfaces/schedule-event.interfaces";
+import {IScheduleEvent} from "../../../../../../../../../shared/interfaces/schedule-event.interfaces";
 import {ScheduleEventService} from "../../../../../../../../../shared/services/API/schedule-event.service";
 import {AdminScheduleBrokerService} from "../../../shared/services/admin-schedule-broker.service";
 
@@ -75,7 +72,7 @@ export class AdminScheduleListComponent implements OnInit {
         this.errorMessageService.errorMessage = error.message;
         this.errorMessageService.showErrorMessage();
 
-        return throwError(error);
+        return throwError(() => error);
       })
     );
   }

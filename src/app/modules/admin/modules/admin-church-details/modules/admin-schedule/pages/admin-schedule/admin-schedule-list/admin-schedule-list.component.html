@@ -2,7 +2,7 @@
   <div
     *ngIf="events$ | async as events"
     infinite-scroll
-    class="flex flex-direction-column gap-2"
+    class="flex grow-1 flex-direction-column gap-2"
     [infiniteScrollDistance]="1"
     [infiniteScrollThrottle]="750"
     [infiniteScrollDisabled]="$any(scrollPaginationService.disableScrollTrigger$ | async)"

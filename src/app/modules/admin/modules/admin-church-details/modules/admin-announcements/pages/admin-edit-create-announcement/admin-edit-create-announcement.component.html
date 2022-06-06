@@ -27,21 +27,21 @@
       <mat-form-field class="grow-1">
         <mat-label>
           <i class="material-icons-outlined">title</i>
-          Заголовок
+          Title
         </mat-label>
 
         <input
           matInput
           required
           type="text"
-          placeholder="Введіть заголовок оголошення..."
+          placeholder="Enter title of announcement..."
           formControlName="name"
         >
 
-        <mat-hint>Обов'язкове поле</mat-hint>
+        <mat-hint>Required field</mat-hint>
 
         <mat-error *ngIf="nameFormControl.hasError('required')">
-          Це поле є обов'язковим
+          This field is required
         </mat-error>
 
         <mat-error *ngIf="nameFormControl.hasError('minlength')">
@@ -53,21 +53,21 @@
       <mat-form-field class="textarea grow-1">
         <mat-label>
           <i class="material-icons-outlined">description</i>
-          Опис
+          Description
         </mat-label>
 
         <textarea
           matInput
           required
           rows="5"
-          placeholder="Введіть опис оголошення..."
+          placeholder="Enter description of announcement.."
           formControlName="description"
         ></textarea>
 
-        <mat-hint>Обов'язкове поле</mat-hint>
+        <mat-hint>Required field</mat-hint>
 
         <mat-error *ngIf="descriptionFormControl.hasError('required')">
-          Це поле є обов'язковим
+          This field is required
         </mat-error>
 
         <mat-error *ngIf="descriptionFormControl.hasError('minlength')">
@@ -107,7 +107,7 @@
         </ng-template>
 
         <ng-template #showSaveTextBlock>
-          Зберегти
+          Save
         </ng-template>
       </button>
     </div>

@@ -4,6 +4,12 @@
   "newProjectRoot": "projects",
   "projects": {
     "ChurchFrontEnd": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "uk-UA": "src/locale/messages.uk.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,6 +48,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": [
+              "uk-UA"
+            ],
             "outputPath": "dist/church-front-end",
             "index": "src/index.html",
             "main": "src/main.ts",

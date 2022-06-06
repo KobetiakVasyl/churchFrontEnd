@@ -13,7 +13,7 @@
 <!--  </mat-form-field>-->
 
   <div class="flex flex-direction-column grow-1">
-    <span>Показати оголошення всі</span>
+    <span>Show announcements</span>
 
     <div class="flex gap-1 v-center">
       <mat-chip-list>
@@ -22,15 +22,15 @@
           color="accent"
         >
           <ng-template [ngIf]="dateRangeFormGroup.value.from">
-            з {{ dateRangeFormGroup.value.from | date: 'dd/MM/yyyy' }}
+            from {{ dateRangeFormGroup.value.from | date: 'dd/MM/yyyy' }}
           </ng-template>
 
           <ng-template [ngIf]="isTodayDate(dateRangeFormGroup.value.to)" [ngIfElse]="showFormattedDate">
-            до сьогодні
+            to today
           </ng-template>
 
           <ng-template #showFormattedDate>
-            до {{ dateRangeFormGroup.value.to | date: 'dd/MM/yyyy' }}
+            to {{ dateRangeFormGroup.value.to | date: 'dd/MM/yyyy' }}
           </ng-template>
         </mat-chip>
       </mat-chip-list>
@@ -39,7 +39,7 @@
         #tooltip="matTooltip"
         mat-icon-button
         color="accent"
-        matTooltip="Щоб очистити вибірку натисніть на будь яку з обраних дат під час вибору"
+        matTooltip="To clear click on any of selected dates while selecting the range"
         matTooltipPosition="above"
         (click)="picker.open()"
       >
@@ -76,7 +76,7 @@
         color="primary"
         matDateRangePickerCancel
       >
-        Закрити
+        Close
       </button>
 
       <button
@@ -84,7 +84,7 @@
         matDateRangePickerApply
         color="accent"
       >
-        Підтвердити
+        Select
       </button>
     </mat-date-range-picker-actions>
   </mat-date-range-picker>

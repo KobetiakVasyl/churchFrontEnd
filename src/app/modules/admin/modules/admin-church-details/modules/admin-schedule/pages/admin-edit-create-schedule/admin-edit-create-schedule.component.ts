@@ -50,7 +50,7 @@ export class AdminEditCreateScheduleComponent implements OnInit {
 
     this.activatedRoute.params
       .pipe(
-        filter(params => !!params?.['announcementId']),
+        filter(params => !!params?.['scheduleEventId']),
         switchMap(params => {
           this.scheduleEventId = +params['scheduleEventId'];
           return this.scheduleEventService.getById(params['scheduleEventId']);

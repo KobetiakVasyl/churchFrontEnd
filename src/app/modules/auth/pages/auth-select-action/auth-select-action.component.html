@@ -9,23 +9,25 @@
     Continue without authentication
   </a>
 
-  <a
-    mat-stroked-button
-    color="accent"
-    class="big-button big-button--sign-in border-radius-3"
-    [routerLink]="['', 'auth', 'sign-in']"
-  >
-    <i class="material-icons-outlined self-center">login</i>
-    Sign in
-  </a>
+  <ng-template [ngIf]="!isAuthorized">
+    <a
+      mat-stroked-button
+      color="accent"
+      class="big-button big-button--sign-in border-radius-3"
+      [routerLink]="['', 'auth', 'sign-in']"
+    >
+      <i class="material-icons-outlined self-center">login</i>
+      Sign in
+    </a>
 
-  <a
-    mat-stroked-button
-    color="accent"
-    class="big-button border-radius-3"
-    [routerLink]="['', 'auth', 'sign-up']"
-  >
-    <i class="material-icons-outlined self-center">app_registration</i>
-    Sign up
-  </a>
+    <a
+      mat-stroked-button
+      color="accent"
+      class="big-button border-radius-3"
+      [routerLink]="['', 'auth', 'sign-up']"
+    >
+      <i class="material-icons-outlined self-center">app_registration</i>
+      Sign up
+    </a>
+  </ng-template>
 </div>

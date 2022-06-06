@@ -1,1 +1,33 @@
-<p>admin-schedule-list-item works!</p>
+<div
+  class="flex flex-direction-column admin-schedule-event mat-elevation-z4 border-radius-3 container-2"
+>
+  <div class="flex h-space-between v-center">
+    <h4 class="schedule-event__name">{{ scheduleEvent.name }}</h4>
+
+    <a
+      mat-icon-button
+      color="accent"
+      [routerLink]="['../', 'edit', scheduleEvent.id]"
+    >
+      <i class="material-icons-outlined">edit</i>
+    </a>
+  </div>
+
+  <p class="schedule-event__date-info">
+    <strong>Scheduled at: </strong>
+
+    {{ scheduleEvent.date | date: "dd/MM/yyyy" }}
+    <span class="schedule-event__date-info-hours">
+      from {{ scheduleEvent.startTime }} to {{ scheduleEvent.endTime }}
+    </span>
+  </p>
+
+  <details>
+    <summary>Expand description</summary>
+    <p>{{ scheduleEvent.description }}</p>
+  </details>
+
+  <small class="schedule-event__created-at">
+    Created at {{ scheduleEvent.createdAt | date: "dd/MM/yyyy" }}
+  </small>
+</div>
